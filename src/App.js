@@ -17,13 +17,13 @@ import PATeach from "./components/PATeach/PATeach";
 
 function App() {
   return (
-    <>
-      <Header />
-      <Registration/>
+    <div className="first_body">
+       <Header />
+      {/* <Registration/>
       <PersAreaStud />
-      <LoginPage/>
+      <LoginPage/>  */}
       <PATeach/>
-    </>
+    </div>
   );
 }
 

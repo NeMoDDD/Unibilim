@@ -1,13 +1,69 @@
-.stud_list{
-width: 967px;
-height: 690px;
-margin-left: 353px;
-margin-top: 93px;
-background-color: #Ffff;
+.stud_head {
+  width: 967px;
+  height: 690px;
+  margin-left: 353px;
+  margin-top: 93px;
+  background-color: #ffff;
+  display: flex;
+  border-radius: 25px;
+  color: #93979b;
 }
-.studs{
-    width: 103px;
-    height: 31px;
-    margin-left: 25px;
-    margin-top: 50px;
+.studs {
+  width: 103px;
+  height: 31px;
+  margin-left: 25px;
+  margin-top: 25px;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 31.2px;
+}
+.radio_txt {
+  margin-left: 8px;
+  margin-top: 30px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21.6px;
+}
+#exclusive {
+  margin-left: 196px;
+}
+#groups {
+  margin-left: 25px;
+}
+.stud_list {
+  display: flex;
+  // justify-content: center;
+  position: absolute;
+  margin-top: 106px;
+  margin-left: 25px;
+}
+.stud_card {
+  width: 172px;
+  height: 270px;
+  background-color: #fcfcfc;
+  border-radius: 25px;
+  margin-left: 14px;
+  text-align: center;
+}
+.stud_txt {
+  margin-top: 15px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 19px;
+  color: black;
+}
+.stud_btn{
+  width: 142px;
+height: 32px;
+background-color: #FFBF13;
+border-radius: 10px;
+border-top: 0px;
+border-bottom: 0px;
+border-left: 0px;
+border-right: 0px;
+}
+.stud_btn_txt{
+
+
 }
