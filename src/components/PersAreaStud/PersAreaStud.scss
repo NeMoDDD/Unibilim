@@ -17,8 +17,7 @@
   margin-top: 20px;
   // margin-bottom: 35px;
   margin-left: 20px;
-  background-color: #FBFCFE
-  ;
+  background-color: #fbfcfe;
 }
 .name_block {
   width: 150px;
@@ -65,8 +64,9 @@
   float: left;
 }
 .nm-txt {
-  margin-top: -10px;
+  margin-top: 10px;
   margin-right: 440px;
+  margin-bottom: 5px;
   margin-left: 35px;
   font-weight: 400;
   font-size: 11px;
@@ -75,6 +75,7 @@
 }
 .nm-txt2 {
   margin-top: 45px;
+  margin-bottom: 5px;
   margin-right: 440px;
   margin-left: 35px;
   font-weight: 400;
@@ -103,9 +104,10 @@
   font-size: 18px;
   line-height: 21.6px;
   color: #595959;
+  background-color: #fbfcfe;
   // position: absolute;
 }
-.reg_npt{
+.reg_npt {
   width: 264px;
   border-top: 0px;
   border-left: 0px;
@@ -114,10 +116,11 @@
   border-color: #ffbf13;
   margin-left: 35px;
   font-weight: 400;
+  background-color: #fbfcfe;
   font-size: 18px;
   line-height: 21.6px;
 }
-.contact_block{
+.contact_block {
   // display: flex;
   // margin: 20px;
   // margin-left: 20px;
@@ -125,13 +128,58 @@
   padding: 1px;
   width: 573px;
   height: 245px;
-  background-color: #FBFCFE;
+  background-color: #fbfcfe;
   border-radius: 25px;
 }
-.region_block{
- margin-top: 20px;
- width: 334px;
- height: 245px;
- margin-left: 20px;
- border-radius: 25px;
+.region_block {
+  margin-top: 20px;
+  width: 334px;
+  height: 245px;
+  margin-left: 20px;
+  border-radius: 25px;
+  background-color: #fbfcfe;
 }
+.teach_list_block {
+  width: 967px;
+  height: 812px;
+  margin-top: 93px;
+  margin-left: 353px;
+  border-radius: 25px;
+  background-color: #ffff;
+}
+.drop_block {
+  position: absolute;
+  width: 917px;
+  height: 65px;
+  margin-left: 25px;
+  margin-top: 25px;
+  background-color: #f6fafc;
+  border-radius: 25px;
+}
+.drop{
+  // position: absolute;
+  width: 138px;
+  height: 35px;
+  background-color: #ffffff;
+  border-radius: 17.5px;
+  margin-top: 15px;
+  margin-left: 15px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 21px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+.list_block{
+  // position: absolute;
+  width: 917px;
+height: 672px;
+margin-top: 25px;
+margin-left: 25px;
+background-color: #F6FAFC;
+border-radius: 25px;
+}
+
+

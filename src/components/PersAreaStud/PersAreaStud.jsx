@@ -11,10 +11,10 @@ const PersAreaStud = () => {
       <div className="user_block">
         <div className="inner_block">
           <div className="your_block">
-            <img src={userava} id="avauser" />
+            <img src={userava} id="avauser" alt="Кук" />
             <p className="name_block">Александр Иванов</p>
             <br />
-            <a className="edit_block">
+            <a className="edit_block" href="/">
               <img src={edit} id="edit_btn" /> Изменить данные
             </a>
           </div>
