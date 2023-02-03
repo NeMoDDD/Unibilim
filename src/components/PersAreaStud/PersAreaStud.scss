@@ -156,7 +156,7 @@
   background-color: #f6fafc;
   border-radius: 25px;
 }
-.drop{
+.drop {
   // position: absolute;
   width: 138px;
   height: 35px;
@@ -172,14 +172,84 @@
   border-right: none;
   border-bottom: none;
 }
-.list_block{
-  // position: absolute;
+.list_block {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   width: 917px;
-height: 672px;
-margin-top: 25px;
-margin-left: 25px;
-background-color: #F6FAFC;
-border-radius: 25px;
+  height: 672px;
+  margin-top: 115px;
+  margin-left: 25px;
+  background-color: #f6fafc;
+  border-radius: 25px;
 }
-
-
+.teach_list {
+  width: 200px;
+  height: 300px;
+  background-color: #ffffff;
+  margin-left: 15px;
+  margin-top: 15px;
+  border-radius: 25px;
+}
+.teach_img {
+  // margin-left: 15px;
+  margin-top: 15px;
+  width: 169px;
+  height: 205px;
+}
+.teach_card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-content: space-between;
+  text-align: center;
+}
+.teach_name {
+  position: absolute;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  text-align: center;
+  margin-top: 110px;
+  color: #ffffff;
+}
+.teach_about {
+  position: absolute;
+  width: 150px;
+  // height: 45px;
+  font-weight: 100;
+  font-size: 4px;
+  line-height: 14px;
+  text-align: center;
+  margin-top: 135px;
+  // margin-left: 30px;
+  color: #ffffff;
+}
+.teach_subj {
+  position: absolute;
+  margin-top: 205px;
+  background-color: #31f7f7;
+  width: 100px;
+  height: 30px;
+  border-radius: 30px;
+}
+.teach_btn {
+  width: 142px;
+  height: 32px;
+  background-color: #ffbf13;
+  margin-top: 30px;
+  border-radius: 25px;
+  border-top: 0px;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
+.teach_btn_txt {
+  color: white;
+  margin-top: 7px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+}
