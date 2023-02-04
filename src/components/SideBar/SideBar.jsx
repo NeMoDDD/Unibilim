@@ -8,20 +8,20 @@ const SideBar = (props) => {
   return (
     <div className="sideblock">
       <div className="inner_container">
-        <a className="about-me">
-          <img src={logo1} className="logo1" />
+        <a className="about-me" href="/pastud">
+          <img src={logo1} className="logo1" alt=""/>
           Обо мне
         </a>
       </div>
       <div className="upper_container">
-        <a className="about-me">
-          <img src={logo2} className="logo1" />
+        <a className="about-me" href="/timetable">
+          <img src={logo2} className="logo1" alt=""/>
           Расписание
         </a>
       </div>
       <div className="upper_container">
-        <a className="about-me">
-          <img src={logo3} className="logo1" />
+        <a className="about-me" href="/teachlist">
+          <img src={logo3} className="logo1" alt=""/>
           Консультанты
         </a>
       </div>

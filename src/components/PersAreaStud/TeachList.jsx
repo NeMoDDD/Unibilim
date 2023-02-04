@@ -4,9 +4,10 @@ import teach1 from "../../assets/img/teach1.png";
 import teach2 from "../../assets/img/teach2.png";
 import teach3 from "../../assets/img/teach3.png";
 import teach4 from "../../assets/img/teach4.png";
+import SideBar from "../SideBar/SideBar";
 
 const TeachList = () => {
-  const classArr = ["Все классы", "9В", "10Ь", "8А", "11Г"];
+  const classArr = ["Все классы", "9В", "10B", "8А", "11Г"];
   const subjArr = [
     "Все предметы",
     "Математика",
@@ -35,24 +36,21 @@ const TeachList = () => {
       id: 2,
       name: "Иван Ургант",
       subj: "Математика",
-      aboutTeach:
-        "Кандидат филологических наук, учитель высшей категории, эксперт ОРТ",
+      aboutTeach: "Кандидат физико - математических наук",
       img: teach2,
     },
     {
       id: 3,
       name: "Том Круз",
       subj: "История",
-      aboutTeach:
-        "Кандидат филологических наук, учитель высшей категории, эксперт ОРТ",
+      aboutTeach: "Обладатель сертификата CPE Кембриджского университета",
       img: teach3,
     },
     {
       id: 4,
       name: "Брэдд Пит",
       subj: "Геометрия",
-      aboutTeach:
-        "Кандидат филологических наук, учитель высшей категории, эксперт ОРТ",
+      aboutTeach: "Кандидат филологических наук, Преподаватель СШГ№6",
       img: teach4,
     },
   ];
@@ -73,30 +71,34 @@ const TeachList = () => {
     </option>
   ));
   return (
-    <div className="teach_list_block">
-      <div className="drop_block">
-        <select className="drop">{renderClasses}</select>
-        <select className="drop">{renderSubect}</select>
-        <select className="drop">{renderDay}</select>
-      </div>
-      <div className="list_block">
-        {teachList.map((el) => (
-          <div className="teach_list">
-            <div className="teach_card">
-              <img src={el.img} className="teach_img"/>
-              <p className="teach_name">{el.name}</p>
-              <p className="teach_about">{el.aboutTeach}</p>
-              <p className="teach_subj" id="phyz">
-                {el.subj}
-              </p>
-              <button className="teach_btn">
-                <p className="teach_btn_txt">Подробнее</p>
-              </button>
+    <>
+      <SideBar />
+      <div className="teach_list_block">
+        <p className="teach_txt">Репетиторы</p>
+        <div className="drop_block">
+          <select className="drop">{renderClasses}</select>
+          <select className="drop">{renderSubect}</select>
+          <select className="drop">{renderDay}</select>
+        </div>
+        <div className="list_block">
+          {teachList.map((el) => (
+            <div className="teach_list">
+              <div className="teach_card">
+                <img src={el.img} className="teach_img" alt=""/>
+                <p className="teach_name">{el.name}</p>
+                <p className="teach_about">{el.aboutTeach}</p>
+                <p className="teach_subj" id="phyz">
+                  {el.subj}
+                </p>
+                <button className="teach_btn">
+                  <p className="teach_btn_txt">Подробнее</p>
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

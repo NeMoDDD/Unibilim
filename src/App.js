@@ -1,13 +1,12 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import Registration from "./components/Registration/Registration";
-// import SideBar from "./components/SideBar/SideBar";
 import PersAreaStud from "./components/PersAreaStud/PersAreaStud";
 import LoginPage from "./components/LoginPage/LoginPage";
 import PATeach from "./components/PATeach/PATeach";
-import countSheeps from "./components/Testing/Testing";
 import { Route, Routes } from "react-router-dom";
 import TeachList from "./components/PersAreaStud/TeachList";
+import Timetable from "./components/PersAreaStud/Timetable";
 // import {
 //   BrowserRouter as Router,
 //   Switch,
@@ -28,6 +27,7 @@ function App() {
         <Route path="/pateach" element={<PATeach />}/>
         <Route path="/testing" element={<countSheeps/>}/>
         <Route path="/teachlist" element={<TeachList/>}/>
+        <Route path="/timetable" element={<Timetable/>}/>
       </Routes>
     </div>
   );

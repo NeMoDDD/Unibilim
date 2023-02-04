@@ -142,7 +142,7 @@
 .teach_list_block {
   width: 967px;
   height: 812px;
-  margin-top: 93px;
+  margin-top: 25px;
   margin-left: 353px;
   border-radius: 25px;
   background-color: #ffff;
@@ -152,7 +152,7 @@
   width: 917px;
   height: 65px;
   margin-left: 25px;
-  margin-top: 25px;
+  margin-top: 81px;
   background-color: #f6fafc;
   border-radius: 25px;
 }
@@ -179,7 +179,7 @@
   justify-content: center;
   width: 917px;
   height: 672px;
-  margin-top: 115px;
+  margin-top: 171px;
   margin-left: 25px;
   background-color: #f6fafc;
   border-radius: 25px;
@@ -229,7 +229,6 @@
 .teach_subj {
   position: absolute;
   margin-top: 205px;
-  background-color: #31f7f7;
   width: 100px;
   height: 30px;
   border-radius: 30px;
@@ -252,4 +251,81 @@
   font-size: 12px;
   line-height: 14px;
   text-align: center;
+}
+.teach_txt {
+  position: absolute;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 31px;
+  color: #93979b;
+  margin-left: 25px;
+  margin-top: 25px;
+}
+.timetable_block {
+  // position: absolute;
+  width: 967px;
+  height: 690px;
+  border-radius: 25px;
+  background-color: #ffffff;
+  margin-left: 353px;
+  margin-top: 25px;
+}
+.time {
+  display: flex;
+}
+.date_txt {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 26px;
+  text-align: center;
+  color: #93979b;
+  margin-left: 384px;
+  margin-top: 25px;
+}
+.date_table {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-left: 26px;
+  margin-top: 26px;
+  margin-right: 26px;
+  background-color: #fcfcfc;
+  border-radius: 25px 25px 0px 0px;
+}
+.date_tr{
+  border-right: #93979b 2px solid;
+  border-top: #93979b 2px solid;
+  height: 583px;
+}
+.cell{
+  padding: 24px 14px 24px 14px;
+  border-right: #93979b 2px solid;
+  border-bottom: #93979b 2px solid;
+  width: 941px;
+  // border-bottom: #93979b 2px solid;
+  text-align: center;
+  // height: 543px;
+}
+.col{
+  width: 129px;
+  border-right: #93979b 2px solid;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  // background-color: #fcfcfc;
+}
+
+$colors_list: (
+  "red": #f73131,
+  "blue": #31f7f7,
+  "orange": #f731a8,
+  "yellow": #ffbf13,
+);
+
+$n: 10;
+
+@for $i from 0 to $n {
+  .col:nth-of-type(#{$i + 1}) {
+    background: nth(nth($colors_list, $i%length($colors_list) + 1), 2);
+  }
 }
