@@ -31,6 +31,7 @@ const TeachList = () => {
       aboutTeach:
         "Кандидат филологических наук, учитель высшей категории, эксперт ОРТ",
       img: teach1,
+      backgroundColor:"#31F7F7"
     },
     {
       id: 2,
@@ -38,6 +39,7 @@ const TeachList = () => {
       subj: "Математика",
       aboutTeach: "Кандидат физико - математических наук",
       img: teach2,
+      backgroundColor:"#F76C31"
     },
     {
       id: 3,
@@ -45,6 +47,7 @@ const TeachList = () => {
       subj: "История",
       aboutTeach: "Обладатель сертификата CPE Кембриджского университета",
       img: teach3,
+      backgroundColor:"#F731A8"
     },
     {
       id: 4,
@@ -52,6 +55,7 @@ const TeachList = () => {
       subj: "Геометрия",
       aboutTeach: "Кандидат филологических наук, Преподаватель СШГ№6",
       img: teach4,
+      backgroundColor:"#F73131"
     },
   ];
 
@@ -87,7 +91,7 @@ const TeachList = () => {
                 <img src={el.img} className="teach_img" alt=""/>
                 <p className="teach_name">{el.name}</p>
                 <p className="teach_about">{el.aboutTeach}</p>
-                <p className="teach_subj" id="phyz">
+                <p className="teach_subj" id="phyz" style={{backgroundColor:el.backgroundColor}}>
                   {el.subj}
                 </p>
                 <button className="teach_btn">

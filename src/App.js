@@ -7,6 +7,7 @@ import PATeach from "./components/PATeach/PATeach";
 import { Route, Routes } from "react-router-dom";
 import TeachList from "./components/PersAreaStud/TeachList";
 import Timetable from "./components/PersAreaStud/Timetable";
+import Reservation from "./components/PersAreaStud/Reservation";
 // import {
 //   BrowserRouter as Router,
 //   Switch,
@@ -19,15 +20,15 @@ import Timetable from "./components/PersAreaStud/Timetable";
 function App() {
   return (
     <div className="first_body">
-        <Header />
+      <Header />
       <Routes>
         <Route path="/reg" element={<Registration />} />
         <Route path="/pastud" element={<PersAreaStud />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/pateach" element={<PATeach />}/>
-        <Route path="/testing" element={<countSheeps/>}/>
-        <Route path="/teachlist" element={<TeachList/>}/>
-        <Route path="/timetable" element={<Timetable/>}/>
+        <Route path="/pateach" element={<PATeach />} />
+        <Route path="/teachlist" element={<TeachList />} />
+        <Route path="/timetable" element={<Timetable />} />
+        <Route path="reservation" element={<Reservation />} />
       </Routes>
     </div>
   );
