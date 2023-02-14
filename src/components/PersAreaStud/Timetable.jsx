@@ -1,6 +1,7 @@
 import React from "react";
 import SideBar from "../SideBar/SideBar";
 import "./PersAreaStud.scss";
+import PopUp from "./PopUp";
 
 const Timetable = () => {
   const name = "< 23 янв - 30 янв >";
@@ -62,7 +63,7 @@ const Timetable = () => {
           <p className="teach_txt">Расписание</p>
           <p className="date_txt">{name}</p>
         </div>
-        <table class="iksweb">
+        <table class="iksweb" style={{border:"0"}}>
           <tbody>
             <tr>
               <td>6 фев, пн</td>
@@ -128,7 +129,7 @@ const Timetable = () => {
                 </div></td>
               <td></td>
               <td></td>
-              <td><div
+              <td style={{height:"400px"}}><div
                   className="subj_block"
                   style={{ backgroundColor: "#CCFFFF" }}
                 >
@@ -141,6 +142,7 @@ const Timetable = () => {
           </tbody>
         </table>
       </div>
+      <PopUp/>
     </>
   );
 };

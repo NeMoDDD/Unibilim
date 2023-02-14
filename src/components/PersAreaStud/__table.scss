@@ -7,15 +7,16 @@ table.table {
   border-left: none;
   margin-left: 63px;
   margin-top: 53px;
+  padding: 0px 5px;
 }
 
 table td {
   border-left: 1px solid grey;
-  padding: 3px;
+  // padding: 3px;
   width: 74px;
   height: 34px;
   text-align: center;
-  background-color: #ECECEC40;
+  background-color: #ececec40;
 }
 table th {
   border: none;
@@ -36,6 +37,32 @@ table th {
   color: #6c7074;
   position: absolute;
 }
-.mt{
+.mt {
   margin-top: 20px;
 }
+.reser_teach {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 31px;
+  text-align: center;
+
+  color: #93979b;
+}
+.reser_date {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 26px;
+  text-align: center;
+  color: #93979b;
+}
+.in_table {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 12px;
+  /* identical to box height */
+  color: #ffbf13;
+}
+

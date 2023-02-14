@@ -25,6 +25,11 @@ const SideBar = (props) => {
           Консультанты
         </a>
       </div>
+      <div className="upper_container">
+        <a className="about-me" href="/reservation">
+          Бронирование
+        </a>
+      </div>
     </div>
   );
 };

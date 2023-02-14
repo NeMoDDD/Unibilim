@@ -5,6 +5,7 @@ import stud2 from "../../assets/img/stud2.png";
 import stud3 from "../../assets/img/stud3.png";
 import stud4 from "../../assets/img/stud4.png";
 import stud5 from "../../assets/img/stud5.png";
+import SideBarTeach from "../SideBar/SideBarTeach";
 
 const PATeach = () => {
   const students = [
@@ -17,6 +18,7 @@ const PATeach = () => {
 
   return (
     <>
+    <SideBarTeach/>
       <div className="stud_head">
         <p className="studs">Ученики</p>
         <div>

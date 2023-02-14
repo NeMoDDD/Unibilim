@@ -3,7 +3,7 @@ import './__table.scss'
 
 const Table = () => {
   return (
-    <div>
+    <div className="all_res_table">
         <div className="time_res">
         <p style={{marginTop:"10px"}}>12:00</p>
         <p className="mt">13:00</p>
@@ -65,10 +65,10 @@ const Table = () => {
             <td></td>
           </tr>
           <tr>
-            <td style={{borderLeft:"none"}}></td>
+            <td style={{borderLeft:"none"}} className="in_table">Выбрано</td>
             <td></td>
-            <td></td>
-            <td></td>
+            <td className="in_table">Выбрано</td>
+            <td className="in_table">Выбрано</td>
             <td></td>
             <td></td>
             <td></td>
