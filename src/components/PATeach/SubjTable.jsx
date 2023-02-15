@@ -1,6 +1,6 @@
 import React from "react";
 import SideBarTeach from "../SideBar/SideBarTeach";
-import './__subj.scss'
+import "./__subj.scss";
 
 const SubjTable = () => {
   const name = "< 23 янв - 30 янв >";
@@ -65,7 +65,7 @@ const SubjTable = () => {
 
   return (
     <>
-    <SideBarTeach/>
+      <SideBarTeach />
       <div className="timetable_block">
         <div className="time">
           <p className="teach_txt">Расписание</p>
@@ -82,12 +82,12 @@ const SubjTable = () => {
               <td>11 фев, сб</td>
               <td>12 фев, вс</td>
             </tr>
-            <tr>
+            <tr style={{ borderTop: "1px solid" }}>
               <td>
                 {" "}
                 <div
                   className="stud_block"
-                  style={{ backgroundColor: "#CCFFFF" }}
+                  style={{ backgroundColor: "#CCFFFF", marginTop: "-35px" }}
                 >
                   <p className="stud_teach">{arrSubjItem.Mon[1].stud}</p>
                   <p className="stud_time">{arrSubjItem.Mon[1].time}</p>
@@ -100,7 +100,7 @@ const SubjTable = () => {
                   <p className="stud_time">{arrSubjItem.Mon[2].time}</p>
                 </div>
                 <div
-                   className="stud_block"
+                  className="stud_block"
                   style={{ backgroundColor: "#FFF1A1" }}
                 >
                   <p className="stud_teach">{arrSubjItem.Mon[3].stud}</p>
@@ -124,7 +124,7 @@ const SubjTable = () => {
               <td>
                 <div
                   className="stud_block"
-                  style={{ backgroundColor: "#CCFFFF" }}
+                  style={{ backgroundColor: "#CCFFFF", marginTop: "-238px" }}
                 >
                   <p className="stud_teach">{arrSubjItem.Tue[1].stud}</p>
                   <p className="stud_time">{arrSubjItem.Tue[1].time}</p>
@@ -148,7 +148,7 @@ const SubjTable = () => {
               <td>
                 <div
                   className="stud_block"
-                  style={{ backgroundColor: "#FFF1A1" }}
+                  style={{ backgroundColor: "#FFF1A1", marginTop: "-256px" }}
                 >
                   <p className="stud_teach">{arrSubjItem.Tuer[1].stud}</p>
                   <p className="stud_time">{arrSubjItem.Tuer[1].time}</p>
@@ -157,22 +157,14 @@ const SubjTable = () => {
               <td>
                 <div
                   className="stud_block"
-                  style={{ backgroundColor: "#FFF1A1" }}
+                  style={{ backgroundColor: "#FFF1A1", marginTop: "-256px" }}
                 >
                   <p className="stud_teach">{arrSubjItem.Tuer[2].stud}</p>
                   <p className="stud_time">{arrSubjItem.Tuer[2].time}</p>
                 </div>
               </td>
               <td></td>
-              <td style={{ height: "400px" }}>
-                <div
-                  className="stud_block"
-                  style={{ backgroundColor: "#CCFFFF" }}
-                >
-                  <p className="stud_teach">{arrSubjItem.Sun[1].studh}</p>
-                  <p className="stud_time">{arrSubjItem.Sun[1].time}</p>{" "}
-                </div>
-              </td>
+              <td style={{ height: "400px" }}></td>
             </tr>
           </tbody>
         </table>
