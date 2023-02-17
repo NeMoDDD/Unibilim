@@ -388,10 +388,10 @@ table th {
   margin-left: 15px;
 }
 .reser_block {
-  position: absolute;
+  // position: absolute;
   margin-top: 93px;
-  margin-left: 353px;
-  width: 967px;
+  margin-left: 320px;
+  width: 1000px;
   height: 704px;
   border-radius: 25px;
   background: white;
@@ -399,6 +399,9 @@ table th {
 .head_block {
   display: flex;
   justify-content: space-around;
+  margin-top: 25px;
+  align-items: center;
+
   // background-color: white;
 }
 .back_btn {
@@ -414,6 +417,7 @@ table th {
   position: absolute;
   width: 675px;
   margin-top: 25px;
+  margin-left: 25px;
   border-radius: 25px;
   background-color: #f6fafc;
 }
@@ -434,7 +438,7 @@ table th {
   background-color: #f6fafc;
   float: right;
   margin-right: 25px;
-  margin-top: 5px;
+  margin-top: -25px;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
