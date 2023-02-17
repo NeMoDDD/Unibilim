@@ -124,7 +124,7 @@ const SubjTable = () => {
               <td>
                 <div
                   className="stud_block"
-                  style={{ backgroundColor: "#CCFFFF", marginTop: "-238px" }}
+                  style={{ backgroundColor: "#CCFFFF", marginTop: "-210px" }}
                 >
                   <p className="stud_teach">{arrSubjItem.Tue[1].stud}</p>
                   <p className="stud_time">{arrSubjItem.Tue[1].time}</p>

@@ -63,7 +63,7 @@ const Timetable = () => {
           <p className="teach_txt">Расписание</p>
           <p className="date_txt">{name}</p>
         </div>
-        <table class="iksweb" style={{border:"0"}}>
+        <table class="timetable">
           <tbody>
             <tr>
               <td>6 фев, пн</td>
@@ -74,12 +74,12 @@ const Timetable = () => {
               <td>11 фев, сб</td>
               <td>12 фев, вс</td>
             </tr>
-            <tr>
-              <td>
+            <tr style={{borderTop:"1px solid black"}}>
+              <td >
                 {" "}
                 <div
                   className="subj_block"
-                  style={{ backgroundColor: "#CCFFFF" }}
+                  style={{ backgroundColor: "#CCFFFF", marginTop:"-150px" }}
                 >
                   <p className="subj_name">{arrSubjItem.Mon[1].subj}</p>
                   <p className="subj_teach">{arrSubjItem.Mon[1].teach}</p>
@@ -88,7 +88,7 @@ const Timetable = () => {
                 </div>
                 <div
                   className="subj_block"
-                  style={{ backgroundColor: "#FFF1A1" }}
+                  style={{ backgroundColor: "#FFF1A1", }}
                 >
                   <p className="subj_name">{arrSubjItem.Mon[2].subj}</p>
                   <p className="subj_teach">{arrSubjItem.Mon[2].teach}</p>
@@ -101,7 +101,7 @@ const Timetable = () => {
               <td>
                 <div
                   className="subj_block"
-                  style={{ backgroundColor: "#CCFFFF" }}
+                  style={{ backgroundColor: "#CCFFFF",marginTop:"-193px" }}
                 >
                   <p className="subj_name">{arrSubjItem.Tue[1].subj}</p>
                   <p className="subj_teach">{arrSubjItem.Tue[1].teach}</p>
@@ -111,7 +111,7 @@ const Timetable = () => {
               </td>
               <td><div
                   className="subj_block"
-                  style={{ backgroundColor: "#C5FFCA" }}
+                  style={{ backgroundColor: "#C5FFCA" ,marginTop:"-193px" }}
                 >
                   <p className="subj_name">{arrSubjItem.Wed[1].subj}</p>
                   <p className="subj_teach">{arrSubjItem.Wed[1].teach}</p>
@@ -120,7 +120,7 @@ const Timetable = () => {
                 </div></td>
               <td><div
                   className="subj_block"
-                  style={{ backgroundColor: "#FFF1A1" }}
+                  style={{ backgroundColor: "#FFF1A1", marginTop:"-193px" }}
                 >
                   <p className="subj_name">{arrSubjItem.Tuer[1].subj}</p>
                   <p className="subj_teach">{arrSubjItem.Tuer[1].teach}</p>
@@ -131,7 +131,7 @@ const Timetable = () => {
               <td></td>
               <td style={{height:"400px"}}><div
                   className="subj_block"
-                  style={{ backgroundColor: "#CCFFFF" }}
+                  style={{ backgroundColor: "#CCFFFF", marginTop:"-193px" }}
                 >
                   <p className="subj_name">{arrSubjItem.Sun[1].subj}</p>
                   <p className="subj_teach">{arrSubjItem.Sun[1].teach}</p>

@@ -295,40 +295,28 @@
   justify-content: space-around;
   align-items: flex-start;
 }
-table.iksweb {
-  margin-left: 27px;
-  margin-top: 25px;
+table.timetable {
+  width: 90%;
+  border: 1px solid grey;
   border-collapse: collapse;
   border-style: hidden;
-  border-top: none;
-  border-left: none;
-  border-spacing: 0;
-  height: auto;
+  margin-left: 63px;
+  margin-top: 53px;
+  padding: 0px 5px;
 }
-table.iksweb,
-table.iksweb td,
-table.iksweb th {
-  border: 1px solid #595959;
-  border-bottom: none;
-  border-left: none;
+
+table td {
+  border-left: 1px solid grey;
+  // padding: 3px;
+  width: 74px;
+  height: 34px;
+  text-align: center;
+  background-color: #ececec40;
 }
-table.iksweb:last-child {
-  border-right: none;
-}
-table.iksweb td,
-table.iksweb th {
-  min-height: 35px;
-  padding: 3px;
-  width: 129px;
-  height: 35px;
-}
-table.iksweb th {
-  background: #347c99;
-  color: #fff;
-  font-weight: normal;
+table th {
+  border: none;
 }
 .subj_block {
-  width: 126px;
   height: 120px;
   border-radius: 8px;
   display: flex;

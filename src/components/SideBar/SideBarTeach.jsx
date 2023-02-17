@@ -15,7 +15,7 @@ const SideBarTeach = () => {
         </a>
       </div>
       <div className="upper_container">
-        <a className="about-me" href="/">
+        <a className="about-me" href="/subjtable">
         <img src={bar1} className="logo1" alt=""/>
           Моя программа
         </a>
@@ -30,11 +30,6 @@ const SideBarTeach = () => {
         <a className="about-me" href="/">
         <img src={bar3} className="logo1" alt=""/>
           Работы на проверку
-        </a>
-      </div>
-      <div className="upper_container">
-        <a className="about-me" href="/subjtable">
-          Расписание
         </a>
       </div>
     </div>
