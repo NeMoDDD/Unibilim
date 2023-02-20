@@ -4,9 +4,9 @@ import "./Header.scss";
 const Header = () => {
   return (
     <div className="header">
-      <div className="logo">UNIBILIM</div>
+      <a className="logo" href="/">UNIBILIM</a>
       <div className="btn">
-        <p className="btn-logo">Вернуться на главную</p>
+        <p className="btn-logo" href="/">Вернуться на главную</p>
       </div>
     </div>
   );

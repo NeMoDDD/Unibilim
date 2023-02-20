@@ -499,7 +499,7 @@ table th {
 }
 .popup_block {
   margin-left: 400px;
-  margin-top: 50px;
+  margin-top: 45px;
   width: 680px;
   height: 288px;
   background: #ffffff;
@@ -594,4 +594,10 @@ table th {
   line-height: 16px;
   text-align: center;
   color: #ffffff;
+}
+
+@media only screen and (min-width : 320px) and (max-width : 480px){
+  .teach_list_block{
+    width: 390px;
+  }
 }
