@@ -1,0 +1,32 @@
+.sideblock{
+    // margin-left: 120px;
+    margin-top: 168px;
+    position: absolute;
+    float: left;
+    // max-width: 72px;
+}
+.about-me{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21.6px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #64676A ;
+    margin-left: 10px;
+}
+.about-me:hover{
+    color:#FFBF13 ;
+    text-decoration:underline;
+    transition: 0.3s;
+}
+.logo1{
+    margin-right: 10px;
+}
+.inner_container{
+    margin-left: 120px;
+}
+.upper_container{
+    margin-top: 22px;
+    margin-left: 120px;
+}
+

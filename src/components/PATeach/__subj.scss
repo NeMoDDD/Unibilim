@@ -1,0 +1,48 @@
+table.subjtable {
+  width: 90%;
+  height: 75vh;
+  border: 1px solid grey;
+  border-collapse: collapse;
+  border-style: hidden;
+  margin-left: 63px;
+  margin-top: 53px;
+  padding: 0px 5px;
+}
+
+table td {
+  border-left: 1px solid grey;
+  // padding: 3px;
+  width: 100px;
+  height: 34px;
+  text-align: center;
+  background-color: #ececec40;
+}
+table th {
+  border: none;
+}
+  .stud_block {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+    margin-bottom: 2px;
+    padding: 0px 1px 0px 1px;
+  }
+  .stud_name {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    text-align: center;
+    color: #2d2d2d;
+    margin-top: 13px;
+  }
+
+  .stud_time {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    color: #686868;
+    margin-top: -9px;
+  }

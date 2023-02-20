@@ -1,0 +1,67 @@
+.login_block{
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // align-content: center;
+    // flex-direction: column;
+    width: 500px;
+    height: 271px;
+    margin-top: 206px;
+    margin-left: 470px;
+    border-radius: 25px;
+    background-color: #FFFFFF;
+}
+.vhod{
+    position: absolute;
+    width: 72px;
+    height: 38px;
+    margin-top: 35px;
+    margin-left: 214px;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38.4px;
+    background-color: #FFFFFF;
+
+}
+.phon_npt{
+    position: absolute;
+    width: 430px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    margin-top: 150px;
+    border-color: #ffbf13;
+    margin-left: 35px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.6px;
+    color: #595959;
+    background-color: #FFFFFF;
+}
+.phone_txt {
+    position: absolute;
+    margin-top: 125px;
+    // margin-right: 440px;
+    margin-left: 35px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15.8px;
+    color: #CCCCCC;
+    background-color: #FFFFFF;
+  }
+  .log_in{
+    width: 430px;
+    height: 48px;
+    margin-left: 35px;
+    margin-top: 200px;
+    background-color: #FFBF13;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21.6px;
+}
