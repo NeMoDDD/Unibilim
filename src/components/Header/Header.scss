@@ -12,6 +12,13 @@
     font-weight: 400;
     font-size: 32px;
     line-height: 37.6px;
+    color: black;
+    text-decoration: none;
+}
+.logo:hover{
+    color: #FFBF13;
+    transition: 0.4s;
+    cursor: pointer;
 }
 .btn{
     width: 190px;
