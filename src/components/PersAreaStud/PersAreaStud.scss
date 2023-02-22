@@ -1,140 +1,116 @@
-.user_block {
+.radblock {
+  border-radius: 25px;
+  background-color: #fbfcfe;
+}
+.first_block {
   display: flex;
-  width: 967px;
-  height: 700px;
-  margin-top: 93px;
-  margin-left: 353px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 60%;
   border-radius: 25px;
   background-color: white;
 }
 .inner_block {
-  width: 573px;
-  height: 380px;
+  width: 70%;
+  padding: 25px;
   border-radius: 25px;
+}
+.avaname {
+  display: flex;
+  padding: 15px;
+}
+.name {
+  display: flex;
+  flex-direction: column;
   margin-left: 20px;
-  margin-top: 20px;
-  margin-left: 20px;
-  background-color: #fbfcfe;
 }
 .name_block {
+  float: left;
   width: 150px;
-  height: 56px;
-  margin-top: 44px;
   font-weight: 400;
   font-size: 24px;
   line-height: 28.13px;
   color: #1c1c1c;
-  float: left;
-  margin-left: 22px;
-}
-#avauser {
-  margin-left: 35px;
-  margin-top: 35px;
-  float: left;
 }
 .edit_block {
-  width: 213px;
-  height: 16px;
+  height: 15px;
   font-weight: 400;
   font-size: 14px;
   line-height: 16.41px;
   text-decoration: none;
   color: #505050;
   cursor: pointer;
-  margin-left: 22px;
+  float: left;
 }
 .edit_block:hover {
   color: #ffbf13;
-  text-decoration: underline;
   transition: 0.3s;
 }
-#edit_btn {
-  margin-right: 11px;
+.persdata {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
 }
-.third_block {
-  // display:
-  //  flex;
-  // position: absolute;
-  width: 503px;
-  margin-top: 30px;
-  margin-right: 35px;
-  float: left;
+.secondata {
+  margin-top: 20px;
+  padding: 15px;
 }
 .nm-txt {
-  margin-top: 10px;
-  margin-right: 440px;
   margin-bottom: 5px;
-  margin-left: 35px;
   font-weight: 400;
   font-size: 11px;
   line-height: 13.2px;
   color: #cccccc;
 }
 .nm-txt2 {
-  margin-top: 45px;
-  margin-bottom: 5px;
-  margin-right: 440px;
-  margin-left: 35px;
   font-weight: 400;
   font-size: 13px;
   line-height: 15.8px;
   color: #cccccc;
+  margin-top: 8px;
+  margin-bottom: 5px;
 }
 .nm-txt3 {
-  margin-top: 20px;
-  margin-right: 440px;
-  margin-left: 35px;
   font-weight: 400;
   font-size: 13px;
   line-height: 15.8px;
   color: #cccccc;
+  margin-top: 8px;
+  margin-bottom: 5px;
 }
 .npt-txt {
-  width: 430px;
   border-top: 0px;
   border-left: 0px;
   border-right: 0px;
-  // margin-top:px;
   border-color: #ffbf13;
-  margin-left: 35px;
   font-weight: 400;
   font-size: 18px;
   line-height: 21.6px;
   color: #595959;
   background-color: #fbfcfe;
-  // position: absolute;
 }
 .reg_npt {
-  width: 264px;
+  width: 80%;
   border-top: 0px;
   border-left: 0px;
   border-right: 0px;
-  margin-top: -9px;
   border-color: #ffbf13;
-  margin-left: 35px;
   font-weight: 400;
   background-color: #fbfcfe;
   font-size: 18px;
   line-height: 21.6px;
 }
-.contact_block {
-  // display: flex;
-  // margin: 20px;
-  // margin-left: 20px;
-  margin-top: 350px;
-  padding: 1px;
-  width: 573px;
-  height: 245px;
-  background-color: #fbfcfe;
-  border-radius: 25px;
+.address {
+  width: 30%;
+  margin-top: 25px;
 }
-.region_block {
-  margin-top: 20px;
-  width: 334px;
-  height: 245px;
-  margin-left: 20px;
+.inaddress {
+  display: flex;
+  flex-direction: column;
   border-radius: 25px;
   background-color: #fbfcfe;
+  padding: 15px 0px 15px 15px;
 }
 .teach_list_block {
   width: 967px;
@@ -572,12 +548,12 @@ table th {
   color: #ffffff;
   padding: 10px;
 }
-.pop_btn{
+.pop_btn {
   position: absolute;
   margin-left: 200px;
   margin-top: 95px;
 }
-.btn_flex{
+.btn_flex {
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
@@ -596,8 +572,33 @@ table th {
   color: #ffffff;
 }
 
-@media only screen and (min-width : 320px) and (max-width : 480px){
-  .teach_list_block{
-    width: 390px;
+@media (min-width: 310px) and (max-width: 1024px) {
+  .first_block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .inner_block {
+    width: 100%;
+  }
+  .address {
+    width: 100%;
+  }
+  .reg_npt{
+    width: 50%;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .first_block {
+    flex-direction: column;
+  }
+  .inner_block {
+    width: 100%;
+  }
+  .address {
+    width: 100%;
+  }
+  .reg_npt{
+    width: 90%;
   }
 }

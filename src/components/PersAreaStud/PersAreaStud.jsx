@@ -8,17 +8,20 @@ const PersAreaStud = () => {
   return (
     <>
       <SideBar />
-      <div className="user_block">
+      <div className="first_block">
         <div className="inner_block">
-          <div className="your_block">
-            <img src={userava} id="avauser" alt="Кук" />
-            <p className="name_block">Александр Иванов</p>
-            <br />
-            <a className="edit_block" href="/">
-              <img src={edit} id="edit_btn" /> Изменить данные
-            </a>
+          <div className="avaname radblock">
+            <img src={userava} alt="" />
+            <div className="name">
+              <p className="name_block">Александр Иванов</p>
+              <a className="edit_block">
+                {" "}
+                <img src={edit} />
+                Изменить данные
+              </a>
+            </div>
           </div>
-          <div className="third_block">
+          <div className="persdata radblock">
             <p className="nm-txt">Имя</p>
             <input
               type="text"
@@ -41,7 +44,7 @@ const PersAreaStud = () => {
               disabled
             />
           </div>
-          <div className="contact_block">
+          <div className="secondata radblock">
             <p className="nm-txt2">Почта</p>
             <input
               type="text"
@@ -65,29 +68,31 @@ const PersAreaStud = () => {
             />
           </div>
         </div>
-      <div className="region_block">
-        <p className="nm-txt3">Город</p>
-        <input
-          type="phone"
-          className="reg_npt"
-          placeholder="Кара-Балта"
-          disabled
-        />
-        <p className="nm-txt3">Область</p>
-        <input
-          type="phone"
-          className="reg_npt"
-          placeholder="Чуйская область"
-          disabled
-        />
-        <p className="nm-txt3">Район</p>
-        <input
-          type="phone"
-          className="reg_npt"
-          placeholder="Жайылский район"
-          disabled
-        />
-      </div>
+        <div className="address">
+          <div className="inaddress">
+            <p className="nm-txt3">Город</p>
+            <input
+              type="phone"
+              className="reg_npt"
+              placeholder="Кара-Балта"
+              disabled
+            />
+            <p className="nm-txt3">Область</p>
+            <input
+              type="phone"
+              className="reg_npt"
+              placeholder="Чуйская область"
+              disabled
+            />
+            <p className="nm-txt3">Район</p>
+            <input
+              type="phone"
+              className="reg_npt"
+              placeholder="Жайылский район"
+              disabled
+            />
+          </div>
+        </div>
       </div>
     </>
   );
