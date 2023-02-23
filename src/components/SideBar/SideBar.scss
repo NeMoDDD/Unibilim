@@ -1,9 +1,8 @@
 .sideblock{
-    // margin-left: 120px;
-    margin-top: 168px;
-    position: absolute;
+    width: 30%;
     float: left;
-    // max-width: 72px;
+    margin-top: 150px;
+   
 }
 .about-me{
     font-weight: 600;
@@ -33,5 +32,16 @@
     display: flex;
     justify-content: center;
     background-color: white;
-    
 }
+
+@media (min-width:310px) and (max-width:1024px) {
+    .sideblock{
+        display: none;
+    }
+}
+@media (min-width:1025px) and (max-width:1200px){
+    .sideblock{
+        width: 30%;
+    }
+  }
+  

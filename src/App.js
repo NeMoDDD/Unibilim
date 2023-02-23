@@ -1,9 +1,8 @@
-import "./App.css";
+import "./App.scss";
 import Header from "./components/Header/Header";
 import Registration from "./components/Registration/Registration";
 import PersAreaStud from "./components/PersAreaStud/PersAreaStud";
 import LoginPage from "./components/LoginPage/LoginPage";
-// import PATeach from "./components/PATeach/PATeach";
 import StudList from "./components/PATeach/StudList";
 import { Route, Routes } from "react-router-dom";
 import TeachList from "./components/PersAreaStud/TeachList";

@@ -1,5 +1,5 @@
 import React from "react";
-import "./PersAreaStud.scss";
+import "../../styles/__teachlist.scss";
 import teach1 from "../../assets/img/teach1.png";
 import teach2 from "../../assets/img/teach2.png";
 import teach3 from "../../assets/img/teach3.png";

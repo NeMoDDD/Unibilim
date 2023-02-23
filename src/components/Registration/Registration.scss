@@ -1,111 +1,104 @@
-// .container{
-//     width: 500px;
-//     height: 656px;
-//     margin-left: 470px;
-//     margin-top: 118px;
-//     // display: flex;
-//     // justify-content: center;
-//     // align-items: center;
-//     // flex-direction: column;
-//     position: absolute;
-// }
-.reg-block{
-    width: 500px;
-    height: 656px;
-    margin-left: 470px;
-    margin-top: 118px;
-    background-color: white;
+.reg-block {
+  width: 500px;
+  height: 656px;
+  margin-left: 470px;
+  margin-top: 118px;
+  background-color: white;
 }
-.reg-text{
-    width: 191px;
-    height: 38px;
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 38.4px;
-    margin-top: 35px;
-    margin-left: 154px;
-    color: #2D2D2D;
-    // position: absolute;
+.reg-text {
+  width: 191px;
+  height: 38px;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 38.4px;
+  margin-top: 35px;
+  margin-left: 154px;
+  color: #2d2d2d;
+  // position: absolute;
 }
-.npt-txt{
-    width: 430px;
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    margin-top: -1px;
-    border-color:#FFBF13 ;
-    margin-left: 35px;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    color: #595959;
-    position: absolute;
+.npt-txt {
+  width: 90%;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-color: #ffbf13;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #595959;
 }
-.nm-txt{
-    margin-top: 35px;
-    margin-right: 440px;
-    margin-left: 35px;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15.8px;
-    color: #CCCCCC;
+.nm-txt {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15.8px;
+  color: #cccccc;
 }
-.nm-txt2{
-    margin-top: 65px;
-    margin-right: 440px;
-    margin-left: 35px;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15.8px;
-    color: #CCCCCC;
+.nm-txt2 {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15.8px;
+  color: #cccccc;
 }
-.nm-txt3{
-    margin-top: 20px;
-    margin-right: 440px;
-    margin-left: 35px;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15.8px;
-    color: #CCCCCC;
+.nm-txt3 {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15.8px;
+  color: #cccccc;
 }
-.dropdown-select{
-    width: 430px;
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    border-color:#FFBF13 ;
-    margin-top: -10px;
-    margin-left: 35px;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    color: #595959;
+.dropdown-select {
+  width: 430px;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-color: #ffbf13;
+  margin-top: -10px;
+  margin-left: 35px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #595959;
 }
-.reg-end{
-    width: 430px;
-    height: 48px;
-    margin-left: 35px;
-    margin-top: 35px;
-    background-color: #FFBF13;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 0;
-    border-radius: 10px;
-    color: white;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21.6px;
+.reg-end {
+  width: 430px;
+  height: 48px;
+  margin-left: 35px;
+  margin-top: 35px;
+  background-color: #ffbf13;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-radius: 10px;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21.6px;
 }
-.form-check{
-    margin-top: 65px;
-    margin-left: 35px;
+.form-check {
+  margin-top: 65px;
+  margin-left: 35px;
 }
-.form-check-label{
-    width: 404px;
-    height: 28px;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14.4px;
-    color:  #989898;
+.form-check-label {
+  width: 404px;
+  height: 28px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.4px;
+  color: #989898;
+}
+
+@media (min-width: 310px) and (max-width: 480px) {
+  .npt-txt {
+    width: 75%;
+  }
+}
+@media (min-width: 481px) and (max-width: 830px) {
+  .npt-txt {
+    width: 50%;
+  }
+}
+@media (min-width: 831px) and (max-width: 1024px) {
+  .npt-txt {
+    width: 50%;
+  }
 }
