@@ -8,6 +8,8 @@
   justify-content: flex-start;
   align-items: flex-start;
   width: 60%;
+  height: 90vh;
+  margin-top: 25px;
   border-radius: 25px;
   background-color: white;
 }
@@ -83,7 +85,7 @@
   border-top: 0px;
   border-left: 0px;
   border-right: 0px;
-  border-color: #ffbf13;
+  border-color: #EAEAEA;
   font-weight: 400;
   font-size: 18px;
   line-height: 21.6px;
@@ -95,7 +97,7 @@
   border-top: 0px;
   border-left: 0px;
   border-right: 0px;
-  border-color: #ffbf13;
+  border-color: #EAEAEA;
   font-weight: 400;
   background-color: #fbfcfe;
   font-size: 18px;
@@ -104,6 +106,7 @@
 .address {
   width: 30%;
   margin-top: 25px;
+  padding-right: 25px ;
 }
 .inaddress {
   display: flex;
@@ -111,126 +114,6 @@
   border-radius: 25px;
   background-color: #fbfcfe;
   padding: 15px 15px 15px 15px;
-}
-.teach_list_block {
-  width: 967px;
-  height: 812px;
-  margin-top: 25px;
-  margin-left: 353px;
-  border-radius: 25px;
-  background-color: #ffff;
-}
-.drop_block {
-  position: absolute;
-  width: 917px;
-  height: 65px;
-  margin-left: 25px;
-  margin-top: 81px;
-  background-color: #f6fafc;
-  border-radius: 25px;
-}
-.drop {
-  width: 140px;
-  height: 35px;
-  background-color: #ffffff;
-  border-radius: 17.5px;
-  margin-top: 15px;
-  margin-left: 15px;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 21px;
-  padding-left: 12px;
-  border: none;
-}
-.list_block {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 917px;
-  height: 672px;
-  margin-top: 171px;
-  margin-left: 25px;
-  background-color: #f6fafc;
-  border-radius: 25px;
-}
-.teach_list {
-  width: 200px;
-  height: 300px;
-  background-color: #ffffff;
-  margin-left: 15px;
-  margin-top: 15px;
-  border-radius: 25px;
-}
-.teach_img {
-  // margin-left: 15px;
-  margin-top: 15px;
-  width: 169px;
-  height: 205px;
-}
-.teach_card {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  align-content: space-between;
-  text-align: center;
-}
-.teach_name {
-  position: absolute;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 23px;
-  text-align: center;
-  margin-top: 110px;
-  color: #ffffff;
-}
-.teach_about {
-  position: absolute;
-  width: 154px;
-  font-weight: 100;
-  font-size: 1px;
-  line-height: 14px;
-  text-align: center;
-  margin-top: 140px;
-  color: #ffffff;
-}
-.teach_subj {
-  position: absolute;
-  margin-top: 205px;
-  width: 100px;
-  height: 30px;
-  border-radius: 30px;
-  font-size: 16px;
-  color: white;
-  padding: 2px 2px;
-}
-.teach_btn {
-  width: 142px;
-  height: 32px;
-  background-color: #ffbf13;
-  margin-top: 30px;
-  border-radius: 25px;
-  border-top: 0px;
-  border-bottom: 0px;
-  border-left: 0px;
-  border-right: 0px;
-}
-.teach_btn_txt {
-  color: white;
-  margin-top: 7px;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 14px;
-  text-align: center;
-}
-.teach_txt {
-  position: absolute;
-  font-weight: 600;
-  font-size: 26px;
-  line-height: 31px;
-  color: #93979b;
-  margin-left: 25px;
-  margin-top: 25px;
 }
 .timetable_block {
   // position: absolute;
@@ -577,15 +460,19 @@ table th {
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
   .inner_block {
     width: 100%;
   }
   .address {
     width: 100%;
+    padding-left: 25px;
+    margin-top: 0px;
+    padding-bottom: 25px;
   }
   .reg_npt{
-    width: 50%;
+    width: 75%;
   }
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
