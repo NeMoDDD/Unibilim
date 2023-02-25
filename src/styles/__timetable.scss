@@ -269,7 +269,7 @@ table th {
   flex-wrap: wrap;
 }
 .break {
-  flex-basis: 100%;
+  flex-basis: 90%;
   height: 0;
 }
 
@@ -305,7 +305,7 @@ table th {
     flex-direction: column;
   }
 }
-@media (min-width: 481px) and (max-width: 821px) {
+@media (min-width: 481px) and (max-width: 1024px) {
   .timetable_block {
     width: 100%;
     display: flex;
@@ -313,7 +313,7 @@ table th {
   }
   .cards {
     display: block;
-    width: 48%;
+    width: 45%;
     margin-left: 15px;
   }
   .timetable {
@@ -334,8 +334,5 @@ table th {
     font-size: 18px;
     line-height: 22px;
     width: 50%;
-  }
-  .cards_block{
-    flex-direction: column;
   }
 }
