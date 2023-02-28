@@ -8,7 +8,7 @@ function Header() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home" className="logo">
+        <Navbar.Brand href="/" className="logo">
           UNIBILIM
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

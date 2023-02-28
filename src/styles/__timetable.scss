@@ -34,7 +34,7 @@
   align-items: flex-start;
 }
 table.timetable {
-  width: 100%;
+  width: 967px;
   border: 1px solid grey;
   border-collapse: collapse;
   border-style: hidden;
@@ -267,21 +267,33 @@ table th {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+  background-color: white;
+}
+.card_stud{
+  font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+/* identical to box height */
+
+text-align: center;
+
+color: #2D2D2D;
 }
 .break {
   flex-basis: 90%;
   height: 0;
 }
 
-@media (min-width: 310px) and (max-width: 480px) {
+@media screen and (max-width: 525px) {
   .timetable_block {
     width: 100%;
+    display: contents;
   }
   .timetable {
     display: none;
   }
   .time {
-    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -290,12 +302,15 @@ table th {
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
+    margin-top: 25px;
+    margin-left: 25px;
   }
   .date_txt {
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
     width: 50%;
+    margin-top: 25px;
   }
   .cards {
     display: block;
@@ -303,9 +318,10 @@ table th {
  
   .cards_block{
     flex-direction: column;
+    padding: 15px;
   }
 }
-@media (min-width: 481px) and (max-width: 1024px) {
+@media (min-width: 525px) and (max-width: 1024px) {
   .timetable_block {
     width: 100%;
     display: flex;
@@ -336,3 +352,4 @@ table th {
     width: 50%;
   }
 }
+

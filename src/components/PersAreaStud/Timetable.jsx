@@ -194,67 +194,82 @@ const Timetable = () => {
         {arrSubj.map((el) => {
           return (
             <div className="cards_block">
-            <div className="cards">
-              <div className="cards_head">
-                <p className="weekday">Понедельник</p>{" "}
-                <p className="dayday">23 января</p>
+              <div className="cards">
+                <div className="cards_head">
+                  <p className="weekday">Понедельник</p>{" "}
+                  <p className="dayday">23 января</p>
+                </div>
+                <div
+                  className="cards_inner"
+                  style={{ backgroundColor: el.Mon[1].backgroundColor }}
+                >
+                  <p className="card_subj">{el.Mon[1].subj}</p>
+                  <p className="card_teach">{el.Mon[1].teach}</p>
+                  <p className="card_time">{el.Mon[1].time}</p>
+                  <button className="cards_btn">Подробнее</button>
+                </div>
               </div>
-              <div
-                className="cards_inner"
-                style={{ backgroundColor: el.Mon[1].backgroundColor }}
-              >
-                <p className="card_subj">{el.Mon[1].subj}</p>
-                <p className="card_teach">{el.Mon[1].teach}</p>
-                <p className="card_time">{el.Mon[1].time}</p>
-                <button className="cards_btn">Подробнее</button>
+              <div className="cards">
+                <div className="cards_head">
+                  <p className="weekday">Вторник</p>{" "}
+                  <p className="dayday">24 января</p>
+                </div>
+                <div
+                  className="cards_inner"
+                  style={{ backgroundColor: el.Tue[1].backgroundColor }}
+                >
+                  <p className="card_subj">{el.Tue[1].subj}</p>
+                  <p className="card_teach">{el.Tue[1].teach}</p>
+                  <p className="card_time">{el.Tue[1].time}</p>
+                  <button
+                    className="cards_btn"
+                    style={{ backgroundColor: el.Tue[1].btc }}
+                  >
+                    Подробнее
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="cards">
-            <div className="cards_head">
-                <p className="weekday">Вторник</p>{" "}
-                <p className="dayday">24 января</p>
+              <div className="break"></div>
+              <div className="cards">
+                <div className="cards_head">
+                  <p className="weekday">Среда</p>{" "}
+                  <p className="dayday">25 января</p>
+                </div>
+                <div
+                  className="cards_inner"
+                  style={{ backgroundColor: el.Wed[1].backgroundColor }}
+                >
+                  <p className="card_subj">{el.Wed[1].subj}</p>
+                  <p className="card_teach">{el.Wed[1].teach}</p>
+                  <p className="card_time">{el.Wed[1].time}</p>
+                  <button
+                    className="cards_btn"
+                    style={{ backgroundColor: el.Wed[1].btc }}
+                  >
+                    Подробнее
+                  </button>
+                </div>
               </div>
-              <div
-                className="cards_inner"
-                style={{ backgroundColor: el.Tue[1].backgroundColor }}
-              >
-                <p className="card_subj">{el.Tue[1].subj}</p>
-                <p className="card_teach">{el.Tue[1].teach}</p>
-                <p className="card_time">{el.Tue[1].time}</p>
-                <button className="cards_btn" style={{backgroundColor:el.Tue[1].btc}}>Подробнее</button>
+              <div className="cards">
+                <div className="cards_head">
+                  <p className="weekday">Среда</p>{" "}
+                  <p className="dayday">25 января</p>
+                </div>
+                <div
+                  className="cards_inner"
+                  style={{ backgroundColor: el.Tuer[1].backgroundColor }}
+                >
+                  <p className="card_subj">{el.Tuer[1].subj}</p>
+                  <p className="card_teach">{el.Tuer[1].teach}</p>
+                  <p className="card_time">{el.Tuer[1].time}</p>
+                  <button
+                    className="cards_btn"
+                    style={{ backgroundColor: el.Tuer[1].btc }}
+                  >
+                    Подробнее
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="break"></div>
-            <div className="cards">
-            <div className="cards_head">
-                <p className="weekday">Среда</p>{" "}
-                <p className="dayday">25 января</p>
-              </div>
-              <div
-                className="cards_inner"
-                style={{ backgroundColor: el.Wed[1].backgroundColor }}
-              >
-                <p className="card_subj">{el.Wed[1].subj}</p>
-                <p className="card_teach">{el.Wed[1].teach}</p>
-                <p className="card_time">{el.Wed[1].time}</p>
-                <button className="cards_btn" style={{backgroundColor:el.Wed[1].btc}}>Подробнее</button>
-              </div>
-            </div>
-            <div className="cards">
-            <div className="cards_head">
-                <p className="weekday">Среда</p>{" "}
-                <p className="dayday">25 января</p>
-              </div>
-              <div
-                className="cards_inner"
-                style={{ backgroundColor: el.Tuer[1].backgroundColor }}
-              >
-                <p className="card_subj">{el.Tuer[1].subj}</p>
-                <p className="card_teach">{el.Tuer[1].teach}</p>
-                <p className="card_time">{el.Tuer[1].time}</p>
-                <button className="cards_btn" style={{backgroundColor:el.Tuer[1].btc}}>Подробнее</button>
-              </div>
-            </div>
             </div>
           );
         })}

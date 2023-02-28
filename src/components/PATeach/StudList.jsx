@@ -14,14 +14,22 @@ const PATeach = () => {
     { id: 3, name: "Дмитрий", firstname: "Примудрый", img: stud3 },
     { id: 4, name: "Вася", firstname: "Глупый", img: stud4 },
     { id: 5, name: "Геральт", firstname: "Изривии", img: stud5 },
+    { id: 3, name: "Дмитрий", firstname: "Примудрый", img: stud3 },
+    { id: 2, name: "Николай", firstname: "Коготько", img: stud2 },
+    { id: 4, name: "Вася", firstname: "Глупый", img: stud4 },
+
+
+
+    
   ];
 
   return (
     <>
     <SideBarTeach/>
       <div className="stud_head">
+        <div className="radios">
         <p className="studs">Ученики</p>
-        <div>
+          <div>
           <input type="radio" id="exclusive" name="forwho" value="excluse" />
           <label className="radio_txt" for="exclusive">
             Индивидуальные
@@ -34,6 +42,12 @@ const PATeach = () => {
             value="group"
           />
           <label className="radio_txt">Групповые </label>
+          </div>
+        <select className="stud_drop">
+          <option>По фамилии</option>
+          <option>По возрасту</option>
+          <option>По городу</option>
+        </select>
         </div>
         <div className="stud_list">
           {students.map((item) => (

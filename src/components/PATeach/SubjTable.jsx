@@ -8,15 +8,50 @@ const SubjTable = () => {
   const arrSubj = [
     {
       Mon: {
-        1: { time: "15:00", stud: "Ростислав Дорохин" },
-        2: { time: "16:00", stud: "Анастасия Краснова" },
-        3: { time: "18:00", stud: "Александр Шумец" },
-        4: { time: "19:00", stud: "Артём Зайченко" },
-        5: { time: "21:00", stud: "Екатерина Ли" },
+        1: {
+          time: "15:00",
+          stud: "Ростислав Дорохин",
+          backgroundColor: "#FFF1A1",
+          btc: "#FFEC7E",
+        },
+        2: {
+          time: "16:00",
+          stud: "Анастасия Краснова",
+          backgroundColor: "#C5FFCA",
+          btc: "#AFFFB7",
+        },
+        3: {
+          time: "18:00",
+          stud: "Александр Шумец",
+          backgroundColor: "#FFF1A1",
+          btc: "#FFEC7E",
+        },
+        4: {
+          time: "19:00",
+          stud: "Артём Зайченко",
+          backgroundColor: "#CCFFFF",
+          btc: "#9fffff",
+        },
+        5: {
+          time: "21:00",
+          stud: "Екатерина Ли",
+          backgroundColor: "#FFF1A1",
+          btc: "#FFEC7E",
+        },
       },
       Tue: {
-        1: { time: "12:00", stud: "Иван Ванищенко" },
-        2: { time: "14:00", stud: "Мария Кравец" },
+        1: {
+          time: "12:00",
+          stud: "Иван Ванищенко",
+          backgroundColor: "#FFF1A1",
+          btc: "#FFEC7E",
+        },
+        2: {
+          time: "14:00",
+          stud: "Мария Кравец",
+          backgroundColor: "#C5FFCA",
+          btc: "#AFFFB7",
+        },
         3: { time: "18:00", stud: "Ростлислав Дорохин" },
       },
       Wed: {},
@@ -87,7 +122,7 @@ const SubjTable = () => {
                 {" "}
                 <div
                   className="stud_block"
-                  style={{ backgroundColor: "#CCFFFF", marginTop: "-35px" }}
+                  style={{ backgroundColor: "#CCFFFF" }}
                 >
                   <p className="stud_teach">{arrSubjItem.Mon[1].stud}</p>
                   <p className="stud_time">{arrSubjItem.Mon[1].time}</p>
@@ -124,7 +159,7 @@ const SubjTable = () => {
               <td>
                 <div
                   className="stud_block"
-                  style={{ backgroundColor: "#CCFFFF", marginTop: "-210px" }}
+                  style={{ backgroundColor: "#CCFFFF", marginTop: "-245px" }}
                 >
                   <p className="stud_teach">{arrSubjItem.Tue[1].stud}</p>
                   <p className="stud_time">{arrSubjItem.Tue[1].time}</p>
@@ -148,7 +183,7 @@ const SubjTable = () => {
               <td>
                 <div
                   className="stud_block"
-                  style={{ backgroundColor: "#FFF1A1", marginTop: "-256px" }}
+                  style={{ backgroundColor: "#FFF1A1", marginTop: "-310px" }}
                 >
                   <p className="stud_teach">{arrSubjItem.Tuer[1].stud}</p>
                   <p className="stud_time">{arrSubjItem.Tuer[1].time}</p>
@@ -157,7 +192,7 @@ const SubjTable = () => {
               <td>
                 <div
                   className="stud_block"
-                  style={{ backgroundColor: "#FFF1A1", marginTop: "-256px" }}
+                  style={{ backgroundColor: "#FFF1A1", marginTop: "-310px" }}
                 >
                   <p className="stud_teach">{arrSubjItem.Tuer[2].stud}</p>
                   <p className="stud_time">{arrSubjItem.Tuer[2].time}</p>
@@ -168,6 +203,88 @@ const SubjTable = () => {
             </tr>
           </tbody>
         </table>
+        {arrSubj.map((el) => {
+          return (
+            <div className="cards_block">
+              <div className="cards">
+                <div className="cards_head">
+                  <p className="weekday">Понедельник</p>{" "}
+                  <p className="dayday">23 января</p>
+                </div>
+                <div
+                  className="cards_inner"
+                  style={{ backgroundColor: el.Mon[1].backgroundColor }}
+                >
+                  <p className="card_stud">{el.Mon[1].stud}</p>
+                  <p className="card_stud">{el.Mon[1].time}</p>
+                  <button
+                    className="cards_btn"
+                    style={{ backgroundColor: el.Mon[1].btc }}
+                  >
+                    Подробнее
+                  </button>
+                </div>
+              </div>
+              <div className="cards">
+                <div className="cards_head">
+                  <p className="weekday">Вторник</p>{" "}
+                  <p className="dayday">24 января</p>
+                </div>
+                <div
+                  className="cards_inner"
+                  style={{ backgroundColor: el.Mon[2].backgroundColor }}
+                >
+                  <p className="card_stud">{el.Mon[2].stud}</p>
+                  <p className="card_stud">{el.Mon[2].time}</p>
+                  <button
+                    className="cards_btn"
+                    style={{ backgroundColor: el.Mon[2].btc }}
+                  >
+                    Подробнее
+                  </button>
+                </div>
+              </div>
+              <div className="cards">
+                <div className="cards_head">
+                  <p className="weekday">Среда</p>{" "}
+                  <p className="dayday">25 января</p>
+                </div>
+                <div
+                  className="cards_inner"
+                  style={{ backgroundColor: el.Mon[3].backgroundColor }}
+                >
+                  <p className="card_stud">{el.Mon[3].stud}</p>
+                  <p className="card_stud">{el.Mon[3].time}</p>
+                  <button
+                    className="cards_btn"
+                    style={{ backgroundColor: el.Mon[3].btc }}
+                  >
+                    Подробнее
+                  </button>
+                </div>
+              </div>
+              <div className="cards">
+                <div className="cards_head">
+                  <p className="weekday">Четверг</p>{" "}
+                  <p className="dayday">25 января</p>
+                </div>
+                <div
+                  className="cards_inner"
+                  style={{ backgroundColor: el.Mon[4].backgroundColor }}
+                >
+                  <p className="card_stud">{el.Mon[4].stud}</p>
+                  <p className="card_stud">{el.Mon[4].time}</p>
+                  <button
+                    className="cards_btn"
+                    style={{ backgroundColor: el.Mon[4].btc }}
+                  >
+                    Подробнее
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </>
   );
