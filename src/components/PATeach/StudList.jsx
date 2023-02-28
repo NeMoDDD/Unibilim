@@ -7,7 +7,7 @@ import stud4 from "../../assets/img/stud4.png";
 import stud5 from "../../assets/img/stud5.png";
 import SideBarTeach from "../SideBar/SideBarTeach";
 
-const PATeach = () => {
+const StudList = () => {
   const students = [
     { id: 1, name: "Ирина", firstname: "Бойка", img: stud1 },
     { id: 2, name: "Николай", firstname: "Коготько", img: stud2 },
@@ -70,4 +70,4 @@ const PATeach = () => {
   );
 };
 
-export default PATeach;
+export default StudList;

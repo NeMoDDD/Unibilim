@@ -26,12 +26,6 @@ const SideBarTeach = () => {
           Мои ученики
         </a>
       </div>
-      <div className="upper_container">
-        <a className="about-me" href="/">
-        <img src={bar3} className="logo1" alt=""/>
-          Работы на проверку
-        </a>
-      </div>
     </div>
     );
 }
