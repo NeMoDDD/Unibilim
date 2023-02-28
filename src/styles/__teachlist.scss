@@ -29,6 +29,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 100%;
   background-color: #f6fafc;
   border-radius: 25px;
@@ -36,7 +37,6 @@
   margin-top: 25px;
 }
 .teach_list {
-  width: 100%;
   background-color: #ffffff;
   border-radius: 25px;
   padding: 10px;
@@ -107,8 +107,6 @@
   font-size: 26px;
   line-height: 31px;
   color: #93979b;
-  margin-left: 25px;
-  margin-top: 25px;
 }
 
 @media (min-width: 310px) and (max-width: 480px) {
@@ -150,7 +148,35 @@
     margin-bottom: -50px;
   }
 }
-@media (min-width: 481px) and (max-width: 1024px) {
+@media (min-width: 481px) and (max-width: 670px) {
+  .teach_list_block{
+    width: 100%;
+  }
+  .list_block{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .teach_list{
+    width: 45%;
+  }
+}
+@media (min-width: 671px) and (max-width: 700px) {
+  .teach_list_block{
+    width: 100%;
+  }
+  .list_block{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .teach_list{
+    width: 26%;
+  }
+}
+@media (min-width: 701px) and (max-width: 820px) {
   .teach_list_block{
     width: 100%;
   }
@@ -162,5 +188,19 @@
   }
   .teach_list{
     width: 30%;
+  }
+}
+@media (min-width: 821px) and (max-width: 1024px) {
+  .teach_list_block{
+    width: 100%;
+  }
+  .list_block{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .teach_list{
+    width: 25%;
   }
 }

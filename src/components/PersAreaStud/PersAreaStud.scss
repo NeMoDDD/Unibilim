@@ -8,7 +8,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   width: 60%;
-  height: 90vh;
+  padding: 15px;
   margin-top: 25px;
   border-radius: 25px;
   background-color: white;
@@ -106,7 +106,7 @@
 .address {
   width: 30%;
   margin-top: 25px;
-  padding-right: 25px ;
+  padding: 15px;
 }
 .inaddress {
   display: flex;
@@ -115,111 +115,7 @@
   background-color: #fbfcfe;
   padding: 15px 15px 15px 15px;
 }
-.timetable_block {
-  // position: absolute;
-  width: 967px;
-  height: 690px;
-  border-radius: 25px;
-  background-color: #ffffff;
-  margin-left: 353px;
-  margin-top: 25px;
-}
-.time {
-  display: flex;
-}
-.date_txt {
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 26px;
-  text-align: center;
-  color: #93979b;
-  margin-left: 384px;
-  margin-top: 25px;
-}
-.date_tr {
-  border-right: #93979b 2px solid;
-  border-top: #93979b 2px solid;
-  height: 583px;
-}
-.day_cell {
-  display: flex;
-  justify-content: space-around;
-}
-.cell {
-  text-align: center;
-  border-radius: 25px;
-}
-.subj_table {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-}
-table.timetable {
-  width: 90%;
-  border: 1px solid grey;
-  border-collapse: collapse;
-  border-style: hidden;
-  margin-left: 63px;
-  margin-top: 53px;
-  padding: 0px 5px;
-}
 
-table td {
-  border-left: 1px solid grey;
-  // padding: 3px;
-  width: 74px;
-  height: 34px;
-  text-align: center;
-  background-color: #ececec40;
-}
-table th {
-  border: none;
-}
-.subj_block {
-  height: 120px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: stretch;
-}
-.subj_name {
-  font-weight: 400;
-  font-size: 17px;
-  line-height: 20px;
-  text-align: center;
-  color: #2d2d2d;
-  margin-top: 13px;
-}
-.subj_teach {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  text-align: center;
-  color: #2d2d2d;
-  margin-top: -14px;
-}
-.subj_time {
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 18px;
-  text-align: center;
-  color: #686868;
-  margin-top: -9px;
-}
-.subj_about {
-  width: 97px;
-  height: 24px;
-  background: #b0ffff;
-  border-radius: 16px;
-  border: none;
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 13px;
-  text-align: center;
-  margin-bottom: 15px;
-  margin-left: 15px;
-}
 .subj_about2 {
   width: 97px;
   height: 24px;
@@ -245,106 +141,6 @@ table th {
   text-align: center;
   margin-bottom: 15px;
   margin-left: 15px;
-}
-.reser_block {
-  // position: absolute;
-  margin-top: 93px;
-  margin-left: 320px;
-  width: 1000px;
-  height: 704px;
-  border-radius: 25px;
-  background: white;
-}
-.head_block {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 25px;
-  align-items: center;
-
-  // background-color: white;
-}
-.back_btn {
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
-  text-align: center;
-  color: #93979b;
-  text-decoration: none;
-}
-.reser_table {
-  flex-direction: column;
-  position: absolute;
-  width: 675px;
-  margin-top: 25px;
-  margin-left: 25px;
-  border-radius: 25px;
-  background-color: #f6fafc;
-}
-.txt {
-  margin-top: 26px;
-  height: 24px;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
-  color: #6c7074;
-  margin-left: 25px;
-}
-.pay_block {
-  width: 250px;
-  height: 480px;
-  border-radius: 25px;
-  background-color: #f6fafc;
-  float: right;
-  margin-right: 25px;
-  margin-top: -25px;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: center;
-}
-.pay_subj {
-  width: 200px;
-  background-color: #ffffff;
-  border-radius: 25px;
-}
-.subj_costet {
-  margin-top: 15px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  margin-left: 25px;
-  color: #2d2d2d;
-}
-.costet {
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
-  margin-top: -5px;
-  text-align: center;
-  color: #000000;
-}
-.for_pay {
-  width: 200px;
-  height: 152px;
-  background: #ffbf13;
-  border-radius: 25px;
-  margin-top: 15px;
-}
-.pay_btn {
-  width: 170px;
-  height: 38px;
-  background: #ffffff;
-  box-shadow: 0px 5px 64px 8px rgba(0, 0, 0, 0.16);
-  border-radius: 25px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
-  color: #fabb13;
-  border: none;
-  margin-left: 15.5px;
 }
 .txt_18 {
   font-weight: 500;
@@ -483,6 +279,8 @@ table th {
     width: 100%;
   }
   .address {
+    margin-left: 10px;
+    margin-top: 0px;
     width: 100%;
   }
   .reg_npt{

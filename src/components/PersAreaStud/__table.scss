@@ -8,6 +8,7 @@ table.table {
   margin-left: 63px;
   margin-top: 53px;
   padding: 0px 5px;
+  display: block;
 }
 
 table td {
@@ -66,5 +67,45 @@ table th {
   line-height: 12px;
   /* identical to box height */
   color: #ffbf13;
+}
+@media screen and (max-width: 480px) {
+  .reser_teach {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #93979b;
+  }
+  .reser_date {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #93979b;
+  }
+  .all_res_table{
+    display: none;
+  }
+}
+
+@media screen and (min-width:481px) and (max-width:1024px) {
+  .reser_teach {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #93979b;
+  }
+  .reser_date {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #93979b;
+  }
 }
 

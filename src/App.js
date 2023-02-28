@@ -13,6 +13,7 @@ import SubjTable from "./components/PATeach/SubjTable";
 import PopUp from "./components/PersAreaStud/PopUp";
 import Home from "./components/Home/Home";
 
+
 function App() {
   return (
     <div className="first_body">

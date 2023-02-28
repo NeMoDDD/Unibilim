@@ -1,0 +1,355 @@
+.timetable_block {
+  width: 70%;
+  height: 90vh;
+  border-radius: 25px;
+  float: left;
+  padding: 25px;
+}
+.time {
+  display: flex;
+}
+.date_txt {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 26px;
+  text-align: center;
+  color: #93979b;
+}
+.date_tr {
+  border-right: #93979b 2px solid;
+  border-top: #93979b 2px solid;
+  height: 583px;
+}
+.day_cell {
+  display: flex;
+  justify-content: space-around;
+}
+.cell {
+  text-align: center;
+  border-radius: 25px;
+}
+.subj_table {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+table.timetable {
+  width: 100%;
+  border: 1px solid grey;
+  border-collapse: collapse;
+  border-style: hidden;
+}
+
+table td {
+  border-left: 1px solid grey;
+  // padding: 3px;
+  width: 100%;
+  height: 34px;
+  text-align: center;
+  background-color: #ececec40;
+}
+table th {
+  border: none;
+}
+.subj_block {
+  height: 120px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+}
+.subj_name {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 20px;
+  text-align: center;
+  color: #2d2d2d;
+  margin-top: 13px;
+}
+.subj_teach {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  color: #2d2d2d;
+  margin-top: -14px;
+}
+.subj_time {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  color: #686868;
+  margin-top: -9px;
+}
+.subj_about {
+  width: 97px;
+  height: 24px;
+  background: #b0ffff;
+  border-radius: 16px;
+  border: none;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+.popup_block {
+  width: 680px;
+  height: 288px;
+  background: #ffffff;
+  box-shadow: 0px 20px 64px 8px rgba(0, 0, 0, 0.16);
+  border-radius: 25px 25px 25px 25px;
+}
+.pop_info {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  padding: 15px 25px;
+}
+.pop_subj {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #2d2d2d;
+  text-align: center;
+}
+.pop_img {
+  margin-top: -13px;
+  width: 150px;
+  // height: 150px;
+}
+.pop_name {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 20px;
+  text-align: center;
+  color: #2d2d2d;
+}
+.pop_date {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #2d2d2d;
+  margin-top: -13px;
+}
+.pop_info2 {
+  margin-left: 200px;
+  width: 431px;
+  height: 55px;
+  text-align: center;
+}
+.pop_about {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #2d2d2d;
+}
+.first_btn {
+  width: 431px;
+  height: 42px;
+  margin-top: -16px;
+  background: #69ffa5;
+  border-radius: 10px;
+  border: none;
+}
+.btn_p {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #ffffff;
+  padding: 10px;
+}
+.pop_btn {
+  margin-left: 200px;
+  margin-top: 95px;
+}
+.btn_flex {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.nd_btn {
+  width: 136px;
+  height: 42px;
+  background: #ff6969;
+  border-radius: 10px;
+  border: none;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #ffffff;
+}
+.cards {
+  display: none;
+  width: 100%;
+  border: 1px solid #93979b;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+.card_subj {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #2d2d2d;
+  margin: 0px;
+}
+.card_time {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #686868;
+  margin: 5px;
+}
+.card_teach {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #2d2d2d;
+  margin: 5px;
+}
+.cards_head {
+  background: #93979b;
+  border-radius: 15px 15px 0px 0px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-evenly;
+}
+.weekday {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 22px;
+  text-align: center;
+  color: #ffffff;
+  padding: 5px;
+}
+.dayday {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14.4px;
+  text-align: center;
+  color: #ffffff;
+}
+.cards_inner {
+  margin: 5px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 0px 15px 0px;
+}
+.cards_btn {
+  width: 80%;
+  height: 38px;
+  background: #9fffff;
+  border-radius: 19px;
+  border: none;
+}
+.cards_block{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: white;
+}
+.card_stud{
+  font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+/* identical to box height */
+
+text-align: center;
+
+color: #2D2D2D;
+}
+.break {
+  flex-basis: 90%;
+  height: 0;
+}
+
+@media screen and (max-width: 525px) {
+  .timetable_block {
+    width: 100%;
+    display: contents;
+  }
+  .timetable {
+    display: none;
+  }
+  .time {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .teach_txt {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    margin-top: 25px;
+    margin-left: 25px;
+  }
+  .date_txt {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    width: 50%;
+    margin-top: 25px;
+  }
+  .cards {
+    display: block;
+  }
+ 
+  .cards_block{
+    flex-direction: column;
+    padding: 15px;
+  }
+}
+@media (min-width: 525px) and (max-width: 1024px) {
+  .timetable_block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .cards {
+    display: block;
+    width: 45%;
+    margin-left: 15px;
+  }
+  .timetable {
+    display: none;
+  }
+  .time {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .teach_txt {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .date_txt {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    width: 50%;
+  }
+}
+

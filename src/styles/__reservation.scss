@@ -1,0 +1,274 @@
+.reser_block {
+  width: 100%;
+  border-radius: 25px;
+  background: white;
+  padding: 15px;
+}
+.head_block {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 25px;
+  align-items: center;
+  background-color: #fff;
+}
+.back_btn {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #93979b;
+  text-decoration: none;
+}
+.reser_table {
+  width: 50%;
+  border-radius: 25px;
+  background-color: #f6fafc;
+  float: left;
+  padding: 15px;
+}
+.txt {
+  height: 24px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #6c7074;
+  margin-left: 25px;
+  margin-bottom: 35px;
+}
+.pay_block {
+  width: 20%;
+  margin-left: 25px;
+  border-radius: 25px;
+  padding: 15px;
+  background-color: #f6fafc;
+  float: left;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  display: block;
+}
+.pay_subj {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+}
+.subj_costet {
+  margin-top: 15px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  margin-left: 25px;
+  color: #2d2d2d;
+}
+.costet {
+  margin: 0px;
+  padding: 5px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #000000;
+}
+.for_pay {
+  width: 100%;
+  height: 152px;
+  background: #ffbf13;
+  border-radius: 25px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pay_btn {
+  width: 80%;
+  height: 38px;
+  background: #ffffff;
+  box-shadow: 0px 5px 64px 8px rgba(0, 0, 0, 0.16);
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #fabb13;
+  border: none;
+}
+.reser_card {
+  width: 100%;
+  height: 160px;
+  background-color: #dff4ff;
+  border-radius: 15px;
+  padding: 10px;
+  display: none;
+  margin-top: 15px;
+}
+.reser_week {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 19.2px;
+  color: #6c7074;
+}
+.reser_day {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: #6c7074;
+}
+.reser_date {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+.reser_times_block {
+  display: flex;
+  flex-wrap: wrap;
+}
+.reser_times {
+  width: 29%;
+  height: 40px;
+  font-size: 12px;
+  background: #ffffff;
+  border: 1px solid #e4e9ee;
+  border-radius: 17.5px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 14px;
+  color: #2d2d2d;
+  margin-left: 13px;
+  margin-top: 5px;
+}
+.no_subj {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #bdbdbd;
+  text-align: center;
+  margin-top: 25px;
+}
+.pay_block2 {
+  width: 100%;
+  height: 80px;
+  background-color: #ffbf14;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  display: none;
+}
+.f_pr {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 17px;
+  text-align: center;
+  color: #ffffff;
+  margin: 5px;
+}
+.s_pr {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 26px;
+  text-align: center;
+  color: #ffffff;
+  margin: 0;
+}
+.pay_btn2 {
+  width: 181px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 25px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #fabb13;
+  border: none;
+}
+@media screen and (max-width: 480px) {
+  .reser_table {
+    width: 100%;
+  }
+  .reser_card {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    width: 100%;
+  }
+  .pay_block {
+    display: none;
+  }
+  .pay_block2 {
+    display: flex;
+  }
+  .back_btn {
+    display: none;
+  }
+  .txt {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 25px;
+    color: #6c7074;
+  }
+  .subj_costet {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 10px;
+    color: #2d2d2d;
+  }
+  .txt_18 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #6c7074;
+  }
+}
+
+@media screen and (min-width:481px) and (max-width:1024px) {
+    .reser_table{
+        width: 100%;
+    }
+    .pay_block{
+        width: 100%;
+        display: flex;
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+    .txt {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        margin-bottom: 25px;
+        color: #6c7074;
+      }
+      .subj_costet {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+        margin-top: 10px;
+        color: #2d2d2d;
+      }
+      .txt_18 {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        color: #6c7074;
+      }
+}

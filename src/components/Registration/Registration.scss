@@ -1,20 +1,20 @@
 .reg-block {
-  width: 500px;
-  height: 656px;
-  margin-left: 470px;
-  margin-top: 118px;
+  width: 35%;
+  padding: 25px;
   background-color: white;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .reg-text {
-  width: 191px;
+  width: 100%;
   height: 38px;
   font-weight: 500;
   font-size: 32px;
   line-height: 38.4px;
-  margin-top: 35px;
-  margin-left: 154px;
   color: #2d2d2d;
-  // position: absolute;
+  
 }
 .npt-txt {
   width: 90%;
@@ -26,6 +26,7 @@
   font-size: 20px;
   line-height: 24px;
   color: #595959;
+  background-color: white;
 }
 .nm-txt {
   font-weight: 400;
@@ -46,23 +47,21 @@
   color: #cccccc;
 }
 .dropdown-select {
-  width: 430px;
+  width: 100%;
   border-top: 0px;
   border-left: 0px;
   border-right: 0px;
   border-color: #ffbf13;
-  margin-top: -10px;
-  margin-left: 35px;
+  font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
   color: #595959;
 }
 .reg-end {
-  width: 430px;
+  width: 100%;
   height: 48px;
-  margin-left: 35px;
-  margin-top: 35px;
+  margin-top: 25px;
   background-color: #ffbf13;
   border-top: 0;
   border-left: 0;
@@ -74,22 +73,26 @@
   font-size: 18px;
   line-height: 21.6px;
 }
-.form-check {
-  margin-top: 65px;
-  margin-left: 35px;
+.form-check{
+  margin-top: 25px;
 }
 .form-check-label {
-  width: 404px;
-  height: 28px;
+  width: 100%;
   font-weight: 400;
   font-size: 12px;
   line-height: 14.4px;
   color: #989898;
 }
 
-@media (min-width: 310px) and (max-width: 480px) {
+@media screen and (max-width: 480px) {
+  .reg-block{
+    width: 100%;
+  }
   .npt-txt {
-    width: 75%;
+    width: 100%;
+  }
+  .dropdown-select{
+    width: 100%;
   }
 }
 @media (min-width: 481px) and (max-width: 830px) {
