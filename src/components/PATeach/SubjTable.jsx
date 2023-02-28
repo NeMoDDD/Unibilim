@@ -148,18 +148,11 @@ const SubjTable = () => {
                   <p className="stud_teach">{arrSubjItem.Mon[4].stud}</p>
                   <p className="stud_time">{arrSubjItem.Mon[4].time}</p>
                 </div>
-                <div
-                  className="stud_block"
-                  style={{ backgroundColor: "#FFF1A1" }}
-                >
-                  <p className="stud_teach">{arrSubjItem.Mon[5].stud}</p>
-                  <p className="stud_time">{arrSubjItem.Mon[5].time}</p>
-                </div>
               </td>
               <td>
                 <div
                   className="stud_block"
-                  style={{ backgroundColor: "#CCFFFF", marginTop: "-245px" }}
+                  style={{ backgroundColor: "#CCFFFF", marginTop: "-125px" }}
                 >
                   <p className="stud_teach">{arrSubjItem.Tue[1].stud}</p>
                   <p className="stud_time">{arrSubjItem.Tue[1].time}</p>
@@ -183,7 +176,7 @@ const SubjTable = () => {
               <td>
                 <div
                   className="stud_block"
-                  style={{ backgroundColor: "#FFF1A1", marginTop: "-310px" }}
+                  style={{ backgroundColor: "#FFF1A1", marginTop: "-252px" }}
                 >
                   <p className="stud_teach">{arrSubjItem.Tuer[1].stud}</p>
                   <p className="stud_time">{arrSubjItem.Tuer[1].time}</p>
@@ -192,7 +185,7 @@ const SubjTable = () => {
               <td>
                 <div
                   className="stud_block"
-                  style={{ backgroundColor: "#FFF1A1", marginTop: "-310px" }}
+                  style={{ backgroundColor: "#FFF1A1", marginTop: "-252px" }}
                 >
                   <p className="stud_teach">{arrSubjItem.Tuer[2].stud}</p>
                   <p className="stud_time">{arrSubjItem.Tuer[2].time}</p>
