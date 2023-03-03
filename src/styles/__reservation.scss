@@ -196,6 +196,9 @@
   border: none;
 }
 @media screen and (max-width: 820px) {
+  .reser_block{
+    height: 900px;
+  }
   .reser_table {
     width: 100%;
   }
@@ -210,6 +213,8 @@
   }
   .pay_block2 {
     display: flex;
+    position: fixed;
+    margin-top: -388px;
   }
   .back_btn {
     display: none;
