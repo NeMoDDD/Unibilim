@@ -121,10 +121,11 @@
   .drop_block {
     width: 100%;
     flex-direction: column;
-    height: 25vh;
   }
   .drop {
     width: 100%;
+    height: 50px;
+    margin-top: 10px;
   }
   .list_block {
     flex-direction: column;
@@ -136,10 +137,11 @@
     justify-content: center;
   }
   .teach_name{
-    margin-bottom: 100px;
+    margin-bottom: 30px;
   }
   .teach_about{
-    width: 55%;
+    width: 65%;
+    margin-bottom: -20px;
     // margin-bottom: 50px;
   }
   .teach_btn{
@@ -147,6 +149,9 @@
   }
   .teach_subj{
     margin-bottom: -50px;
+  }
+  .pad{
+    padding: 15px;
   }
 }
 @media (min-width: 481px) and (max-width: 670px) {

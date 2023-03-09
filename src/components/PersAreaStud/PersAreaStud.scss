@@ -15,7 +15,7 @@
 }
 .inner_block {
   width: 70%;
-  padding: 25px;
+  padding: 10px;
   border-radius: 25px;
 }
 .avaname {
@@ -104,9 +104,8 @@
   line-height: 21.6px;
 }
 .address {
-  width: 30%;
-  margin-top: 25px;
-  padding: 15px;
+  width: 35%;
+  margin-top: 10px;
 }
 .inaddress {
   display: flex;
@@ -271,6 +270,9 @@
   .reg_npt{
     width: 75%;
   }
+  .inaddress{
+    padding-left: 0px;
+  }
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
   .first_block {
@@ -283,6 +285,7 @@
     margin-left: 10px;
     margin-top: 0px;
     width: 100%;
+    margin-left: 15px;
   }
   .reg_npt{
     width: 90%;
