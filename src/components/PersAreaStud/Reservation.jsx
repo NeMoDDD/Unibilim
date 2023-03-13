@@ -10,6 +10,7 @@ const Reservation = () => {
   return (
     <>
       <SideBar />
+      <div className="pad">
       <div className="reser_block">
         <div className="head_block">
           <a className="back_btn">Вернуться</a>
@@ -97,6 +98,7 @@ const Reservation = () => {
           <p className="s_pr">450 сом</p>
         </div>
         <button className="pay_btn2">Перейти к оплате</button>
+      </div>
       </div>
     </>
   );

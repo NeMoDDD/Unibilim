@@ -26,6 +26,7 @@ const StudList = () => {
   return (
     <>
     <SideBarTeach/>
+    <div className="pad">
       <div className="stud_head">
         <div className="radios">
         <p className="studs">Ученики</p>
@@ -65,6 +66,7 @@ const StudList = () => {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </>
   );

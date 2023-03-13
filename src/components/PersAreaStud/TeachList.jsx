@@ -77,6 +77,7 @@ const TeachList = () => {
   return (
     <>
       <SideBar />
+      <div className="pad">
       <div className="teach_list_block">
         <p className="teach_txt">Репетиторы</p>
         <div className="drop_block">
@@ -101,6 +102,7 @@ const TeachList = () => {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </>
   );

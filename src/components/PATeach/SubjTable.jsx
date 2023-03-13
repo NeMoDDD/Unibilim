@@ -101,6 +101,7 @@ const SubjTable = () => {
   return (
     <>
       <SideBarTeach />
+      <div className="pad">
       <div className="timetable_block">
         <div className="time">
           <p className="teach_txt">Расписание</p>
@@ -276,8 +277,10 @@ const SubjTable = () => {
                 </div>
               </div>
             </div>
+            
           );
         })}
+      </div>
       </div>
     </>
   );

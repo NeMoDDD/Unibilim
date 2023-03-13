@@ -8,6 +8,7 @@ const PersAreaStud = () => {
   return (
     <>
       <SideBar />
+      <div className="pad">
       <div className="first_block">
         <div className="inner_block">
           <div className="avaname radblock">
@@ -93,6 +94,7 @@ const PersAreaStud = () => {
             />
           </div>
         </div>
+      </div>
       </div>
     </>
   );
