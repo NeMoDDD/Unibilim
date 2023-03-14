@@ -2,6 +2,7 @@ import React from "react";
 import SideBar from "../SideBar/SideBar";
 import "../../styles/__timetable.scss";
 import PopUp from "./PopUp";
+import HeaderFS from "../Header/Header";
 
 const Timetable = () => {
   const name = "< 23 янв - 30 янв >";
@@ -95,6 +96,7 @@ const Timetable = () => {
   return (
     <>
       <SideBar />
+      <HeaderFS />
       <div className="timetable_block">
         <div className="time">
           <p className="teach_txt">Расписание</p>

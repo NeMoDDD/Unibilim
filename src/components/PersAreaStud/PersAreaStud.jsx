@@ -3,6 +3,7 @@ import "./PersAreaStud.scss";
 import SideBar from "../SideBar/SideBar";
 import userava from "../../assets/img/user (2) 2.png";
 import edit from "../../assets/img/edit1.png";
+import HeaderFS from "../Header/Header";
 
 const PersAreaStud = () => {
   return (

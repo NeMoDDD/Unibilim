@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from '../../assets/img/unibilim-logo-web.svg'
 
-function HeaderFS() {
+function HeaderT() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -13,13 +13,12 @@ function HeaderFS() {
           <img src={logo} alt="" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <div className="studheader">
+        <div className="teachheader">
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/pastud">Обо мне</Nav.Link>
-              <Nav.Link href="/timetable">Расписание</Nav.Link>
-              <Nav.Link href="/teachlist">Консультанты</Nav.Link>
-              <Nav.Link href="/reservation">Бронирование</Nav.Link>
+              <Nav.Link href="/teachlk">Обо мне</Nav.Link>
+              <Nav.Link href="/subjtable">Расписание</Nav.Link>
+              <Nav.Link href="/studlist">Консультанты</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </div>
@@ -28,4 +27,4 @@ function HeaderFS() {
   );
 }
 
-export default HeaderFS;
+export default HeaderT;
