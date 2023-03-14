@@ -3,6 +3,7 @@ import SideBar from "../SideBar/SideBar";
 import "../../styles/__reservation.scss";
 import Table from "./table";
 import "../../styles/__timetable.scss";
+import HeaderFS from "../Header/Header";
 
 const Reservation = () => {
   const name = "< 23 янв - 30 янв >";
@@ -10,6 +11,7 @@ const Reservation = () => {
   return (
     <>
       <SideBar />
+      <HeaderFS />
       <div className="pad">
       <div className="reser_block">
         <div className="head_block">

@@ -6,6 +6,7 @@ import stud3 from "../../assets/img/stud3.png";
 import stud4 from "../../assets/img/stud4.png";
 import stud5 from "../../assets/img/stud5.png";
 import SideBarTeach from "../SideBar/SideBarTeach";
+import HeaderT from "../Header/HeaderT";
 
 const StudList = () => {
   const students = [
@@ -26,6 +27,7 @@ const StudList = () => {
   return (
     <>
     <SideBarTeach/>
+    <HeaderT />
     <div className="pad">
       <div className="stud_head">
         <div className="radios">

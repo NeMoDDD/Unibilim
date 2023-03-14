@@ -1,4 +1,5 @@
 import React from "react";
+import HeaderT from "../Header/HeaderT";
 import SideBarTeach from "../SideBar/SideBarTeach";
 import "./__subj.scss";
 
@@ -101,6 +102,7 @@ const SubjTable = () => {
   return (
     <>
       <SideBarTeach />
+      <HeaderT />
       <div className="pad">
       <div className="timetable_block">
         <div className="time">

@@ -5,6 +5,7 @@ import teach2 from "../../assets/img/teach2.png";
 import teach3 from "../../assets/img/teach3.png";
 import teach4 from "../../assets/img/teach4.png";
 import SideBar from "../SideBar/SideBar";
+import HeaderFS from "../Header/Header";
 
 const TeachList = () => {
   const classArr = ["Все классы", "9В", "10B", "8А", "11Г"];
@@ -77,6 +78,7 @@ const TeachList = () => {
   return (
     <>
       <SideBar />
+      <HeaderFS />
       <div className="pad">
       <div className="teach_list_block">
         <p className="teach_txt">Репетиторы</p>
@@ -95,8 +97,8 @@ const TeachList = () => {
                 <p className="teach_subj" id="phyz" style={{backgroundColor:el.backgroundColor}}>
                   {el.subj}
                 </p>
-                <button className="teach_btn">
-                  <p className="teach_btn_txt">Подробнее</p>
+                <button className="teach_btn" >
+                  <a className="teach_btn_txt" href="/timetable">Подробнее</a>
                 </button>
               </div>
             </div>
