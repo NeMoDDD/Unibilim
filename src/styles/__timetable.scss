@@ -227,22 +227,21 @@ table th {
   border-radius: 15px 15px 0px 0px;
   display: flex;
   align-items: baseline;
-  justify-content: space-evenly;
+  padding: 13px 0px 0px 5px;
 }
 .weekday {
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
-  line-height: 22px;
+  line-height: 0px;
   text-align: center;
   color: #ffffff;
-  padding: 5px;
+  margin-left: 10px;
 }
 .dayday {
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
-  line-height: 14.4px;
   text-align: center;
   color: #ffffff;
 }
@@ -316,7 +315,7 @@ color: #2D2D2D;
  
   .cards_block{
     flex-direction: column;
-    padding: 15px;
+    padding: 0px 15px 0px 15px
   }
 }
 @media (min-width: 525px) and (max-width: 1024px) {

@@ -9,6 +9,7 @@ const PersAreaStud = () => {
   return (
     <>
       <SideBar />
+      <HeaderFS />
       <div className="pad">
       <div className="first_block">
         <div className="inner_block">
