@@ -5,7 +5,7 @@ import PersAreaStud from "../PersAreaStud/PersAreaStud";
 const ForAll = () => {
   return (
     <div>
-      <HeaderFS />
+  
       <PersAreaStud />
     </div>
   );

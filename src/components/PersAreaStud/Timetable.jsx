@@ -198,7 +198,7 @@ const Timetable = () => {
             <div className="cards_block">
               <div className="cards">
                 <div className="cards_head">
-                  <p className="weekday">Понедельник</p>{" "}
+                  <p className="weekday">Понедельник,</p>{" "}
                   <p className="dayday">23 января</p>
                 </div>
                 <div
@@ -213,7 +213,7 @@ const Timetable = () => {
               </div>
               <div className="cards">
                 <div className="cards_head">
-                  <p className="weekday">Вторник</p>{" "}
+                  <p className="weekday">Вторник,</p>{" "}
                   <p className="dayday">24 января</p>
                 </div>
                 <div
@@ -234,7 +234,7 @@ const Timetable = () => {
               <div className="break"></div>
               <div className="cards">
                 <div className="cards_head">
-                  <p className="weekday">Среда</p>{" "}
+                  <p className="weekday">Среда,</p>{" "}
                   <p className="dayday">25 января</p>
                 </div>
                 <div
@@ -254,7 +254,7 @@ const Timetable = () => {
               </div>
               <div className="cards">
                 <div className="cards_head">
-                  <p className="weekday">Среда</p>{" "}
+                  <p className="weekday">Среда,</p>{" "}
                   <p className="dayday">25 января</p>
                 </div>
                 <div

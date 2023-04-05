@@ -56,9 +56,13 @@ table th {
   .subjtable{
     display: none;
   }
+  .time{
+    padding: 0px;
+  }
 }
 @media (min-width: 481px) and (max-width: 1024px) {
   .subjtable{
     display: none;
   }
+
 }
