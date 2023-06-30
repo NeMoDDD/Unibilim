@@ -3,8 +3,13 @@
   border-radius: 25px;
   float: left;
 }
-.time {
-  display: flex;
+.timetable__time {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-evenly;
+  background-color: white;
+  padding: 3% 0; 
+  border-radius: 25px 25px 0px 0
 }
 .date_txt {
   font-weight: 600;
@@ -49,13 +54,14 @@ table td {
 table th {
   border: none;
 }
-.subj_block {
-  height: 120px;
+.subj_block { 
+
+  height: 130px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: stretch;
+  align-items: center;
 }
 .subj_name {
   font-weight: 400;
@@ -81,9 +87,8 @@ table th {
   color: #686868;
   margin-top: -9px;
 }
-.subj_about {
-  width: 97px;
-  height: 24px;
+.subj_about { 
+  padding: 3px 14px;
   background: #b0ffff;
   border-radius: 16px;
   border: none;
@@ -92,7 +97,7 @@ table th {
   line-height: 13px;
   text-align: center;
   margin-bottom: 15px;
-  margin-left: 15px;
+  // margin-left: 15px;
 }
 .popup_block {
   width: 680px;
@@ -282,6 +287,26 @@ color: #2D2D2D;
   height: 0;
 }
 
+
+.timetable__item{ 
+  display: flex; 
+  flex-direction: column; 
+  height: 100%; 
+  width: 100%;
+} 
+.teach_txt{ 
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 31px;
+  color: #93979b; 
+  margin: 0; 
+}  
+.date_txt {
+  display: flex; 
+}
+.timetable__title_span{ 
+  cursor: pointer;
+}
 @media screen and (max-width: 525px) {
   .timetable_block {
     width: 100%;
@@ -290,7 +315,7 @@ color: #2D2D2D;
   .timetable {
     display: none;
   }
-  .time {
+  .timetable__time {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -332,7 +357,7 @@ color: #2D2D2D;
   .timetable {
     display: none;
   }
-  .time {
+  .timetable__time {
     display: flex;
     align-items: center;
     justify-content: space-around;

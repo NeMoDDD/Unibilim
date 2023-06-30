@@ -1,12 +1,12 @@
 import React from "react";
 import HeaderFS from "../Header/Header";
-import MyCabContainer from "../PATeach/MyCabContainer";
+import PersAreaStud from "../PersAreaStud/PersAreaStud";
 
 const ForAll = () => {
   return (
     <div>
   
-      <MyCabContainer />
+      <PersAreaStud />
     </div>
   );
 };
