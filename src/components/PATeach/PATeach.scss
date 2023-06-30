@@ -90,6 +90,14 @@
   color: #595959;
   border: none;
   float: right;
+} 
+
+.npt-txt-error {
+  border-color: #D0021B;
+}
+.npt-txt-span {
+  color: #D0021B;
+  font-size: 13px;
 }
 table td {
   border-left: 1px solid grey;
@@ -101,6 +109,9 @@ table td {
 }
 table th {
   border: none;
+} 
+.reg_npt_error {
+  border-color: #D0021B;
 }
 .date_res {
   font-size: 5px;
