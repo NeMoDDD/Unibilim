@@ -1,3 +1,5 @@
+import {holidaysApi} from "../Api/holidays-api";
+
 const SET_INPUT_DISABLED = "SET_INPUT_DISABLED"
 const SET_NAME = "SET_NAME"
 const SET_SURNAME = "SET_SURNAME"
@@ -92,5 +94,11 @@ export const setCity = (city) => ({type: SET_CITY, city})
 export const setRegion = (region) => ({type: SET_REGION, region})
 export const setDistrict = (district) => ({type: SET_DISTRICT, district})
 
+export const requestsHolidays = () => {
+    return async (dispatch) => {
+        let data = await holidaysApi.getHolidays()
+        console.log(data)
+    }
+}
 
 export default MyCabReducer;

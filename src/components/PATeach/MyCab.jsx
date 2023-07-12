@@ -1,16 +1,20 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import "../PersAreaStud/PersAreaStud.scss"
 import SideBarTeach from "../SideBar/SideBarTeach";
 import userava from "../../assets/img/user (2) 2.png";
 import edit from "../../assets/img/edit1.png";
 import {useForm} from "react-hook-form";
+import {useDispatch} from "react-redux";
+import {requestsHolidays} from "../../redux/MyCabReducer";
 
 const isValidEmail = email =>
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
         email
     );
 const PersAreaStud = (props) => {
+
+    const dispatch = useDispatch()
     const {register, handleSubmit, reset, formState: {errors}} = useForm({
         mode: "onBlur",
     });
@@ -26,9 +30,15 @@ const PersAreaStud = (props) => {
     const onSubmit = (data) => {
         reset()
     };
+
+    // Для тестирования Апи
+    // const test = () => {
+    //     dispatch(requestsHolidays())
+    // }
     return (
         <>
             <SideBarTeach/>
+            {/*<button onClick={test}>Click</button>*/}
             <div className="first_block">
                 <div className="inner_block">
                     <div className="avaname radblock">
@@ -53,7 +63,7 @@ const PersAreaStud = (props) => {
                                 value: /^[A-Za-zА-Яа-яЁё\s]+$/,
                                 message: 'Имя не должно содержать цифры и символы',
                             }
-                        })} className={errors.name ? "npt-txt npt-txt-error" : "npt-txt"}
+                        })} className={errors.firstName ? "npt-txt npt-txt-error" : "npt-txt"}
                                onChange={(e) => props.setName(e.currentTarget.value)}
                                value={props.name}
                                disabled={props.isInputDisabled}

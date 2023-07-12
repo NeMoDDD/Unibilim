@@ -93,13 +93,13 @@
 } 
 
 .npt-txt-error {
-  border-color: #D0021B;
+  border-color: #D0021B !important;
 }
 .npt-txt-span {
   color: #D0021B;
   font-size: 13px;
 }
-table td {
+.table td {
   border-left: 1px solid grey;
   // padding: 3px;
   width: 74px;
@@ -107,11 +107,11 @@ table td {
   text-align: center;
   background-color: #ececec40;
 }
-table th {
+.table th {
   border: none;
 } 
 .reg_npt_error {
-  border-color: #D0021B;
+  border-color: #D0021B !important;
 }
 .date_res {
   font-size: 5px;

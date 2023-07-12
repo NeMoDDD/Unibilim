@@ -1,6 +1,6 @@
 import "./App.scss";
 import Registration from "./components/Registration/Registration";
-import PersAreaStud from "./components/PersAreaStud/PersAreaStud";
+// import PersAreaStud from "./components/PersAreaStud/PersAreaStud";
 import LoginPage from "./components/LoginPage/LoginPage";
 import StudList from "./components/PATeach/StudList";
 import { Route, Routes } from "react-router-dom";
@@ -13,6 +13,7 @@ import Home from "./components/Home/Home";
 import ForAll from "./components/PersAreaStud/forAll";
 import ForTeach from "./components/PATeach/forTeach";
 import TimeTableContainer from "./components/PersAreaStud/TimeTableContainer";
+import PersAreaStud from "./components/PATeach/MyCab";
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
     <div className="first_body">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/studlk" element={<ForAll />} />
+        <Route path="/studlk" element={<PersAreaStud />} />
         <Route path="/teachlk" element={<ForTeach />} />
         <Route path="/reg" element={<Registration />} />
         <Route path="/pastud" element={<PersAreaStud />} />

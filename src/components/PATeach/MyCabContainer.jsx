@@ -10,6 +10,7 @@ import {
     setSurname
 } from "../../store/MyCabReducer";
 import PersAreaStud from "./MyCab";
+import {requestsHolidays} from "../../redux/MyCabReducer";
 
 const mapStateToProps = (state) => {
     return {
