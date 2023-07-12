@@ -161,4 +161,105 @@
 .verification__pin>div>input:focus { 
     outline: none;
     border-bottom: 2px solid #FFBF13; 
+} 
+@media screen and (max-width:1380px) {
+    .verification__container {
+        width: 39.5%;
+    }
+} 
+@media screen and (max-width:1050px) {
+    .verification__container {
+        width: 45.5%;
+    } 
+    .verification__form {
+        padding: 43px;
+    }
+    
+    .verification__title {
+        font-size: 28px;
+    }
+    
+    .verification__subtitle {
+        margin-top: 15px;
+        font-size: 15.5px
+    }
+    
+    .verification__support {  
+        margin-top: 20px;
+        padding: 0 10px;
+    }
+    
+    .verification__support_cancel,
+    .verification__support_again {
+        font-size: 12px;
+    }
+    .verification__submit {
+        font-size: 17px;
+        margin-top: 30%;
+    } 
+    
+    .verification__pin>div>input { 
+        font-size: 38px;
+    } 
+} 
+@media screen and (max-width:793px) {
+    .verification__container { 
+        margin-top: 60px;
+        width: 54.5%;
+    } 
+    .verification__form {
+        padding: 40px;
+    }
+    
+    .verification__title {
+        font-size: 24px;
+    }
+    
+    .verification__subtitle {
+        margin-top: 15px;
+        font-size: 14px
+    }
+    
+    .verification__support {  
+        margin-top: 16px;
+        padding: 0 6px;
+    }
+    
+    
+    .verification__pin>div>input { 
+        font-size: 38px;
+    } 
+} 
+@media screen and (max-width:570px) {
+    .verification__container {
+        width: 74.5%; 
+        margin-top: 68px;
+    } 
+} 
+@media screen and (max-width:450px) {
+    .verification__container {
+        width: 84.5%; 
+        margin-top: 75px;
+    }  
+    .verification__form {
+        padding: 33px;
+    }
+    
+    .verification__title {
+        font-size: 22px;
+    }
+    
+    
+    .verification__support {  
+        margin-top: 20px;
+        padding: 0;
+    }
+    
+    .verification__submit {
+        font-size: 15px;
+    }  
+    .verification__submit {
+        padding: 8px 0;
+    } 
+    
 }
