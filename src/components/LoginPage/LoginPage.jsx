@@ -3,12 +3,15 @@ import s from './Login.module.css'
 import Header from '../Header/Header'
 import React from "react";
 import './LoginPage.scss'
-
+import { useDispatch } from "react-redux";
+import { requestsHolidays } from "../../redux/MyCabReducer";
 
 const LoginPage = () => {
   const { reset, handleSubmit,register } = useForm()
+  const dispatch = useDispatch() 
   const onSubmit = (dataForm) => {
-    console.log(dataForm) 
+    console.log(dataForm)  
+    dispatch(requestsHolidays())
     reset()
   }
   return ( 
