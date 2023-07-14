@@ -31,14 +31,9 @@ const PersAreaStud = (props) => {
         reset()
     };
 
-    // Для тестирования Апи
-    // const test = () => {
-    //     dispatch(requestsHolidays())
-    // }
     return (
         <>
             <SideBarTeach/>
-            {/*<button onClick={test}>Click</button>*/}
             <div className="first_block">
                 <div className="inner_block">
                     <div className="avaname radblock">
