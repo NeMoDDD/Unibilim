@@ -14,6 +14,7 @@ import ForAll from "./components/PersAreaStud/forAll";
 import ForTeach from "./components/PATeach/forTeach";
 import TimeTableContainer from "./components/PersAreaStud/TimeTableContainer";
 import PersAreaStud from "./components/PATeach/MyCab";
+import Verification from "./components/LoginPage/Verification";
 
 
 function App() {
@@ -32,7 +33,8 @@ function App() {
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/teachcab" element={<MyCab />} />
         <Route path="/subjtable" element={<SubjTable />} />
-        <Route path="/popup" element={<PopUp />} />
+        <Route path="/popup" element={<PopUp />} /> 
+        <Route path="/verification" element={<Verification/>}/>
       </Routes>
     </div>
   );
