@@ -6,6 +6,7 @@ import userava from "../../assets/img/user (2) 2.png";
 import edit from "../../assets/img/edit1.png";
 import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
+import Header from "../Header/Header";
 
 const isValidEmail = email =>
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -32,6 +33,7 @@ const PersAreaStud = (props) => {
 
     return (
         <>
+            <Header/>
             <SideBarTeach/>
             <div className="first_block">
                 <div className="inner_block">

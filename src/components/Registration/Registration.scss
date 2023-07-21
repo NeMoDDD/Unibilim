@@ -7,6 +7,9 @@
   flex-direction: column;
   justify-content: center;
 }
+.reg-text-block {
+  margin: 0 auto;
+}
 .reg-text {
   width: 100%;
   height: 38px;
@@ -14,19 +17,26 @@
   font-size: 32px;
   line-height: 38.4px;
   color: #2d2d2d;
-  
+
 }
 .npt-txt {
   width: 90%;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  border-color: #ffbf13;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
   color: #595959;
-  background-color: white;
+  border-radius: 0 !important;
+  background-color: white !important;
+}
+.npt-txt:focus {
+  border-color: #ffbf13 !important;
+
+}
+.npt-txt-errors {
+  border-color: #d90000 !important;
 }
 .nm-txt {
   font-weight: 400;
@@ -51,7 +61,6 @@
   border-top: 0px;
   border-left: 0px;
   border-right: 0px;
-  border-color: #ffbf13;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;

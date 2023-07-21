@@ -9,7 +9,6 @@ import MyCab from './MyCab'
 const ForTeach = () => {
   return (
     <div>
-      <HeaderT />
       <MyCab />
       <Routes>
         <Route path="/studlist" element={<StudList />} />

@@ -5,7 +5,6 @@ import PersAreaStud from "../PersAreaStud/PersAreaStud";
 const ForAll = () => {
   return (
     <div>
-  
       <PersAreaStud />
     </div>
   );
