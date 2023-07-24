@@ -7,6 +7,7 @@ import edit from "../../assets/img/edit1.png";
 import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
 import Header from "../Header/Header";
+import SideBar from "../SideBar/SideBar";
 
 const isValidEmail = email =>
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -18,6 +19,7 @@ const PersAreaStud = (props) => {
     const {register, handleSubmit, reset, formState: {errors}} = useForm({
         mode: "onBlur",
     });
+    const isStudent = true
     const handleEmailValidation = email => {
         const isValid = isValidEmail(email);
 
@@ -34,7 +36,8 @@ const PersAreaStud = (props) => {
     return (
         <>
             <Header/>
-            <SideBarTeach/>
+            {isStudent === "/teachlk" ? <SideBarTeach/> : <SideBar/>}
+
             <div className="first_block">
                 <div className="inner_block">
                     <div className="avaname radblock">

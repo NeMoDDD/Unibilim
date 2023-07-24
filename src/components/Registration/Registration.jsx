@@ -3,15 +3,14 @@ import "./Registration.scss";
 import Header from "../Header/Header";
 import {Controller, useForm} from "react-hook-form";
 import {DatePicker, Input, Space} from "antd";
-import * as yup from "yup"
 import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
+import LocaleProvider from "antd/es/locale";
+import ruRU from 'antd/lib/locale/ru_RU';
+import {registerNewStudent} from "../../redux/RegisterReducer";
+import {useDispatch} from "react-redux";
 
-const schema = yup.object().shape({
-    phone: yup.string().required('Phone number is required').matches(/^\d+$/, 'Invalid phone number'),
-});
-
-const Registration = () => {
-    const {control, handleSubmit, reset, formState: {errors}} = useForm({
+const Registration = (props) => {
+    const {control, handleSubmit, setError, clearErrors, formState: {errors}} = useForm({
         mode: "onBlur",
     });
     const [name, setName] = useState("")
@@ -19,51 +18,28 @@ const Registration = () => {
     const [password, setPassword] = useState("")
     const [checkPassword, setCheckPassword] = useState("")
     const [tgName, setTgName] = useState("")
-    const [school, setSchool] = useState("")
+    const [dateOfBirth, setDateOfBirth] = useState("")
+    const [region, setRegion] = useState("")
     const [city, setCity] = useState("")
-    const [grade, setGrade] = useState("")
-    const [isReadRule, setReadRule] = useState("")
+    const [districtCity, setDistrictCity] = useState("")
+
+    const dispatch = useDispatch()
+
 
     const onSubmit = () => {
-        // if (btnValue === "Зарегистрироваться") {
-        //     handleClick(password, nickname)
-        // } else {
-        //     handleClick(email, password)
-        // }
+        dispatch(registerNewStudent(name, password, checkPassword, phone, tgName, dateOfBirth, region, city, districtCity))
     };
-
-    // const CheckCorrectOfPassword = (e) => {
-    //     if (e.target.value !== password) {
-    //         errors.checkPassword = "Пароль не верный"
-    //     } else {
-    //         errors.checkPassword = null
-    //     }
-    // }
-
-    const cities = ["Кара-Балта", "Бишкек", "Каинда", "Ош", "Токмок"];
-    const schoolArr = [
-        "СШ№1",
-        "СШ№2",
-        "СШ№3",
-        "СШ№4",
-        "СШ№5",
-        "СШ№6",
-        "СШ№8",
-        "СШ№9",
-        "СШ№10",
-        "СШ№11",
-        "СШ№12",
-    ];
-    const renderCities = cities.map((item, index) => (
-        <option value={item} key={index}>
-            {item}
-        </option>
-    ));
-    const renderSchools = schoolArr.map((item, index) => (
-        <option value={item} key={index}>
-            {item}
-        </option>
-    ));
+    const CheckCorrectOfPassword = (e) => {
+        setCheckPassword(e.target.value)
+        if (e.target.value !== password) {
+            setError('checkPassword', {
+                type: 'manual',
+                message: 'Пароли не совпадают',
+            });
+        } else {
+           clearErrors('checkPassword')
+        }
+    }
 
     return (
         <>
@@ -115,7 +91,8 @@ const Registration = () => {
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                // onChange: (e) => CheckCorrectOfPassword(e),
+                                onChange: (e) => CheckCorrectOfPassword(e),
+                                onBlur: (e) => CheckCorrectOfPassword(e),
                             }}
                             render={({field}) => <Input.Password {...field}
                                                                  iconRender={(visible) => (visible ? <EyeTwoTone/> :
@@ -125,7 +102,7 @@ const Registration = () => {
                         />
                         {errors.checkPassword &&
                             <p
-                                className="error-message">{errors.checkPassword || "Это поле обязательное!"}</p>}
+                                className="error-message">{errors.checkPassword.message || "Это поле обязательное!"}</p>}
                     </div>
                     <div className="input-form-block">
                         <p className="nm-txt2">Телефон</p>
@@ -165,29 +142,75 @@ const Registration = () => {
                     <div className="input-form-block">
                         <p className="nm-txt2">Дата рождения</p>
                         <Space direction="vertical">
-                            <DatePicker/>
+                            <LocaleProvider locale={ruRU}>
+                                <Controller
+                                    name="dateOfBirth"
+                                    control={control}
+                                    rules={{
+                                        // required: 'Это поле обязательное!'
+                                        onChange: (e) => setDateOfBirth(e.target.value)
+                                }}
+                                    render={({field}) => (
+                                        <DatePicker showToday={false} className={errors.dateOfBirth ? "data-picker data-picker-error" : "data-picker"}/>
+                                    )}
+                                />
+                                {errors.dateOfBirth && <p className="error-message">{errors.dateOfBirth.message}</p>}
+                            </LocaleProvider>
                         </Space>
                     </div>
-                    <p className="nm-txt2">Город</p>
-                    <select className="dropdown-select" name="city" id="cities">
-                        {renderCities}
-                    </select>
-                    <p className="nm-txt3">Школа</p>
-                    <select className="dropdown-select" name="school" id="school">
-                        {renderSchools}
-                    </select>
-                    <p className="nm-txt3">Класс</p>
-                    <input type="text" className="npt-txt" placeholder="11В"></input>
-                    <div class="form-check">
+                    <div className="input-form-block">
+                        <p className="nm-txt2">Область</p>
+                        <Controller
+                            name="region"
+                            control={control}
+                            rules={{
+                                required: "Это поле обязательное!",
+                                onChange: (e) => setRegion(e.target.value)
+                            }}
+                            render={({field}) => <Input {...field}
+                                                        className={errors.region ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                            />}/>
+                        {errors.region && <p className="error-message">{errors.region.message}</p>}
+                    </div>
+                    <div className="input-form-block">
+                        <p className="nm-txt2">Район</p>
+                        <Controller
+                            name="city"
+                            control={control}
+                            rules={{
+                                required: "Это поле обязательное!",
+                                onChange: (e) => setCity(e.target.value)
+                            }}
+                            render={({field}) => <Input {...field}
+                                                        className={errors.city ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                            />}/>
+                        {errors.city && <p className="error-message">{errors.city.message}</p>}
+                    </div>
+                    <div className="input-form-block">
+                        <p className="nm-txt2">Город или село</p>
+                        <Controller
+                            name="districtCity"
+                            control={control}
+                            rules={{
+                                required: "Это поле обязательное!",
+                                onChange: (e) => setDistrictCity(e.target.value)
+                            }}
+                            render={({field}) => <Input {...field}
+                                                        className={errors.districtCity ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                            />}/>
+                        {errors.districtCity && <p className="error-message">{errors.districtCity.message}</p>}
+                    </div>
+                    <div className="form-check">
                         <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
+                            required
                         />
                         <label class="form-check-label" for="flexCheckDefault">
-                            Я прочитал (а) правила и условия платформы и соглашаюсь на
-                            обработку персональных данных и Политику конфиденциальности
+                            Я прочитал (а) <a href="#">правила и условия</a> платформы и соглашаюсь на
+                            обработку персональных данных и <a href="#"> Политику конфиденциальности</a>
                         </label>
                     </div>
                     <button type="submit" className="reg-end">
@@ -196,7 +219,7 @@ const Registration = () => {
                 </div>
             </form>
         </>
-    );
+    )
 };
 
 export default Registration;

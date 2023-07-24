@@ -35,13 +35,22 @@
   background-color: white !important;
 }
 .npt-txt:hover {
-  border-color: #ffbf13;
+  border-color: #ffbf13 !important;
 }
 .npt-txt:focus {
   border-color: #ffbf13;
   outline: 0;
 }
 .npt-txt-errors {
+  border-color: #D0021B !important;
+}
+.data-picker:hover {
+  border-color: #ffbf13 !important;
+}
+.ant-picker-focused {
+  border-color: #ffbf13 !important;
+}
+.data-picker-error {
   border-color: #D0021B !important;
 }
 .error-message {

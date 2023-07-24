@@ -1,16 +1,18 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    setBirthday, setCity, setDistrict,
+    setBirthday,
+    setCity,
+    setDistrict,
     setEmail,
     setInputDisabled,
     setLocation,
     setName,
-    setPhone, setRegion,
+    setPhone,
+    setRegion,
     setSurname
 } from "../../store/MyCabReducer";
 import PersAreaStud from "./MyCab";
-import {requestsHolidays} from "../../redux/MyCabReducer";
 
 const mapStateToProps = (state) => {
     return {
