@@ -1,6 +1,5 @@
 import {holidaysApi} from "../Api/holidays-api";
 
-const SET_INPUT_DISABLED = "SET_INPUT_DISABLED"
 const SET_NAME = "SET_NAME"
 const SET_SURNAME = "SET_SURNAME"
 const SET_BIRTHDAY = "SET_BIRTHDAY"
@@ -27,11 +26,6 @@ let initialState = {
 
 const MyCabReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_INPUT_DISABLED:
-            return {
-                ...state,
-                isInputDisabled: action.isInputDisabled
-            }
         case SET_NAME:
             return {
                 ...state,
@@ -83,7 +77,6 @@ const MyCabReducer = (state = initialState, action) => {
     }
 }
 
-export const setInputDisabled = (isInputDisabled) => ({type: SET_INPUT_DISABLED, isInputDisabled})
 export const setName = (name) => ({type: SET_NAME, name})
 export const setSurname = (surname) => ({type: SET_SURNAME, surname})
 export const setBirthday = (dayOfBirthday) => ({type: SET_BIRTHDAY, dayOfBirthday})
