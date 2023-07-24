@@ -2,10 +2,10 @@ import React, {useState} from "react";
 import "./Registration.scss";
 import Header from "../Header/Header";
 import {Controller, useForm} from "react-hook-form";
-import {Input} from "antd";
-import style from "./Form/Form.module.scss";
-import { yupResolver } from '@hookform/resolvers/yup';
+import {DatePicker, Input, Space} from "antd";
 import * as yup from "yup"
+import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
+
 const schema = yup.object().shape({
     phone: yup.string().required('Phone number is required').matches(/^\d+$/, 'Invalid phone number'),
 });
@@ -13,10 +13,12 @@ const schema = yup.object().shape({
 const Registration = () => {
     const {control, handleSubmit, reset, formState: {errors}} = useForm({
         mode: "onBlur",
-        resolver: yupResolver(schema),
     });
     const [name, setName] = useState("")
     const [phone, setPhone] = useState("")
+    const [password, setPassword] = useState("")
+    const [checkPassword, setCheckPassword] = useState("")
+    const [tgName, setTgName] = useState("")
     const [school, setSchool] = useState("")
     const [city, setCity] = useState("")
     const [grade, setGrade] = useState("")
@@ -29,7 +31,14 @@ const Registration = () => {
         //     handleClick(email, password)
         // }
     };
-    const btnValue = "Зарегистрироваться"
+
+    // const CheckCorrectOfPassword = (e) => {
+    //     if (e.target.value !== password) {
+    //         errors.checkPassword = "Пароль не верный"
+    //     } else {
+    //         errors.checkPassword = null
+    //     }
+    // }
 
     const cities = ["Кара-Балта", "Бишкек", "Каинда", "Ош", "Токмок"];
     const schoolArr = [
@@ -64,32 +73,101 @@ const Registration = () => {
                     <div className="reg-text-block">
                         <p className="reg-text">Регистрация</p>
                     </div>
-                    <p className="nm-txt">Имя</p>
-                    {btnValue === "Зарегистрироваться" ? <Controller
-                        name="name"
-                        control={control}
-                        rules={{
-                            required: "Это поле обязательное!",
-                            onChange: (e) => setName(e.target.value)
-                        }}
-                        render={({field}) => <Input {...field}
-                                                    className={errors.name ? "npt-txt npt-txt-errors" : 'npt-txt'}
-                        />}/> : null}
-                    {errors.name && <span className={style.error__message}>{errors.name.message}</span>}
-                    <p className="nm-txt2">Телефон</p>
-                    <Controller
-                        name="phone"
-                        control={control}
-                        defaultValue=""
-                        render={({ field }) => (
-                            <Input
-                                {...field}
-                                type="phone"
-                                className={errors.phone ? 'npt-txt npt-txt-errors' : 'npt-txt'}
-                            />
-                        )}
-                    />
-                    {errors.phone && <p className="error-message">{errors.phone.message}</p>}
+                    <div className="input-form-block">
+                        <p className="nm-txt">Имя</p>
+                        <Controller
+                            name="name"
+                            control={control}
+                            rules={{
+                                required: "Это поле обязательное!",
+                                onChange: (e) => setName(e.target.value)
+                            }}
+                            render={({field}) => <Input {...field}
+                                                        className={errors.name ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                            />}/>
+                        {errors.name && <p className="error-message">{errors.name.message}</p>}
+                    </div>
+                    <div className="input-form-block">
+                        <p className="nm-txt2">Пароль</p>
+                        <Controller
+                            name="password"
+                            control={control}
+                            rules={{
+                                required: "Это поле обязательное!", minLength: {
+                                    value: 6,
+                                    message: "Минимум 6 символов!"
+                                }, onChange: (e) => setPassword(e.target.value)
+                            }}
+                            render={({field}) => <Input.Password {...field}
+                                                                 iconRender={(visible) => (visible ? <EyeTwoTone/> :
+                                                                     <EyeInvisibleOutlined/>)}
+                                                                 className={errors.password ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                            />}
+                        />
+                        {errors.password &&
+                            <p
+                                className="error-message">{errors.password.message || "Это поле обязательное!"}</p>}
+                    </div>
+                    <div className="input-form-block">
+                        <p className="nm-txt2">Повторите пароль</p>
+                        <Controller
+                            name="checkPassword"
+                            control={control}
+                            rules={{
+                                required: "Это поле обязательное!",
+                                // onChange: (e) => CheckCorrectOfPassword(e),
+                            }}
+                            render={({field}) => <Input.Password {...field}
+                                                                 iconRender={(visible) => (visible ? <EyeTwoTone/> :
+                                                                     <EyeInvisibleOutlined/>)}
+                                                                 className={errors.checkPassword ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                            />}
+                        />
+                        {errors.checkPassword &&
+                            <p
+                                className="error-message">{errors.checkPassword || "Это поле обязательное!"}</p>}
+                    </div>
+                    <div className="input-form-block">
+                        <p className="nm-txt2">Телефон</p>
+                        <Controller
+                            name="phone"
+                            control={control}
+                            rules={{
+                                required: "Это поле обязательное!",
+                                onChange: (e) => setPhone(e.target.value)
+                            }}
+                            defaultValue=""
+                            render={({field}) => (
+                                <Input
+                                    {...field}
+                                    type="phone"
+                                    placeholder="+996"
+                                    className={errors.phone ? 'npt-txt npt-txt-errors' : 'npt-txt'}
+                                />
+                            )}
+                        />
+                        {errors.phone && <p className="error-message">{errors.phone.message}</p>}
+                    </div>
+                    <div className="input-form-block">
+                        <p className="nm-txt2">Ник в телеграмме</p>
+                        <Controller
+                            name="tg_name"
+                            control={control}
+                            rules={{
+                                required: "Это поле обязательное!",
+                                onChange: (e) => setTgName(e.target.value)
+                            }}
+                            render={({field}) => <Input {...field}
+                                                        className={errors.tg_name ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                            />}/>
+                        {errors.tg_name && <p className="error-message">{errors.tg_name.message}</p>}
+                    </div>
+                    <div className="input-form-block">
+                        <p className="nm-txt2">Дата рождения</p>
+                        <Space direction="vertical">
+                            <DatePicker/>
+                        </Space>
+                    </div>
                     <p className="nm-txt2">Город</p>
                     <select className="dropdown-select" name="city" id="cities">
                         {renderCities}
