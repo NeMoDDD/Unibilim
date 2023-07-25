@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import HeaderT from "../Header/HeaderT";
 import StudList from "./StudList";
 import SubjTable from './SubjTable'
-import MyCab from './MyCab'
+import MyCab from './TeacherCabinet'
 
 
 const ForTeach = () => {

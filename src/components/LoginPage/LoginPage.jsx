@@ -1,19 +1,24 @@
-import { useForm } from "react-hook-form";
-import s from './Login.module.css' 
+import {Controller, useForm} from "react-hook-form";
+import s from './Login.module.css'
 import Header from '../Header/Header'
 import React from "react";
 import './LoginPage.scss'
-import { useDispatch } from "react-redux";
-import { requestsHolidays } from "../../redux/MyCabReducer";
+import {useDispatch, useSelector} from "react-redux";
+import {Input} from "antd";
+import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
+import {setUserName} from "../../redux/loginReducer";
 
-const LoginPage = () => {
-  const { reset, handleSubmit,register } = useForm()
-  const dispatch = useDispatch() 
-  const onSubmit = (dataForm) => {
-    console.log(dataForm)  
-    dispatch(requestsHolidays())
-    reset()
-  }
+const LoginPage = (props) => {
+  const {control, handleSubmit, setError, clearErrors, formState: {errors}} = useForm({
+    mode: "onBlur",
+  })
+  const dispatch = useDispatch()
+    const {userName} = useSelector(state => state.loginReducer)
+  const onSubmit = () => {
+      console.log(props)
+      props.login(props.userName, props.password)
+    // dispatch(registerNewStudent(name, password, checkPassword, phone, tgName, dateOfBirth, region, city, districtCity))
+  };
   return ( 
     <> 
      <Header/>
@@ -22,10 +27,39 @@ const LoginPage = () => {
       <form className={s.login__form} onSubmit={handleSubmit(onSubmit)}>
         <div className={s.form__in}>Вход</div>
         <div className={s.form__data}>
-          <div className={s.form__tel}>Телефон</div>
-          <input type="tel" className={s.form__tel_input}  
-          {...register('phoneNumber',{required:true})} 
-          /> 
+          <div className="input-form-block">
+            <p className="nm-txt">Имя</p>
+            <Controller
+                name="name"
+                control={control}
+                rules={{
+                  required: "Это поле обязательное!",
+                  onChange: (e) => props.setUserName(e.target.value)
+                }}
+                render={({field}) => <Input {...field}
+                                            className={errors.name ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                />}/>
+            {errors.name && <p className="error-message">{errors.name.message}</p>}
+          </div>
+          <div className="input-form-block">
+            <p className="nm-txt2">Пароль</p>
+            <Controller
+                name="password"
+                control={control}
+                rules={{
+                  required: "Это поле обязательное!",
+                  onChange: (e) => props.setUserPassword(e.target.value)
+                }}
+                render={({field}) => <Input.Password {...field}
+                                                     iconRender={(visible) => (visible ? <EyeTwoTone/> :
+                                                         <EyeInvisibleOutlined/>)}
+                                                     className={errors.password ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                />}
+            />
+            {errors.password &&
+                <p
+                    className="error-message">{errors.password.message || "Это поле обязательное!"}</p>}
+          </div>
         </div>
         <button type='submit' className={s.form__submit}>Продолжить</button>
       </form>
@@ -35,12 +69,3 @@ const LoginPage = () => {
   );
 }; 
 export default LoginPage;
-
-// <div className="up_block">
-//   <div className="login_block">
-//     <p className="vhod">Вход</p>
-//     <p className="phone_txt">Телефон</p>
-//     <input type="phone" placeholder="+996556924582" className="phon_npt"></input>
-//     <button type="submit" className="log_in">Продолжить</button>
-//   </div>
-// </div>

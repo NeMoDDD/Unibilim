@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.44.3",
     "react-intl-universal": "^2.6.21",
+    "react-phone-input-2": "^2.15.1",
     "react-redux": "^8.0.7",
     "react-router-dom": "^6.7.0",
     "react-scripts": "5.0.1",

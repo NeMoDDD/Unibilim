@@ -26,8 +26,8 @@ const StudList = () => {
 
   return (
     <>
-    <SideBarTeach/>
-    <HeaderT />
+      <HeaderT />
+      <SideBarTeach />
     <div className="pad">
       <div className="stud_head">
         <div className="radios">

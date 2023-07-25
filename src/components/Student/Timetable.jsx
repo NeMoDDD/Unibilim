@@ -5,6 +5,7 @@ import HeaderFS from "../Header/Header";
 import Table from "./TimtetableComponents/TableLarge"; 
 import TableMobile from "./TimtetableComponents/TabelModile";
 import { testData1, testData2, testData3 } from "../../redux/timetableReducer";
+import Header from "../Header/Header";
 
 const Timetable = React.memo((props) => {
   const firstDate = props.timetable?.alldate?.[0];
@@ -27,8 +28,8 @@ const Timetable = React.memo((props) => {
   }
   return (
     <>
-      <SideBar />
-      <HeaderFS />
+      <Header/>
+      <SideBar/>
       {props.timetable?.alldate &&
 
         <div className="timetable_block">

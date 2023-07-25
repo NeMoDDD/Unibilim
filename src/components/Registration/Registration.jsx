@@ -2,12 +2,13 @@ import React, {useState} from "react";
 import "./Registration.scss";
 import Header from "../Header/Header";
 import {Controller, useForm} from "react-hook-form";
-import {DatePicker, Input, Space} from "antd";
+import {ConfigProvider, DatePicker, Input, Space} from "antd";
 import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
-import LocaleProvider from "antd/es/locale";
 import ruRU from 'antd/lib/locale/ru_RU';
 import {registerNewStudent} from "../../redux/RegisterReducer";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import PhoneInput from "react-phone-input-2";
+import 'react-phone-input-2/lib/style.css';
 
 const Registration = (props) => {
     const {control, handleSubmit, setError, clearErrors, formState: {errors}} = useForm({
@@ -24,7 +25,7 @@ const Registration = (props) => {
     const [districtCity, setDistrictCity] = useState("")
 
     const dispatch = useDispatch()
-
+    const {userRole} = useSelector(state => state.loginReducer)
 
     const onSubmit = () => {
         dispatch(registerNewStudent(name, password, checkPassword, phone, tgName, dateOfBirth, region, city, districtCity))
@@ -37,8 +38,9 @@ const Registration = (props) => {
                 message: 'Пароли не совпадают',
             });
         } else {
-           clearErrors('checkPassword')
+            clearErrors('checkPassword')
         }
+
     }
 
     return (
@@ -113,15 +115,12 @@ const Registration = (props) => {
                                 required: "Это поле обязательное!",
                                 onChange: (e) => setPhone(e.target.value)
                             }}
-                            defaultValue=""
-                            render={({field}) => (
-                                <Input
-                                    {...field}
-                                    type="phone"
-                                    placeholder="+996"
-                                    className={errors.phone ? 'npt-txt npt-txt-errors' : 'npt-txt'}
-                                />
-                            )}
+                            render={({field}) => <PhoneInput  {...field}
+                                                              country={'kg'}
+                                                              placeholder="+996"
+                                                              preferredCountries={['kg', 'ru', 'kz']}
+                                                              inputClass={errors.phone ? 'npt-txt npt-txt-errors' : 'npt-txt'}
+                            ></PhoneInput>}
                         />
                         {errors.phone && <p className="error-message">{errors.phone.message}</p>}
                     </div>
@@ -142,22 +141,23 @@ const Registration = (props) => {
                     <div className="input-form-block">
                         <p className="nm-txt2">Дата рождения</p>
                         <Space direction="vertical">
-                            <LocaleProvider locale={ruRU}>
+                            <ConfigProvider locale={ruRU}>
                                 <Controller
                                     name="dateOfBirth"
                                     control={control}
                                     rules={{
                                         // required: 'Это поле обязательное!'
                                         onChange: (e) => setDateOfBirth(e.target.value)
-                                }}
+                                    }}
                                     render={({field}) => (
-                                        <DatePicker showToday={false} className={errors.dateOfBirth ? "data-picker data-picker-error" : "data-picker"}/>
+                                        <DatePicker showToday={false}
+                                                    className={errors.dateOfBirth ? "data-picker data-picker-error" : "data-picker"}/>
                                     )}
                                 />
                                 {errors.dateOfBirth && <p className="error-message">{errors.dateOfBirth.message}</p>}
-                            </LocaleProvider>
+                            </ConfigProvider>
                         </Space>
-                    </div>
+                </div>
                     <div className="input-form-block">
                         <p className="nm-txt2">Область</p>
                         <Controller

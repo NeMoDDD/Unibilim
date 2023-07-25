@@ -6,6 +6,7 @@ import teach3 from "../../assets/img/teach3.png";
 import teach4 from "../../assets/img/teach4.png";
 import SideBar from "../SideBar/SideBar";
 import HeaderFS from "../Header/Header";
+import Header from "../Header/Header";
 
 const TeachList = () => {
   const classArr = ["Все классы", "9В", "10B", "8А", "11Г"];
@@ -77,8 +78,8 @@ const TeachList = () => {
   ));
   return (
     <>
-      <SideBar />
-      <HeaderFS />
+      <Header/>
+      <SideBar/>
       <div className="pad">
       <div className="teach_list_block">
         <p className="teach_txt">Репетиторы</p>

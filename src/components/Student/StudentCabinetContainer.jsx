@@ -12,7 +12,7 @@ import {
     setRegion,
     setSurname
 } from "../../store/MyCabReducer";
-import PersAreaStud from "./MyCab";
+import StudentCabinet from "./StudentCabinet";
 
 const mapStateToProps = (state) => {
     return {
@@ -30,4 +30,4 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {setInputDisabled, setName, setSurname, setBirthday, setEmail,
-    setPhone, setLocation, setCity, setRegion, setDistrict})(PersAreaStud)
+    setPhone, setLocation, setCity, setRegion, setDistrict})(StudentCabinet)
