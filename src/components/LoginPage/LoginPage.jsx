@@ -1,46 +1,72 @@
-import { useForm } from "react-hook-form";
-import s from './Login.module.css' 
-import Header from '../Header/Header'
+import {Controller, useForm} from "react-hook-form";
+import Header from '../Header/HeaderS'
 import React from "react";
-import './LoginPage.scss'
-import { useDispatch } from "react-redux";
-import { requestsHolidays } from "../../redux/MyCabReducer";
+import s from './LoginPage.module.css'
+import {useDispatch, useSelector} from "react-redux";
+import {Input} from "antd";
+import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
+import {login, setUserName, setUserPassword} from "../../redux/loginReducer";
 
-const LoginPage = () => {
-  const { reset, handleSubmit,register } = useForm()
-  const dispatch = useDispatch() 
-  const onSubmit = (dataForm) => {
-    console.log(dataForm)  
-    dispatch(requestsHolidays())
-    reset()
-  }
-  return ( 
-    <> 
-     <Header/>
-    <div className={s.login__page}> 
-    <div className={s.login}>
-      <form className={s.login__form} onSubmit={handleSubmit(onSubmit)}>
-        <div className={s.form__in}>Вход</div>
-        <div className={s.form__data}>
-          <div className={s.form__tel}>Телефон</div>
-          <input type="tel" className={s.form__tel_input}  
-          {...register('phoneNumber',{required:true})} 
-          /> 
-        </div>
-        <button type='submit' className={s.form__submit}>Продолжить</button>
-      </form>
-    </div>
-    </div>
-    </> 
-  );
-}; 
+const LoginPage = (props) => {
+    const {control, handleSubmit, setError, clearErrors, formState: {errors}} = useForm({
+        mode: "onBlur",
+    })
+    const dispatch = useDispatch()
+    const {userName, password} = useSelector(state => state.loginReducer)
+    const onSubmit = () => {
+        dispatch(login(userName, password))
+        // dispatch(registerNewStudent(name, password, checkPassword, phone, tgName, dateOfBirth, region, city, districtCity))
+    };
+    return (
+        <>
+            <Header/>
+            <div className={s.login__page}>
+                <div className={s.login}>
+                    <form className={s.login__form} onSubmit={handleSubmit(onSubmit)}>
+                        <div className={s.form__in}>
+                            <p className={s.form__in__text}>Вход</p>
+                        </div>
+                        <div className={s.form__data}>
+                            <div className="input-form-block">
+                                <p className="nm-txt">Имя</p>
+                                <Controller
+                                    name="name"
+                                    control={control}
+                                    rules={{
+                                        required: "Это поле обязательное!",
+                                        onChange: (e) => dispatch(setUserName(e.target.value))
+                                    }}
+                                    render={({field}) => <Input {...field}
+                                                                className={errors.name ? `${s.npt_txt} ${s.npt_txt_errors}` : s.npt_txt}
+                                    />}/>
+                                {errors.name && <p className={s.error_message}>{errors.name.message}</p>}
+                            </div>
+                            <div className="input-form-block">
+                                <p className="nm-txt2">Пароль</p>
+                                <Controller
+                                    name="password"
+                                    control={control}
+                                    rules={{
+                                        required: "Это поле обязательное!",
+                                        onChange: (e) => dispatch(setUserPassword(e.target.value))
+                                    }}
+                                    render={({field}) => <Input.Password {...field}
+                                                                         iconRender={(visible) => (visible ?
+                                                                             <EyeTwoTone/> :
+                                                                             <EyeInvisibleOutlined/>)}
+                                                                         className={errors.password ? `${s.npt_txt} ${s.npt_txt_errors}` : s.npt_txt}
+                                    />}
+                                />
+                                {errors.password &&
+                                    <p
+                                        className={s.error_message}>{errors.password.message || "Это поле обязательное!"}</p>}
+                            </div>
+                        </div>
+                        <button type='submit' className={s.form__submit}>Продолжить</button>
+                    </form>
+                </div>
+            </div>
+        </>
+    );
+};
 export default LoginPage;
-
-// <div className="up_block">
-//   <div className="login_block">
-//     <p className="vhod">Вход</p>
-//     <p className="phone_txt">Телефон</p>
-//     <input type="phone" placeholder="+996556924582" className="phon_npt"></input>
-//     <button type="submit" className="log_in">Продолжить</button>
-//   </div>
-// </div>

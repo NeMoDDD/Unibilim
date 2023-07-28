@@ -1,69 +1,75 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./Registration.scss";
-import Header from "../Header/Header";
+import Header from "../Header/HeaderS";
 import {Controller, useForm} from "react-hook-form";
-import {DatePicker, Input, Space} from "antd";
-import * as yup from "yup"
-import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
-
-const schema = yup.object().shape({
-    phone: yup.string().required('Phone number is required').matches(/^\d+$/, 'Invalid phone number'),
-});
+import {ConfigProvider, DatePicker, Input, Select, Space} from "antd";
+import {EyeInvisibleOutlined, EyeTwoTone, UploadOutlined} from "@ant-design/icons";
+import ruRU from 'antd/lib/locale/ru_RU';
+import {
+    registerNewStudent,
+    setBirthday,
+    setCheckPassword, setCity,
+    setDistrict,
+    setName,
+    setNick, setPassword, setPatronym, setRegion, setTgName, setSurname, setPhone, setSelectedPhoto
+} from "../../redux/RegisterReducer";
+import {useDispatch, useSelector} from "react-redux";
+import PhoneInput from "react-phone-input-2";
+import 'react-phone-input-2/lib/style.css';
+import {Upload, Button} from 'antd';
+import LocationReducer, {getCities, getDistricts, getRegion} from "../../redux/location-reducer";
 
 const Registration = () => {
-    const {control, handleSubmit, reset, formState: {errors}} = useForm({
+    const {control, handleSubmit, setError, clearErrors, formState: {errors}} = useForm({
         mode: "onBlur",
     });
-    const [name, setName] = useState("")
-    const [phone, setPhone] = useState("")
-    const [password, setPassword] = useState("")
-    const [checkPassword, setCheckPassword] = useState("")
-    const [tgName, setTgName] = useState("")
-    const [school, setSchool] = useState("")
-    const [city, setCity] = useState("")
-    const [grade, setGrade] = useState("")
-    const [isReadRule, setReadRule] = useState("")
+
+    const dispatch = useDispatch()
+    const {
+        nick, name, surname, patronym, phone, password, checkPassword, tgName,
+        dateOfBirth, region, city, districtCity, selectedPhoto
+    } = useSelector(state => state.registerReducer)
+    const {regions,  cities, districtCities} = useSelector(state => state.locationReducer)
 
     const onSubmit = () => {
-        // if (btnValue === "Зарегистрироваться") {
-        //     handleClick(password, nickname)
-        // } else {
-        //     handleClick(email, password)
-        // }
+        dispatch(registerNewStudent(nick, name, surname, patronym, password, checkPassword, phone, tgName, dateOfBirth, region, city, districtCity, selectedPhoto))
     };
+    const CheckCorrectOfPassword = (e) => {
+        dispatch(setCheckPassword(e.target.value))
+        if (e.target.value !== password) {
+            setError('checkPassword', {
+                type: 'manual',
+                message: 'Пароли не совпадают',
+            });
+        } else {
+            clearErrors('checkPassword')
+        }
+    }
 
-    // const CheckCorrectOfPassword = (e) => {
-    //     if (e.target.value !== password) {
-    //         errors.checkPassword = "Пароль не верный"
-    //     } else {
-    //         errors.checkPassword = null
-    //     }
-    // }
+    useEffect(() => {
+        dispatch(getRegion())
+    }, [])
+    useEffect(() => {
+        dispatch(getDistricts(region))
+    }, [region])
+    useEffect(() => {
+        dispatch(getCities(districtCity))
+    }, [districtCity])
 
-    const cities = ["Кара-Балта", "Бишкек", "Каинда", "Ош", "Токмок"];
-    const schoolArr = [
-        "СШ№1",
-        "СШ№2",
-        "СШ№3",
-        "СШ№4",
-        "СШ№5",
-        "СШ№6",
-        "СШ№8",
-        "СШ№9",
-        "СШ№10",
-        "СШ№11",
-        "СШ№12",
-    ];
-    const renderCities = cities.map((item, index) => (
-        <option value={item} key={index}>
-            {item}
-        </option>
-    ));
-    const renderSchools = schoolArr.map((item, index) => (
-        <option value={item} key={index}>
-            {item}
-        </option>
-    ));
+    // Создаем массив options для Select, используя метод map для regions
+    const regionOptions = regions.map((region) => ({
+        label: region.name,
+        value: region.id,
+    }));
+    const districtOptions = districtCities.map((district) => ({
+        label: district.name,
+        value: district.id,
+    }))
+    const cityOptions = cities.map((city) => ({
+        label: city.name,
+        value: city.id,
+    }))
+
 
     return (
         <>
@@ -74,18 +80,60 @@ const Registration = () => {
                         <p className="reg-text">Регистрация</p>
                     </div>
                     <div className="input-form-block">
+                        <p className="nm-txt">Ник</p>
+                        <Controller
+                            name="nick"
+                            control={control}
+                            rules={{
+                                required: "Это поле обязательное!",
+                                onChange: (e) => dispatch(setNick(e.target.value))
+                            }}
+                            render={({field}) => <Input {...field}
+                                                        className={errors.nick ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                            />}/>
+                        {errors.nick && <p className="error-message">{errors.nick.message}</p>}
+                    </div>
+                    <div className="input-form-block">
                         <p className="nm-txt">Имя</p>
                         <Controller
                             name="name"
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                onChange: (e) => setName(e.target.value)
+                                onChange: (e) => dispatch(setName(e.target.value))
                             }}
                             render={({field}) => <Input {...field}
                                                         className={errors.name ? "npt-txt npt-txt-errors" : 'npt-txt'}
                             />}/>
                         {errors.name && <p className="error-message">{errors.name.message}</p>}
+                    </div>
+                    <div className="input-form-block">
+                        <p className="nm-txt">Фамилие</p>
+                        <Controller
+                            name="surname"
+                            control={control}
+                            rules={{
+                                required: "Это поле обязательное!",
+                                onChange: (e) => dispatch(setSurname(e.target.value))
+                            }}
+                            render={({field}) => <Input {...field}
+                                                        className={errors.surname ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                            />}/>
+                        {errors.surname && <p className="error-message">{errors.surname.message}</p>}
+                    </div>
+                    <div className="input-form-block">
+                        <p className="nm-txt">Отчество</p>
+                        <Controller
+                            name="patronym"
+                            control={control}
+                            rules={{
+                                required: "Это поле обязательное!",
+                                onChange: (e) => dispatch(setPatronym(e.target.value))
+                            }}
+                            render={({field}) => <Input {...field}
+                                                        className={errors.patronym ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                            />}/>
+                        {errors.patronym && <p className="error-message">{errors.patronym.message}</p>}
                     </div>
                     <div className="input-form-block">
                         <p className="nm-txt2">Пароль</p>
@@ -96,7 +144,7 @@ const Registration = () => {
                                 required: "Это поле обязательное!", minLength: {
                                     value: 6,
                                     message: "Минимум 6 символов!"
-                                }, onChange: (e) => setPassword(e.target.value)
+                                }, onChange: (e) => dispatch(setPassword(e.target.value))
                             }}
                             render={({field}) => <Input.Password {...field}
                                                                  iconRender={(visible) => (visible ? <EyeTwoTone/> :
@@ -115,7 +163,8 @@ const Registration = () => {
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                // onChange: (e) => CheckCorrectOfPassword(e),
+                                onChange: (e) => CheckCorrectOfPassword(e),
+                                // onBlur: (e) => CheckCorrectOfPassword(e),
                             }}
                             render={({field}) => <Input.Password {...field}
                                                                  iconRender={(visible) => (visible ? <EyeTwoTone/> :
@@ -125,7 +174,7 @@ const Registration = () => {
                         />
                         {errors.checkPassword &&
                             <p
-                                className="error-message">{errors.checkPassword || "Это поле обязательное!"}</p>}
+                                className="error-message">{errors.checkPassword.message || "Это поле обязательное!"}</p>}
                     </div>
                     <div className="input-form-block">
                         <p className="nm-txt2">Телефон</p>
@@ -134,17 +183,14 @@ const Registration = () => {
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                onChange: (e) => setPhone(e.target.value)
+                                onChange: (e) => dispatch(setPhone(e.target.value))
                             }}
-                            defaultValue=""
-                            render={({field}) => (
-                                <Input
-                                    {...field}
-                                    type="phone"
-                                    placeholder="+996"
-                                    className={errors.phone ? 'npt-txt npt-txt-errors' : 'npt-txt'}
-                                />
-                            )}
+                            render={({field}) => <PhoneInput  {...field}
+                                                              country={'kg'}
+                                                              placeholder="+996"
+                                                              preferredCountries={['kg', 'ru', 'kz']}
+                                                              inputClass={errors.phone ? 'npt-txt npt-txt-errors' : 'npt-txt'}
+                            ></PhoneInput>}
                         />
                         {errors.phone && <p className="error-message">{errors.phone.message}</p>}
                     </div>
@@ -155,7 +201,7 @@ const Registration = () => {
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                onChange: (e) => setTgName(e.target.value)
+                                onChange: (e) => dispatch(setTgName(e.target.value))
                             }}
                             render={({field}) => <Input {...field}
                                                         className={errors.tg_name ? "npt-txt npt-txt-errors" : 'npt-txt'}
@@ -165,29 +211,111 @@ const Registration = () => {
                     <div className="input-form-block">
                         <p className="nm-txt2">Дата рождения</p>
                         <Space direction="vertical">
-                            <DatePicker/>
+                            <ConfigProvider locale={ruRU}>
+                                <Controller
+                                    name="dateOfBirth"
+                                    control={control}
+                                    rules={{
+                                        required: 'Это поле обязательное!',
+                                    }}
+                                    render={({field}) => (
+                                        <DatePicker showToday={false}
+                                                    onChange={(e) => dispatch(setBirthday(e.format("DD-MM-YYYY")))}
+                                                    format="DD-MM-YYYY"
+                                                    className={errors.dateOfBirth ? "data-picker data-picker-error" : "data-picker"}/>
+                                    )}
+                                />
+                                {errors.dateOfBirth && <p className="error-message">{errors.dateOfBirth.message}</p>}
+                            </ConfigProvider>
                         </Space>
                     </div>
-                    <p className="nm-txt2">Город</p>
-                    <select className="dropdown-select" name="city" id="cities">
-                        {renderCities}
-                    </select>
-                    <p className="nm-txt3">Школа</p>
-                    <select className="dropdown-select" name="school" id="school">
-                        {renderSchools}
-                    </select>
-                    <p className="nm-txt3">Класс</p>
-                    <input type="text" className="npt-txt" placeholder="11В"></input>
-                    <div class="form-check">
+                    <div className="input-form-block">
+                        <p className="nm-txt2">Область</p>
+                        <Controller
+                            name="region"
+                            control={control}
+                            rules={{
+                                required: "Это поле обязательное!",
+                                onChange: (e) => dispatch(setRegion(e.target.value))
+
+                            }}
+                            render={({field}) => <Select {...field}
+                                                         className={errors.region ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                                                         options={regionOptions}
+                            />
+
+                            }/>
+
+                        {errors.region && <p className="error-message">{errors.region.message}</p>}
+                    </div>
+                    <div className="input-form-block">
+                        <p className="nm-txt2">Район</p>
+                        <Controller
+                            name="districtCity"
+                            control={control}
+                            rules={{
+                                required: "Это поле обязательное!",
+                                onChange: (e) => dispatch(setDistrict(e.target.value))
+                            }}
+                            render={({field}) => <Select {...field}
+                                                         className={errors.districtCity ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                                                         options={districtOptions}
+                            />}/>
+                        {errors.districtCity && <p className="error-message">{errors.districtCity.message}</p>}
+                    </div>
+                    <div className="input-form-block">
+                        <p className="nm-txt2">Город или село</p>
+                        <Controller
+                            name="city"
+                            control={control}
+                            rules={{
+                                required: "Это поле обязательное!",
+                                onChange: (e) => dispatch(setCity(e.target.value))
+                            }}
+                            render={({field}) => <Select {...field}
+                                                         className={errors.city ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                                                         options={cityOptions}
+                            />}/>
+                        {errors.city && <p className="error-message">{errors.city.message}</p>}
+                    </div>
+                    <div className="input-form-block">
+                        <p className="nm-txt2">Выберите ваше фото</p>
+                        <Controller
+                            name="file"
+                            control={control}
+                            rules={{
+                                // required: 'Это поле обязательное!',
+                                validate: (value) => {
+                                    if (!value) return 'Это поле обязательное!';
+                                    // if (!['image/jpeg', 'image/png'].includes(value[0].type)) return 'Не допустимый формат файла';
+                                    // if (value[0].size > 5242880) return 'Файл должен быть меньше 5мб';
+                                    return true;
+                                },
+                            }}
+                            render={({field}) => (
+                                <Upload {...field} accept=".jpg, .png"
+                                        showUploadList={false} beforeUpload={(file) => {
+                                    dispatch(setSelectedPhoto(file))
+                                }}
+                                >
+                                    <Button className="upload-photo"
+                                            icon={<UploadOutlined/>}>Загрузи фото</Button>
+                                </Upload>
+                            )}
+                        />
+                        {errors.file && <p className="error-message">{errors.file.message}</p>}
+                    </div>
+                    <div className="form-check">
                         <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
+                            required
                         />
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Я прочитал (а) правила и условия платформы и соглашаюсь на
-                            обработку персональных данных и Политику конфиденциальности
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                            Я прочитал (а) <a href="#">правила и условия</a> платформы и соглашаюсь на
+                            обработку персональных данных и <a href="#"> Политику конфиденциальности</a>
                         </label>
                     </div>
                     <button type="submit" className="reg-end">
@@ -196,7 +324,7 @@ const Registration = () => {
                 </div>
             </form>
         </>
-    );
+    )
 };
 
 export default Registration;
