@@ -9,7 +9,7 @@ import LocationReducer from "./location-reducer";
 let reducers = combineReducers({   
     timetablePage: timetableReducer, 
     MyCabReducer: MyCabReducer,
-    RegisterReducer: RegisterReducer,
+    registerReducer: RegisterReducer,
     loginReducer: LoginReducer,
     locationReducer: LocationReducer
 })

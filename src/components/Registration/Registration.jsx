@@ -1,43 +1,41 @@
- import React, {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./Registration.scss";
 import Header from "../Header/HeaderS";
 import {Controller, useForm} from "react-hook-form";
 import {ConfigProvider, DatePicker, Input, Select, Space} from "antd";
 import {EyeInvisibleOutlined, EyeTwoTone, UploadOutlined} from "@ant-design/icons";
 import ruRU from 'antd/lib/locale/ru_RU';
-import {registerNewStudent} from "../../redux/RegisterReducer";
+import {
+    registerNewStudent,
+    setBirthday,
+    setCheckPassword, setCity,
+    setDistrict,
+    setName,
+    setNick, setPassword, setPatronym, setRegion, setTgName, setSurname, setPhone, setSelectedPhoto
+} from "../../redux/RegisterReducer";
 import {useDispatch, useSelector} from "react-redux";
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css';
 import {Upload, Button} from 'antd';
-import LocationReducer, {getRegion} from "../../redux/location-reducer";
+import LocationReducer, {getCities, getDistricts, getRegion} from "../../redux/location-reducer";
 
 const Registration = () => {
     const {control, handleSubmit, setError, clearErrors, formState: {errors}} = useForm({
         mode: "onBlur",
     });
-    const [nick, setNick] = useState("")
-    const [name, setName] = useState("")
-    const [surname, setSurname] = useState("")
-    const [patronym, setPatronym] = useState("")
-    const [phone, setPhone] = useState("")
-    const [password, setPassword] = useState("")
-    const [checkPassword, setCheckPassword] = useState("")
-    const [tgName, setTgName] = useState("")
-    const [dateOfBirth, setDateOfBirth] = useState("")
-    const [region, setRegion] = useState("")
-    const [city, setCity] = useState("")
-    const [districtCity, setDistrictCity] = useState("")
-    const [selectedPhoto, setSelectedPhoto] = useState(null)
 
     const dispatch = useDispatch()
-    const {regions} = useSelector(state => state.locationReducer)
+    const {
+        nick, name, surname, patronym, phone, password, checkPassword, tgName,
+        dateOfBirth, region, city, districtCity, selectedPhoto
+    } = useSelector(state => state.registerReducer)
+    const {regions,  cities, districtCities} = useSelector(state => state.locationReducer)
 
     const onSubmit = () => {
         dispatch(registerNewStudent(nick, name, surname, patronym, password, checkPassword, phone, tgName, dateOfBirth, region, city, districtCity, selectedPhoto))
     };
     const CheckCorrectOfPassword = (e) => {
-        setCheckPassword(e.target.value)
+        dispatch(setCheckPassword(e.target.value))
         if (e.target.value !== password) {
             setError('checkPassword', {
                 type: 'manual',
@@ -47,11 +45,30 @@ const Registration = () => {
             clearErrors('checkPassword')
         }
     }
+
     useEffect(() => {
         dispatch(getRegion())
-    },[])
+    }, [])
+    useEffect(() => {
+        dispatch(getDistricts(region))
+    }, [region])
+    useEffect(() => {
+        dispatch(getCities(city))
+    }, [city])
 
-    // let regionsElements = regions.map((r, index) => )
+    // Создаем массив options для Select, используя метод map для regions
+    const regionOptions = regions.map((region) => ({
+        label: region.name,
+        value: region.id,
+    }));
+    // const districtOptions = city.map((city) => ({
+    //     label: city.name,
+    //     value: city.id,
+    // }))
+    // const cityOptions = districtCity.map((district) => ({
+    //     label: district.name,
+    //     value: district.id,
+    // }))
 
     return (
         <>
@@ -68,7 +85,7 @@ const Registration = () => {
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                onChange: (e) => setNick(e.target.value)
+                                onChange: (e) => dispatch(setNick(e.target.value))
                             }}
                             render={({field}) => <Input {...field}
                                                         className={errors.nick ? "npt-txt npt-txt-errors" : 'npt-txt'}
@@ -82,7 +99,7 @@ const Registration = () => {
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                onChange: (e) => setName(e.target.value)
+                                onChange: (e) => dispatch(setName(e.target.value))
                             }}
                             render={({field}) => <Input {...field}
                                                         className={errors.name ? "npt-txt npt-txt-errors" : 'npt-txt'}
@@ -96,7 +113,7 @@ const Registration = () => {
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                onChange: (e) => setSurname(e.target.value)
+                                onChange: (e) => dispatch(setSurname(e.target.value))
                             }}
                             render={({field}) => <Input {...field}
                                                         className={errors.surname ? "npt-txt npt-txt-errors" : 'npt-txt'}
@@ -110,7 +127,7 @@ const Registration = () => {
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                onChange: (e) => setPatronym(e.target.value)
+                                onChange: (e) => dispatch(setPatronym(e.target.value))
                             }}
                             render={({field}) => <Input {...field}
                                                         className={errors.patronym ? "npt-txt npt-txt-errors" : 'npt-txt'}
@@ -126,7 +143,7 @@ const Registration = () => {
                                 required: "Это поле обязательное!", minLength: {
                                     value: 6,
                                     message: "Минимум 6 символов!"
-                                }, onChange: (e) => setPassword(e.target.value)
+                                }, onChange: (e) => dispatch(setPassword(e.target.value))
                             }}
                             render={({field}) => <Input.Password {...field}
                                                                  iconRender={(visible) => (visible ? <EyeTwoTone/> :
@@ -165,7 +182,7 @@ const Registration = () => {
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                onChange: (e) => setPhone(e.target.value)
+                                onChange: (e) => dispatch(setPhone(e.target.value))
                             }}
                             render={({field}) => <PhoneInput  {...field}
                                                               country={'kg'}
@@ -183,7 +200,7 @@ const Registration = () => {
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                onChange: (e) => setTgName(e.target.value)
+                                onChange: (e) => dispatch(setTgName(e.target.value))
                             }}
                             render={({field}) => <Input {...field}
                                                         className={errors.tg_name ? "npt-txt npt-txt-errors" : 'npt-txt'}
@@ -202,7 +219,7 @@ const Registration = () => {
                                     }}
                                     render={({field}) => (
                                         <DatePicker showToday={false}
-                                                    onChange={(e) => setDateOfBirth(e.format("DD-MM-YYYY"))}
+                                                    onChange={(e) => dispatch(setBirthday(e.format("DD-MM-YYYY")))}
                                                     format="DD-MM-YYYY"
                                                     className={errors.dateOfBirth ? "data-picker data-picker-error" : "data-picker"}/>
                                     )}
@@ -218,17 +235,15 @@ const Registration = () => {
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                onChange: (e) => setRegion(e.target.value)
+                                onChange: (e) => dispatch(setRegion(e.target.value))
+
                             }}
                             render={({field}) => <Select {...field}
-                                                        className={errors.region ? "npt-txt npt-txt-errors" : 'npt-txt'}
-                                                        options={[
-                                                            { value: 'jack', label: 'Jack' },
-                                                            { value: 'lucy', label: 'Lucy' },
-                                                            { value: 'Yiminghe', label: 'yiminghe' },
-                                                            { value: 'disabled', label: 'Disabled', disabled: true },
-                                                        ]}
-                            />}/>
+                                                         className={errors.region ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                                                         options={regionOptions}
+                            />
+
+                            }/>
 
                         {errors.region && <p className="error-message">{errors.region.message}</p>}
                     </div>
@@ -239,10 +254,11 @@ const Registration = () => {
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                onChange: (e) => setCity(e.target.value)
+                                onChange: (e) => dispatch(setCity(e.target.value))
                             }}
-                            render={({field}) => <Input {...field}
-                                                        className={errors.city ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                            render={({field}) => <Select {...field}
+                                                         className={errors.city ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                                                         // options={districtOptions}
                             />}/>
                         {errors.city && <p className="error-message">{errors.city.message}</p>}
                     </div>
@@ -253,10 +269,11 @@ const Registration = () => {
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                onChange: (e) => setDistrictCity(e.target.value)
+                                onChange: (e) => dispatch(setDistrict(e.target.value))
                             }}
-                            render={({field}) => <Input {...field}
-                                                        className={errors.districtCity ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                            render={({field}) => <Select {...field}
+                                                         className={errors.districtCity ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                                                         // options={cityOptions}
                             />}/>
                         {errors.districtCity && <p className="error-message">{errors.districtCity.message}</p>}
                     </div>
@@ -277,7 +294,7 @@ const Registration = () => {
                             render={({field}) => (
                                 <Upload {...field} accept=".jpg, .png"
                                         showUploadList={false} beforeUpload={(file) => {
-                                    setSelectedPhoto(file);
+                                    dispatch(setSelectedPhoto(file))
                                 }}
                                 >
                                     <Button className="upload-photo"

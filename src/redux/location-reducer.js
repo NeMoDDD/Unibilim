@@ -1,4 +1,5 @@
 import {locationApi} from "../Api/location-api";
+import {useSelector} from "react-redux";
 
 const SET_REGIONS = "SET_REGIONS"
 const SET_DISTRICT_CITIES = "SET_DISTRICT_CITIES"
@@ -10,7 +11,9 @@ let initialState = {
     cities: []
 }
 
+
 const LocationReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case SET_REGIONS:
             return {
@@ -40,6 +43,20 @@ export const getRegion = () => {
     return async (dispatch) => {
         let data = await locationApi.getRegion()
         dispatch(setRegions(data.data))
+    }
+}
+export const getDistricts = (id) => {
+    return async (dispatch) => {
+        let data = await locationApi.getDistricts(id)
+        dispatch(setDistrictCities(data.data))
+        console.log(data.data)
+    }
+}
+export const getCities = (id) => {
+    return async (dispatch) => {
+        let data = await locationApi.getCities(id)
+        dispatch(setCities(data.data))
+        console.log(data.data)
     }
 }
 export default LocationReducer;
