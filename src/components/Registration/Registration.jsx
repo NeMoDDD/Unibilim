@@ -53,22 +53,23 @@ const Registration = () => {
         dispatch(getDistricts(region))
     }, [region])
     useEffect(() => {
-        dispatch(getCities(city))
-    }, [city])
+        dispatch(getCities(districtCity))
+    }, [districtCity])
 
     // Создаем массив options для Select, используя метод map для regions
     const regionOptions = regions.map((region) => ({
         label: region.name,
         value: region.id,
     }));
-    // const districtOptions = city.map((city) => ({
-    //     label: city.name,
-    //     value: city.id,
-    // }))
-    // const cityOptions = districtCity.map((district) => ({
-    //     label: district.name,
-    //     value: district.id,
-    // }))
+    const districtOptions = districtCities.map((district) => ({
+        label: district.name,
+        value: district.id,
+    }))
+    const cityOptions = cities.map((city) => ({
+        label: city.name,
+        value: city.id,
+    }))
+
 
     return (
         <>
@@ -250,21 +251,6 @@ const Registration = () => {
                     <div className="input-form-block">
                         <p className="nm-txt2">Район</p>
                         <Controller
-                            name="city"
-                            control={control}
-                            rules={{
-                                required: "Это поле обязательное!",
-                                onChange: (e) => dispatch(setCity(e.target.value))
-                            }}
-                            render={({field}) => <Select {...field}
-                                                         className={errors.city ? "npt-txt npt-txt-errors" : 'npt-txt'}
-                                                         // options={districtOptions}
-                            />}/>
-                        {errors.city && <p className="error-message">{errors.city.message}</p>}
-                    </div>
-                    <div className="input-form-block">
-                        <p className="nm-txt2">Город или село</p>
-                        <Controller
                             name="districtCity"
                             control={control}
                             rules={{
@@ -273,9 +259,24 @@ const Registration = () => {
                             }}
                             render={({field}) => <Select {...field}
                                                          className={errors.districtCity ? "npt-txt npt-txt-errors" : 'npt-txt'}
-                                                         // options={cityOptions}
+                                                         options={districtOptions}
                             />}/>
                         {errors.districtCity && <p className="error-message">{errors.districtCity.message}</p>}
+                    </div>
+                    <div className="input-form-block">
+                        <p className="nm-txt2">Город или село</p>
+                        <Controller
+                            name="city"
+                            control={control}
+                            rules={{
+                                required: "Это поле обязательное!",
+                                onChange: (e) => dispatch(setCity(e.target.value))
+                            }}
+                            render={({field}) => <Select {...field}
+                                                         className={errors.city ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                                                         options={cityOptions}
+                            />}/>
+                        {errors.city && <p className="error-message">{errors.city.message}</p>}
                     </div>
                     <div className="input-form-block">
                         <p className="nm-txt2">Выберите ваше фото</p>

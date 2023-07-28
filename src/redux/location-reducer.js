@@ -49,14 +49,12 @@ export const getDistricts = (id) => {
     return async (dispatch) => {
         let data = await locationApi.getDistricts(id)
         dispatch(setDistrictCities(data.data))
-        console.log(data.data)
     }
 }
 export const getCities = (id) => {
     return async (dispatch) => {
         let data = await locationApi.getCities(id)
         dispatch(setCities(data.data))
-        console.log(data.data)
     }
 }
 export default LocationReducer;
