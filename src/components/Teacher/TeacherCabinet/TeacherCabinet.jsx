@@ -1,15 +1,14 @@
 import React, {useState} from "react";
 
-import "../Student/StudentCabinet.scss"
-import SideBarTeach from "../SideBar/SideBarTeach";
-import userava from "../../assets/img/user (2) 2.png";
-import edit from "../../assets/img/edit1.png";
+import s from "./PATeach.module.css"
+import SideBarTeach from "../../SideBar/SideBarTeach";
+import userava from "../../../assets/img/user (2) 2.png";
+import edit from "../../../assets/img/edit1.png";
 import {Controller, useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
-import LocaleProvider from "antd/es/locale";
 import ruRU from "antd/lib/locale/ru_RU";
 import {ConfigProvider, DatePicker, Space} from "antd";
-import HeaderT from "../Header/HeaderT";
+import HeaderT from "../../Header/HeaderT";
 
 const isValidEmail = email =>
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -38,15 +37,14 @@ const TeacherCabinet = (props) => {
         <>
             <HeaderT/>
             <SideBarTeach/>
-
-            <div className="first_block">
-                <div className="inner_block">
-                    <div className="avaname radblock">
+            <div className={s.first_block}>
+                <div className={s.inner_block}>
+                    <div className={`${s.avaname} ${s.radblock}`}>
                         <img src={userava} alt=""/>
-                        <div className="name">
-                            <p className="name_block">Александр Иванов</p>
+                        <div className={s.name}>
+                            <p className={s.name_block}>Александр Иванов</p>
                             <a
-                                className="edit_block"
+                                className={s.edit_block}
                                 onClick={() => setInputDisabled(false)}
                             >
                                 {" "}
@@ -55,21 +53,21 @@ const TeacherCabinet = (props) => {
                             </a>
                         </div>
                     </div>
-                    <div className="persdata radblock">
-                        <p className="nm-txt">Имя</p>
+                    <div className={`${s.persdata} ${s.radblock}`}>
+                        <p className={s.nm_txt}>Имя</p>
                         <input {...register("firstName", {
                             required: "Это поле обязательное!",
                             pattern: {
                                 value: /^[A-Za-zА-Яа-яЁё\s]+$/,
                                 message: 'Имя не должно содержать цифры и символы',
                             }
-                        })} className={errors.firstName ? "npt-txt npt-txt-error" : "npt-txt"}
+                        })} className={errors.firstName ? `${s.npt_txt} ${s.npt_txt_errors}` : s.npt_txt}
                                onChange={(e) => props.setName(e.currentTarget.value)}
                                value={props.name}
                                disabled={isInputDisabled}
                         />
-                        {errors.firstName && <div className="npt-txt-span">{errors.firstName.message}</div>}
-                        <p className="nm-txt2">Фамилия</p>
+                        {errors.firstName && <div className={s.npt_txt_span}>{errors.firstName.message}</div>}
+                        <p className={s.nm_txt2}>Фамилия</p>
 
                         <input {...register("lastName", {
                             required: "Это поле обязательное!",
@@ -77,12 +75,12 @@ const TeacherCabinet = (props) => {
                                 value: /^[A-Za-zА-Яа-яЁё\s]+$/,
                                 message: 'Фамилие не должно содержать цифры и символы',
                             }
-                        })} className={errors.lastName ? "npt-txt npt-txt-error" : "npt-txt"}
+                        })} className={errors.lastName ? `${s.npt_txt} ${s.npt_txt_errors}` : s.npt_txt}
                                onChange={(e) => props.setSurname(e.currentTarget.value)}
                                value={props.surname}
                                disabled={isInputDisabled}/>
-                        {errors.lastName && <div className="npt-txt-span">{errors.lastName.message}</div>}
-                        <p className="nm-txt2">День рождения</p>
+                        {errors.lastName && <div className={s.npt_txt_span}>{errors.lastName.message}</div>}
+                        <p className={s.nm_txt2}>День рождения</p>
                         <Space direction="vertical">
                             <ConfigProvider locale={ruRU}>
                                 <Controller
@@ -90,75 +88,76 @@ const TeacherCabinet = (props) => {
                                     control={control}
                                     rules={{
                                         required: 'Это поле обязательное!',
-                                        // onChange={(e) => props.setBirthday(e.currentTarget.value)},
 
                                     }}
                                     render={({field}) => (
                                         <DatePicker showToday={false}
                                                     value={props.dayOfBirthday}
                                                     disabled={isInputDisabled}
-                                                    className={errors.dateOfBirth ? "data-picker data-picker-error" : "data-picker"}
+                                                    format="DD-MM-YYYY"
+                                                    onChange={(e) => props.setBirthday(e.currentTarget.value.format("DD-MM-YYYY"))}
+                                                    className={errors.dateOfBirth ? `${s.data_picker} ${s.data_picker_error}` : s.data_picker}
                                         />
                                     )}
                                 />
-                                {errors.dateOfBirth && <p className="error-message">{errors.dateOfBirth.message}</p>}
+                                {errors.dateOfBirth && <p className={s.npt_txt_span}>{errors.dateOfBirth.message}</p>}
                             </ConfigProvider>
                         </Space>
                     </div>
-                    <div className="secondata radblock">
-                        <p className="nm-txt2">Почта</p>
+                    <div className={`${s.secondata} ${s.radblock}`}>
+                        <p className={s.nm_txt2}>Почта</p>
                         <input {...register("email", {
                             validate: handleEmailValidation
-                        })} className={errors.email ? "npt-txt npt-txt-error" : "npt-txt"}
+                        })} className={errors.email ? `${s.npt_txt} ${s.npt_txt_errors}` : s.npt_txt}
                                onChange={(e) => props.setEmail(e.currentTarget.value)}
                                value={props.email}
                                disabled={isInputDisabled}/>
                         {errors.email &&
-                            <div className="npt-txt-span">{errors.email.message || "Некорректный email"}</div>}
-                        <p className="nm-txt2">Телефон</p>
+                            <div className={s.npt_txt_span}>{errors.email.message || "Некорректный email"}</div>}
+                        <p className={s.nm_txt2}>Телефон</p>
                         <input {...register("phone", {
                             required: "Это поле обязательное!",
                             pattern: {
                                 value: /^[+]?[0-9]{3} [0-9]{3} [0-9]{3} [0-9]{3}$/,
                                 message: 'Введите номер телефона в формате "+996 999 999 999"',
                             }
-                        })} className={errors.phone ? "npt-txt npt-txt-error" : "npt-txt"}
+                        })} className={errors.phone ? `${s.npt_txt} ${s.npt_txt_errors}` : s.npt_txt}
                                onChange={(e) => props.setPhone(e.currentTarget.value)}
                                value={props.phone}
                                disabled={isInputDisabled}/>
-                        {errors.phone && <div className="npt-txt-span">{errors.phone.message}</div>}
-                        <p className="nm-txt2">Место проживания</p>
+                        {errors.phone && <div className={s.npt_txt_span}>{errors.phone.message}</div>}
+                        <p className={s.nm_txt2}>Место проживания</p>
                         <input {...register("location", {required: "Это поле обязательное!"})}
-                               className={errors.location ? "npt-txt npt-txt-error" : "npt-txt"}
+                               className={errors.location ? `${s.npt_txt} ${s.npt_txt_errors}` : s.npt_txt}
                                onChange={(e) => props.setLocation(e.currentTarget.value)}
                                value={props.location}
                                disabled={isInputDisabled}/>
-                        {errors.location && <div className="npt-txt-span">{errors.location.message}</div>}
+                        {errors.location && <div className={s.npt_txt_span}>{errors.location.message}</div>}
                     </div>
                 </div>
-                <div className="address">
-                    <div className="inaddress">
-                        <p className="nm-txt3">Город</p>
+                <div className={s.address}>
+                    <div className={s.inaddress}>
+                        <p className={s.nm_txt3}>Город</p>
                         <input {...register("city", {required: "Это поле обязательное!"})}
-                               className={errors.city ? "reg_npt reg_npt_error" : "reg_npt"}
+                               className={errors.city ? `${s.reg_npt} ${s.reg_npt_error}` : s.reg_npt}
                                onChange={(e) => props.setCity(e.currentTarget.value)}
                                value={props.city}
                                disabled={isInputDisabled}/>
-                        {errors.city && <div className="npt-txt-span">{errors.city.message}</div>}
-                        <p className="nm-txt3">Область</p>
+                        {errors.city && <div className={s.npt_txt_span}>{errors.city.message}</div>}
+                        <p className={s.nm_txt3}>Область</p>
                         <input {...register("region", {required: "Это поле обязательное!"})}
-                               className={errors.region ? "reg_npt reg_npt_error" : "reg_npt"}
+                               className={errors.region ? `${s.reg_npt} ${s.reg_npt_error}` : s.reg_npt}
                                onChange={(e) => props.setRegion(e.currentTarget.value)}
                                value={props.region}
                                disabled={isInputDisabled}/>
-                        {errors.region && <div className="npt-txt-span">{errors.region.message}</div>}
-                        <p className="nm-txt3">Район</p>
+                        {errors.region && <div className={s.npt_txt_span}>{errors.region.message}</div>}
+                        <p className={s.nm_txt3}>Район</p>
                         <input {...register("district", {required: "Это поле обязательное!"})}
-                               className={errors.district ? "reg_npt reg_npt_error" : "reg_npt"}
+                               className={errors.district ? `${s.reg_npt} ${s.reg_npt_error}` : s.reg_npt}
                                onChange={(e) => props.setDistrict(e.currentTarget.value)}
                                value={props.district}
                                disabled={isInputDisabled}/>
-                        {errors.district && <div className="npt-txt-span">{errors.district.message}</div>}
+                        {errors.district && <div className={s.npt_txt_span}>{errors.district.message}</div>}
                     </div>
                 </div>
             </div>

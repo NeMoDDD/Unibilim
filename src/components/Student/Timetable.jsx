@@ -1,11 +1,11 @@
 import React from "react";
 import SideBar from "../SideBar/SideBar";
 import "../../styles/__timetable.scss";
-import HeaderFS from "../Header/Header"; 
+import HeaderFS from "../Header/HeaderS";
 import Table from "./TimtetableComponents/TableLarge"; 
 import TableMobile from "./TimtetableComponents/TabelModile";
 import { testData1, testData2, testData3 } from "../../redux/timetableReducer";
-import Header from "../Header/Header";
+import Header from "../Header/HeaderS";
 
 const Timetable = React.memo((props) => {
   const firstDate = props.timetable?.alldate?.[0];

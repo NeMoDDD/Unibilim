@@ -46,8 +46,8 @@ export const setUserPassword = (password) => ({type: SET_PASSWORD, password})
 
 export const login = (username, password) => {
     return async (dispatch) => {
-        console.log(1)
         let data = await loginApi.login(username, password)
+        console.log(data.statusCode)
         if (data.statusCode === 200) {
             dispatch(setUserRole(data.role))
             dispatch(setUserToken(data.token))

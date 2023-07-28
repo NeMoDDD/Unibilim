@@ -11,10 +11,9 @@ const RegisterReducer = (state = initialState, action) => {
         }
     }
 }
-export const registerNewStudent = (username, password, password2, phone_numbers, telegram_username, date_of_birth, region, city, district_city) => {
+export const registerNewStudent = (nick, name, surname, patronym, password, password2, phone_numbers, telegram_username, date_of_birth, region, city, district_city, photo) => {
     return async (dispatch) => {
-        console.log(1)
-        let data = await registerApi.regNewStudent(username, password, password2, phone_numbers, telegram_username, date_of_birth, region, city, district_city)
+        let data = await registerApi.regNewStudent(nick, name, surname, patronym, password, password2, phone_numbers, telegram_username, date_of_birth, region, city, district_city, photo)
         console.log(data)
     }
 }

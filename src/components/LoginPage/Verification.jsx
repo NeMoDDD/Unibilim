@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderFS from '../Header/Header'
+import HeaderFS from '../Header/HeaderS'
 import s from './Login.module.css'
 import { ChakraProvider, FormControl, FormLabel, PinInput, PinInputField } from '@chakra-ui/react';
 import { useForm, Controller, } from 'react-hook-form'

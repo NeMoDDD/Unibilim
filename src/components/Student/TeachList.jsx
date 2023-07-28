@@ -5,8 +5,8 @@ import teach2 from "../../assets/img/teach2.png";
 import teach3 from "../../assets/img/teach3.png";
 import teach4 from "../../assets/img/teach4.png";
 import SideBar from "../SideBar/SideBar";
-import HeaderFS from "../Header/Header";
-import Header from "../Header/Header";
+import HeaderFS from "../Header/HeaderS";
+import Header from "../Header/HeaderS";
 
 const TeachList = () => {
   const classArr = ["Все классы", "9В", "10B", "8А", "11Г"];

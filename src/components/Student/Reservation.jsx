@@ -3,8 +3,8 @@ import SideBar from "../SideBar/SideBar";
 import "../../styles/__reservation.scss";
 import Table from "./table";
 import "../../styles/__timetable.scss";
-import HeaderFS from "../Header/Header";
-import Header from "../Header/Header";
+import HeaderFS from "../Header/HeaderS";
+import Header from "../Header/HeaderS";
 
 const Reservation = () => {
   const name = "< 23 янв - 30 янв >";

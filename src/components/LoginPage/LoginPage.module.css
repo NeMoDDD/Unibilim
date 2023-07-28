@@ -1,12 +1,19 @@
-.login_block{
+.login__page {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+}
+
+.login{
     width: 32%;
-    height: 271px;
+    height: 40%;
     border-radius: 25px;
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 25px;
+    margin: 0 auto;
 }
 .vhod{
     text-align: center;
@@ -16,7 +23,9 @@
     font-size: 32px;
     line-height: 38.4px;
     background-color: #FFFFFF;
-
+}
+.login__form {
+    width: 100%;
 }
 .phon_npt{
     width: 100%;
@@ -55,6 +64,64 @@
     justify-content: center;
     padding: 15px;
     margin-top: 25px;
+}
+
+.npt_txt {
+    width: 90%;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-color: #CCCCCC !important;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #595959;
+    border-radius: 0;
+    background-color: white !important;
+}
+.npt_txt:hover {
+    border-color: #ffbf13 !important;
+}
+.npt_txt:focus {
+    border-color: #ffbf13;
+    outline: 0;
+}
+.npt_txt_errors {
+    border-color: #D0021B !important;
+}
+
+.error_message {
+    font-size: 13px;
+    color: #D0021B;
+    margin: 0;
+}
+
+.form__submit {
+    width: 100%;
+    height: 48px;
+    margin-top: 25px;
+    background-color: #ffbf13;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21.6px;
+}
+
+.form__in {
+    text-align: center;
+}
+.form__in__text {
+    width: 100%;
+    height: 38px;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38.4px;
+    color: #2d2d2d;
 }
 
 @media screen and (max-width:760px) {
