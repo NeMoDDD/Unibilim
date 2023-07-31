@@ -9,9 +9,8 @@ import {
     registerNewStudent,
     setBirthday,
     setCheckPassword, setCity,
-    setDistrict,
     setName,
-    setNick, setPassword, setPatronym, setRegion, setTgName, setSurname, setPhone, setSelectedPhoto
+    setNick, setPassword, setPatronym, setRegion, setTgName, setSurname, setPhone, setSelectedPhoto, setDistrictCity
 } from "../../redux/RegisterReducer";
 import {useDispatch, useSelector} from "react-redux";
 import PhoneInput from "react-phone-input-2";
@@ -20,7 +19,7 @@ import {Upload, Button} from 'antd';
 import LocationReducer, {getCities, getDistricts, getRegion} from "../../redux/location-reducer";
 
 const Registration = () => {
-    const {control, handleSubmit, setError, clearErrors, formState: {errors}} = useForm({
+    const {control, handleSubmit, setError, clearErrors, formState: {errors}, reset} = useForm({
         mode: "onBlur",
     });
 
@@ -32,7 +31,7 @@ const Registration = () => {
     const {regions,  cities, districtCities} = useSelector(state => state.locationReducer)
 
     const onSubmit = () => {
-        dispatch(registerNewStudent(nick, name, surname, patronym, password, checkPassword, phone, tgName, dateOfBirth, region, city, districtCity, selectedPhoto))
+        dispatch(registerNewStudent(nick, name, surname, patronym, password, checkPassword, phone, tgName, dateOfBirth, region, districtCity, city, selectedPhoto))
     };
     const CheckCorrectOfPassword = (e) => {
         dispatch(setCheckPassword(e.target.value))
@@ -70,6 +69,9 @@ const Registration = () => {
         value: city.id,
     }))
 
+    const onChangeRegion = (e) => {
+        dispatch(setRegion(e.target.value))
+    }
 
     return (
         <>
@@ -216,7 +218,7 @@ const Registration = () => {
                                     name="dateOfBirth"
                                     control={control}
                                     rules={{
-                                        required: 'Это поле обязательное!',
+                                        // required: 'Это поле обязательное!',
                                     }}
                                     render={({field}) => (
                                         <DatePicker showToday={false}
@@ -236,7 +238,7 @@ const Registration = () => {
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                onChange: (e) => dispatch(setRegion(e.target.value))
+                                onChange: (e) => onChangeRegion(e)
 
                             }}
                             render={({field}) => <Select {...field}
@@ -255,7 +257,7 @@ const Registration = () => {
                             control={control}
                             rules={{
                                 required: "Это поле обязательное!",
-                                onChange: (e) => dispatch(setDistrict(e.target.value))
+                                onChange: (e) => dispatch(setDistrictCity(e.target.value))
                             }}
                             render={({field}) => <Select {...field}
                                                          className={errors.districtCity ? "npt-txt npt-txt-errors" : 'npt-txt'}

@@ -135,7 +135,9 @@
   line-height: 14.4px;
   color: #989898;
 }
-
+.react-tel-input .form-control {
+  width: 90% !important;
+}
 @media screen and (max-width: 480px) {
   .reg-block{
     width: 100%;
@@ -146,14 +148,33 @@
   .dropdown-select{
     width: 100%;
   }
+  .reg-text {
+    font-size: 22px;
+  }
+  .reg-block {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 481px) {
+  .reg-block {
+    width: 90%;
+  }
 }
 @media (min-width: 481px) and (max-width: 830px) {
   .npt-txt {
-    width: 50%;
+    width: 90%;
+  }
+  .reg-text {
+    font-size: 22px;
+  }
+  .reg-block {
+    width: 60%;
   }
 }
 @media (min-width: 831px) and (max-width: 1024px) {
   .npt-txt {
-    width: 50%;
+  }
+  .reg-block {
+    width: 60%;
   }
 }

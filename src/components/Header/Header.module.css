@@ -1,19 +1,20 @@
-.header{
-    height: 68px;
-    background-color: #ffff;
+.header {
+    height: 50px;
+    background-color: #FFFFFF;
     display: flex;
     justify-content: space-between;
 }
-.logo{
+.desktop__logo {
     width: 142px;
     height: 38px;
-     //margin-top: 15px;
-     //margin-left: 120px;
     font-weight: 400;
     font-size: 32px;
     line-height: 37.6px;
     color: black;
     text-decoration: none;
+}
+.mobile__logo {
+    display: none;
 }
 .logo:hover{
     color: #FFBF13;
@@ -42,6 +43,12 @@
         display: block;
     }
     .teachheader{
+        display: block;
+    }
+    .desktop__logo {
+        display: none;
+    }
+    .mobile__logo {
         display: block;
     }
 }

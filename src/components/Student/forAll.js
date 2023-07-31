@@ -1,5 +1,5 @@
 import React from "react";
-import TeacherCabinet from "./StudentCabinet";
+import TeacherCabinet from "./StudentCabinet/StudentCabinet";
 
 const ForAll = () => {
   return (

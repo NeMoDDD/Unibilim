@@ -105,15 +105,25 @@
     border-color: #D0021B !important;
 }
 .reg_npt {
-    width: 80%;
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    border-color: #EAEAEA;
+    width: 90%;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-color: #CCCCCC !important;
     font-weight: 400;
     background-color: #fbfcfe;
-    font-size: 18px;
-    line-height: 21.6px;
+    font-size: 20px;
+    line-height: 24px;
+}
+.reg_npt:hover {
+    border-color: #ffbf13 !important;
+}
+.reg_npt:focus {
+    border-color: #ffbf13;
+    outline: 0;
+}
+.reg_npt_error {
+    border-color: #D0021B !important;
 }
 .address {
     width: 35%;
@@ -124,7 +134,7 @@
     flex-direction: column;
     border-radius: 25px;
     background-color: #fbfcfe;
-    padding: 15px 15px 15px 15px;
+    padding: 15px;
 }
 
 .subj_about2 {
@@ -288,15 +298,15 @@
     }
     .address {
         width: 100%;
-        padding-left: 25px;
-        margin-top: 0px;
+        padding-left: 15px;
+        margin-top: 10px;
         padding-bottom: 25px;
     }
     .reg_npt{
-        width: 75%;
+        width: 90%;
     }
     .inaddress{
-        padding-left: 0px;
+
     }
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
@@ -307,8 +317,7 @@
         width: 100%;
     }
     .address {
-        margin-left: 10px;
-        margin-top: 0px;
+        margin-top: 0;
         width: 100%;
         margin-left: 15px;
     }

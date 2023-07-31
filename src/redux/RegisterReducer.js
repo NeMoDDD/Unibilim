@@ -115,13 +115,14 @@ export const setCheckPassword = (checkPassword) => ({type: SET_CHECK_PASSWORD, c
 export const setTgName = (tgName) => ({type: SET_TG_NAME, tgName})
 export const setBirthday = (dateOfBirth) => ({type: SET_DATE_OF_BIRTH, dateOfBirth})
 export const setRegion = (region) => ({type: SET_REGION, region})
-export const setDistrict = (district) => ({type: SET_DISTRICT_CITY, district})
+export const setDistrictCity = (districtCity) => ({type: SET_DISTRICT_CITY, districtCity})
 export const setCity = (city) => ({type: SET_CITY, city})
 export const setSelectedPhoto = (selectedPhoto) => ({type: SET_SELECTED_PHOTO, selectedPhoto})
 
-export const registerNewStudent = (nick, name, surname, patronym, password, password2, phone_numbers, telegram_username, date_of_birth, region, city, district_city, photo) => {
+export const registerNewStudent = (nick, name, surname, patronym, password, password2, phone_numbers, telegram_username, date_of_birth, region, district_city, city, photo) => {
     return async (dispatch) => {
-        let data = await registerApi.regNewStudent(nick, name, surname, patronym, password, password2, phone_numbers, telegram_username, date_of_birth, region, city, district_city, photo)
+        console.log(1)
+        let data = await registerApi.regNewStudent(nick, name, surname, patronym, password, password2, phone_numbers, telegram_username, date_of_birth, region, district_city, city, photo)
         console.log(data)
     }
 }

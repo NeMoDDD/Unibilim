@@ -37,7 +37,7 @@ const LocationReducer = (state = initialState, action) => {
 }
 export const setRegions = (regions) => ({type: SET_REGIONS, regions})
 export const setDistrictCities = (districtCities) => ({type: SET_DISTRICT_CITIES, districtCities})
-export const setCities = (cities) => ({type: SET_REGIONS, cities})
+export const setCities = (cities) => ({type: SET_CITIES, cities})
 
 export const getRegion = () => {
     return async (dispatch) => {

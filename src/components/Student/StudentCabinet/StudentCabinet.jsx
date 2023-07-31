@@ -1,16 +1,16 @@
 import React, {useState} from "react";
 
 import s from "./StudentCabinet.module.css"
-import SideBarTeach from "../SideBar/SideBarTeach";
-import userava from "../../assets/img/user (2) 2.png";
-import edit from "../../assets/img/edit1.png";
+import SideBarTeach from "../../SideBar/SideBarTeach";
+import userava from "../../../assets/img/user (2) 2.png";
+import edit from "../../../assets/img/edit1.png";
 import {Controller, useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
-import Header from "../Header/HeaderS";
+import Header from "../../Header/HeaderS";
 import LocaleProvider from "antd/es/locale";
 import ruRU from "antd/lib/locale/ru_RU";
 import {ConfigProvider, DatePicker, Space} from "antd";
-import SideBar from "../SideBar/SideBar";
+import SideBar from "../../SideBar/SideBar";
 
 const isValidEmail = email =>
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(

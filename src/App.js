@@ -15,7 +15,7 @@ import ForTeach from "./components/Teacher/forTeach";
 import TimeTableContainer from "./components/Student/TimeTableContainer";
 import TeacherCabinet from "./components/Teacher/TeacherCabinet/TeacherCabinet";
 import Verification from "./components/LoginPage/Verification";
-import StudentCabinet from "./components/Student/StudentCabinet";
+import StudentCabinet from "./components/Student/StudentCabinet/StudentCabinet";
 
 
 function App() {

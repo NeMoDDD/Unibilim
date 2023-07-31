@@ -4,13 +4,17 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from '../../assets/img/unibilim-logo-web.svg'
+import logoMobile from "../../assets/img/logo mobile.svg"
 
 function HeaderFS() {
     return (
-        <Navbar bg="light" expand="lg">
-            <Container>
-                <Navbar.Brand href="/" className={s.logo}>
-                    <img src={logo} alt=""/>
+        <Navbar bg="white" expand="lg">
+            <Container className={s.header}>
+                <Navbar.Brand href="/" className={s.desktop__logo}>
+                    <img src={logo} alt="logo"/>
+                </Navbar.Brand>
+                <Navbar.Brand href="/" className={s.mobile__logo}>
+                    <img src={logoMobile} alt="logo"/>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <div className="studheader">
