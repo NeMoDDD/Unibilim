@@ -121,7 +121,7 @@ export const setSelectedPhoto = (selectedPhoto) => ({type: SET_SELECTED_PHOTO, s
 
 export const registerNewStudent = (nick, name, surname, patronym, password, password2, phone_numbers, telegram_username, date_of_birth, region, district_city, city, photo) => {
     return async (dispatch) => {
-        console.log(1)
+        console.log(nick, name, surname, patronym, password, password2, phone_numbers, telegram_username, date_of_birth, region, district_city, city, photo)
         let data = await registerApi.regNewStudent(nick, name, surname, patronym, password, password2, phone_numbers, telegram_username, date_of_birth, region, district_city, city, photo)
         console.log(data)
     }

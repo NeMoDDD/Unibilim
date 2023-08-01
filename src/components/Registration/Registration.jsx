@@ -53,6 +53,7 @@ const Registration = () => {
     }, [region])
     useEffect(() => {
         dispatch(getCities(districtCity))
+        console.log(cities)
     }, [districtCity])
 
     // Создаем массив options для Select, используя метод map для regions
