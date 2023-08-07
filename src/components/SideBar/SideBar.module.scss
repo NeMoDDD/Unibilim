@@ -2,9 +2,8 @@
     width: 25%;
     float: left;
     margin-top: 150px;
-   
 }
-.about-me{
+.sidebar__link{
     font-weight: 600;
     font-size: 18px;
     line-height: 21.6px;
@@ -13,10 +12,14 @@
     color: #64676A ;
     margin-left: 10px;
 }
-.about-me:hover{
+.sidebar__link:hover{
     color:#FFBF13 ;
     text-decoration:underline;
     transition: 0.3s;
+}
+.sidebar__link__active {
+    color:#FFBF13 ;
+    text-decoration:underline;
 }
 .logo1{
     margin-right: 10px;

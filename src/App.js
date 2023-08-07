@@ -32,7 +32,7 @@ function App() {
         <Route path="/teachlist" element={<TeachList />} />
         <Route path="/timetable" element={<TimeTableContainer/>} />
         <Route path="/reservation" element={<Reservation />} />
-        <Route path="/teachcab" element={<MyCab />} />
+        {/*<Route path="/teachcab" element={<MyCab />} />*/}
         <Route path="/subjtable" element={<SubjTable />} />
         <Route path="/popup" element={<PopUp />} /> 
         <Route path="/verification" element={<Verification/>}/>

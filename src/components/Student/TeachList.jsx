@@ -5,7 +5,6 @@ import teach2 from "../../assets/img/teach2.png";
 import teach3 from "../../assets/img/teach3.png";
 import teach4 from "../../assets/img/teach4.png";
 import SideBar from "../SideBar/SideBar";
-import HeaderFS from "../Header/HeaderS";
 import Header from "../Header/HeaderS";
 
 const TeachList = () => {
@@ -22,7 +21,7 @@ const TeachList = () => {
     "Понедельник",
     "Вторник",
     "Среда",
-    "Четрвег",
+    "Четверг",
     "Пятница",
   ];
   const teachList = [
@@ -68,12 +67,12 @@ const TeachList = () => {
   ));
   const renderSubect = subjArr.map((item, index) => (
     <option value={item} key={index}>
-      <p className="drop_text"> {item} </p>
+      <p className="drop_text">{item}</p>
     </option>
   ));
   const renderDay = daysArr.map((item, index) => (
     <option value={item} key={index}>
-      <p className="drop_text"> {item} </p>
+      <p className="drop_text">{item}</p>
     </option>
   ));
   return (
@@ -89,8 +88,8 @@ const TeachList = () => {
           <select className="drop">{renderDay}</select>
         </div>
         <div className="list_block">
-          {teachList.map((el) => (
-            <div className="teach_list">
+          {teachList.map((el, index) => (
+            <div className="teach_list" key={index}>
               <div className="teach_card">
                 <img src={el.img} className="teach_img" alt=""/>
                 <p className="teach_name">{el.name}</p>
