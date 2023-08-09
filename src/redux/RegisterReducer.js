@@ -12,7 +12,8 @@ const SET_DATE_OF_BIRTH = "SET_DATE_OF_BIRTH"
 const SET_REGION = "SET_REGION"
 const SET_DISTRICT_CITY = "SET_DISTRICT_CITY"
 const SET_CITY = "SET_CITY"
-const SET_SELECTED_PHOTO = "SET_CITY"
+const SET_SELECTED_PHOTO = "SET_SELECTED_PHOTO"
+const SET_TO_VERIFICATION = "SET_TO_VERIFICATION"
 
 let initialState = {
     nick: null,
@@ -28,6 +29,7 @@ let initialState = {
     districtCity: null,
     city: null,
     selectedPhoto: null,
+    toVerification: false
 }
 
 const RegisterReducer = (state = initialState, action) => {
@@ -97,7 +99,11 @@ const RegisterReducer = (state = initialState, action) => {
                 ...state,
                 selectedPhoto: action.selectedPhoto
             }
-
+        case SET_TO_VERIFICATION:
+            return {
+                ...state,
+                toVerification: action.toVerification
+            }
 
         default: {
             return {...state}
@@ -118,12 +124,15 @@ export const setRegion = (region) => ({type: SET_REGION, region})
 export const setDistrictCity = (districtCity) => ({type: SET_DISTRICT_CITY, districtCity})
 export const setCity = (city) => ({type: SET_CITY, city})
 export const setSelectedPhoto = (selectedPhoto) => ({type: SET_SELECTED_PHOTO, selectedPhoto})
+export const setToVerification = (toVerification) => ({type: SET_TO_VERIFICATION, toVerification})
 
 export const registerNewStudent = (nick, name, surname, patronym, password, password2, phone_numbers, telegram_username, date_of_birth, region, district_city, city, photo) => {
     return async (dispatch) => {
-        console.log(nick, name, surname, patronym, password, password2, phone_numbers, telegram_username, date_of_birth, region, district_city, city, photo)
-        let data = await registerApi.regNewStudent(nick, name, surname, patronym, password, password2, phone_numbers, telegram_username, date_of_birth, region, district_city, city, photo)
-        console.log(data)
+        console.log(nick, name, surname, patronym, password, password2, `+${phone_numbers}`, telegram_username, date_of_birth, region, district_city, city, photo)
+        let data = await registerApi.regNewStudent(nick, name, surname, patronym, password, password2, `+${phone_numbers}`, telegram_username, date_of_birth, region, district_city, city, photo)
+        if (data.status === 201) {
+            dispatch(setToVerification(true))
+        }
     }
 }
 

@@ -17,6 +17,7 @@ import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css';
 import {Upload, Button} from 'antd';
 import LocationReducer, {getCities, getDistricts, getRegion} from "../../redux/location-reducer";
+import {Navigate, useLocation} from "react-router-dom";
 
 const Registration = () => {
     const {control, handleSubmit, setError, clearErrors, formState: {errors}, reset} = useForm({
@@ -24,15 +25,40 @@ const Registration = () => {
     });
 
     const dispatch = useDispatch()
+    const navigate = useLocation()
     const {
         nick, name, surname, patronym, phone, password, checkPassword, tgName,
-        dateOfBirth, region, city, districtCity, selectedPhoto
+        dateOfBirth, region, city, districtCity, selectedPhoto, toVerification
     } = useSelector(state => state.registerReducer)
     const {regions,  cities, districtCities} = useSelector(state => state.locationReducer)
 
-    const onSubmit = () => {
-        dispatch(registerNewStudent(nick, name, surname, patronym, password, checkPassword, phone, tgName, dateOfBirth, region, districtCity, city, selectedPhoto))
+    const onSubmit = async () => {
+        try {
+            await dispatch(
+                registerNewStudent(
+                    nick,
+                    name,
+                    surname,
+                    patronym,
+                    password,
+                    checkPassword,
+                    phone,
+                    tgName,
+                    dateOfBirth,
+                    region,
+                    districtCity,
+                    city,
+                    selectedPhoto
+                )
+            );
+            // Код, который выполнится при успешном выполнении dispatch и registerNewStudent
+            // Дополнительные действия или перенаправление можно добавить здесь
+        } catch (error) {
+            // Обработка ошибок, если что-то пошло не так
+            console.error('Произошла ошибка при регистрации:', error);
+        }
     };
+
     const CheckCorrectOfPassword = (e) => {
         dispatch(setCheckPassword(e.target.value))
         if (e.target.value !== password) {
@@ -53,7 +79,6 @@ const Registration = () => {
     }, [region])
     useEffect(() => {
         dispatch(getCities(districtCity))
-        console.log(cities)
     }, [districtCity])
 
     // Создаем массив options для Select, используя метод map для regions
@@ -77,6 +102,7 @@ const Registration = () => {
     return (
         <>
             <Header/>
+            {!toVerification ?
             <form onSubmit={handleSubmit(onSubmit)} className="up_block">
                 <div className="reg-block">
                     <div className="reg-text-block">
@@ -326,6 +352,7 @@ const Registration = () => {
                     </button>
                 </div>
             </form>
+                : <Navigate to="/verification"/>}
         </>
     )
 };

@@ -60,8 +60,8 @@ const StudList = () => {
                         />
                     </div>
                     <div className={s.stud_list}>
-                        {students.map((item) => (
-                            <div className={s.stud_card}>
+                        {students.map((item, index) => (
+                            <div className={s.stud_card} key={index}>
                                 <img src={item.img}/>
                                 <p key={item.id} className={s.stud_txt}>
                                     {" "}

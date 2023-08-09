@@ -6,13 +6,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {Input} from "antd";
 import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
 import {login, setUserName, setUserPassword} from "../../redux/loginReducer";
+import {Navigate} from "react-router-dom";
 
 const LoginPage = (props) => {
     const {control, handleSubmit, setError, clearErrors, formState: {errors}} = useForm({
         mode: "onBlur",
     })
     const dispatch = useDispatch()
-    const {userName, password} = useSelector(state => state.loginReducer)
+    const {userName, password, token, userRole} = useSelector(state => state.loginReducer)
     const onSubmit = () => {
         dispatch(login(userName, password))
         // dispatch(registerNewStudent(name, password, checkPassword, phone, tgName, dateOfBirth, region, city, districtCity))
@@ -20,6 +21,7 @@ const LoginPage = (props) => {
     return (
         <>
             <Header/>
+            {userRole === null ?
             <div className={s.login__page}>
                 <div className={s.login}>
                     <form className={s.login__form} onSubmit={handleSubmit(onSubmit)}>
@@ -66,6 +68,7 @@ const LoginPage = (props) => {
                     </form>
                 </div>
             </div>
+                : userRole === "student" ? <Navigate to="/studlk"/> : <Navigate to="/teachlk"/>}
         </>
     );
 };

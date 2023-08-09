@@ -17,7 +17,7 @@ const Table = () => {
         <p className="mt">21:00</p>
 
         </div>
-      <table class="table">
+      <table className="table">
         <tbody>
           <tr className="date_res" style={{backgroundColor:"#F6FAFC"}}>
             <th>23,пн</th>

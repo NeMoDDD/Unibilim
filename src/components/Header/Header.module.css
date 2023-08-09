@@ -3,6 +3,7 @@
     background-color: #FFFFFF;
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 .desktop__logo {
     width: 142px;
@@ -12,9 +13,11 @@
     line-height: 37.6px;
     color: black;
     text-decoration: none;
+    margin-left: 4em;
 }
 .mobile__logo {
     display: none;
+    margin-left: 1em;
 }
 .logo:hover{
     color: #FFBF13;
@@ -34,9 +37,11 @@
 }
 .studheader{
     display: none;
+    margin-right: 1em;
 }
 .teachheader{
     display: none;
+    margin-right: 1em;
 }
 .menu__header {
     background-color: #2D2D2D;
@@ -57,7 +62,7 @@
 .menu__header__link__active {
     color: #FFBF13;;
 }
-@media (min-width: 310px) and (max-width: 820px) {
+@media (min-width: 310px) and (max-width: 1024px) {
     .studheader{
         display: block;
     }

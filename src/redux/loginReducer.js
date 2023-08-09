@@ -41,16 +41,17 @@ const LoginReducer = (state = initialState, action) => {
 }
 export const setUserRole = (userRole) => ({type: SET_ROLE, userRole})
 export const setUserToken = (token) => ({type: SET_TOKEN, token})
-export const setUserName = (userName) => ({type: SET_TOKEN, userName})
+export const setUserName = (userName) => ({type: SET_USERNAME, userName})
 export const setUserPassword = (password) => ({type: SET_PASSWORD, password})
 
 export const login = (username, password) => {
     return async (dispatch) => {
+        console.log(username, password)
         let data = await loginApi.login(username, password)
-        console.log(data.statusCode)
-        if (data.statusCode === 200) {
-            dispatch(setUserRole(data.role))
-            dispatch(setUserToken(data.token))
+        console.log(data)
+        if (data.status === 200) {
+            dispatch(setUserRole(data.data.role))
+            dispatch(setUserToken(data.data.token))
             console.log("success")
         }
 

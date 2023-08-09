@@ -3,16 +3,22 @@ import HeaderFS from '../Header/HeaderS'
 import s from './Login.module.css'
 import { ChakraProvider, FormControl, FormLabel, PinInput, PinInputField } from '@chakra-ui/react';
 import { useForm, Controller, } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
+import {useDispatch, useSelector} from "react-redux";
+import {userVerification} from "../../redux/verification-reducer";
 const Verification = () => {
-    const onSubmit = (dataForm) => {
-        console.log(dataForm);
+    const dispatch = useDispatch()
+    const {isAuth} = useSelector(state => state.verificationReducer)
+    const onSubmit = (code) => {
+        console.log(code.pin)
+        dispatch(userVerification(code.pin))
     }
     const phoneNumber = '+996 (556) 02-45-82'
     const { reset, control,handleSubmit, register } = useForm()
     return (
         <>
             <HeaderFS />
+            {!isAuth ?
             <div className={s.verification}>
                 <div className={s.verification__container}>
                     <form className={s.verification__form} onSubmit={handleSubmit(onSubmit)}>
@@ -51,6 +57,8 @@ const Verification = () => {
                     </form>
                 </div>
             </div>
+                : <Navigate to="/"/>
+            }
         </>
     )
 }

@@ -109,7 +109,7 @@ const SubjTable = () => {
           <p className="teach_txt">Расписание</p>
           <p className="date_txt">{name}</p>
         </div>
-        <table class="subjtable">
+        <table className="subjtable">
           <tbody>
             <tr>
               <td>6 фев, пн</td>
@@ -199,9 +199,9 @@ const SubjTable = () => {
             </tr>
           </tbody>
         </table>
-        {arrSubj.map((el) => {
+        {arrSubj.map((el, index) => {
           return (
-            <div className="cards_block">
+            <div className="cards_block" key={index}>
               <div className="cards">
                 <div className="cards_head">
                   <p className="weekday">Понедельник</p>{" "}

@@ -61,18 +61,18 @@ const TeachList = () => {
   ];
 
   const renderClasses = classArr.map((item, index) => (
-    <option value={item} key={index}>
-      <p className="drop_text"> {item} </p>
+    <option className="drop_text" value={item} key={index}>
+      {item}
     </option>
   ));
   const renderSubect = subjArr.map((item, index) => (
-    <option value={item} key={index}>
-      <p className="drop_text">{item}</p>
+    <option className="drop_text" value={item} key={index}>
+      {item}
     </option>
   ));
   const renderDay = daysArr.map((item, index) => (
-    <option value={item} key={index}>
-      <p className="drop_text">{item}</p>
+    <option className="drop_text" value={item} key={index}>
+      {item}
     </option>
   ));
   return (

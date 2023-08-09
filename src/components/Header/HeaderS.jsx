@@ -13,7 +13,7 @@ function HeaderFS() {
     return (
         <div>
             <Navbar bg="white" expand="lg">
-                <Container className={s.header}>
+                <div className={s.header}>
                     <Navbar.Brand href="/" className={s.desktop__logo}>
                         <img src={logo} alt="logo"/>
                     </Navbar.Brand>
@@ -27,7 +27,7 @@ function HeaderFS() {
                             }
                         }}/>
                     </div>
-                </Container>
+                </div>
             </Navbar>
             {isOpen && (
                 <div className={s.menu__header}>
