@@ -14,6 +14,7 @@ const SET_DISTRICT_CITY = "SET_DISTRICT_CITY"
 const SET_CITY = "SET_CITY"
 const SET_SELECTED_PHOTO = "SET_SELECTED_PHOTO"
 const SET_TO_VERIFICATION = "SET_TO_VERIFICATION"
+const SET_OTP_TOKEN_NIKITA = "SET_OTP_TOKEN_NIKITA"
 
 let initialState = {
     nick: null,
@@ -29,7 +30,8 @@ let initialState = {
     districtCity: null,
     city: null,
     selectedPhoto: null,
-    toVerification: false
+    toVerification: false,
+    otpTokenNikita: null
 }
 
 const RegisterReducer = (state = initialState, action) => {
@@ -104,6 +106,11 @@ const RegisterReducer = (state = initialState, action) => {
                 ...state,
                 toVerification: action.toVerification
             }
+        case SET_OTP_TOKEN_NIKITA:
+            return {
+                ...state,
+                otpTokenNikita: action.otpTokenNikita
+            }
 
         default: {
             return {...state}
@@ -125,13 +132,15 @@ export const setDistrictCity = (districtCity) => ({type: SET_DISTRICT_CITY, dist
 export const setCity = (city) => ({type: SET_CITY, city})
 export const setSelectedPhoto = (selectedPhoto) => ({type: SET_SELECTED_PHOTO, selectedPhoto})
 export const setToVerification = (toVerification) => ({type: SET_TO_VERIFICATION, toVerification})
+export const setOtpTokenNikita = (otpTokenNikita) => ({type: SET_OTP_TOKEN_NIKITA, otpTokenNikita})
 
 export const registerNewStudent = (nick, name, surname, patronym, password, password2, phone_numbers, telegram_username, date_of_birth, region, district_city, city, photo) => {
     return async (dispatch) => {
-        console.log(nick, name, surname, patronym, password, password2, `+${phone_numbers}`, telegram_username, date_of_birth, region, district_city, city, photo)
         let data = await registerApi.regNewStudent(nick, name, surname, patronym, password, password2, `+${phone_numbers}`, telegram_username, date_of_birth, region, district_city, city, photo)
+        console.log(data)
         if (data.status === 201) {
             dispatch(setToVerification(true))
+            dispatch(setOtpTokenNikita(data.data.token))
         }
     }
 }

@@ -21,9 +21,10 @@ const VerificationReducer = (state = initialState, action) => {
     }
 }
 export const setIsAuth = (isAuth) => ({type: SET_IS_AUTH, isAuth})
-export const userVerification = (code) => {
+export const userVerification = (token, code) => {
     return async (dispatch) => {
-        let data = await verificationApi.userVerification(code)
+        console.log(token, code)
+        let data = await verificationApi.userVerification(token, code)
         console.log(data)
         if (data.status === 201) {
             dispatch(setIsAuth(true))

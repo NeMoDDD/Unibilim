@@ -121,37 +121,6 @@ export const setCurrentTeacherTC = (name) => (dispatch)=>{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const testData3 = { 
         id:3,
         alldate: ['30 янв','31 янв','1 фев','2 фев','2 фев','4 фев','5 фев'],

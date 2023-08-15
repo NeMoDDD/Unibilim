@@ -3,7 +3,7 @@ import SideBar from "../SideBar/SideBar";
 import "../../styles/__timetable.scss";
 import HeaderFS from "../Header/HeaderS";
 import Table from "./TimtetableComponents/TableLarge"; 
-import TableMobile from "./TimtetableComponents/TabelModile";
+import TableMobile from "./TimtetableComponents/TableModile";
 import { testData1, testData2, testData3 } from "../../redux/timetableReducer";
 import Header from "../Header/HeaderS";
 

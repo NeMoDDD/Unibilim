@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "../../styles/__teachlist.scss";
 import teach1 from "../../assets/img/teach1.png";
 import teach2 from "../../assets/img/teach2.png";
@@ -6,8 +6,14 @@ import teach3 from "../../assets/img/teach3.png";
 import teach4 from "../../assets/img/teach4.png";
 import SideBar from "../SideBar/SideBar";
 import Header from "../Header/HeaderS";
+import {useDispatch} from "react-redux";
+import {getProfessors} from "../../redux/professorsReducer";
 
 const TeachList = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getProfessors())
+  }, [])
   const classArr = ["Все классы", "9В", "10B", "8А", "11Г"];
   const subjArr = [
     "Все предметы",
@@ -104,6 +110,7 @@ const TeachList = () => {
             </div>
           ))}
         </div>
+
       </div>
       </div>
     </>

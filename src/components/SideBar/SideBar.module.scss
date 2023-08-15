@@ -19,17 +19,16 @@
 }
 .sidebar__link__active {
     color:#FFBF13 ;
-    text-decoration:underline;
 }
 .logo1{
     margin-right: 10px;
 }
 .inner_container{
-    margin-left: 120px;
+    margin-left: 60px;
 }
 .upper_container{
     margin-top: 22px;
-    margin-left: 120px;
+    margin-left: 60px;
 }
 .homepage{
     display: flex;
@@ -43,8 +42,6 @@
     }
 }
 @media (min-width:1025px) and (max-width:1200px){
-    .sideblock{
-        width: 30%;
-    }
+
   }
   

@@ -9,9 +9,9 @@ import {userVerification} from "../../redux/verification-reducer";
 const Verification = () => {
     const dispatch = useDispatch()
     const {isAuth} = useSelector(state => state.verificationReducer)
+    const {otpTokenNikita} = useSelector(state => state.registerReducer)
     const onSubmit = (code) => {
-        console.log(code.pin)
-        dispatch(userVerification(code.pin))
+        dispatch(userVerification(otpTokenNikita, code.pin))
     }
     const phoneNumber = '+996 (556) 02-45-82'
     const { reset, control,handleSubmit, register } = useForm()
@@ -51,7 +51,7 @@ const Verification = () => {
                         </div>
                         <div className={s.verification__support}>
                             <Link className={s.verification__support_again}>Отправить код снова</Link>
-                            <Link className={s.verification__support_cancel}>Сделать сброс-звонок</Link>
+                            {/*<Link className={s.verification__support_cancel}>Сделать сброс-звонок</Link>*/}
                         </div>
                         <button className={s.verification__submit} type='submit'>Подтвердить</button>
                     </form>

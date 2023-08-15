@@ -1,22 +1,30 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import "./Registration.scss";
 import Header from "../Header/HeaderS";
 import {Controller, useForm} from "react-hook-form";
-import {ConfigProvider, DatePicker, Input, Select, Space} from "antd";
+import {Button, ConfigProvider, DatePicker, Input, Select, Space, Upload} from "antd";
 import {EyeInvisibleOutlined, EyeTwoTone, UploadOutlined} from "@ant-design/icons";
 import ruRU from 'antd/lib/locale/ru_RU';
 import {
     registerNewStudent,
     setBirthday,
-    setCheckPassword, setCity,
+    setCheckPassword,
+    setCity,
+    setDistrictCity,
     setName,
-    setNick, setPassword, setPatronym, setRegion, setTgName, setSurname, setPhone, setSelectedPhoto, setDistrictCity
+    setNick,
+    setPassword,
+    setPatronym,
+    setPhone,
+    setRegion,
+    setSelectedPhoto,
+    setSurname,
+    setTgName
 } from "../../redux/RegisterReducer";
 import {useDispatch, useSelector} from "react-redux";
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css';
-import {Upload, Button} from 'antd';
-import LocationReducer, {getCities, getDistricts, getRegion} from "../../redux/location-reducer";
+import {getCities, getDistricts, getRegion} from "../../redux/location-reducer";
 import {Navigate, useLocation} from "react-router-dom";
 
 const Registration = () => {

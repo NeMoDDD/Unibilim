@@ -119,7 +119,7 @@
     padding: 0 15px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .verification__support_cancel,
