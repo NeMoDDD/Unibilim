@@ -2,6 +2,7 @@
     height: 100vh;
     width: 100%;
     display: flex;
+    margin-top: 2em;
 }
 
 .login{
@@ -99,7 +100,8 @@
 .form__submit {
     width: 100%;
     height: 48px;
-    margin-top: 25px;
+    margin-top: 1em;
+    margin-bottom: 1em;
     background-color: #ffbf13;
     border-top: 0;
     border-left: 0;
@@ -117,11 +119,10 @@
 }
 .form__in__text {
     width: 100%;
-    height: 38px;
     font-weight: 500;
     font-size: 32px;
-    line-height: 38.4px;
     color: #2d2d2d;
+    margin-top: 0.5em;
 }
 
 @media screen and (max-width:760px) {

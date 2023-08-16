@@ -138,6 +138,21 @@
 .react-tel-input .form-control {
   width: 90% !important;
 }
+.no_account_block {
+  display: flex;
+  flex-direction: row;
+}
+.no_account_block p {
+  margin-right: 0.5em;
+}
+.already_account_block {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.5em;
+}
+.already_account_block p{
+  margin-right: 0.5em;
+}
 @media screen and (max-width: 480px) {
   .reg-block{
     width: 100%;

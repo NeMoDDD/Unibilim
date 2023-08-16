@@ -6,9 +6,13 @@ import logo from '../../assets/img/unibilim-logo-web.svg'
 import logoMobile from "../../assets/img/logo mobile.svg"
 import {Sling as Hamburger} from 'hamburger-react'
 import {NavLink} from "react-router-dom";
+import {logout} from "../../redux/loginReducer";
+import {useDispatch, useSelector} from "react-redux";
 
 function HeaderT() {
     const [isOpen, setOpen] = useState(false)
+    const dispatch = useDispatch()
+    const {token} = useSelector(state => state.loginReducer)
 
     return (
         <div>
@@ -20,6 +24,11 @@ function HeaderT() {
                     <Navbar.Brand href="/" className={s.mobile__logo}>
                         <img src={logoMobile} alt="logo"/>
                     </Navbar.Brand>
+                    {token !== null ?
+                        <div className={s.logout}>
+                            <button onClick={() => dispatch(logout())}>Выйти</button>
+                        </div>
+                        : null}
                     <div className={s.teachheader}>
                         <Hamburger toggled={isOpen} toggle={setOpen} rounded onToggle={toggled => {
                             if (toggled) {

@@ -26,7 +26,7 @@ export const userVerification = (token, code) => {
         console.log(token, code)
         let data = await verificationApi.userVerification(token, code)
         console.log(data)
-        if (data.status === 201) {
+        if (data.status === 200) {
             dispatch(setIsAuth(true))
         }
     }

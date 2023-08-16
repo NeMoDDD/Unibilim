@@ -8,12 +8,12 @@ import {NavLink} from "react-router-dom";
 const SideBar = (props) => {
   return (
     <div className={s.sideblock}>
-      <div className={s.inner_container}>
-        <NavLink className={navData => navData.isActive ? `${s.sidebar__link__active} ${s.sidebar__link}` : s.sidebar__link} to="/studlk">
-          <img src={logo1} className={s.logo1} alt=""/>
-          Обо мне
-        </NavLink>
-      </div>
+      {/*<div className={s.inner_container}>*/}
+      {/*  <NavLink className={navData => navData.isActive ? `${s.sidebar__link__active} ${s.sidebar__link}` : s.sidebar__link} to="/studlk">*/}
+      {/*    <img src={logo1} className={s.logo1} alt=""/>*/}
+      {/*    Обо мне*/}
+      {/*  </NavLink>*/}
+      {/*</div>*/}
       <div className={s.upper_container}>
         <NavLink className={navData => navData.isActive ? `${s.sidebar__link__active} ${s.sidebar__link}` : s.sidebar__link} to="/timetable">
           <img src={logo2} className={s.logo1} alt=""/>

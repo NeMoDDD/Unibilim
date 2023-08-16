@@ -2,8 +2,12 @@ import React from "react";
 import HeaderT from "../Header/HeaderT";
 import SideBarTeach from "../SideBar/SideBarTeach";
 import s from "./__subj.module.scss";
+import {useSelector} from "react-redux";
+import {Navigate} from "react-router-dom";
 
 const SubjTable = () => {
+    const {userRole} = useSelector(state => state.loginReducer)
+
     const name = "< 23 янв - 30 янв >";
     const dayList = ["Mon", "Tue", "Wed", "Tuer", "Fri", "Sat", "Sun"];
     const arrSubj = [
@@ -103,6 +107,7 @@ const SubjTable = () => {
         <>
             <HeaderT/>
             <SideBarTeach/>
+            {userRole === "professor" ?
             <div className={s.pad}>
                 <div className={s.timetable_block}>
                     <div className={s.time}>
@@ -285,6 +290,7 @@ const SubjTable = () => {
                     })}
                 </div>
             </div>
+                : userRole === "student" ? <Navigate to="/timetable"/> : <Navigate to="/login"/>}
         </>
     );
 };

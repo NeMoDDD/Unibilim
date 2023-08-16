@@ -1,17 +1,21 @@
-import React from "react";
+import React, {useEffect} from "react";
 import SideBar from "../SideBar/SideBar";
 import "../../styles/__timetable.scss";
-import HeaderFS from "../Header/HeaderS";
-import Table from "./TimtetableComponents/TableLarge"; 
-import TableMobile from "./TimtetableComponents/TableModile";
-import { testData1, testData2, testData3 } from "../../redux/timetableReducer";
 import Header from "../Header/HeaderS";
+import Table from "./TimtetableComponents/TableLarge";
+import TableMobile from "./TimtetableComponents/TableModile";
+import {getTimetable, testData1, testData2, testData3} from "../../redux/timetableReducer";
+import {useDispatch, useSelector} from "react-redux";
+import {Navigate} from "react-router-dom";
 
 const Timetable = React.memo((props) => {
   const firstDate = props.timetable?.alldate?.[0];
   const lastDate = props.timetable?.alldate[props.timetable.alldate.length - 1];
   const week = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'] 
   const weekFull = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
+  const {token, userRole} = useSelector(state => state.loginReducer)
+
+  const dispatch = useDispatch()
   const getNextWeekHandler = () => {
     if (props.timetable.id === 2) {
       return props.setNewTimetableAC(testData3)
@@ -26,12 +30,15 @@ const Timetable = React.memo((props) => {
       return props.setNewTimetableAC(testData1)
     } else return
   }
+  useEffect(() => {
+    dispatch(getTimetable(token))
+  }, [])
   return (
     <>
       <Header/>
       <SideBar/>
-      {props.timetable?.alldate &&
-
+      {userRole === "student" ?
+          props.timetable?.alldate &&
         <div className="timetable_block">
           <div className="timetable__time">
             <p className="teach_txt">Расписание</p>
@@ -92,13 +99,12 @@ const Timetable = React.memo((props) => {
             {props.timetable.tuesday.map((item, index) => <TableMobile week={weekFull[1]} day={props.timetable.alldate[1]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)} 
             {props.timetable.wednesday.map((item, index) => <TableMobile week={weekFull[2]} day={props.timetable.alldate[2]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)} 
             {props.timetable.thursday.map((item, index) => <TableMobile week={weekFull[3]} day={props.timetable.alldate[3]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)} 
-            {props.timetable.friday.map((item, index) => <TableMobile week={weekFull[4]} day={props.timetable.alldate[4]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)} 
+            {props.timetable.friday.map((item, index) => <TableMobile week={weekFull[4]} day={props.timetable.alldate[4]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}
             {props.timetable.saturday.map((item, index) => <TableMobile week={weekFull[5]} day={props.timetable.alldate[5]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)} 
             {props.timetable.sunday.map((item, index) => <TableMobile week={weekFull[6]} day={props.timetable.alldate[6]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}
           </div>
         </div>
-
-      }
+          : userRole === "professor" ? <Navigate to="/teachlk"/> : <Navigate to="/login"/>}
     </>
   );
 });

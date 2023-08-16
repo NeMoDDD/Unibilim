@@ -25,7 +25,7 @@ import {useDispatch, useSelector} from "react-redux";
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css';
 import {getCities, getDistricts, getRegion} from "../../redux/location-reducer";
-import {Navigate, useLocation} from "react-router-dom";
+import {Navigate, NavLink, useLocation} from "react-router-dom";
 
 const Registration = () => {
     const {control, handleSubmit, setError, clearErrors, formState: {errors}, reset} = useForm({
@@ -36,7 +36,7 @@ const Registration = () => {
     const navigate = useLocation()
     const {
         nick, name, surname, patronym, phone, password, checkPassword, tgName,
-        dateOfBirth, region, city, districtCity, selectedPhoto, toVerification
+        dateOfBirth, region, city, districtCity, selectedPhoto, toVerification, isFetching
     } = useSelector(state => state.registerReducer)
     const {regions,  cities, districtCities} = useSelector(state => state.locationReducer)
 
@@ -330,7 +330,9 @@ const Registration = () => {
                                 },
                             }}
                             render={({field}) => (
-                                <Upload {...field} accept=".jpg, .png"
+                                <Upload {...field}
+                                        fileList={field.value}
+                                        accept=".jpg, .png"
                                         showUploadList={false} beforeUpload={(file) => {
                                     dispatch(setSelectedPhoto(file))
                                 }}
@@ -355,7 +357,10 @@ const Registration = () => {
                             обработку персональных данных и <a href="#"> Политику конфиденциальности</a>
                         </label>
                     </div>
-                    <button type="submit" className="reg-end">
+                    <div className="already_account_block">
+                        <p>Уже есть аккаунт?</p><NavLink to="/login">Войти</NavLink>
+                    </div>
+                    <button type="submit" className="reg-end" disabled={isFetching}>
                         Продолжить
                     </button>
                 </div>

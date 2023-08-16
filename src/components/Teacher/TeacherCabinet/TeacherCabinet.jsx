@@ -5,10 +5,11 @@ import SideBarTeach from "../../SideBar/SideBarTeach";
 import userava from "../../../assets/img/user (2) 2.png";
 import edit from "../../../assets/img/edit1.png";
 import {Controller, useForm} from "react-hook-form";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import ruRU from "antd/lib/locale/ru_RU";
 import {ConfigProvider, DatePicker, Space} from "antd";
 import HeaderT from "../../Header/HeaderT";
+import {Navigate} from "react-router-dom";
 
 const isValidEmail = email =>
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -20,6 +21,7 @@ const TeacherCabinet = (props) => {
     const {control, register, handleSubmit, reset, formState: {errors}} = useForm({
         mode: "onBlur",
     });
+    const {userRole} = useSelector(state => state.loginReducer)
     const handleEmailValidation = email => {
         const isValid = isValidEmail(email);
 
@@ -37,6 +39,7 @@ const TeacherCabinet = (props) => {
         <>
             <HeaderT/>
             <SideBarTeach/>
+            {userRole === "professor" ?
             <div className={s.first_block}>
                 <div className={s.inner_block}>
                     <div className={`${s.avaname} ${s.radblock}`}>
@@ -161,6 +164,7 @@ const TeacherCabinet = (props) => {
                     </div>
                 </div>
             </div>
+                : userRole === "student" ? <Navigate to="/timetable"/> : <Navigate to="/login"/>}
         </>
     );
 };

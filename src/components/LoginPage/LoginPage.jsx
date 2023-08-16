@@ -6,17 +6,16 @@ import {useDispatch, useSelector} from "react-redux";
 import {Input} from "antd";
 import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
 import {login, setUserName, setUserPassword} from "../../redux/loginReducer";
-import {Navigate} from "react-router-dom";
+import {Navigate, NavLink} from "react-router-dom";
 
 const LoginPage = (props) => {
     const {control, handleSubmit, setError, clearErrors, formState: {errors}} = useForm({
         mode: "onBlur",
     })
     const dispatch = useDispatch()
-    const {userName, password, token, userRole} = useSelector(state => state.loginReducer)
+    const {userName, password, token, userRole, isFetching} = useSelector(state => state.loginReducer)
     const onSubmit = () => {
         dispatch(login(userName, password))
-        // dispatch(registerNewStudent(name, password, checkPassword, phone, tgName, dateOfBirth, region, city, districtCity))
     };
     return (
         <>
@@ -63,12 +62,15 @@ const LoginPage = (props) => {
                                     <p
                                         className={s.error_message}>{errors.password.message || "Это поле обязательное!"}</p>}
                             </div>
+                            <div className="no_account_block">
+                                <p>Нет аккаунта?</p><NavLink to="/reg">Зарегистрироваться</NavLink>
+                            </div>
                         </div>
-                        <button type='submit' className={s.form__submit}>Продолжить</button>
+                        <button type='submit' className={s.form__submit} disabled={isFetching}>Продолжить</button>
                     </form>
                 </div>
             </div>
-                : userRole === "student" ? <Navigate to="/studlk"/> : <Navigate to="/teachlk"/>}
+                : userRole === "student" ? <Navigate to="/timetable"/> : <Navigate to="/teachlk"/>}
         </>
     );
 };

@@ -3,6 +3,7 @@
     background-color: #FFFFFF;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
 .desktop__logo {
@@ -23,6 +24,18 @@
     color: #FFBF13;
     transition: 0.4s;
     cursor: pointer;
+}
+.logout {
+    margin-right: 4em;
+}
+.logout button {
+    border: none;
+    background: none;
+    color: #FFBF13;
+    transition: 0.4s;
+}
+.logout button:hover {
+    color: #d7a10c;
 }
 .btn{
     width: 190px;

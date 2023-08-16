@@ -1,9 +1,10 @@
 import { instance } from "./api"; 
 
 export const meetingsApi = { 
-    getAllMeetings() { 
+    getAllMeetings(token) {
+        console.log(1)
         //Получаем все Встречи
-        return instance.get(`meetings/`)
+        return instance.get(`meetings/`, token)
     }, 
     getDefineMeeting(meetingId){ 
         //Получаем определенную Встречу
