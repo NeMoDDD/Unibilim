@@ -120,6 +120,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .verification__support_cancel,
@@ -131,7 +133,9 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    text-decoration-line: underline;
+    background: none;
+    text-decoration: underline;
+    border: none;
 }
 .verification__pin{ 
     margin-top: 25%;

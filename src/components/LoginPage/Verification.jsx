@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import HeaderFS from '../Header/HeaderS'
 import s from './Login.module.css'
 import { ChakraProvider, FormControl, FormLabel, PinInput, PinInputField } from '@chakra-ui/react';
@@ -9,12 +9,33 @@ import {userVerification} from "../../redux/verification-reducer";
 const Verification = () => {
     const dispatch = useDispatch()
     const {isAuth} = useSelector(state => state.verificationReducer)
-    const {otpTokenNikita} = useSelector(state => state.registerReducer)
+    const {otpTokenNikita, phone} = useSelector(state => state.registerReducer)
+
+    const [isDisabled, setDisabled] = useState(true)
+    const [timer, setTimer] = useState(60); // Изначальное значение таймера (в секундах)
     const onSubmit = (code) => {
         dispatch(userVerification(otpTokenNikita, code.pin))
     }
-    const phoneNumber = '+996 (556) 02-45-82'
+    const phoneNumber = `+${phone}`
     const { reset, control,handleSubmit, register } = useForm()
+
+    useEffect(() => {
+        if (timer > 0) {
+            const countdown = setInterval(() => {
+                setTimer((prevTimer) => prevTimer - 1);
+            }, 1000);
+            return () => clearInterval(countdown);
+        }
+        if (timer === 0) {
+            setDisabled(false);
+        }
+    }, [timer]);
+
+    const handleResendCode = () => {
+        setDisabled(true);
+        setTimer(60);
+    };
+
     return (
         <>
             <HeaderFS />
@@ -50,7 +71,8 @@ const Verification = () => {
 
                         </div>
                         <div className={s.verification__support}>
-                            <Link className={s.verification__support_again}>Отправить код снова</Link>
+                            <p>{timer}</p>
+                            <button onClick={handleResendCode} disabled={isDisabled} className={s.verification__support_again}>Отправить код снова</button>
                             {/*<Link className={s.verification__support_cancel}>Сделать сброс-звонок</Link>*/}
                         </div>
                         <button className={s.verification__submit} type='submit'>Подтвердить</button>
