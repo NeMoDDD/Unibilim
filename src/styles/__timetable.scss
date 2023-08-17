@@ -1,16 +1,19 @@
 .timetable_block {
+  margin-top: 25px;
   width: 70%;
   border-radius: 25px;
   float: left;
 }
+
 .timetable__time {
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: space-evenly;
   background-color: white;
-  padding: 3% 0; 
+  padding: 15px;
   border-radius: 25px 25px 0px 0
 }
+
 .date_txt {
   font-weight: 600;
   font-size: 22px;
@@ -18,29 +21,33 @@
   text-align: center;
   color: #93979b;
 }
+
 .date_tr {
   border-right: #93979b 2px solid;
   border-top: #93979b 2px solid;
   height: 583px;
 }
+
 .day_cell {
   display: flex;
   justify-content: space-around;
 }
+
 .cell {
   text-align: center;
   border-radius: 25px;
 }
+
 .subj_table {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
 }
+
 table.timetable {
   width: 100%;
-  border: 1px solid grey;
+  border: 1px hidden grey;
   border-collapse: collapse;
-  border-style: hidden;
 }
 
 table td {
@@ -51,10 +58,12 @@ table td {
   text-align: center;
   background-color: #ececec40;
 }
+
 table th {
   border: none;
 }
-.subj_block { 
+
+.subj_block {
 
   height: 130px;
   border-radius: 8px;
@@ -63,6 +72,7 @@ table th {
   justify-content: space-around;
   align-items: center;
 }
+
 .subj_name {
   font-weight: 400;
   font-size: 17px;
@@ -71,6 +81,7 @@ table th {
   color: #2d2d2d;
   margin-top: 13px;
 }
+
 .subj_teach {
   font-weight: 400;
   font-size: 12px;
@@ -79,6 +90,7 @@ table th {
   color: #2d2d2d;
   margin-top: -14px;
 }
+
 .subj_time {
   font-weight: 400;
   font-size: 15px;
@@ -87,7 +99,8 @@ table th {
   color: #686868;
   margin-top: -9px;
 }
-.subj_about { 
+
+.subj_about {
   padding: 3px 14px;
   background: #b0ffff;
   border-radius: 16px;
@@ -99,6 +112,7 @@ table th {
   margin-bottom: 15px;
   // margin-left: 15px;
 }
+
 .popup_block {
   width: 680px;
   height: 288px;
@@ -106,6 +120,7 @@ table th {
   box-shadow: 0px 20px 64px 8px rgba(0, 0, 0, 0.16);
   border-radius: 25px 25px 25px 25px;
 }
+
 .pop_info {
   width: 200px;
   display: flex;
@@ -113,6 +128,7 @@ table th {
   // justify-content: center;
   padding: 15px 25px;
 }
+
 .pop_subj {
   font-weight: 500;
   font-size: 20px;
@@ -120,11 +136,13 @@ table th {
   color: #2d2d2d;
   text-align: center;
 }
+
 .pop_img {
   margin-top: -13px;
   width: 150px;
   // height: 150px;
 }
+
 .pop_name {
   font-style: normal;
   font-weight: 400;
@@ -133,6 +151,7 @@ table th {
   text-align: center;
   color: #2d2d2d;
 }
+
 .pop_date {
   font-weight: 400;
   font-size: 13px;
@@ -141,12 +160,14 @@ table th {
   color: #2d2d2d;
   margin-top: -13px;
 }
+
 .pop_info2 {
   margin-left: 200px;
   width: 431px;
   height: 55px;
   text-align: center;
 }
+
 .pop_about {
   font-style: normal;
   font-weight: 400;
@@ -154,6 +175,7 @@ table th {
   line-height: 18px;
   color: #2d2d2d;
 }
+
 .first_btn {
   width: 431px;
   height: 42px;
@@ -162,6 +184,7 @@ table th {
   border-radius: 10px;
   border: none;
 }
+
 .btn_p {
   font-style: normal;
   font-weight: 500;
@@ -171,10 +194,12 @@ table th {
   color: #ffffff;
   padding: 10px;
 }
+
 .pop_btn {
   margin-left: 200px;
   margin-top: 95px;
 }
+
 .btn_flex {
   display: flex;
   justify-content: space-between;
@@ -193,6 +218,7 @@ table th {
   text-align: center;
   color: #ffffff;
 }
+
 .cards {
   display: none;
   width: 100%;
@@ -200,6 +226,7 @@ table th {
   border-radius: 15px;
   margin-top: 15px;
 }
+
 .card_subj {
   font-style: normal;
   font-weight: 400;
@@ -209,6 +236,7 @@ table th {
   color: #2d2d2d;
   margin: 0px;
 }
+
 .card_time {
   font-style: normal;
   font-weight: 400;
@@ -218,6 +246,7 @@ table th {
   color: #686868;
   margin: 5px;
 }
+
 .card_teach {
   font-style: normal;
   font-weight: 400;
@@ -227,6 +256,7 @@ table th {
   color: #2d2d2d;
   margin: 5px;
 }
+
 .cards_head {
   background: #93979b;
   border-radius: 15px 15px 0px 0px;
@@ -234,6 +264,7 @@ table th {
   align-items: baseline;
   padding: 13px 0px 0px 5px;
 }
+
 .weekday {
   font-style: normal;
   font-weight: 500;
@@ -243,6 +274,7 @@ table th {
   color: #ffffff;
   margin-left: 10px;
 }
+
 .dayday {
   font-style: normal;
   font-weight: 500;
@@ -250,6 +282,7 @@ table th {
   text-align: center;
   color: #ffffff;
 }
+
 .cards_inner {
   margin: 5px;
   border-radius: 15px;
@@ -258,6 +291,7 @@ table th {
   align-items: center;
   padding: 15px 0px 15px 0px;
 }
+
 .cards_btn {
   width: 80%;
   height: 38px;
@@ -265,48 +299,52 @@ table th {
   border-radius: 19px;
   border: none;
 }
-.cards_block{
+
+.cards_block {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   background-color: white;
 }
-.card_stud{
+
+.card_stud {
   font-weight: 400;
-font-size: 20px;
-line-height: 24px;
-/* identical to box height */
-
-text-align: center;
-
-color: #2D2D2D;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #2D2D2D;
 }
+
 .break {
   flex-basis: 90%;
   height: 0;
 }
 
 
-.timetable__item{ 
-  display: flex; 
-  flex-direction: column; 
-  height: 100%; 
+.timetable__item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   width: 100%;
-} 
-.teach_txt{ 
+}
+
+.teach_txt {
   font-weight: 600;
   font-size: 26px;
   line-height: 31px;
-  color: #93979b; 
-  margin: 0; 
-}  
-.date_txt {
-  display: flex; 
+  color: #93979b;
+  margin: 0;
 }
-.timetable__title_span{ 
+
+.date_txt {
+  display: flex;
+}
+
+.timetable__title_span {
   cursor: pointer;
 }
+
 @media screen and (max-width: 525px) {
   .timetable_block {
     width: 100%;
@@ -320,6 +358,9 @@ color: #2D2D2D;
     align-items: center;
     justify-content: space-around;
   }
+  .time {
+    justify-content: space-between;
+  }
   .teach_txt {
     font-weight: 600;
     font-size: 20px;
@@ -331,18 +372,18 @@ color: #2D2D2D;
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
-    width: 50%;
     margin-top: 25px;
   }
   .cards {
     display: block;
   }
- 
-  .cards_block{
+
+  .cards_block {
     flex-direction: column;
     padding: 0px 15px 0px 15px
   }
 }
+
 @media (min-width: 525px) and (max-width: 1024px) {
   .timetable_block {
     width: 100%;
@@ -371,7 +412,9 @@ color: #2D2D2D;
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
-    width: 50%;
+  }
+  .time {
+    justify-content: space-between;
   }
 }
 

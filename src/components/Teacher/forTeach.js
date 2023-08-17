@@ -1,15 +1,14 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import HeaderT from "../Header/HeaderT";
-import StudList from "./StudList";
+import StudList from "./StudList/StudList";
 import SubjTable from './SubjTable'
-import MyCab from './MyCab'
+import MyCab from './TeacherCabinet/TeacherCabinet'
 
 
 const ForTeach = () => {
   return (
     <div>
-      <HeaderT />
       <MyCab />
       <Routes>
         <Route path="/studlist" element={<StudList />} />

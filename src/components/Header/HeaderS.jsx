@@ -6,10 +6,10 @@ import logo from '../../assets/img/unibilim-logo-web.svg'
 import logoMobile from "../../assets/img/logo mobile.svg"
 import {Sling as Hamburger} from 'hamburger-react'
 import {NavLink} from "react-router-dom";
-import {logout} from "../../redux/loginReducer";
 import {useDispatch, useSelector} from "react-redux";
+import {logout} from "../../redux/loginReducer";
 
-function HeaderT() {
+function HeaderFS() {
     const [isOpen, setOpen] = useState(false)
     const dispatch = useDispatch()
     const {token} = useSelector(state => state.loginReducer)
@@ -25,11 +25,12 @@ function HeaderT() {
                         <img src={logoMobile} alt="logo"/>
                     </Navbar.Brand>
                     {token !== null ?
-                        <div className={s.logout}>
-                            <button onClick={() => dispatch(logout())}>Выйти</button>
+                        <div>
+                            <button onClick={() => dispatch(logout())}>Выйти
+                            </button>
                         </div>
                         : null}
-                    <div className={s.teachheader}>
+                    <div className={s.studheader}>
                         <Hamburger toggled={isOpen} toggle={setOpen} rounded onToggle={toggled => {
                             if (toggled) {
                             } else {
@@ -40,33 +41,31 @@ function HeaderT() {
             </Navbar>
             {isOpen && (
                 <div className={s.menu__header}>
+                    {/*<div className={s.menu__header_block}>*/}
+                    {/*    <NavLink to="/studlk"*/}
+                    {/*             className={navData => navData.isActive ? `${s.menu__header__link__active} ${s.menu__header__link}` : s.menu__header__link}>*/}
+                    {/*        Обо мне*/}
+                    {/*    </NavLink>*/}
+                    {/*</div>*/}
                     <div className={s.menu__header_block}>
-                        <NavLink to="/teachlk"
-                                 className={navData => navData.isActive ? `${s.menu__header__link__active} ${s.menu__header__link}` : s.menu__header__link}>
-                            Обо мне
-                        </NavLink>
-                    </div>
-                    <div className={s.menu__header_block}>
-                        <NavLink to="/subjtable"
-                                 className={navData => navData.isActive ? `${s.menu__header__link__active} ${s.menu__header__link}` : s.menu__header__link}>
+                        <NavLink to="/timetable" className={navData => navData.isActive ? `${s.menu__header__link__active} ${s.menu__header__link}` : s.menu__header__link}>
                             Расписание
                         </NavLink>
                     </div>
                     <div className={s.menu__header_block}>
-                        <NavLink to="/studlist"
-                                 className={navData => navData.isActive ? `${s.menu__header__link__active} ${s.menu__header__link}` : s.menu__header__link}>
-                            Ученики
+                        <NavLink to="/teachlist" className={navData => navData.isActive ? `${s.menu__header__link__active} ${s.menu__header__link}` : s.menu__header__link}>
+                            Консультанты
                         </NavLink>
                     </div>
-                    {token !== null ?
-                        <div className={s.menu__header_block}>
-                            <button className={s.logout_btn} onClick={() => dispatch(logout())}>Выйти</button>
-                        </div>
-                        : null}
+                    <div className={s.menu__header_block}>
+                        <NavLink to="/reservation" className={navData => navData.isActive ? `${s.menu__header__link__active} ${s.menu__header__link}` : s.menu__header__link}>
+                            Бронирование
+                        </NavLink>
+                    </div>
                 </div>
             )}
         </div>
     );
 }
 
-export default HeaderT;
+export default HeaderFS;

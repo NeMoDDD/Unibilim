@@ -17,7 +17,15 @@ export const professorsApi = {
     getDefineTimeTable(professorId, timetableId){  
         //Получаем КОНКРЕТНОЕ расписание определенного Профессора
         return instance.get(`/professors/${professorId}/timetable/${timetableId}/`)
-    }, 
+    },
+    getProfessorsCabinet(token) {
+        // Получаем информацию о профессоре для Обо мне
+        return instance.get(`/professors/cabinet/`, {
+            headers: {
+                'Authorization': `Token ${token}`
+            }
+        })
+    },
     
     // Все POST запросы!!! 
     createNewProfessor(professorData) { 

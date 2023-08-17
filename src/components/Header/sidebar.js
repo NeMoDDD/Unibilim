@@ -1,12 +1,12 @@
 import Registration from "../components/Registration/Registration";
-import PersAreaStud from "../components/PersAreaStud/PersAreaStud";
+import PersAreaStud from "../components/Student/Student";
 import LoginPage from "../components/LoginPage/LoginPage";
-import StudList from "../components/PATeach/StudList";
-import TeachList from "../components/PersAreaStud/TeachList";
-import Timetable from "../components/PersAreaStud/Timetable";
-import Reservation from "../components/PersAreaStud/Reservation";
-import MyCab from "./components/PATeach/MyCab";
-import SubjTable from "./components/PATeach/SubjTable";
+import StudList from "../components/Teacher/StudList";
+import TeachList from "../components/Student/TeachList";
+import Timetable from "../components/Student/Timetable";
+import Reservation from "../components/Student/Reservation";
+import MyCab from "./components/Teacher/MyCab";
+import SubjTable from "./components/Teacher/SubjTable";
 import Home from "./components/Home/Home";
 
 

@@ -7,6 +7,15 @@
   flex-direction: column;
   justify-content: center;
 }
+.up_block{
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  margin-top: 25px;
+}
+.reg-text-block {
+  margin: 0 auto;
+}
 .reg-text {
   width: 100%;
   height: 38px;
@@ -14,19 +23,63 @@
   font-size: 32px;
   line-height: 38.4px;
   color: #2d2d2d;
-  
+}
+.input-form-block {
+  margin-bottom: 20px;
 }
 .npt-txt {
   width: 90%;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  border-color: #ffbf13;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-color: #CCCCCC !important;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
   color: #595959;
-  background-color: white;
+  border-radius: 0;
+  background-color: white !important;
+}
+.npt-txt:hover {
+  border-color: #ffbf13 !important;
+}
+.npt-txt:focus {
+  border-color: #ffbf13 !important;
+  outline: 0;
+}
+.npt-txt-errors {
+  border-color: #D0021B !important;
+}
+.data-picker:hover {
+  border-color: #ffbf13 !important;
+}
+.ant-picker-focused {
+  border-color: #ffbf13 !important;
+}
+.data-picker-error {
+  border-color: #D0021B !important;
+}
+.error-message {
+  font-size: 13px;
+  color: #D0021B;
+  margin: 0;
+}
+.upload-photo:hover {
+  border-color: #ffbf13 !important;
+  color: #ffbf13 !important;
+}
+.phone-input {
+  width: 90%;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-color: #CCCCCC !important;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #595959;
+  border-radius: 0;
+  background-color: white !important;
 }
 .nm-txt {
   font-weight: 400;
@@ -48,10 +101,9 @@
 }
 .dropdown-select {
   width: 100%;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  border-color: #ffbf13;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -83,7 +135,24 @@
   line-height: 14.4px;
   color: #989898;
 }
-
+.react-tel-input .form-control {
+  width: 90% !important;
+}
+.no_account_block {
+  display: flex;
+  flex-direction: row;
+}
+.no_account_block p {
+  margin-right: 0.5em;
+}
+.already_account_block {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.5em;
+}
+.already_account_block p{
+  margin-right: 0.5em;
+}
 @media screen and (max-width: 480px) {
   .reg-block{
     width: 100%;
@@ -94,14 +163,33 @@
   .dropdown-select{
     width: 100%;
   }
+  .reg-text {
+    font-size: 22px;
+  }
+  .reg-block {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 481px) {
+  .reg-block {
+    width: 90%;
+  }
 }
 @media (min-width: 481px) and (max-width: 830px) {
   .npt-txt {
-    width: 50%;
+    width: 90%;
+  }
+  .reg-text {
+    font-size: 22px;
+  }
+  .reg-block {
+    width: 60%;
   }
 }
 @media (min-width: 831px) and (max-width: 1024px) {
   .npt-txt {
-    width: 50%;
+  }
+  .reg-block {
+    width: 60%;
   }
 }

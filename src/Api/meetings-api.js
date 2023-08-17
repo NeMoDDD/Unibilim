@@ -1,30 +1,34 @@
-import { instance } from "./api"; 
+import {instance} from "./api";
 
-export const meetingsApi = { 
-    getAllMeetings() { 
+export const meetingsApi = {
+    getAllMeetings(token) {
         //Получаем все Встречи
-        return instance.get(`meetings/`)
-    }, 
-    getDefineMeeting(meetingId){ 
+        return instance.get(`meetings/`, {
+            headers: {
+                'Authorization': `Token ${token}`
+            }
+        });
+    },
+    getDefineMeeting(meetingId) {
         //Получаем определенную Встречу
         return instance.get(`meetings/${meetingId}/`)
-    }, 
+    },
 
-    createMeeting() {  
+    createMeeting() {
         //Создаем встречу
         return instance.post(`meetings/`)
-    }, 
+    },
 
-    updateDefineMeeting(meetingId, meetingData){ 
+    updateDefineMeeting(meetingId, meetingData) {
         //Обновляем определенную встречу 
         return instance.put(`meetings/${meetingId}/`, meetingData)
-    }, 
-    updatePartialDefineMeeting(meetingId, meetingData){ 
+    },
+    updatePartialDefineMeeting(meetingId, meetingData) {
         //Частично обновляем определенную встречу 
         return instance.patch(`meetings/${meetingId}/`, meetingData)
-    },  
+    },
 
-    deleteDefineMeeting(meetingId){  
+    deleteDefineMeeting(meetingId) {
         //Удаляем конкретную встречу
         return instance.delete(`meetings/${meetingId}/`)
     }

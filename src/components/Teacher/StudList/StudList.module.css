@@ -1,0 +1,224 @@
+.stud_head {
+    width: 60%;
+    background-color: #ffff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    color: #93979b;
+    margin-top: 25px;
+}
+.studs {
+    height: 31px;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 31.2px;
+}
+.radios {
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.radio_txt {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21.6px;
+    margin-left: 0.2em;
+}
+#groups {
+    margin-left: 25px;
+}
+.stud_list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+.stud_card {
+    width: 18%;
+    background-color: #fcfcfc;
+    border-radius: 25px;
+    margin-left: 14px;
+    text-align: center;
+    margin-top: 20px;
+}
+.stud_txt {
+    margin-top: 15px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 19px;
+    color: black;
+}
+.stud_btn {
+    width: 142px;
+    height: 32px;
+    background-color: #ffbf13;
+    border-radius: 10px;
+    border-top: 0;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+}
+.stud_btn_txt {
+    color: white;
+    margin-top: 7px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14.4px;
+    text-align: center;
+}
+.table {
+    width: 90%;
+    border: 1px solid grey;
+    border-collapse: collapse;
+    border-top: none;
+    border-left: none;
+    margin-left: 63px;
+    margin-top: 53px;
+    padding: 0 5px;
+}
+.stud_drop {
+    padding: 5px 0 5px 5px;
+    width: 15%;
+    background-color: #f6fafc;
+    border-radius: 25px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+.stud_drop span {
+    color: #595959;
+}
+.stud_drop_popup div {
+    color: #595959;
+}
+.npt-txt-error {
+    border-color: #D0021B !important;
+}
+.npt-txt-span {
+    color: #D0021B;
+    font-size: 13px;
+}
+.table td {
+    border-left: 1px solid grey;
+    padding: 3px;
+    width: 74px;
+    height: 34px;
+    text-align: center;
+    background-color: #ececec40;
+}
+.table th {
+    border: none;
+}
+.reg_npt_error {
+    border-color: #D0021B !important;
+}
+.date_res {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    color: #6c7074;
+}
+.time_res {
+    margin-left: 15px;
+    margin-top: 35px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    color: #6c7074;
+}
+.mt {
+    margin-top: 20px;
+}
+.reser_teach {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 31px;
+    text-align: center;
+
+    color: #93979b;
+}
+.reser_date {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 26px;
+    text-align: center;
+    color: #93979b;
+}
+.in_table {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 12px;
+    color: #ffbf13;
+}
+.student__type__block {
+    display: flex;
+    flex-direction: row;
+}
+.student__type {
+    margin-right: 1em;
+}
+@media screen and (max-width: 346px){
+    .student__type__block {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media screen and (max-width: 480px) {
+    .stud_head {
+        width: 100%;
+    }
+    .stud_drop {
+        width: 35%;
+        margin-top: 15px;
+    }
+    .stud_card {
+        width: 45%;
+    }
+    .radios {
+        flex-direction: column;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .stud_head {
+        width: 100%;
+    }
+    .stud_card {
+        width: 30%;
+    }
+    .stud_drop {
+        width: 35%;
+        margin-top: 15px;
+    }
+    .radios {
+        flex-direction: column;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .stud_head {
+        width: 100%;
+    }
+    .stud_card {
+        width: 23%;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1250px) {
+    .stud_head {
+        width: 70%;
+    }
+    .stud_card {
+        width: 31%;
+    }
+}
