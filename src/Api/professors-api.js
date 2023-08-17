@@ -2,9 +2,13 @@ import {instance} from "./api";
 
 export const professorsApi = {
     //Все GET запросы!!!
-    getAllProfessors() { 
+    getAllProfessors(token) { 
         //Получаем всех Профессоров
-        return instance.get(`professors/`)
+        return instance.get(`professors/`,{ 
+            headers: {
+                'Authorization': `Token ${token}`
+            }
+        })
     },  
     getDefineProfessor(id){ 
         //Получаем определенного Профессора 
