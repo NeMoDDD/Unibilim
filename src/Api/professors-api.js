@@ -26,6 +26,13 @@ export const professorsApi = {
             }
         })
     },
+    getProfessorsStudentsList(token) { 
+        return instance.get(`/professors/my_students/`,{ 
+            headers: {
+                'Authorization': `Token ${token}`
+            } 
+        })
+    },
     
     // Все POST запросы!!! 
     createNewProfessor(professorData) { 

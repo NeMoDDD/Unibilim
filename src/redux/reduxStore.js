@@ -7,7 +7,7 @@ import LoginReducer from "./loginReducer";
 import LocationReducer from "./location-reducer";
 import VerificationReducer from "./verification-reducer";
 import ProfessorsReducer from "./professorsReducer";
-
+import myStudentsReducer from './myStudents-reducer'
 let reducers = combineReducers({   
     timetablePage: timetableReducer, 
     MyCabReducer: MyCabReducer,
@@ -15,7 +15,8 @@ let reducers = combineReducers({
     loginReducer: LoginReducer,
     locationReducer: LocationReducer,
     verificationReducer: VerificationReducer,
-    professorsReducer: ProfessorsReducer
+    professorsReducer: ProfessorsReducer, 
+    myStudents: myStudentsReducer
 })
 export const store = createStore(reducers, applyMiddleware(thunkMiddleware))
  

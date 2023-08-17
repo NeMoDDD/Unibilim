@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import s from "./StudList.module.css"
 import stud1 from "../../../assets/img/stud1.png";
 import stud2 from "../../../assets/img/stud2.png";
@@ -8,9 +8,10 @@ import stud5 from "../../../assets/img/stud5.png";
 import SideBarTeach from "../../SideBar/SideBarTeach";
 import HeaderT from "../../Header/HeaderT";
 import {Select} from "antd";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
-
+import { getDefineProffeserossStudents } from "../../../redux/myStudents-reducer";
+import ava from '../../../assets/img/student-without-photo.svg'
 const StudList = () => {
     const students = [
         {id: 1, name: "Ирина", firstname: "Бойка", img: stud1},
@@ -22,8 +23,13 @@ const StudList = () => {
         {id: 2, name: "Николай", firstname: "Коготько", img: stud2},
         {id: 4, name: "Вася", firstname: "Глупый", img: stud4},
     ];
-    const {userRole} = useSelector(state => state.loginReducer)
-
+    const {userRole,token} = useSelector(state => state.loginReducer)
+    const {myStudents} = useSelector(state => state.myStudents)  
+    const dispatch = useDispatch() 
+    useEffect(() =>{ 
+        dispatch(getDefineProffeserossStudents({token}))
+    },[dispatch,token]) 
+    console.log(myStudents);
     return (
         <>
             <HeaderT/>
@@ -64,14 +70,14 @@ const StudList = () => {
                             />
                         </div>
                         <div className={s.stud_list}>
-                            {students.map((item, index) => (
+                            {myStudents?.map((item, index) => (
                                 <div className={s.stud_card} key={index}>
-                                    <img src={item.img}/>
+                                    <img src={item?.photo ? item.photo : ava } alt=""/>
                                     <p key={item.id} className={s.stud_txt}>
                                         {" "}
-                                        {item.name}
+                                        {item?.firstname}
                                         <br/>
-                                        {item.firstname}
+                                        {item?.surname}
                                     </p>
                                     <button className={s.stud_btn}>
                                         <p className={s.stud_btn_txt}>Подробнее</p>
