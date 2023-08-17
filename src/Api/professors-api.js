@@ -20,7 +20,11 @@ export const professorsApi = {
     },
     getProfessorsCabinet(token) {
         // Получаем информацию о профессоре для Обо мне
-        return instance.get(`/professors/cabinet/`, token)
+        return instance.get(`/professors/cabinet/`, {
+            headers: {
+                'Authorization': `Token ${token}`
+            }
+        })
     },
     
     // Все POST запросы!!! 

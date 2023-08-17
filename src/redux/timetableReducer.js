@@ -157,7 +157,6 @@ export const setCurrentTeacherTC = (name) => (dispatch) => {
 }
 export const getTimetable = (token) => {
     return async (dispatch) => {
-        console.log(token)
         const data = await meetingsApi.getAllMeetings(token)
         console.log(data)
     }

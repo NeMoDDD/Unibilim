@@ -124,7 +124,9 @@
     color: #2d2d2d;
     margin-top: 0.5em;
 }
-
+.input_form_block {
+    margin-bottom: 20px;
+}
 @media screen and (max-width:760px) {
     .up_block{
         width: 100%;

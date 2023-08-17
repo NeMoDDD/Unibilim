@@ -53,6 +53,7 @@
     display: flex;
     flex-direction: column;
     padding: 15px;
+    margin-top: 1em;
 }
 .secondata {
     margin-top: 20px;
@@ -83,16 +84,16 @@
 }
 .npt_txt {
     width: 90%;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
     border-color: #CCCCCC !important;
-    font-weight: 400;
-    font-size: 20px;
+    font-weight: 400 !important;
+    font-size: 20px !important;
     line-height: 24px;
-    color: #595959;
-    border-radius: 0;
-    background-color: #fbfcfe;
+    color: #595959 !important;
+    border-radius: 0 !important;
+    background-color: #fbfcfe !important;
 }
 .npt_txt:hover {
     border-color: #ffbf13 !important;
@@ -103,6 +104,14 @@
 }
 .npt_txt_errors {
     border-color: #D0021B !important;
+}
+.btn_phone {
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-radius: 0 !important;
+    background-color: #fbfcfe !important;
+
 }
 .reg_npt {
     width: 90%;
@@ -135,6 +144,7 @@
     border-radius: 25px;
     background-color: #fbfcfe;
     padding: 15px;
+    width: 97%;
 }
 
 .subj_about2 {
@@ -299,14 +309,14 @@
     .address {
         width: 100%;
         padding-left: 15px;
-        margin-top: 10px;
+        margin-top: 0.7em;
         padding-bottom: 25px;
     }
     .reg_npt{
         width: 90%;
     }
     .inaddress{
-
+        width: 98%;
     }
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
@@ -317,7 +327,7 @@
         width: 100%;
     }
     .address {
-        margin-top: 0;
+        margin-top: 0.7em;
         width: 100%;
         margin-left: 15px;
     }

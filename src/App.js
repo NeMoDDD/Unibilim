@@ -24,7 +24,6 @@ function App() {
     const user = localStorage.getItem('user');
     if (user) {
       const userData = JSON.parse(user);
-      console.log(userData)
       dispatch(login(userData.username, userData.password))
     }
   }, []);

@@ -17,16 +17,16 @@ let initialState = {
     firstName: null,
     surname: null,
     patronym: null,
-    subject: null,
+    subject: [],
     info: null,
     photo: null,
     tg_username: null,
     phone: null,
     rate: null,
-    price: null,
+    price: "",
     language: null,
     experience: null,
-    classes: null,
+    classes: [],
     isFetching: false
 }
 
@@ -55,19 +55,19 @@ const LoginReducer = (state = initialState, action) => {
         case SET_USER_DATA:
             return {
                 ...state,
-                firstName: action.firstName,
-                surname: action.surname,
-                patronym: action.patronym,
-                subject: action.subject,
-                info: action.info,
-                photo: action.photo,
-                tg_username: action.tg_username,
-                phone: action.phone,
-                rate: action.rate,
-                price: action.price,
-                language: action.language,
-                experience: action.experience,
-                classes: action.classes
+                classes: action.data.classes,
+                experience: action.data.experience,
+                firstName: action.data.firstName,
+                surname: action.data.surname,
+                patronym: action.data.patronym,
+                subject: action.data.subject,
+                info: action.data.info,
+                photo: action.data.photo,
+                tg_username: action.data.tg_username,
+                phone: action.data.phone,
+                rate: action.data.rate,
+                price: action.data.price,
+                language: action.data.language,
             };
         case LOGOUT:
             return {
@@ -79,7 +79,7 @@ const LoginReducer = (state = initialState, action) => {
                 firstName: null,
                 surname: null,
                 patronym: null,
-                subject: null,
+                subject: [],
                 info: null,
                 photo: null,
                 tg_username: null,
@@ -88,7 +88,7 @@ const LoginReducer = (state = initialState, action) => {
                 price: null,
                 language: null,
                 experience: null,
-                classes: null
+                classes: []
             }
         case SET_IS_FETCHING:
             return {
@@ -105,7 +105,7 @@ export const setUserToken = (token) => ({type: SET_TOKEN, token})
 export const setUserName = (userName) => ({type: SET_USERNAME, userName})
 export const setUserPassword = (password) => ({type: SET_PASSWORD, password})
 export const setUserData = (data) => ({type: SET_USER_DATA, ...data});
-export const logout = () => ({type: LOGOUT});
+export const logoutAC = () => ({type: LOGOUT});
 export const setFetching = (isFetching) => ({type: SET_IS_FETCHING, isFetching});
 
 export const login = (username, password) => {
@@ -123,9 +123,16 @@ export const login = (username, password) => {
         }
         if (data.data.role === "professor") {
             let profData = await professorsApi.getProfessorsCabinet(data.data.token)
+            dispatch(setUserData(profData))
             console.log(profData)
         }
         dispatch(setFetching(false))
+    }
+}
+export const logout = () => {
+    return async (dispatch) => {
+        localStorage.removeItem('user');
+        dispatch(logoutAC())
     }
 }
 export default LoginReducer;

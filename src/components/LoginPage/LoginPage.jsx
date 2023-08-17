@@ -8,7 +8,7 @@ import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
 import {login, setUserName, setUserPassword} from "../../redux/loginReducer";
 import {Navigate, NavLink} from "react-router-dom";
 
-const LoginPage = (props) => {
+const LoginPage = React.memo((props) => {
     const {control, handleSubmit, setError, clearErrors, formState: {errors}} = useForm({
         mode: "onBlur",
     })
@@ -28,7 +28,7 @@ const LoginPage = (props) => {
                             <p className={s.form__in__text}>Вход</p>
                         </div>
                         <div className={s.form__data}>
-                            <div className="input-form-block">
+                            <div className={s.input_form_block}>
                                 <p className="nm-txt">Имя</p>
                                 <Controller
                                     name="name"
@@ -73,5 +73,5 @@ const LoginPage = (props) => {
                 : userRole === "student" ? <Navigate to="/timetable"/> : <Navigate to="/teachlk"/>}
         </>
     );
-};
+});
 export default LoginPage;

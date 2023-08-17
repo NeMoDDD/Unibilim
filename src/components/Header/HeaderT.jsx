@@ -58,6 +58,11 @@ function HeaderT() {
                             Ученики
                         </NavLink>
                     </div>
+                    {token !== null ?
+                        <div className={s.menu__header_block}>
+                            <button className={s.logout_btn} onClick={() => dispatch(logout())}>Выйти</button>
+                        </div>
+                        : null}
                 </div>
             )}
         </div>
