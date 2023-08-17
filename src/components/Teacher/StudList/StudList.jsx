@@ -7,24 +7,25 @@ import stud4 from "../../../assets/img/stud4.png";
 import stud5 from "../../../assets/img/stud5.png";
 import SideBarTeach from "../../SideBar/SideBarTeach";
 import HeaderT from "../../Header/HeaderT";
-import {Select} from "antd";
+import {Select,Spin} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
 import { getDefineProffeserossStudents } from "../../../redux/myStudents-reducer";
 import ava from '../../../assets/img/student-without-photo.svg'
 const StudList = () => {
-    const students = [
-        {id: 1, name: "Ирина", firstname: "Бойка", img: stud1},
-        {id: 2, name: "Николай", firstname: "Коготько", img: stud2},
-        {id: 3, name: "Дмитрий", firstname: "Примудрый", img: stud3},
-        {id: 4, name: "Вася", firstname: "Глупый", img: stud4},
-        {id: 5, name: "Геральт", firstname: "Изривии", img: stud5},
-        {id: 3, name: "Дмитрий", firstname: "Примудрый", img: stud3},
-        {id: 2, name: "Николай", firstname: "Коготько", img: stud2},
-        {id: 4, name: "Вася", firstname: "Глупый", img: stud4},
-    ];
+    // const students = [
+    //     {id: 1, name: "Ирина", firstname: "Бойка", img: stud1},
+    //     {id: 2, name: "Николай", firstname: "Коготько", img: stud2},
+    //     {id: 3, name: "Дмитрий", firstname: "Примудрый", img: stud3},
+    //     {id: 4, name: "Вася", firstname: "Глупый", img: stud4},
+    //     {id: 5, name: "Геральт", firstname: "Изривии", img: stud5},
+    //     {id: 3, name: "Дмитрий", firstname: "Примудрый", img: stud3},
+    //     {id: 2, name: "Николай", firstname: "Коготько", img: stud2},
+    //     {id: 4, name: "Вася", firstname: "Глупый", img: stud4},
+    // ];
     const {userRole,token} = useSelector(state => state.loginReducer)
-    const {myStudents} = useSelector(state => state.myStudents)  
+    const {myStudents,isFetching} = useSelector(state => state.myStudents)   
+    
     const dispatch = useDispatch() 
     useEffect(() =>{ 
         dispatch(getDefineProffeserossStudents({token}))
@@ -35,7 +36,8 @@ const StudList = () => {
             <HeaderT/>
             <SideBarTeach/>
             {userRole === "professor" ?
-                <div className={s.pad}>
+                <Spin spinning={isFetching}> 
+                    <div className={s.pad}>
                     <div className={s.stud_head}>
                         <div className={s.radios}>
                             <p className={s.studs}>Ученики</p>
@@ -86,7 +88,8 @@ const StudList = () => {
                             ))}
                         </div>
                     </div>
-                </div>
+                </div> 
+                </Spin>
                 : userRole === "student" ? <Navigate to="/timetable"/> : <Navigate to="/login"/>}
         </>
     );
