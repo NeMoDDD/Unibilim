@@ -9,7 +9,7 @@ import VerificationReducer from "./verification-reducer";
 import ProfessorsReducer from "./professorsReducer";
 
 let reducers = combineReducers({   
-    timetablePage: timetableReducer, 
+    timetableReducer: timetableReducer,
     MyCabReducer: MyCabReducer,
     registerReducer: RegisterReducer,
     loginReducer: LoginReducer,

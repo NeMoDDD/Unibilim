@@ -16,97 +16,162 @@ let initialState = {
         id: 2,
         alldate: ['23 янв', '24 янв', '25 янв', '26 янв', '27 янв', '28 янв', '29 янв'],
         monday: [
-            {
-                time: "15:00",
-                teach: "Зуева Ольга",
-                subj: "Математика",
-                backgroundColor: "#C5FFCA",
-                btc: "#AFFFB7",
-            },
-            {
-                time: "19:00",
-                teach: "Ольга Петровна",
-                subj: "Химия",
-                backgroundColor: "#FFF1A1",
-                btc: "#FFEC7E",
-            },
+
         ],
         tuesday: [
-            {
-                time: "16:00",
-                teach: "Борис Николаевич",
-                subj: "Русcкий язык",
-                backgroundColor: "#CCFFFF",
-                btc: "#9fffff",
-            },
-            {
-                time: "19:00",
-                teach: "Сергей Павлович",
-                subj: "Физика",
-                backgroundColor: "#C5FFCA",
-                btc: "#AFFFB7",
-            }
+
         ],
         wednesday: [
-            {
-                time: "15:00",
-                teach: "Зуева Ольга",
-                subj: "Математика",
-                backgroundColor: "#FFF1A1",
-                btc: "#FFEC7E",
-            },
+
         ],
         thursday: [
-            {
-                time: "19:00",
-                teach: "Ольга Петровна",
-                subj: "Химия",
-                backgroundColor: "#CCFFFF",
-                btc: "#9fffff",
-            },
+
         ],
         friday: [],
         saturday: [
-            {
-                time: "15:00",
-                teach: "Георгий Константинович",
-                subj: "История",
-                backgroundColor: "#FFF1A1",
-                btc: "#FFEC7E",
-            },
+
         ],
         sunday: [
-            {
-                time: "12:00",
-                teach: "Сергей Павлович",
-                subj: "Физика",
-                backgroundColor: "#C5FFCA",
-                btc: "#AFFFB7",
-            },
+
         ]
     },
-    currentTeacher: []
+    currentTeacher: [],
+    allTimetable: {}
 }
-const SET_NEW_TIMETABEL_DATA = 'SET_NEW_TIMETABEL_DATA'
-const SET_NEW_TIMETABEL_TEACHER = 'SET_NEW_TIMETABEL_TEACHER'
+// {
+//     time: "12:00",
+//         teach: "Сергей Павлович",
+//     subj: "Физика",
+//     backgroundColor: "#C5FFCA",
+//     btc: "#AFFFB7",
+// },
+const SET_NEW_TIMETABLE_DATA = 'SET_NEW_TIMETABLE_DATA'
+const SET_NEW_TIMETABLE_TEACHER = 'SET_NEW_TIMETABLE_TEACHER'
+const SET_MONDAY = "SET_MONDAY"
+const SET_TUESDAY = "SET_TUESDAY"
+const SET_WEDNESDAY = "SET_WEDNESDAY"
+const SET_THURSDAY = "SET_THURSDAY"
+const SET_FRIDAY = "SET_FRIDAY"
+const SET_SATURDAY = "SET_SATURDAY"
+const SET_SUNDAY = "SET_MONDAY"
+const SET_ALL_TIMETABLE = "SET_MONDAY"
 export const timetableReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_NEW_TIMETABEL_DATA: {
+        case SET_NEW_TIMETABLE_DATA:
             return {
                 ...state,
                 timetable: action.data
             }
-        }
-        case SET_NEW_TIMETABEL_TEACHER: {
+        case SET_NEW_TIMETABLE_TEACHER:
             return {...state, currentTeacher: action.data}
-        }
+        case SET_MONDAY:
+            return {
+                ...state,
+                timetable: {
+                    ...state.timetable,
+                    monday: [...state.timetable.monday, action.data]
+                }
+            }
+        case SET_TUESDAY:
+            return {
+                ...state,
+                timetable: {
+                    ...state.timetable,
+                    tuesday: [...state.timetable.tuesday, action.data]
+                }
+            }
+        case SET_WEDNESDAY:
+            return {
+                ...state,
+                timetable: {
+                    ...state.timetable,
+                    wednesday: [...state.timetable.wednesday, action.data]
+                }
+            }
+        case SET_THURSDAY:
+            return {
+                ...state,
+                timetable: {
+                    ...state.timetable,
+                    thursday: [...state.timetable.thursday, action.data]
+                }
+            }
+        case SET_FRIDAY:
+            return {
+                ...state,
+                timetable: {
+                    ...state.timetable,
+                    friday: [...state.timetable.friday, action.data]
+                }
+            }
+        case SET_SATURDAY:
+            return {
+                ...state,
+                timetable: {
+                    ...state.timetable,
+                    saturday: [...state.timetable.saturday, action.data]
+                }
+            }
+        case SET_SUNDAY:
+            return {
+                ...state,
+                timetable: {
+                    ...state.timetable,
+                    sunday: [...state.timetable.sunday, action.data]
+                }
+            }
+        case SET_ALL_TIMETABLE:
+            return {
+                ...state,
+                allTimetable: action.data
+            }
         default:
-            return state
+            return {
+                ...state
+            }
     }
 }
 
-export const setNewTimetableAC = (data) => ({type: SET_NEW_TIMETABEL_DATA, data})
-const getCurrentTeacherAC = (data) => ({type: SET_NEW_TIMETABEL_TEACHER, data})
+export const setNewTimetableAC = (data) => ({type: SET_NEW_TIMETABLE_DATA, data})
+const getCurrentTeacherAC = (data) => ({type: SET_NEW_TIMETABLE_TEACHER, data})
+export const setMonday = (data) => ({type: SET_MONDAY, data})
+const setTuesday = (data) => ({type: SET_TUESDAY, data})
+const setWednesday = (data) => ({type: SET_WEDNESDAY, data})
+const setThursday = (data) => ({type: SET_THURSDAY, data})
+export const setFriday = (data) => ({type: SET_FRIDAY, data})
+const setSaturday = (data) => ({type: SET_SATURDAY, data})
+const setSunday = (data) => ({type: SET_SUNDAY, data})
+const setAllTimetable = (data) => ({type: SET_ALL_TIMETABLE, data})
+
+export const setCurrentTeacherTC = (name) => (dispatch) => {
+    const user = teacherInfo.find(obj => obj.name === name);
+    return dispatch(getCurrentTeacherAC(user))
+}
+export const getTimetable = (token) => {
+    return async (dispatch) => {
+        const data = await meetingsApi.getAllMeetings(token)
+        console.log(data)
+        // dispatch(setAllTimetable(data.data))
+        data.data.map((m) => {
+            if (m.day_of_week === "Monday") {
+                dispatch(setMonday(m))
+            } else if (m.day_of_week === "Tuesday") {
+                dispatch(setTuesday(m))
+            } else if (m.day_of_week === "Wednesday") {
+                dispatch(setWednesday(m))
+            } else if (m.day_of_week === "Thursday") {
+                dispatch(setThursday(m))
+            } else if (m.day_of_week === "Friday") {
+                dispatch(setFriday(m))
+            } else if (m.day_of_week === "Saturday") {
+                dispatch(setSaturday(m))
+            } else if (m.day_of_week === "Sunday") {
+                dispatch(setSunday(m))
+            }
+        })
+    }
+}
+
 const teacherInfo = [
     {
         name: 'Зуева Ольга',
@@ -151,16 +216,6 @@ const teacherInfo = [
         photo: tech5
     },
 ]
-export const setCurrentTeacherTC = (name) => (dispatch) => {
-    const user = teacherInfo.find(obj => obj.name === name);
-    return dispatch(getCurrentTeacherAC(user))
-}
-export const getTimetable = (token) => {
-    return async (dispatch) => {
-        const data = await meetingsApi.getAllMeetings(token)
-        console.log(data)
-    }
-}
 export const testData3 = {
     id: 3,
     alldate: ['30 янв', '31 янв', '1 фев', '2 фев', '2 фев', '4 фев', '5 фев'],

@@ -9,8 +9,8 @@ const TimeTableContainer = React.memo(({...props}) =>{
 })  
 const mapStateToProps = (state) =>{ 
     return{ 
-        timetable: state.timetablePage.timetable, 
-        currentTeacher: state.timetablePage.currentTeacher
+        timetable: state.timetableReducer.timetable,
+        currentTeacher: state.timetableReducer.currentTeacher
     }
 }
 export default connect(mapStateToProps, {setNewTimetableAC, setCurrentTeacherTC})(TimeTableContainer)
