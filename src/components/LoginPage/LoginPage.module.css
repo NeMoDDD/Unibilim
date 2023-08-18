@@ -7,12 +7,12 @@
 
 .login{
     width: 32%;
-    height: 40%;
+    height: 48%;
     border-radius: 25px;
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /*justify-content: center;*/
     padding: 25px;
     margin: 0 auto;
 }
@@ -127,11 +127,32 @@
 .input_form_block {
     margin-bottom: 20px;
 }
-@media screen and (max-width:760px) {
+
+@media screen and (max-width:1200px) {
+    .login {
+        width: 40%;
+    }
+}
+@media screen and (max-width:900px) {
     .up_block{
         width: 100%;
     }
     .login_block{
         width: 100%;
+    }
+    .login {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:647px) {
+    .login {
+        width: 70%;
+    }
+}
+@media screen and (max-width:447px) {
+    .login {
+        height: 50%;
+        width: 90%;
     }
 }
