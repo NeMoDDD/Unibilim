@@ -36,9 +36,9 @@ const StudList = () => {
             <HeaderT/>
             <SideBarTeach/>
             {userRole === "professor" ?
-                <Spin spinning={isFetching}> 
                     <div className={s.pad}>
                     <div className={s.stud_head}>
+                        <Spin spinning={isFetching}> 
                         <div className={s.radios}>
                             <p className={s.studs}>Ученики</p>
                             <div className={s.student__type__block}>
@@ -87,9 +87,9 @@ const StudList = () => {
                                 </div>
                             ))}
                         </div>
+                </Spin>
                     </div>
                 </div> 
-                </Spin>
                 : userRole === "student" ? <Navigate to="/timetable"/> : <Navigate to="/login"/>}
         </>
     );
