@@ -4,9 +4,10 @@ import "../../styles/__timetable.scss";
 import Header from "../Header/HeaderS";
 import Table from "./TimtetableComponents/TableLarge";
 import TableMobile from "./TimtetableComponents/TableModile";
-import {getTimetable, testData1, testData2, testData3} from "../../redux/timetableReducer";
+import {getTimetable, setAllDate, testData1, testData2, testData3} from "../../redux/timetableReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
+import moment from "moment";
 
 const Timetable = React.memo((props) => {
   const firstDate = props.timetable?.alldate?.[0];
@@ -31,9 +32,12 @@ const Timetable = React.memo((props) => {
       return props.setNewTimetableAC(testData1)
     } else return
   }
+
+
   useEffect(() => {
     dispatch(getTimetable(token))
   }, [dispatch])
+
   return (
     <>
       <Header/>
@@ -52,13 +56,13 @@ const Timetable = React.memo((props) => {
           <table className="timetable">
             <tbody>
               <tr>
-                {props.timetable?.alldate.map((item, index) => <td key={index}>{item}, {week[index]}</td>)}
+                {props.timetable?.alldate.map((item, index) => <td key={index}>{item}</td>)}
               </tr>
               <tr style={{ borderTop: "1px solid black" }}>
                 <td >
                   <div className='timetable__item'>
                     {" "}
-                    {props.timetable?.monday.map((item, key) => <Table key={key} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}
+                    {props.timetable?.monday.map((item, key) => <Table key={key} btn={item.btc} subj={item.subject} teach={item.professor_firstname + " " + item.professor_lastname} time={item.time} backgroundColor={item.backgroundColor} teacher={item.professor_firstname + " " + item.professor_lastname} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}
                   </div>
                 </td>
                 <td className='timetable__row'>
@@ -95,15 +99,15 @@ const Timetable = React.memo((props) => {
             </tbody>
           </table>
 
-          <div className="cards_block">
-            {props.timetable.monday.map((item, index) => <TableMobile week={weekFull[0]} day={props.timetable.alldate[0]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}
-            {props.timetable.tuesday.map((item, index) => <TableMobile week={weekFull[1]} day={props.timetable.alldate[1]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}
-            {props.timetable.wednesday.map((item, index) => <TableMobile week={weekFull[2]} day={props.timetable.alldate[2]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}
-            {props.timetable.thursday.map((item, index) => <TableMobile week={weekFull[3]} day={props.timetable.alldate[3]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}
-            {props.timetable.friday.map((item, index) => <TableMobile week={weekFull[4]} day={props.timetable.alldate[4]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}
-            {props.timetable.saturday.map((item, index) => <TableMobile week={weekFull[5]} day={props.timetable.alldate[5]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}
-            {props.timetable.sunday.map((item, index) => <TableMobile week={weekFull[6]} day={props.timetable.alldate[6]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}
-          </div>
+          {/*<div className="cards_block">*/}
+          {/*  {props.timetable.monday.map((item, index) => <TableMobile week={weekFull[0]} day={props.timetable.alldate[0]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}*/}
+          {/*  {props.timetable.tuesday.map((item, index) => <TableMobile week={weekFull[1]} day={props.timetable.alldate[1]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}*/}
+          {/*  {props.timetable.wednesday.map((item, index) => <TableMobile week={weekFull[2]} day={props.timetable.alldate[2]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}*/}
+          {/*  {props.timetable.thursday.map((item, index) => <TableMobile week={weekFull[3]} day={props.timetable.alldate[3]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}*/}
+          {/*  {props.timetable.friday.map((item, index) => <TableMobile week={weekFull[4]} day={props.timetable.alldate[4]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}*/}
+          {/*  {props.timetable.saturday.map((item, index) => <TableMobile week={weekFull[5]} day={props.timetable.alldate[5]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}*/}
+          {/*  {props.timetable.sunday.map((item, index) => <TableMobile week={weekFull[6]} day={props.timetable.alldate[6]} key={index} btn={item.btc} subj={item.subj} teach={item.teach} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}*/}
+          {/*</div>*/}
         </div>
           : userRole === "professor" ? <Navigate to="/teachlk"/> : <Navigate to="/login"/>}
     </>

@@ -10,30 +10,19 @@ import {verificationApi} from "../Api/verification-api";
 import {setIsAuth} from "./verification-reducer";
 import {loginApi} from "../Api/login-api";
 import {setUserRole, setUserToken} from "./loginReducer";
-
+import moment from "moment";
+import "moment/locale/ru";
 let initialState = {
     timetable: {
         id: 2,
-        alldate: ['23 янв', '24 янв', '25 янв', '26 янв', '27 янв', '28 янв', '29 янв'],
-        monday: [
-
-        ],
-        tuesday: [
-
-        ],
-        wednesday: [
-
-        ],
-        thursday: [
-
-        ],
+        alldate: [],
+        monday: [],
+        tuesday: [],
+        wednesday: [],
+        thursday: [],
         friday: [],
-        saturday: [
-
-        ],
-        sunday: [
-
-        ]
+        saturday: [],
+        sunday: []
     },
     currentTeacher: [],
     allTimetable: {}
@@ -55,6 +44,7 @@ const SET_FRIDAY = "SET_FRIDAY"
 const SET_SATURDAY = "SET_SATURDAY"
 const SET_SUNDAY = "SET_MONDAY"
 const SET_ALL_TIMETABLE = "SET_MONDAY"
+const SET_ALL_DATE = "SET_ALL_DATE"
 export const timetableReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_NEW_TIMETABLE_DATA:
@@ -65,65 +55,101 @@ export const timetableReducer = (state = initialState, action) => {
         case SET_NEW_TIMETABLE_TEACHER:
             return {...state, currentTeacher: action.data}
         case SET_MONDAY:
-            return {
-                ...state,
-                timetable: {
-                    ...state.timetable,
-                    monday: [...state.timetable.monday, action.data]
-                }
+            if (!state.timetable.monday.some(item => item.datetime === action.data.datetime)) {
+                return {
+                    ...state,
+                    timetable: {
+                        ...state.timetable,
+                        monday: [...state.timetable.monday, action.data]
+                    }
+                };
+            } else {
+                return state;
             }
         case SET_TUESDAY:
-            return {
-                ...state,
-                timetable: {
-                    ...state.timetable,
-                    tuesday: [...state.timetable.tuesday, action.data]
+            if (!state.timetable.tuesday.some(item => item.datetime === action.data.datetime)) {
+                return {
+                    ...state,
+                    timetable: {
+                        ...state.timetable,
+                        tuesday: [...state.timetable.tuesday, action.data]
+                    }
                 }
+            } else {
+                return state
             }
         case SET_WEDNESDAY:
-            return {
-                ...state,
-                timetable: {
-                    ...state.timetable,
-                    wednesday: [...state.timetable.wednesday, action.data]
+            if (!state.timetable.monday.some(item => item.datetime === action.data.datetime)) {
+                return {
+                    ...state,
+                    timetable: {
+                        ...state.timetable,
+                        wednesday: [...state.timetable.wednesday, action.data]
+                    }
                 }
+            } else {
+                return state
             }
         case SET_THURSDAY:
-            return {
-                ...state,
-                timetable: {
-                    ...state.timetable,
-                    thursday: [...state.timetable.thursday, action.data]
+            if (!state.timetable.thursday.some(item => item.datetime === action.data.datetime)) {
+                return {
+                    ...state,
+                    timetable: {
+                        ...state.timetable,
+                        thursday: [...state.timetable.thursday, action.data]
+                    }
                 }
+            } else {
+                return state
             }
         case SET_FRIDAY:
-            return {
-                ...state,
-                timetable: {
-                    ...state.timetable,
-                    friday: [...state.timetable.friday, action.data]
+            if (!state.timetable.friday.some(item => item.datetime === action.data.datetime)) {
+                return {
+                    ...state,
+                    timetable: {
+                        ...state.timetable,
+                        friday: [...state.timetable.friday, action.data]
+                    }
                 }
+            } else {
+                return state
             }
         case SET_SATURDAY:
-            return {
-                ...state,
-                timetable: {
-                    ...state.timetable,
-                    saturday: [...state.timetable.saturday, action.data]
+            if (!state.timetable.saturday.some(item => item.datetime === action.data.datetime)) {
+                return {
+                    ...state,
+                    timetable: {
+                        ...state.timetable,
+                        saturday: [...state.timetable.saturday, action.data]
+                    }
                 }
+            } else {
+                return state
             }
         case SET_SUNDAY:
-            return {
-                ...state,
-                timetable: {
-                    ...state.timetable,
-                    sunday: [...state.timetable.sunday, action.data]
+            if (!state.timetable.sunday.some(item => item.datetime === action.data.datetime)) {
+                return {
+                    ...state,
+                    timetable: {
+                        ...state.timetable,
+                        sunday: [...state.timetable.sunday, action.data]
+                    }
                 }
+            } else {
+                return state
             }
         case SET_ALL_TIMETABLE:
             return {
                 ...state,
                 allTimetable: action.data
+            }
+        case SET_ALL_DATE:
+            return {
+                ...state,
+                timetable: {
+                    ...state.timetable,
+                    alldate: action.data
+                }
             }
         default:
             return {
@@ -142,6 +168,7 @@ export const setFriday = (data) => ({type: SET_FRIDAY, data})
 const setSaturday = (data) => ({type: SET_SATURDAY, data})
 const setSunday = (data) => ({type: SET_SUNDAY, data})
 const setAllTimetable = (data) => ({type: SET_ALL_TIMETABLE, data})
+export const setAllDate = (data) => ({type: SET_ALL_DATE, data})
 
 export const setCurrentTeacherTC = (name) => (dispatch) => {
     const user = teacherInfo.find(obj => obj.name === name);
@@ -169,6 +196,16 @@ export const getTimetable = (token) => {
                 dispatch(setSunday(m))
             }
         })
+        const currentDate = moment().locale('ru')
+        const allDates = [];
+
+        for (let i = 0; i < 7; i++) {
+            const formattedDate = `${currentDate.clone().add(i, 'days').format('dddd, DD MMMM')}`; // Исправить!!!!
+            allDates.push(formattedDate);
+
+        }
+        console.log(allDates)
+        dispatch(setAllDate(allDates));
     }
 }
 
