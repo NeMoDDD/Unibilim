@@ -106,9 +106,9 @@ const TeachList = () => {
             <Header/>
             <SideBar/>
           {userRole === "student" ? 
-          <Spin spinning={isFetching}>
               <div className="pad">
                 <div className="teach_list_block">
+                  <Spin spinning={isFetching}>
                     <p className="teach_txt">Репетиторы</p>
                     <div className="drop_block">
                         <select className="drop">{renderClasses}</select>
@@ -135,10 +135,11 @@ const TeachList = () => {
                                 </div>
                             </div>
                         ))}
-                    </div>
+                    </div> 
+                    </Spin>
                 </div>
             </div>
-            </Spin>
+            
               : userRole === "professor" ? <Navigate to="/teachlk"/> : <Navigate to="/login"/>}
         </>
     );
