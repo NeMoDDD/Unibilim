@@ -12,28 +12,7 @@ import {loginApi} from "../Api/login-api";
 import {setUserRole, setUserToken} from "./loginReducer";
 import moment from "moment";
 import "moment/locale/ru";
-let initialState = {
-    timetable: {
-        id: 2,
-        alldate: [],
-        monday: [],
-        tuesday: [],
-        wednesday: [],
-        thursday: [],
-        friday: [],
-        saturday: [],
-        sunday: []
-    },
-    currentTeacher: [],
-    allTimetable: {}
-}
-// {
-//     time: "12:00",
-//         teach: "Сергей Павлович",
-//     subj: "Физика",
-//     backgroundColor: "#C5FFCA",
-//     btc: "#AFFFB7",
-// },
+
 const SET_NEW_TIMETABLE_DATA = 'SET_NEW_TIMETABLE_DATA'
 const SET_NEW_TIMETABLE_TEACHER = 'SET_NEW_TIMETABLE_TEACHER'
 const SET_MONDAY = "SET_MONDAY"
@@ -45,6 +24,25 @@ const SET_SATURDAY = "SET_SATURDAY"
 const SET_SUNDAY = "SET_MONDAY"
 const SET_ALL_TIMETABLE = "SET_MONDAY"
 const SET_ALL_DATE = "SET_ALL_DATE"
+const SET_DAY_OF_WEEK = "SET_DAY_OF_WEEK"
+
+let initialState = {
+    timetable: {
+        id: 2,
+        alldate: [],
+        dayOfWeek: [],
+        monday: [],
+        tuesday: [],
+        wednesday: [],
+        thursday: [],
+        friday: [],
+        saturday: [],
+        sunday: []
+    },
+    currentTeacher: [],
+    allTimetable: {}
+}
+
 export const timetableReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_NEW_TIMETABLE_DATA:
@@ -151,6 +149,14 @@ export const timetableReducer = (state = initialState, action) => {
                     alldate: action.data
                 }
             }
+        case SET_DAY_OF_WEEK:
+            return {
+                ...state,
+                timetable: {
+                    ...state.timetable,
+                    dayOfWeek: action.data
+                }
+            }
         default:
             return {
                 ...state
@@ -169,6 +175,7 @@ const setSaturday = (data) => ({type: SET_SATURDAY, data})
 const setSunday = (data) => ({type: SET_SUNDAY, data})
 const setAllTimetable = (data) => ({type: SET_ALL_TIMETABLE, data})
 export const setAllDate = (data) => ({type: SET_ALL_DATE, data})
+export const setDayOfWeek = (data) => ({type: SET_DAY_OF_WEEK, data})
 
 export const setCurrentTeacherTC = (name) => (dispatch) => {
     const user = teacherInfo.find(obj => obj.name === name);
@@ -196,16 +203,33 @@ export const getTimetable = (token) => {
                 dispatch(setSunday(m))
             }
         })
-        const currentDate = moment().locale('ru')
+        const currentDate = moment().locale('ru');
+        const currentDayOfWeek = currentDate.day(); // 0 - воскресенье, 1 - понедельник, ..., 6 - суббота
+        const daysInWeek = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+
         const allDates = [];
+        const daysOfWeek = [];
+
+        // Находим предыдущий понедельник
+        const daysSinceLastMonday = (currentDayOfWeek + 6) % 7;
+        const lastMonday = currentDate.clone().subtract(daysSinceLastMonday, 'days');
 
         for (let i = 0; i < 7; i++) {
-            const formattedDate = `${currentDate.clone().add(i, 'days').format('dddd, DD MMMM')}`; // Исправить!!!!
+            const date = lastMonday.clone().add(i, 'days');
+
+            const formattedDate = date.format('DD MMM').slice(0, -1);
             allDates.push(formattedDate);
 
+            daysOfWeek.push(daysInWeek[date.day()]);
         }
-        console.log(allDates)
         dispatch(setAllDate(allDates));
+        // for (let i = 0; i < 7; i++) {
+        //     const formattedDate = currentDate.clone().add(i, 'days').format('dddd')
+        //         daysOfWeek.push(formattedDate);
+        // }
+        dispatch(setDayOfWeek(daysOfWeek))
+        console.log(allDates)
+        console.log(daysOfWeek)
     }
 }
 

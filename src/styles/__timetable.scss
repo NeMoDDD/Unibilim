@@ -64,7 +64,7 @@ table th {
 }
 
 .subj_block {
-  height: 130px;
+  min-height: 130px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -75,8 +75,7 @@ table th {
 
 .subj_name {
   font-weight: 400;
-  font-size: 17px;
-  line-height: 20px;
+  font-size: 14px;
   text-align: center;
   color: #2d2d2d;
   margin-top: 13px;
@@ -102,7 +101,7 @@ table th {
 
 .subj_about {
   padding: 3px 14px;
-  background: #b0ffff;
+  //background: #b0ffff;
   border-radius: 16px;
   border: none;
   font-weight: 400;
