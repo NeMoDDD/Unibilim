@@ -2,10 +2,10 @@ import React, {useState} from "react";
 import ModalTeacherWindow from "./ModalMenu";
 import {useSelector} from "react-redux";
 
-const Table = React.memo(({subj, teach, time, backgroundColor, btn, teacher, setCurrentTeacherTC}) => {
+const Table = React.memo(({subj, teach, time, backgroundColor, btn, alldate, info}) => {
     const [modalOpen, setModalOpen] = useState(false);
+
     const handleTeacherClick = () => {
-        setCurrentTeacherTC(teach)
         setModalOpen(true)
     }
     return (
@@ -28,7 +28,7 @@ const Table = React.memo(({subj, teach, time, backgroundColor, btn, teacher, set
                 </button>
 
             </div>
-            <ModalTeacherWindow teacher={teacher} modalOpen={modalOpen} setModalOpen={setModalOpen} time={time}/>
+            <ModalTeacherWindow teach={teach} modalOpen={modalOpen} time={time} setModalOpen={setModalOpen} subj={subj} alldate={alldate} info={info}/>
         </>
     )
 })

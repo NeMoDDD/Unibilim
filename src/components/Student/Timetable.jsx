@@ -74,8 +74,9 @@ const Timetable = React.memo((props) => {
                                                                                        time={item.time.slice(0, -3)}
                                                                                        backgroundColor={"#FFF1A1"}
                                                                                        btn={"#FFEC7E"}
-                                                                                       teacher={item.professor_firstname + " " + item.professor_lastname}
-                                                                                       setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}
+                                                                                       alldate={item.datetime}
+                                                                                       info={item.professor_info}
+                                    />)}
                                 </div>
                             </td>
                             <td className='timetable__row'>
