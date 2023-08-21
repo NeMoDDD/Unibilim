@@ -6,10 +6,6 @@ import tech5 from '../assets/img/tech5.png'
 import tech6 from '../assets/img/tech6.png'
 import tech7 from '../assets/img/tech7.png'
 import {meetingsApi} from "../Api/meetings-api";
-import {verificationApi} from "../Api/verification-api";
-import {setIsAuth} from "./verification-reducer";
-import {loginApi} from "../Api/login-api";
-import {setUserRole, setUserToken} from "./loginReducer";
 import moment from "moment";
 import "moment/locale/ru";
 
@@ -29,7 +25,6 @@ const SET_IF_FETCHING = "SET_IF_FETCHING"
 
 let initialState = {
     timetable: {
-        id: 2,
         alldate: [],
         dayOfWeek: [],
         monday: [],
@@ -50,7 +45,11 @@ export const timetableReducer = (state = initialState, action) => {
         case SET_NEW_TIMETABLE_DATA:
             return {
                 ...state,
-                timetable: action.data
+                timetable: {
+                    ...state.timetable,
+                    alldate: action.alldate,
+                    dayOfWeek: action.dayOfWeek
+                }
             }
         case SET_NEW_TIMETABLE_TEACHER:
             return {...state, currentTeacher: action.data}
@@ -171,7 +170,7 @@ export const timetableReducer = (state = initialState, action) => {
     }
 }
 
-export const setNewTimetableAC = (data) => ({type: SET_NEW_TIMETABLE_DATA, data})
+export const setNewTimetableAC = (alldate, dayOfWeek) => ({type: SET_NEW_TIMETABLE_DATA, alldate, dayOfWeek})
 const getCurrentTeacherAC = (data) => ({type: SET_NEW_TIMETABLE_TEACHER, data})
 export const setMonday = (data) => ({type: SET_MONDAY, data})
 const setTuesday = (data) => ({type: SET_TUESDAY, data})
@@ -213,13 +212,12 @@ export const getTimetable = (token) => {
             }
         })
         const currentDate = moment().locale('ru');
-        const currentDayOfWeek = currentDate.day(); // 0 - воскресенье, 1 - понедельник, ..., 6 - суббота
+        const currentDayOfWeek = currentDate.day();
         const daysInWeek = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
 
         const allDates = [];
         const daysOfWeek = [];
 
-        // Находим предыдущий понедельник
         const daysSinceLastMonday = (currentDayOfWeek + 6) % 7;
         const lastMonday = currentDate.clone().subtract(daysSinceLastMonday, 'days');
 
@@ -238,6 +236,24 @@ export const getTimetable = (token) => {
         dispatch(setIsFetching(false))
     }
 }
+export const getNextTimetable = (currentWeek) => (dispatch) => {
+    const nextWeek = [];
+    for (let i = 0; i < 7; i++) {
+        const nextDate = moment(currentWeek, 'DD MMM').add(i + 1, 'days');
+        nextWeek.push(nextDate.format('DD MMM').slice(0, -1))
+    }
+    dispatch(setAllDate(nextWeek))
+}
+
+export const getPrevTimetable = (currentWeek) => (dispatch) => {
+    const previousWeek = [];
+    for (let i = 6; i >= 0; i--) {
+        const previousDate = moment(currentWeek, 'DD MMM').subtract(7 - i, 'days');
+        previousWeek.unshift(previousDate.format('DD MMM').slice(0, -1));
+    }
+    dispatch(setAllDate(previousWeek))
+}
+
 
 const teacherInfo = [
     {

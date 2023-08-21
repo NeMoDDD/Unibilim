@@ -4,7 +4,7 @@ import "../../styles/__timetable.scss";
 import Header from "../Header/HeaderS";
 import Table from "./TimtetableComponents/TableLarge";
 import TableMobile from "./TimtetableComponents/TableModile";
-import {getTimetable, testData1, testData2, testData3} from "../../redux/timetableReducer";
+import {getNextTimetable, getPrevTimetable, getTimetable} from "../../redux/timetableReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
 import moment from "moment";
@@ -20,18 +20,10 @@ const Timetable = React.memo((props) => {
 
     const dispatch = useDispatch()
     const getNextWeekHandler = () => {
-        if (props.timetable.id === 2) {
-            return props.setNewTimetableAC(testData3)
-        } else if (props.timetable.id === 1) {
-            return props.setNewTimetableAC(testData2)
-        }
+        dispatch(getNextTimetable(props.timetable?.alldate[6]))
     }
     const getPrevWeekHandler = () => {
-        if (props.timetable.id === 3) {
-            return props.setNewTimetableAC(testData2)
-        } else if (props.timetable.id === 2) {
-            return props.setNewTimetableAC(testData1)
-        }
+        dispatch(getPrevTimetable(props.timetable?.alldate[0]))
     }
 
 
