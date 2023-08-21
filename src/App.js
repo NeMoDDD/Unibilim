@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     // Проверка наличия данных пользователя в localStorage
-    const user = localStorage.getItem('user');
+    const user = localStorage.getItem('user_unibilim');
     if (user) {
       const userData = JSON.parse(user);
       dispatch(login(userData.username, userData.password))

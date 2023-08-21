@@ -79,7 +79,7 @@ const Verification = () => {
                     </form>
                 </div>
             </div>
-                : <Navigate to="/"/>
+                : <Navigate to="/login"/>
             }
         </>
     )

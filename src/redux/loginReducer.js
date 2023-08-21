@@ -119,7 +119,7 @@ export const login = (username, password) => {
 
             const userData = {username, password};
             const userDataJSON = JSON.stringify(userData);
-            localStorage.setItem('user', userDataJSON);
+            localStorage.setItem('user_unibilim', userDataJSON);
         }
         if (data.data.role === "professor") {
             let profData = await professorsApi.getProfessorsCabinet(data.data.token)
@@ -131,7 +131,7 @@ export const login = (username, password) => {
 }
 export const logout = () => {
     return async (dispatch) => {
-        localStorage.removeItem('user');
+        localStorage.removeItem('user_unibilim');
         dispatch(logoutAC())
     }
 }
