@@ -21,7 +21,7 @@ const SET_WEDNESDAY = "SET_WEDNESDAY"
 const SET_THURSDAY = "SET_THURSDAY"
 const SET_FRIDAY = "SET_FRIDAY"
 const SET_SATURDAY = "SET_SATURDAY"
-const SET_SUNDAY = "SET_MONDAY"
+const SET_SUNDAY = "SET_SUNDAY"
 const SET_ALL_TIMETABLE = "SET_MONDAY"
 const SET_ALL_DATE = "SET_ALL_DATE"
 const SET_DAY_OF_WEEK = "SET_DAY_OF_WEEK"
@@ -194,7 +194,7 @@ export const getTimetable = (token) => {
         const data = await meetingsApi.getAllMeetings(token)
         dispatch(setIsFetching(true))
         console.log(data)
-        // dispatch(setAllTimetable(data.data))
+
         data.data.map((m) => {
             if (m.day_of_week === "Monday") {
                 dispatch(setMonday(m))
@@ -231,12 +231,10 @@ export const getTimetable = (token) => {
 
             daysOfWeek.push(daysInWeek[date.day()]);
         }
+        console.log(allDates)
         dispatch(setAllDate(allDates));
-        // for (let i = 0; i < 7; i++) {
-        //     const formattedDate = currentDate.clone().add(i, 'days').format('dddd')
-        //         daysOfWeek.push(formattedDate);
-        // }
         dispatch(setDayOfWeek(daysOfWeek))
+
         dispatch(setIsFetching(false))
     }
 }
