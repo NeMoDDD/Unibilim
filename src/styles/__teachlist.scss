@@ -1,10 +1,13 @@
 .teach_list_block {
   float: left;
-  width: 60%;
   border-radius: 25px;
   background-color: #ffff;
   padding: 15px;
   margin-top: 25px;
+  width: 70%;
+}
+.teach_list_block p {
+  margin-bottom: 15px;
 }
 .drop_block {
   width: 100%;

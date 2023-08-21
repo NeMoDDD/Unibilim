@@ -25,6 +25,7 @@ const SET_SUNDAY = "SET_MONDAY"
 const SET_ALL_TIMETABLE = "SET_MONDAY"
 const SET_ALL_DATE = "SET_ALL_DATE"
 const SET_DAY_OF_WEEK = "SET_DAY_OF_WEEK"
+const SET_IF_FETCHING = "SET_IF_FETCHING"
 
 let initialState = {
     timetable: {
@@ -40,7 +41,8 @@ let initialState = {
         sunday: []
     },
     currentTeacher: [],
-    allTimetable: {}
+    allTimetable: {},
+    isFetching: true
 }
 
 export const timetableReducer = (state = initialState, action) => {
@@ -157,6 +159,11 @@ export const timetableReducer = (state = initialState, action) => {
                     dayOfWeek: action.data
                 }
             }
+        case SET_IF_FETCHING:
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
         default:
             return {
                 ...state
@@ -176,6 +183,7 @@ const setSunday = (data) => ({type: SET_SUNDAY, data})
 const setAllTimetable = (data) => ({type: SET_ALL_TIMETABLE, data})
 export const setAllDate = (data) => ({type: SET_ALL_DATE, data})
 export const setDayOfWeek = (data) => ({type: SET_DAY_OF_WEEK, data})
+export const setIsFetching = (isFetching) => ({type: SET_IF_FETCHING, isFetching})
 
 export const setCurrentTeacherTC = (name) => (dispatch) => {
     const user = teacherInfo.find(obj => obj.name === name);
@@ -184,6 +192,7 @@ export const setCurrentTeacherTC = (name) => (dispatch) => {
 export const getTimetable = (token) => {
     return async (dispatch) => {
         const data = await meetingsApi.getAllMeetings(token)
+        dispatch(setIsFetching(true))
         console.log(data)
         // dispatch(setAllTimetable(data.data))
         data.data.map((m) => {
@@ -228,8 +237,7 @@ export const getTimetable = (token) => {
         //         daysOfWeek.push(formattedDate);
         // }
         dispatch(setDayOfWeek(daysOfWeek))
-        console.log(allDates)
-        console.log(daysOfWeek)
+        dispatch(setIsFetching(false))
     }
 }
 

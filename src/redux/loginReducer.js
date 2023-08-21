@@ -110,25 +110,33 @@ export const setFetching = (isFetching) => ({type: SET_IS_FETCHING, isFetching})
 
 export const login = (username, password) => {
     return async (dispatch) => {
-        dispatch(setFetching(true))
-        let data = await loginApi.login(username, password)
-        console.log(data)
-        if (data.status === 200) {
-            dispatch(setUserRole(data.data.role))
-            dispatch(setUserToken(data.data.token))
+        try {
+            dispatch(setFetching(true));
+            let data = await loginApi.login(username, password);
+            console.log(data);
 
-            const userData = {username, password};
-            const userDataJSON = JSON.stringify(userData);
-            localStorage.setItem('user_unibilim', userDataJSON);
+            if (data.status === 200) {
+                dispatch(setUserRole(data.data.role));
+                dispatch(setUserToken(data.data.token));
+
+                const userData = { username, password };
+                const userDataJSON = JSON.stringify(userData);
+                localStorage.setItem('user_unibilim', userDataJSON);
+            }
+
+            if (data.data.role === 'professor') {
+                let profData = await professorsApi.getProfessorsCabinet(data.data.token);
+                dispatch(setUserData(profData));
+                console.log(profData);
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+        } finally {
+            dispatch(setFetching(false));
         }
-        if (data.data.role === "professor") {
-            let profData = await professorsApi.getProfessorsCabinet(data.data.token)
-            dispatch(setUserData(profData))
-            console.log(profData)
-        }
-        dispatch(setFetching(false))
-    }
-}
+    };
+};
+
 export const logout = () => {
     return async (dispatch) => {
         localStorage.removeItem('user_unibilim');

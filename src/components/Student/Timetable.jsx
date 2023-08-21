@@ -8,6 +8,7 @@ import {getTimetable, setAllDate, testData1, testData2, testData3} from "../../r
 import {useDispatch, useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
 import moment from "moment";
+import {Spin} from "antd";
 
 const Timetable = React.memo((props) => {
     const firstDate = props.timetable?.alldate?.[0];
@@ -15,7 +16,7 @@ const Timetable = React.memo((props) => {
     const week = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс']
     const weekFull = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
     const {token, userRole} = useSelector(state => state.loginReducer)
-    const {timetable: {friday}} = useSelector(state => state.timetableReducer)
+    const {timetable, isFetching} = useSelector(state => state.timetableReducer)
 
     const dispatch = useDispatch()
     const getNextWeekHandler = () => {
@@ -45,6 +46,7 @@ const Timetable = React.memo((props) => {
             {userRole === "student" ?
                 props.timetable?.alldate &&
                 <div className="timetable_block">
+                    <Spin spinning={isFetching}>
                     <div className="timetable__time">
                         <p className="teach_txt">Расписание</p>
                         <div className="date_txt">
@@ -160,6 +162,7 @@ const Timetable = React.memo((props) => {
                       {props.timetable.saturday.map((item, index) => <TableMobile week={weekFull[5]} day={props.timetable.alldate[5]} key={index} btn={item.btc} subj={item.subject} teach={item.professor_firstname + " " + item.professor_lastname} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}
                       {props.timetable.sunday.map((item, index) => <TableMobile week={weekFull[6]} day={props.timetable.alldate[6]} key={index} btn={item.btc} subj={item.subject} teach={item.professor_firstname + " " + item.professor_lastname} time={item.time} backgroundColor={item.backgroundColor} teacher={props.currentTeacher} setCurrentTeacherTC={props.setCurrentTeacherTC}/>)}
                     </div>
+                    </Spin>
                 </div>
                 : userRole === "professor" ? <Navigate to="/teachlk"/> : <Navigate to="/login"/>}
         </>
