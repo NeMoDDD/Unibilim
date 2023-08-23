@@ -10,6 +10,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {getProfessors} from "../../redux/professorsReducer";
 import {Navigate} from "react-router-dom";
 import { Spin } from "antd";
+import {motion} from "framer-motion";
+import s from "../Teacher/StudList/StudList.module.css";
 
 const TeachList = () => {
     const [professorList, setProfessorsList] = useState([])
@@ -105,8 +107,13 @@ const TeachList = () => {
         <>
             <Header/>
             <SideBar/>
-          {userRole === "student" ? 
-              <div className="pad">
+          {userRole === "student" ?
+              <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6 }}
+                  className={s.pad}
+              >
                 <div className="teach_list_block">
                   <Spin spinning={isFetching}>
                     <p className="teach_txt">Репетиторы</p>
@@ -138,8 +145,7 @@ const TeachList = () => {
                     </div> 
                     </Spin>
                 </div>
-            </div>
-            
+              </motion.div>
               : userRole === "professor" ? <Navigate to="/teachlk"/> : <Navigate to="/login"/>}
         </>
     );

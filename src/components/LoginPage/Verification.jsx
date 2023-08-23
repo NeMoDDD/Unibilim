@@ -6,6 +6,8 @@ import { useForm, Controller, } from 'react-hook-form'
 import {Link, Navigate} from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
 import {userVerification} from "../../redux/verification-reducer";
+import {motion} from "framer-motion";
+
 const Verification = () => {
     const dispatch = useDispatch()
     const {isAuth} = useSelector(state => state.verificationReducer)
@@ -40,7 +42,12 @@ const Verification = () => {
         <>
             <HeaderFS />
             {!isAuth ?
-            <div className={s.verification}>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6 }}
+                    className={s.verification}
+                >
                 <div className={s.verification__container}>
                     <form className={s.verification__form} onSubmit={handleSubmit(onSubmit)}>
                         <div className={s.verification__title}>Подтверждение-SMS</div>
@@ -78,7 +85,7 @@ const Verification = () => {
                         <button className={s.verification__submit} type='submit'>Подтвердить</button>
                     </form>
                 </div>
-            </div>
+                </motion.div>
                 : <Navigate to="/login"/>
             }
         </>

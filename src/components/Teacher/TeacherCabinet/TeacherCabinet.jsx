@@ -7,11 +7,12 @@ import edit from "../../../assets/img/edit1.png";
 import {Controller, useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import ruRU from "antd/lib/locale/ru_RU";
-import {ConfigProvider, DatePicker, Space} from "antd";
+import {ConfigProvider, DatePicker, Space, Spin} from "antd";
 import HeaderT from "../../Header/HeaderT";
 import {Navigate} from "react-router-dom";
 import {setPhone} from "../../../redux/RegisterReducer";
 import PhoneInput from "react-phone-input-2";
+import { motion } from "framer-motion";
 
 const TeacherCabinet = (props) => {
     const [isInputDisabled, setInputDisabled] = useState(true)
@@ -21,7 +22,7 @@ const TeacherCabinet = (props) => {
     });
     const {
         userRole, firstName, surname, patronym, subject, info, photo,
-        tg_username, phone, rate, price, language, experience, classes
+        tg_username, phone, rate, price, language, experience, classes, isFetching
     } = useSelector(state => state.loginReducer)
 
     const onSubmit = (data) => {
@@ -30,13 +31,19 @@ const TeacherCabinet = (props) => {
 
     return (
         <>
+            <Spin spinning={isFetching} size="large">
             <HeaderT/>
             <SideBarTeach/>
             {userRole === "professor" ?
-                <div className={s.first_block}>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6 }}
+                    className={s.first_block}
+                >
                     <div className={s.inner_block}>
                         <div className={`${s.avaname} ${s.radblock}`}>
-                            <img src={userava} alt=""/>
+                            {photo !== null ? <img className={s.user_img} src={photo} alt=""/> : <img src={userava} alt=""/>}
                             <div className={s.name}>
                                 <p className={s.name_block}>{`${firstName} ${surname}`}</p>
                                 <a
@@ -210,10 +217,10 @@ const TeacherCabinet = (props) => {
                             {errors.subject && <div className={s.npt_txt_span}>{errors.subject.message}</div>}
                         </div>
                     </div>
-                </div>
+                </motion.div>
                 : userRole === "student" ? <Navigate to="/timetable"/> : <Navigate to="/login"/>}
+            </Spin>
         </>
     );
 };
-
 export default TeacherCabinet;

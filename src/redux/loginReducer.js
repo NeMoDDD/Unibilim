@@ -12,6 +12,7 @@ const SET_IS_FETCHING = "SET_IS_FETCHING"
 let initialState = {
     userRole: null,
     token: null,
+    id: null,
     userName: null,
     password: null,
     firstName: null,
@@ -68,6 +69,7 @@ const LoginReducer = (state = initialState, action) => {
                 rate: action.data.rate,
                 price: action.data.price,
                 language: action.data.language,
+                id: action.data.id
             };
         case LOGOUT:
             return {

@@ -1,19 +1,33 @@
 import {professorsApi} from "../Api/professors-api";
+import {meetingsApi} from "../Api/meetings-api";
 
 const SET_PROFESSORS = "SET_PROFESSORS"
 const TOGGLE__FETCH__PROFFESSOR_PAGE ='TOGGLE__FETCH__PROFFESSOR_PAGE' 
 const SET_LANGUAGE_PROFFESSOR_FILTER = 'SET_LANGUAGE_PROFFESSOR_FILTER' 
 const SET_FILTER_PROFFESSORS ='SET_FILTER_PROFFESSORS'
+const SET_PROFESSOR_TIMETABLE ='SET_PROFESSOR_TIMETABLE'
+
 let initialState = {
     professors: [], 
     languageFilter: [],
     subjectFilter:[],
-    isFetching: false
+    isFetching: false,
+
+    timetable: {
+        allDate: [],
+        dayOfWeek: [],
+        monday: [],
+        tuesday: [],
+        wednesday: [],
+        thursday: [],
+        friday: [],
+        saturday: [],
+        sunday: []
+    },
 }
 
 
 const ProfessorsReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case SET_PROFESSORS:
             return {
@@ -36,6 +50,12 @@ const ProfessorsReducer = (state = initialState, action) => {
             return{ 
                 ...state, 
                 professors: state.professors.filter((item) => item.language === action.language)
+            }
+        }
+        case SET_PROFESSOR_TIMETABLE:{
+            return{
+                ...state,
+
             }
         }
         default: {
@@ -70,4 +90,10 @@ export const getProfessors = ({token}) => {
     }
 }
 
+export const getProfessorTimetable = (token) => {
+    return async (dispatch) => {
+        const data = await meetingsApi.getAllMeetings(token)
+        console.log(data)
+    }
+}
 export default ProfessorsReducer

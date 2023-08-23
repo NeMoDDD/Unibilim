@@ -12,6 +12,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
 import { getDefineProffeserossStudents } from "../../../redux/myStudents-reducer";
 import ava from '../../../assets/img/student-without-photo.svg'
+import {motion} from "framer-motion";
+
 const StudList = () => {
     // const students = [
     //     {id: 1, name: "Ирина", firstname: "Бойка", img: stud1},
@@ -36,7 +38,12 @@ const StudList = () => {
             <HeaderT/>
             <SideBarTeach/>
             {userRole === "professor" ?
-                    <div className={s.pad}>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6 }}
+                    className={s.pad}
+                >
                     <div className={s.stud_head}>
                         <Spin spinning={isFetching}> 
                         <div className={s.radios}>
@@ -89,7 +96,7 @@ const StudList = () => {
                         </div>
                 </Spin>
                     </div>
-                </div> 
+                </motion.div>
                 : userRole === "student" ? <Navigate to="/timetable"/> : <Navigate to="/login"/>}
         </>
     );

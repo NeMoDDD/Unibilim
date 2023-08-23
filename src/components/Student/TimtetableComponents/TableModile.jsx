@@ -1,17 +1,19 @@
 import ModalTeacherWindow from './ModalMenu';
-import React,{useState} from 'react' 
-const TableMobile = React.memo(({ subj,teacher, teach, time, backgroundColor, btn,week, day, setCurrentTeacherTC }) => {
+import React,{useState} from 'react'
+import moment from "moment/moment";
+const TableMobile = React.memo(({subj, teach, time, backgroundColor, btn, alldate, info}) => {
     const [modalOpen, setModalOpen] = useState(false);
+    const dateObject = moment(alldate)
+
     const handleTeacherClick = ()=>{ 
-      setCurrentTeacherTC(teach) 
       setModalOpen(true)
     }   
     return (
       <>
         <div className="cards">
           <div className="cards_head">
-            <p className="weekday">{week},</p>{" "}
-            <p className="dayday">{day}</p>
+            <p className="weekday">{dateObject.format('dddd')},&nbsp;</p>{" "}
+            <p className="dayday">{dateObject.format('DD MMM').slice(0, -1)}</p>
           </div>
           <div
             className="cards_inner"
@@ -23,7 +25,7 @@ const TableMobile = React.memo(({ subj,teacher, teach, time, backgroundColor, bt
             <button className="cards_btn" onClick={handleTeacherClick} style={{backgroundColor: btn}}>Подробнее</button>
           </div>
         </div> 
-        <ModalTeacherWindow teacher={teacher} modalOpen={modalOpen} setModalOpen={setModalOpen} time={time}/>
+        <ModalTeacherWindow teach={teach} modalOpen={modalOpen} time={time} setModalOpen={setModalOpen} subj={subj} alldate={alldate} info={info}/>
       </>
     )
   }) 

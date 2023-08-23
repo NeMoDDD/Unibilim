@@ -1,12 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
 import HeaderT from "../Header/HeaderT";
 import SideBarTeach from "../SideBar/SideBarTeach";
 import s from "./__subj.module.scss";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
+import {getProfessorTimetable} from "../../redux/professorsReducer";
+import { motion } from "framer-motion";
 
 const SubjTable = () => {
-    const {userRole} = useSelector(state => state.loginReducer)
+    const {userRole, id, token} = useSelector(state => state.loginReducer)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getProfessorTimetable(token))
+    }, []);
+
 
     const name = "< 23 янв - 30 янв >";
     const dayList = ["Mon", "Tue", "Wed", "Tuer", "Fri", "Sat", "Sun"];
@@ -108,7 +116,12 @@ const SubjTable = () => {
             <HeaderT/>
             <SideBarTeach/>
             {userRole === "professor" ?
-            <div className={s.pad}>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6 }}
+                    className={s.pad}
+                >
                 <div className={s.timetable_block}>
                     <div className={s.time}>
                         <p className={s.teach_txt}>Расписание</p>
@@ -289,7 +302,7 @@ const SubjTable = () => {
                         );
                     })}
                 </div>
-            </div>
+                </motion.div>
                 : userRole === "student" ? <Navigate to="/timetable"/> : <Navigate to="/login"/>}
         </>
     );

@@ -7,6 +7,7 @@ import {Input} from "antd";
 import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
 import {login, setUserName, setUserPassword} from "../../redux/loginReducer";
 import {Navigate, NavLink} from "react-router-dom";
+import {motion} from "framer-motion";
 
 const LoginPage = React.memo((props) => {
     const {control, handleSubmit, setError, clearErrors, formState: {errors}} = useForm({
@@ -21,7 +22,12 @@ const LoginPage = React.memo((props) => {
         <>
             <Header/>
             {userRole === null ?
-            <div className={s.login__page}>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6 }}
+                    className={s.login__page}
+                >
                 <div className={s.login}>
                     <form className={s.login__form} onSubmit={handleSubmit(onSubmit)}>
                         <div className={s.form__in}>
@@ -69,7 +75,7 @@ const LoginPage = React.memo((props) => {
                         <button type='submit' className={s.form__submit} disabled={isFetching}>Продолжить</button>
                     </form>
                 </div>
-            </div>
+                </motion.div>
                 : userRole === "student" ? <Navigate to="/timetable"/> : <Navigate to="/teachlk"/>}
         </>
     );

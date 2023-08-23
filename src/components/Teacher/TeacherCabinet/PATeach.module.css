@@ -295,6 +295,12 @@
     color: #D0021B;
     margin: 0;
 }
+
+.user_img {
+    width: 30%;
+    height: auto;
+    border-radius: 25px;
+}
 @media (min-width: 310px) and (max-width: 1024px) {
     .first_block {
         width: 100%;

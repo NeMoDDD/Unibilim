@@ -13,4 +13,4 @@ const mapStateToProps = (state) =>{
         currentTeacher: state.timetableReducer.currentTeacher
     }
 }
-export default connect(mapStateToProps, {setNewTimetableAC, setCurrentTeacherTC})(TimeTableContainer)
+export default connect(mapStateToProps, {setNewTimetableAC})(TimeTableContainer)

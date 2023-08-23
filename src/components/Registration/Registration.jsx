@@ -26,6 +26,8 @@ import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css';
 import {getCities, getDistricts, getRegion} from "../../redux/location-reducer";
 import {Navigate, NavLink, useLocation} from "react-router-dom";
+import s from "../LoginPage/LoginPage.module.css";
+import {motion} from "framer-motion";
 
 const Registration = () => {
     const {control, handleSubmit, setError, clearErrors, formState: {errors}, reset} = useForm({
@@ -111,7 +113,13 @@ const Registration = () => {
         <>
             <Header/>
             {!toVerification ?
-            <form onSubmit={handleSubmit(onSubmit)} className="up_block">
+                <motion.form
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                onSubmit={handleSubmit(onSubmit)}
+                className="up_block"
+                >
                 <div className="reg-block">
                     <div className="reg-text-block">
                         <p className="reg-text">Регистрация</p>
@@ -364,7 +372,7 @@ const Registration = () => {
                         Продолжить
                     </button>
                 </div>
-            </form>
+                </motion.form>
                 : <Navigate to="/verification"/>}
         </>
     )

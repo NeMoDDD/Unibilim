@@ -74,6 +74,7 @@
     flex-direction: column;
     position: absolute;
     right: 0;
+    z-index: 9999;
 }
 .menu__header_block {
 

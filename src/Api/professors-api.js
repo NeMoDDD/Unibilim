@@ -14,9 +14,13 @@ export const professorsApi = {
         //Получаем определенного Профессора 
         return instance.get(`professors/${id}/`)
     } ,
-    getDefineTimeTableProfessor(id){ 
+    getDefineTimeTableProfessor(id, token){
         //Получаем ВСЕ РАСПИСАНИЯ определенного Профессора
-        return instance.get(`/professors/${id}/timetable/`)
+        return instance.get(`/professors/${id}/timetable/`, {
+            headers: {
+                'Authorization': `Token ${token}`
+            }
+        })
     }, 
     getDefineTimeTable(professorId, timetableId){  
         //Получаем КОНКРЕТНОЕ расписание определенного Профессора
