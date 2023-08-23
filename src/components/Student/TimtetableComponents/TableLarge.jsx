@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import ModalTeacherWindow from "./ModalMenu";
-import {useSelector} from "react-redux";
 
 const Table = React.memo(({subj, teach, time, backgroundColor, btn, alldate, info}) => {
     const [modalOpen, setModalOpen] = useState(false);

@@ -7,7 +7,7 @@ import Header from "../Header/HeaderS";
 import {useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
 import {motion} from "framer-motion";
-import s from "../Teacher/__subj.module.scss";
+import s from "../Teacher/TeacherTimetable/__subj.module.scss";
 
 const Reservation = () => {
     const name = "< 23 янв - 30 янв >";

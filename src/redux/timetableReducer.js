@@ -3,7 +3,6 @@ import moment from "moment";
 import "moment/locale/ru";
 
 const SET_NEW_TIMETABLE_DATA = 'SET_NEW_TIMETABLE_DATA'
-const SET_NEW_TIMETABLE_TEACHER = 'SET_NEW_TIMETABLE_TEACHER'
 const SET_MONDAY = "SET_MONDAY"
 const SET_TUESDAY = "SET_TUESDAY"
 const SET_WEDNESDAY = "SET_WEDNESDAY"
@@ -11,7 +10,6 @@ const SET_THURSDAY = "SET_THURSDAY"
 const SET_FRIDAY = "SET_FRIDAY"
 const SET_SATURDAY = "SET_SATURDAY"
 const SET_SUNDAY = "SET_SUNDAY"
-const SET_ALL_TIMETABLE = "SET_MONDAY"
 const SET_ALL_DATE = "SET_ALL_DATE"
 const SET_DAY_OF_WEEK = "SET_DAY_OF_WEEK"
 const SET_IF_FETCHING = "SET_IF_FETCHING"
@@ -128,11 +126,6 @@ export const timetableReducer = (state = initialState, action) => {
             } else {
                 return state
             }
-        case SET_ALL_TIMETABLE:
-            return {
-                ...state,
-                allTimetable: action.data
-            }
         case SET_ALL_DATE:
             return {
                 ...state,
@@ -169,7 +162,6 @@ const setThursday = (data) => ({type: SET_THURSDAY, data})
 export const setFriday = (data) => ({type: SET_FRIDAY, data})
 const setSaturday = (data) => ({type: SET_SATURDAY, data})
 const setSunday = (data) => ({type: SET_SUNDAY, data})
-const setAllTimetable = (data) => ({type: SET_ALL_TIMETABLE, data})
 export const setAllDate = (data) => ({type: SET_ALL_DATE, data})
 export const setDayOfWeek = (data) => ({type: SET_DAY_OF_WEEK, data})
 export const setIsFetching = (isFetching) => ({type: SET_IF_FETCHING, isFetching})

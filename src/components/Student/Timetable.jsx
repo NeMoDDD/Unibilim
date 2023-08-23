@@ -10,13 +10,10 @@ import {Navigate} from "react-router-dom";
 import moment from "moment";
 import {Spin} from "antd";
 import {motion} from "framer-motion";
-import s from "../Teacher/StudList/StudList.module.css";
 
 const Timetable = React.memo((props) => {
     const firstDate = props.timetable?.alldate?.[0];
     const lastDate = props.timetable?.alldate[props.timetable.alldate.length - 1];
-    // const week = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс']
-    const weekFull = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
     const {token, userRole} = useSelector(state => state.loginReducer)
     const {isFetching} = useSelector(state => state.timetableReducer)
 
@@ -87,7 +84,7 @@ const Timetable = React.memo((props) => {
                                             )}})}
                                 </div>
                             </td>
-                            <td className='timetable__row'>
+                            <td>
                                 <div className='timetable__item'>
                                     {props.timetable?.tuesday
                                         .sort((a, b) => a.time.localeCompare(b.time))

@@ -7,7 +7,7 @@ import {Route, Routes} from "react-router-dom";
 import TeachList from "./components/Student/TeachList";
 import Reservation from "./components/Student/Reservation";
 import TeacherCabinet from "./components/Teacher/TeacherCabinet/TeacherCabinet";
-import SubjTable from "./components/Teacher/SubjTable";
+import TeacherTimetable from "./components/Teacher/TeacherTimetable/TeacherTimetable";
 import PopUp from "./components/Student/PopUp";
 import TimeTableContainer from "./components/Student/TimeTableContainer";
 import Verification from "./components/LoginPage/Verification";
@@ -42,7 +42,7 @@ function App() {
         <Route path="/timetable" element={<TimeTableContainer/>} />
         <Route path="/reservation" element={<Reservation />} />
         {/*<Route path="/teachcab" element={<MyCab />} />*/}
-        <Route path="/subjtable" element={<SubjTable />} />
+        <Route path="/subjtable" element={<TeacherTimetable />} />
         <Route path="/popup" element={<PopUp />} /> 
         <Route path="/verification" element={<Verification/>}/>
       </Routes>

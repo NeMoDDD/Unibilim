@@ -6,7 +6,7 @@ import TeachList from "../components/Student/TeachList";
 import Timetable from "../components/Student/Timetable";
 import Reservation from "../components/Student/Reservation";
 import MyCab from "./components/Teacher/MyCab";
-import SubjTable from "./components/Teacher/SubjTable";
+import SubjTable from "./components/Teacher/TeacherTimetable";
 import Home from "./components/Home/Home";
 
 
