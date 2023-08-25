@@ -5,7 +5,7 @@ import logo3 from "../../assets/img/logo3-1.png";
 import s from "./SideBar.module.scss";
 import {NavLink} from "react-router-dom";
 
-const SideBar = (props) => {
+const SideBar = () => {
   return (
     <div className={s.sideblock}>
       {/*<div className={s.inner_container}>*/}

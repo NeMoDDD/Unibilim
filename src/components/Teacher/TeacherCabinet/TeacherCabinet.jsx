@@ -31,7 +31,6 @@ const TeacherCabinet = (props) => {
 
     return (
         <>
-            <Spin spinning={isFetching} size="large">
             <HeaderT/>
             <SideBarTeach/>
             {userRole === "professor" ?
@@ -41,6 +40,7 @@ const TeacherCabinet = (props) => {
                     transition={{ duration: 0.6 }}
                     className={s.first_block}
                 >
+                    <Spin spinning={isFetching} size="large">
                     <div className={s.inner_block}>
                         <div className={`${s.avaname} ${s.radblock}`}>
                             {photo !== null ? <img className={s.user_img} src={photo} alt=""/> : <img src={userava} alt=""/>}
@@ -217,9 +217,9 @@ const TeacherCabinet = (props) => {
                             {errors.subject && <div className={s.npt_txt_span}>{errors.subject.message}</div>}
                         </div>
                     </div>
+                    </Spin>
                 </motion.div>
                 : userRole === "student" ? <Navigate to="/timetable"/> : <Navigate to="/login"/>}
-            </Spin>
         </>
     );
 };

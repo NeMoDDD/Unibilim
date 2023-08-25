@@ -20,9 +20,9 @@ const Reservation = () => {
             <SideBar/>
             {userRole === "student" ?
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.6 }}
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    transition={{duration: 0.6}}
                     className={"pad"}
                 >
                     <div className="reser_block">

@@ -34,7 +34,6 @@
 .list_block {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
   background-color: #f6fafc;
@@ -52,6 +51,7 @@
 .teach_img {
   width: 169px;
   height: 205px;
+  border-radius: 20px;
 }
 .teach_card {
   display: flex;
