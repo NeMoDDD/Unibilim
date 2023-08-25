@@ -12,51 +12,39 @@ import s from "../Teacher/StudList/StudList.module.css";
 
 const TeachList = () => {
     const [professorList, setProfessorsList] = useState([])
+    const [classSelectList, setClassSelectList] = useState('all')
+    const [languageSelectList, setLanguageSelectList] = useState('all')
     const dispatch = useDispatch()
     const {userRole, token} = useSelector(state => state.loginReducer)
-    const {professors, languageFilter, isFetching} = useSelector(state => state.professorsReducer)
+    const {professors, languageFilter, isFetching, classFilter, subjectFilter} = useSelector(state => state.professorsReducer)
     useEffect(() => {
         dispatch(getProfessors({token}))
     }, [dispatch, token])
     useEffect(() => {
         setProfessorsList(professors)
     }, [dispatch, professors])
-    const onHandleSelectChange = (e) => {
-        if (e.target.value === 'all') {
-            setProfessorsList(professors);
-        } else {
-            const filteredList = professors.filter(item => item.language === e.target.value);
-            setProfessorsList(filteredList);
-        }
-    }
-    const classArr = ["Все классы", "9В", "10B", "8А", "11Г"];
-    const subjArr = [
-        "Все предметы",
-        "Математика",
-        "Русский язык",
-        "Химия",
-        "История",
-    ];
-    const daysArr = [
-        "Все дни",
-        "Понедельник",
-        "Вторник",
-        "Среда",
-        "Четверг",
-        "Пятница",
-    ];
+    const onHandleSelectLanguageChange = (e) => {
+        const selectedLanguage = e.target.value;
+        setLanguageSelectList(selectedLanguage);
+        const filteredByLanguage = selectedLanguage === 'all' ? professors : professors.filter(item => item.language === selectedLanguage);
+        const filteredByClass = classSelectList === 'all' ? filteredByLanguage : filteredByLanguage.filter(item => item.classes.includes(classSelectList));
+        setProfessorsList(filteredByClass);
+    };
 
-    const renderClasses = classArr.map((item, index) => (
+    const onHandleSelectClassChange = (e) => {
+        const selectedClass = e.target.value;
+        setClassSelectList(selectedClass);
+        const filteredByClass = selectedClass === 'all' ? professors : professors.filter(item => item.classes.includes(selectedClass));
+        const filteredByLanguage = languageSelectList === 'all' ? filteredByClass : filteredByClass.filter(item => item.language === languageSelectList);
+        setProfessorsList(filteredByLanguage);
+    }
+
+    const renderClasses = classFilter.map((item, index) => (
         <option className="drop_text" value={item} key={index}>
             {item}
         </option>
     ));
-    const renderSubect = subjArr.map((item, index) => (
-        <option className="drop_text" value={item} key={index}>
-            {item}
-        </option>
-    ));
-    const renderDay = daysArr.map((item, index) => (
+    const renderSubect = subjectFilter.map((item, index) => (
         <option className="drop_text" value={item} key={index}>
             {item}
         </option>
@@ -80,10 +68,12 @@ const TeachList = () => {
                         <Spin spinning={isFetching}>
                             <p className="teach_txt">Репетиторы</p>
                             <div className="drop_block">
-                                <select className="drop">{renderClasses}</select>
                                 <select className="drop">{renderSubect}</select>
-                                <select className="drop">{renderDay}</select>
-                                <select className="drop" onChange={(e) => onHandleSelectChange(e)}>
+                                <select className="drop" onChange={(e) => onHandleSelectClassChange(e)}>
+                                    <option value="all">Все классы</option>
+                                    {renderClasses}
+                                </select>
+                                <select className="drop" onChange={(e) => onHandleSelectLanguageChange(e)}>
                                     <option value="all">Все Языки</option>
                                     {languageSelect}
                                 </select>

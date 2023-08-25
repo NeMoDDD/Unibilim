@@ -3,9 +3,9 @@ import {meetingsApi} from "../Api/meetings-api";
 import moment from "moment/moment";
 
 const SET_PROFESSORS = "SET_PROFESSORS"
-const TOGGLE__FETCH__PROFFESSOR_PAGE ='TOGGLE__FETCH__PROFFESSOR_PAGE' 
-const SET_LANGUAGE_PROFFESSOR_FILTER = 'SET_LANGUAGE_PROFFESSOR_FILTER' 
-const SET_FILTER_PROFFESSORS ='SET_FILTER_PROFFESSORS'
+const TOGGLE__FETCH__PROFFESSOR_PAGE = 'TOGGLE__FETCH__PROFFESSOR_PAGE'
+const SET_LANGUAGE_PROFFESSOR_FILTER = 'SET_LANGUAGE_PROFFESSOR_FILTER'
+const SET_FILTER_PROFFESSORS = 'SET_FILTER_PROFFESSORS'
 
 const SET_NEW_TIMETABLE_DATA = 'SET_NEW_TIMETABLE_DATA'
 const SET_MONDAY = "SET_MONDAY"
@@ -20,9 +20,10 @@ const SET_DAY_OF_WEEK = "SET_DAY_OF_WEEK"
 const SET_IF_FETCHING_TEACHER_TIMETABLE = "SET_IF_FETCHING_TEACHER_TIMETABLE"
 
 let initialState = {
-    professors: [], 
+    professors: [],
     languageFilter: [],
-    subjectFilter:[],
+    subjectFilter: ["Русский язык", "Английский язык", "Физика", "История",  "Математика"],
+    classFilter: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
     isFetching: false,
 
     timetable: {
@@ -47,21 +48,21 @@ const ProfessorsReducer = (state = initialState, action) => {
                 ...state,
                 professors: action.professors
             }
-        case TOGGLE__FETCH__PROFFESSOR_PAGE:{ 
-            return{ 
-                ...state, 
+        case TOGGLE__FETCH__PROFFESSOR_PAGE: {
+            return {
+                ...state,
                 isFetching: action.toggle
             }
-        } 
-        case SET_LANGUAGE_PROFFESSOR_FILTER:{ 
-            return{ 
-                ...state, 
+        }
+        case SET_LANGUAGE_PROFFESSOR_FILTER: {
+            return {
+                ...state,
                 languageFilter: action.filtered
             }
-        } 
-        case SET_FILTER_PROFFESSORS:{ 
-            return{ 
-                ...state, 
+        }
+        case SET_FILTER_PROFFESSORS: {
+            return {
+                ...state,
                 professors: state.professors.filter((item) => item.language === action.language)
             }
         }
@@ -201,27 +202,33 @@ const setSaturdayTeacher = (data) => ({type: SET_SATURDAY, data})
 const setSundayTeacher = (data) => ({type: SET_SUNDAY, data})
 export const setAllDateTeacher = (data) => ({type: SET_ALL_DATE, data})
 export const setDayOfWeekTeacher = (data) => ({type: SET_DAY_OF_WEEK, data})
-export const setIsFetchingTeacher = (isFetchingTeacherTimetable) => ({type: SET_IF_FETCHING_TEACHER_TIMETABLE, isFetchingTeacherTimetable})
+export const setIsFetchingTeacher = (isFetchingTeacherTimetable) => ({
+    type: SET_IF_FETCHING_TEACHER_TIMETABLE,
+    isFetchingTeacherTimetable
+})
 
 export const getProfessors = ({token}) => {
     return async (dispatch) => {
-        try{ 
+        try {
             dispatch(toggleProfessorFetchAC(true))
             const response = await professorsApi.getAllProfessors(token)
-            if(response.status === 200){  
-                console.log(response);
+            console.log(response)
+            if (response.status === 200) {
                 const professors = response.data
+                // Языки
                 const uniqueLanguages = new Set();
                 professors.forEach(teacher => {
                     uniqueLanguages.add(teacher.language);
-                });                
+                });
                 const uniqueLanguagesArray = Array.from(uniqueLanguages)
+
                 dispatch(setFilteredProfessorsByLanguageAC(uniqueLanguagesArray))
+
                 dispatch(setProfessors(response.data))
             }
-        }catch(error){ 
+        } catch (error) {
             console.log(error);
-        }finally{ 
+        } finally {
             dispatch(toggleProfessorFetchAC(false))
         }
     }
