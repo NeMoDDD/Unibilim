@@ -5,12 +5,14 @@
   padding: 15px;
   background-color: white;
 }
+
 .head_block {
   display: flex;
   justify-content: space-around;
   margin-top: 25px;
   align-items: center;
 }
+
 .back_btn {
   font-weight: 600;
   font-size: 20px;
@@ -19,22 +21,27 @@
   color: #93979b;
   text-decoration: none;
 }
+
 .reser_table {
   width: 50%;
   border-radius: 25px;
   background-color: #f6fafc;
   float: left;
-  padding: 15px;
+  padding: 20px;
 }
+
 .txt {
-  height: 24px;
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
-  line-height: 24px;
   color: #6c7074;
-  margin-left: 25px;
-  margin-bottom: 35px;
+}
+.txt_schedule {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 17px;
+  color: #6C7074;
 }
 .pay_block {
   width: 20%;
@@ -48,6 +55,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .pay_subj {
   width: 100%;
   background-color: #ffffff;
@@ -56,17 +64,22 @@
   flex-direction: column;
   align-items: center;
   margin: 0;
-  padding: 0;
+  padding: 0.6em 0;
 }
+
 .subj_costet {
-  margin-top: 15px;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  margin-left: 25px;
   color: #2d2d2d;
+  margin: 0;
 }
+
+.cost_block {
+  margin-bottom: 1em;
+}
+
 .costet {
   margin: 0;
   padding: 5px;
@@ -76,16 +89,19 @@
   text-align: center;
   color: #000000;
 }
+
 .for_pay {
   width: 100%;
-  height: 152px;
+  height: auto;
   background: #ffbf13;
   border-radius: 25px;
   margin-top: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 15px 0;
 }
+
 .pay_btn {
   width: 80%;
   height: 38px;
@@ -99,6 +115,7 @@
   color: #fabb13;
   border: none;
 }
+
 .reser_card {
   width: 100%;
   height: 160px;
@@ -108,6 +125,7 @@
   display: none;
   margin-top: 15px;
 }
+
 .reser_week {
   font-style: normal;
   font-weight: 600;
@@ -115,6 +133,7 @@
   line-height: 19.2px;
   color: #6c7074;
 }
+
 .reser_day {
   font-style: normal;
   font-weight: 600;
@@ -122,15 +141,18 @@
   line-height: 19px;
   color: #6c7074;
 }
+
 .reser_date {
   display: flex;
   align-items: baseline;
   justify-content: center;
 }
+
 .reser_times_block {
   display: flex;
   flex-wrap: wrap;
 }
+
 .reser_times {
   width: 29%;
   height: 40px;
@@ -145,6 +167,7 @@
   margin-left: 13px;
   margin-top: 5px;
 }
+
 .no_subj {
   font-weight: 600;
   font-size: 14px;
@@ -153,14 +176,16 @@
   text-align: center;
   margin-top: 25px;
 }
+
 .pay_block2 {
+  display: none;
   width: 100%;
   height: 80px;
   background-color: #ffbf14;
-  display: flex;
   justify-content: space-around;
   align-items: center;
 }
+
 .f_pr {
   font-weight: 500;
   font-size: 17px;
@@ -169,6 +194,7 @@
   color: #ffffff;
   margin: 5px;
 }
+
 .s_pr {
   font-style: normal;
   font-weight: 600;
@@ -178,6 +204,7 @@
   color: #ffffff;
   margin: 0;
 }
+
 .pay_btn2 {
   width: 181px;
   height: 50px;
@@ -191,9 +218,17 @@
   color: #fabb13;
   border: none;
 }
+
 @media screen and (max-width: 820px) {
-  .reser_block{
-    height: 900px;
+  .cost_block {
+    margin-bottom: 0;
+  }
+  .txt {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .reser_block {
+    height: auto;
   }
   .reser_table {
     width: 100%;
@@ -205,22 +240,32 @@
     width: 100%;
   }
   .pay_block {
-    display: none;
+    width: 100%;
+    margin-left: 0;
+    float: none;
+    margin-top: 1em;
+    margin-bottom: 6em;
   }
   .pay_block2 {
     position: fixed;
     bottom: 0;
+    margin-left: -15px;
+  }
+  .for_pay {
+    position: fixed;
+    bottom: 0;
+    border-radius: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .pay_btn {
+    width: auto;
+    height: auto;
+    padding: 15px 20px;
   }
   .back_btn {
     display: none;
-  }
-  .txt {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 19px;
-    margin-bottom: 25px;
-    color: #6c7074;
   }
   .subj_costet {
     font-style: normal;
@@ -230,70 +275,60 @@
     margin-top: 10px;
     color: #2d2d2d;
   }
-  .txt_18 {
-    font-style: normal;
-    font-weight: 500;
+  .txt_schedule {
     font-size: 14px;
-    line-height: 17px;
-    color: #6c7074;
   }
-  .reser_times_block{
+  .reser_times_block {
     width: 100%;
-    margin-left: 0px;
+    margin-left: 0;
   }
-  .reser_times{
+  .reser_times {
     width: 31%;
     margin-left: 5px;
   }
-  .choose_days{
+  .choose_days {
     display: flex;
     flex-direction: column;
   }
-  .pay_block2{
-    margin-left: -15px;
+}
+
+@media screen and (min-width: 481px) and (max-width: 820px) {
+  .reser_table {
+    width: 100%;
+  }
+  .pay_block {
+    width: 100%;
+    display: flex;
+    margin-left: 0;
+    margin-top: 15px;
+    padding-bottom: 7em;
+  }
+  .txt {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .subj_costet {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 14px;
+    margin-top: 10px;
+    color: #2d2d2d;
+  }
+  .costet {
+    margin-bottom: 0.7em;
+  }
+  .pay_block2 {
+    display: flex;
   }
 }
 
-@media screen and (min-width:481px) and (max-width:820px) {
-    .reser_table{
-        width: 100%;
-    }
-    .pay_block{
-        width: 100%;
-        display: flex;
-        margin-left: 0;
-        margin-top: 15px;
-    }
-    .txt {
-        font-style: normal;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 19px;
-        margin-bottom: 25px;
-        color: #6c7074;
-      }
-      .subj_costet {
-        font-style: normal;
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 14px;
-        margin-top: 10px;
-        color: #2d2d2d;
-      }
-      .txt_18 {
-        font-style: normal;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 17px;
-        color: #6c7074;
-      }
-      .pay_block2{
-        display: none;
-      }
-}
-@media screen and (min-width: 821px) and (max-width:1024px) {
-  .pay_block{
-    display: none;
+@media screen and (min-width: 821px) and (max-width: 1024px) {
+  .reser_table {
+    width: 70%;
   }
-  
+  .pay_block {
+    width: 25%;
+  }
+
 }

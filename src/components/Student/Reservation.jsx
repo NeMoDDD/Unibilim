@@ -36,12 +36,12 @@ const Reservation = () => {
                                 <p className="txt">
                                     Выберите удобное для себя время и день недели из доступных
                                 </p>
-                                <p className="subj_costet">Рабочие дни</p>
-                                <p className="txt_18" style={{marginTop: "-15px"}}>
+                                <p className="subj_costet" style={{fontWeight: "600", marginBottom: "0.3em"}}>Рабочие дни</p>
+                                <p className="txt_schedule">
                                     Понедельник, среда, пятница, суббота, воскресенье
                                 </p>
-                                <p className="subj_costet">Время занятий</p>
-                                <p className="txt_18" style={{marginTop: "-15px"}}>
+                                <p className="subj_costet" style={{fontWeight: "600", marginBottom: "0.3em"}}>Время занятий</p>
+                                <p className="txt_schedule">
                                     Пн,ср,пт - с 14:00 до 18:00 Сб,вс - с 12:00 до 21:00
                                 </p>
                             </div>
@@ -84,7 +84,7 @@ const Reservation = () => {
                         </div>
                         <div className="pay_block">
                             <p className="txt" style={{marginLeft: "0px"}}>
-                                Рассчёт
+                                Расчёт
                             </p>
                             <div className="pay_subj">
                                 <p className="subj_costet">Стоимость 1 занятия</p>
@@ -96,23 +96,25 @@ const Reservation = () => {
                                 <p className="subj_costet">(пн-1, ср-1, пт-1)</p>
                             </div>
                             <div className="for_pay">
-                                <p className="subj_costet" style={{color: "white"}}>
-                                    Итоговая стоимость
-                                </p>
-                                <p className="costet" style={{color: "white"}}>
-                                    450 сом
-                                </p>
+                                <div className="cost_block">
+                                    <p className="subj_costet" style={{color: "white"}}>
+                                        Итоговая стоимость
+                                    </p>
+                                    <p className="costet" style={{color: "white"}}>
+                                        450 сом
+                                    </p>
+                                </div>
                                 <button className="pay_btn">Перейти к оплате</button>
                             </div>
                         </div>
                     </div>
-                    <div className="pay_block2">
-                        <div className="prices">
-                            <p className="f_pr">Итоговая стоимость</p>
-                            <p className="s_pr">450 сом</p>
-                        </div>
-                        <button className="pay_btn2">Перейти к оплате</button>
-                    </div>
+                    {/*<div className="pay_block2">*/}
+                    {/*    <div className="prices">*/}
+                    {/*        <p className="f_pr">Итоговая стоимость</p>*/}
+                    {/*        <p className="s_pr">450 сом</p>*/}
+                    {/*    </div>*/}
+                    {/*    <button className="pay_btn2">Перейти к оплате</button>*/}
+                    {/*</div>*/}
                 </motion.div>
                 : userRole === "professor" ? <Navigate to="/teachlk"/> : <Navigate to="/login"/>}
         </>
