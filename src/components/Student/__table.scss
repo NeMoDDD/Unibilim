@@ -1,111 +1,65 @@
-table.table {
-  width: 90%;
-  border: 1px solid grey;
-  border-collapse: collapse;
-  border-style: hidden;
-  border-top: none;
-  border-left: none;
-  margin-left: 63px;
-  margin-top: 53px;
-  padding: 0px 5px;
-  display: block;
+
+.calendar-container {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-table td {
-  border-left: 1px solid grey;
-  // padding: 3px;
-  width: 74px;
-  height: 34px;
-  text-align: center;
-  background-color: #ececec40;
+.calendar {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 4px;
+  background-color: #f6fafc;
+  border-radius: 10px;
 }
-table th {
+
+.date_block th {
+  background-color: #f6fafc;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+.time_slot {
+  border: none;
+  background-color: #f6fafc;
+
+}
+.reserv_day {
+  cursor: pointer;
+  background-color: #FFFFFF;
   border: none;
 }
-.date_res {
-  font-size: 5px;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 14px;
-  color: #6c7074;
+
+.selected {
+  background-color: #ffc107;
 }
-.time_res {
-  margin-left: 15px;
-  margin-top: 35px;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 14px;
-  color: #6c7074;
-  position: absolute;
+
+td {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
-.mt {
+
+td button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.show-button {
+  display: block;
   margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
-.reser_teach {
-  margin-top: 10px;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 26px;
-  line-height: 31px;
-  text-align: center;
-
-  color: #93979b;
-}
-.reser_date {
-  font-style: normal;
-  margin-top: 10px;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 26px;
-  text-align: center;
-  color: #93979b;
-}
-.in_table {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 10px;
-  line-height: 12px;
-  /* identical to box height */
-  color: #ffbf13;
-}
-@media screen and (max-width: 480px) {
-  .reser_teach {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
-    text-align: center;
-    color: #93979b;
-  }
-  .reser_date {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 22px;
-    text-align: center;
-    color: #93979b;
-  }
-  .all_res_table{
-    display: none;
-  }
-}
-
-@media screen and (min-width:481px) and (max-width:1024px) {
-  .reser_teach {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
-    text-align: center;
-    color: #93979b;
-  }
-  .reser_date {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 22px;
-    text-align: center;
-    color: #93979b;
-  }
-}
-
