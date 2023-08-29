@@ -14,9 +14,16 @@ const TeachList = () => {
     const [professorList, setProfessorsList] = useState([])
     const [classSelectList, setClassSelectList] = useState('all')
     const [languageSelectList, setLanguageSelectList] = useState('all')
+    const [subjectSelectList, setSubjectSelectList] = useState('all')
     const dispatch = useDispatch()
     const {userRole, token} = useSelector(state => state.loginReducer)
-    const {professors, languageFilter, isFetching, classFilter, subjectFilter} = useSelector(state => state.professorsReducer)
+    const {
+        professors,
+        languageFilter,
+        isFetching,
+        classFilter,
+        subjectFilter
+    } = useSelector(state => state.professorsReducer)
     useEffect(() => {
         dispatch(getProfessors({token}))
     }, [dispatch, token])
@@ -28,13 +35,24 @@ const TeachList = () => {
         setLanguageSelectList(selectedLanguage);
         const filteredByLanguage = selectedLanguage === 'all' ? professors : professors.filter(item => item.language === selectedLanguage);
         const filteredByClass = classSelectList === 'all' ? filteredByLanguage : filteredByLanguage.filter(item => item.classes.includes(classSelectList));
-        setProfessorsList(filteredByClass);
+        const filteredBySubject = subjectSelectList === 'all' ? filteredByClass : filteredByClass.filter(item => item.subject.includes(subjectSelectList));
+        setProfessorsList(filteredBySubject);
     };
 
     const onHandleSelectClassChange = (e) => {
         const selectedClass = e.target.value;
         setClassSelectList(selectedClass);
         const filteredByClass = selectedClass === 'all' ? professors : professors.filter(item => item.classes.includes(selectedClass));
+        const filteredByLanguage = languageSelectList === 'all' ? filteredByClass : filteredByClass.filter(item => item.language === languageSelectList);
+        const filteredBySubject = subjectSelectList === 'all' ? filteredByLanguage : filteredByLanguage.filter(item => item.subject.includes(subjectSelectList));
+        setProfessorsList(filteredBySubject);
+    }
+
+    const onHandleSelectSubjectChange = (e) => {
+        const selectedSubject = e.target.value;
+        setSubjectSelectList(selectedSubject);
+        const filteredBySubject = selectedSubject === 'all' ? professors : professors.filter(item => item.subject.includes(selectedSubject));
+        const filteredByClass = classSelectList === 'all' ? filteredBySubject : filteredBySubject.filter(item => item.classes.includes(classSelectList));
         const filteredByLanguage = languageSelectList === 'all' ? filteredByClass : filteredByClass.filter(item => item.language === languageSelectList);
         setProfessorsList(filteredByLanguage);
     }
@@ -68,7 +86,11 @@ const TeachList = () => {
                         <Spin spinning={isFetching}>
                             <p className="teach_txt">Репетиторы</p>
                             <div className="drop_block">
-                                <select className="drop">{renderSubect}</select>
+                                <select className="drop"
+                                        onChange={(e) => onHandleSelectSubjectChange(e)}>
+                                    <option value="all">Все предметы</option>
+                                    {renderSubect}
+                                </select>
                                 <select className="drop" onChange={(e) => onHandleSelectClassChange(e)}>
                                     <option value="all">Все классы</option>
                                     {renderClasses}
