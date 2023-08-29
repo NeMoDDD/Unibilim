@@ -87,25 +87,22 @@
 }
 .teach_btn {
   width: 142px;
-  height: 32px;
+  padding: 7px;
   margin-top: 25px;
   background-color: #ffbf13;
   border-radius: 25px;
-  border-top: 0px;
-  border-bottom: 0px;
-  border-left: 0px;
-  border-right: 0px;
-}
-.teach_btn_txt {
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
   color: white;
-  margin-top: 7px;
   font-weight: 700;
   font-size: 12px;
-  line-height: 14px;
   text-align: center;
   text-decoration: none;
 }
-.teach_btn_txt:hover{
+
+.teach_btn:hover{
   color: white;
 }
 .teach_txt {

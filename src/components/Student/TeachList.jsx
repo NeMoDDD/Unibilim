@@ -4,13 +4,17 @@ import teach1 from "../../assets/img/teach1.png";
 import SideBar from "../SideBar/SideBar";
 import Header from "../Header/HeaderS";
 import {useDispatch, useSelector} from "react-redux";
-import {getProfessors} from "../../redux/professorsReducer";
-import {Navigate} from "react-router-dom";
+import {getDefineProfessor, getProfessors} from "../../redux/professorsReducer";
+import {Navigate, NavLink} from "react-router-dom";
 import {Spin} from "antd";
 import {motion} from "framer-motion";
 import s from "../Teacher/StudList/StudList.module.css";
+import {useNavigate} from 'react-router-dom';
+
 
 const TeachList = () => {
+    const navigate = useNavigate()
+
     const [professorList, setProfessorsList] = useState([])
     const [classSelectList, setClassSelectList] = useState('all')
     const [languageSelectList, setLanguageSelectList] = useState('all')
@@ -22,7 +26,8 @@ const TeachList = () => {
         languageFilter,
         isFetching,
         classFilter,
-        subjectFilter
+        subjectFilter,
+        defineProfessor
     } = useSelector(state => state.professorsReducer)
     useEffect(() => {
         dispatch(getProfessors({token}))
@@ -71,6 +76,17 @@ const TeachList = () => {
         <option className="drop_text" key={index} value={item}>
             {item}
         </option>)
+
+    const handleTeachBtnClick = async (id) => {
+        try {
+            await dispatch(getDefineProfessor(id, token));
+        } catch (error) {
+            console.log(error);
+        } finally {
+            navigate('/reservation')
+        }
+    };
+
     return (
         <>
             <Header/>
@@ -110,9 +126,11 @@ const TeachList = () => {
                                             <p className="teach_subj" id="phyz" style={{backgroundColor: '#F731A8'}}>
                                                 {el.subject[0]}
                                             </p>
-                                            <button className="teach_btn">
-                                                <a className="teach_btn_txt" href="/timetable">Подробнее</a>
-                                            </button>
+                                            <a className="teach_btn"
+                                               onClick={() => handleTeachBtnClick(el.id)}
+                                            >
+                                                Подробнее
+                                            </a>
                                         </div>
                                     </div>
                                 ))}

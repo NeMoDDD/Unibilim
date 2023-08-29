@@ -1,15 +1,31 @@
-import './__table.scss'
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {setReservationLessonsCount, setReservationLessonsData} from '../../redux/reservation-reducer';
+import './__table.scss';
+import {Spin} from "antd";
 
 const CalendarTable = () => {
     const [selectedSlots, setSelectedSlots] = useState([]);
+    const [reservationLessons, setReservationLessons] = useState(1);
+    const dispatch = useDispatch();
+    const {
+        reservationLessonsCount,
+        holidays,
+        timetableProfessor,
+        reservationTableIsFetching
+    } = useSelector(state => state.reservationReducer);
+
+    useEffect(() => {
+        dispatch(setReservationLessonsCount(selectedSlots.length));
+        dispatch(setReservationLessonsData(selectedSlots));
+    }, [selectedSlots]);
 
     const toggleSlot = (date, time) => {
-        const slotKey = `${date}-${time}`;
-        if (selectedSlots.some(slot => slot.date === date && slot.time === time)) {
-            setSelectedSlots(selectedSlots.filter(slot => !(slot.date === date && slot.time === time)));
+        const slotKey = `${date}T${time}:00`;
+        if (selectedSlots.includes(slotKey)) {
+            setSelectedSlots(selectedSlots.filter(slot => slot !== slotKey));
         } else {
-            setSelectedSlots([...selectedSlots, {date, time}]);
+            setSelectedSlots([...selectedSlots, slotKey]);
         }
     };
 
@@ -29,43 +45,43 @@ const CalendarTable = () => {
     return (
         <div className="calendar-container">
             <table className="calendar">
-                <thead>
-                <tr className="date_block">
-                    <th></th>
-                    {dates.map((date, index) => (
-                        <th key={index}>
-                            {date.getDate()},&nbsp;
-                            {daysOfWeek[date.getDay()]}
-                        </th>
-                    ))}
-                </tr>
-                </thead>
-                <tbody>
-                {timeSlots.map((timeSlot, timeIndex) => (
-                    <tr key={timeIndex}>
-                        <td className="time_slot">{timeSlot}</td>
-                        {dates.map((date, dateIndex) => (
-                            <td
-                                key={dateIndex}
-                                onClick={() => toggleSlot(date.toISOString().split('T')[0], timeSlot)}
-                                className={`reserv_day ${
-                                    selectedSlots.some(
-                                        slot => slot.date === date.toISOString().split('T')[0] && slot.time === timeSlot
-                                    )
-                                        ? 'selected'
-                                        : ''
-                                }`}
-                            >
-                                {selectedSlots.some(
-                                    slot => slot.date === date.toISOString().split('T')[0] && slot.time === timeSlot
-                                )
-                                    ? 'Выбрано'
-                                    : ''}
-                            </td>
+                <Spin spinning={reservationTableIsFetching}>
+                    <thead>
+                    <tr className="date_block">
+                        <th></th>
+                        {dates.map((date, index) => (
+                            <th key={index}>
+                                {date.getDate()},&nbsp;
+                                {daysOfWeek[date.getDay()]}
+                            </th>
                         ))}
                     </tr>
-                ))}
-                </tbody>
+                    </thead>
+                    <tbody>
+                    {timeSlots.map((timeSlot, timeIndex) => (
+                        <tr key={timeIndex}>
+                            <td className="time_slot">{timeSlot}</td>
+                            {dates.map((date, dateIndex) => {
+                                const dateString = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+                                const isSelected = selectedSlots.some(slot => slot === `${dateString}T${timeSlot}:00`);
+                                const isHoliday = holidays.some(item => item.date === dateString);
+                                const isAlreadyBooked = timetableProfessor.some(lesson => lesson.datetime === `${dateString}T${timeSlot}:00Z`);
+                                const isReserved = isAlreadyBooked || isHoliday;
+
+                                return (
+                                    <td
+                                        key={dateIndex}
+                                        onClick={() => !isReserved && toggleSlot(dateString, timeSlot)}
+                                        className={`reserv_day ${isSelected ? 'selected' : ''} ${isReserved ? 'reserved' : ''} ${isReserved ? 'disabled' : ''}`}
+                                    >
+                                        {isSelected ? 'Выбрано' : ''}
+                                    </td>
+                                );
+                            })}
+                        </tr>
+                    ))}
+                    </tbody>
+                </Spin>
             </table>
             <button className="show-button" onClick={() => console.log(selectedSlots)}>
                 Показать выбранные даты

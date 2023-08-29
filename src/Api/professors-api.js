@@ -2,27 +2,31 @@ import {instance} from "./api";
 
 export const professorsApi = {
     //Все GET запросы!!!
-    getAllProfessors(token) { 
+    getAllProfessors(token) {
         //Получаем всех Профессоров
-        return instance.get(`professors/`,{ 
+        return instance.get(`professors/`, {
             headers: {
                 'Authorization': `Token ${token}`
             }
         })
-    },  
-    getDefineProfessor(id){ 
+    },
+    getDefineProfessor(id, token) {
         //Получаем определенного Профессора 
-        return instance.get(`professors/${id}/`)
-    } ,
-    getDefineTimeTableProfessor(id, token){
+        return instance.get(`professors/${id}/`, {
+            headers: {
+                'Authorization': `Token ${token}`
+            }
+        })
+    },
+    getDefineTimetableProfessor(id, token) {
         //Получаем ВСЕ РАСПИСАНИЯ определенного Профессора
         return instance.get(`/professors/${id}/timetable/`, {
             headers: {
                 'Authorization': `Token ${token}`
             }
         })
-    }, 
-    getDefineTimeTable(professorId, timetableId){  
+    },
+    getDefineTimetable(professorId, timetableId) {
         //Получаем КОНКРЕТНОЕ расписание определенного Профессора
         return instance.get(`/professors/${professorId}/timetable/${timetableId}/`)
     },
@@ -34,50 +38,50 @@ export const professorsApi = {
             }
         })
     },
-    getProfessorsStudentsList(token) { 
-        return instance.get(`/professors/my_students/`,{ 
+    getProfessorsStudentsList(token) {
+        return instance.get(`/professors/my_students/`, {
             headers: {
                 'Authorization': `Token ${token}`
-            } 
+            }
         })
     },
-    
+
     // Все POST запросы!!! 
-    createNewProfessor(professorData) { 
+    createNewProfessor(professorData) {
         //Создаем нового Профессора 
         return instance.post(`professors/`, professorData)
-    }, 
-    createNewTimeTable(professorId,timetableData) { 
+    },
+    createNewTimeTable(professorId, timetableData) {
         //Создаем расписание для определенного Профессора 
         return instance.post(`professors/${professorId}/timetable/`, timetableData)
-    }, 
+    },
 
     //Все PUT запросы 
-    updateDefineProfessor(professorId, professorData) {  
+    updateDefineProfessor(professorId, professorData) {
         //Обновляем данные Определенного Профессора
         return instance.put(`professors/${professorId}/`, professorData)
     },
-    updateDefineProfessorTimeTable(professorId, timetableId,timetableData) {  
+    updateDefineProfessorTimeTable(professorId, timetableId, timetableData) {
         //Обновляем данные Расписание определенного Профессора
         return instance.put(`professors/${professorId}/timetable/${timetableId}/`, timetableData)
-    }, 
+    },
 
     //Все PATCH запросы 
-    updatePartialDefineProfessor(professorId, professorData){ 
+    updatePartialDefineProfessor(professorId, professorData) {
         //Частично обновляем данные определенного Профессора
         return instance.patch(`professors/${professorId}/`, professorData)
-    } ,
-    updatePartialDefineTimeTable(professorId,timetableId, timetableData){ 
+    },
+    updatePartialDefineTimeTable(professorId, timetableId, timetableData) {
         //Частично обновляем определенное расписание 
         return instance.patch(`professors/${professorId}/timetable/${timetableId}/`, timetableData)
-    },  
+    },
 
     //Все DELETE запросы 
-    deleteDefineProfessor(professorId){ 
+    deleteDefineProfessor(professorId) {
         //Удаляем определенного Профессора 
         return instance.delete(`professors/${professorId}/`)
-    }, 
-    deleteDefineTimeTable(professorId, timetableId){ 
+    },
+    deleteDefineTimeTable(professorId, timetableId) {
         //Удаляем опрделенное расписание 
         return instance.delete(`/professors/${professorId}}/timetable/${timetableId}/`)
     }

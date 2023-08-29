@@ -1,19 +1,25 @@
-import React from "react";
+import React, {useEffect} from "react";
 import SideBar from "../SideBar/SideBar";
 import "../../styles/__reservation.scss";
 import Table from "./table";
 import "../../styles/__timetable.scss";
 import Header from "../Header/HeaderS";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
 import {motion} from "framer-motion";
 import {Spin} from "antd";
+import {getReservationTable, initPayment} from "../../redux/reservation-reducer";
 
 const Reservation = () => {
     const name = "< 23 янв - 30 янв >";
-    const {userRole, firstName, surname} = useSelector(state => state.loginReducer)
+    const {userRole, token} = useSelector(state => state.loginReducer)
+    const {defineProfessor} = useSelector(state => state.professorsReducer)
+    const {reservationLessonsCount, oneLessonCost, reservationLessonsData} = useSelector(state => state.reservationReducer)
+    const dispatch = useDispatch()
 
-
+    useEffect(() => {
+        dispatch(getReservationTable(defineProfessor.id, token))
+    }, [])
     return (
         <>
             <Header/>
@@ -29,7 +35,7 @@ const Reservation = () => {
                         <div className="reser_block">
                             <div className="head_block">
                                 <a className="back_btn">Вернуться</a>
-                                <p className="reser_teach">{firstName} {surname}</p>
+                                <p className="reser_teach">{defineProfessor.firstName} {defineProfessor.surname}</p>
                                 <p className="reser_date">{name}</p>
                             </div>
                             <div className="reser_table_block">
@@ -93,11 +99,11 @@ const Reservation = () => {
                                     </p>
                                     <div className="pay_subj">
                                         <p className="subj_costet">Стоимость 1 занятия</p>
-                                        <p className="costet"> 150 сом </p>
+                                        <p className="costet"> {oneLessonCost} сом </p>
                                     </div>
                                     <div className="pay_subj" style={{marginTop: "15px"}}>
                                         <p className="subj_costet">Выбранные дни</p>
-                                        <p className="costet">3 дня</p>
+                                        <p className="costet">{reservationLessonsCount}</p>
                                         <p className="subj_costet">(пн-1, ср-1, пт-1)</p>
                                     </div>
                                     <div className="for_pay">
@@ -106,10 +112,10 @@ const Reservation = () => {
                                                 Итоговая стоимость
                                             </p>
                                             <p className="costet" style={{color: "white"}}>
-                                                450 сом
+                                                {oneLessonCost * reservationLessonsCount} сом
                                             </p>
                                         </div>
-                                        <button className="pay_btn">Перейти к оплате</button>
+                                        <button className="pay_btn" onClick={() => dispatch(initPayment(defineProfessor.id, reservationLessonsData, 150, "Физика", token))}>Перейти к оплате</button>
                                     </div>
                                 </div>
                             </div>

@@ -58,7 +58,7 @@ const Registration = () => {
                     region,
                     districtCity,
                     city,
-                    selectedPhoto
+                    null
                 )
             );
             // Код, который выполнится при успешном выполнении dispatch и registerNewStudent
@@ -325,31 +325,31 @@ const Registration = () => {
                     </div>
                     <div className="input-form-block">
                         <p className="nm-txt2">Выберите ваше фото</p>
-                        <Controller
-                            name="file"
-                            control={control}
-                            rules={{
-                                // required: 'Это поле обязательное!',
-                                validate: (value) => {
-                                    if (!value) return 'Это поле обязательное!';
-                                    // if (!['image/jpeg', 'image/png'].includes(value[0].type)) return 'Не допустимый формат файла';
-                                    // if (value[0].size > 5242880) return 'Файл должен быть меньше 5мб';
-                                    return true;
-                                },
-                            }}
-                            render={({field}) => (
-                                <Upload {...field}
-                                        fileList={field.value}
-                                        accept=".jpg, .png"
-                                        showUploadList={false} beforeUpload={(file) => {
-                                    dispatch(setSelectedPhoto(file))
-                                }}
-                                >
-                                    <Button className="upload-photo"
-                                            icon={<UploadOutlined/>}>Загрузи фото</Button>
-                                </Upload>
-                            )}
-                        />
+                        {/*<Controller*/}
+                        {/*    name="file"*/}
+                        {/*    control={control}*/}
+                        {/*    rules={{*/}
+                        {/*        // required: 'Это поле обязательное!',*/}
+                        {/*        validate: (value) => {*/}
+                        {/*            if (!value) return 'Это поле обязательное!';*/}
+                        {/*            // if (!['image/jpeg', 'image/png'].includes(value[0].type)) return 'Не допустимый формат файла';*/}
+                        {/*            // if (value[0].size > 5242880) return 'Файл должен быть меньше 5мб';*/}
+                        {/*            return true;*/}
+                        {/*        },*/}
+                        {/*    }}*/}
+                        {/*    render={({field}) => (*/}
+                        {/*        <Upload {...field}*/}
+                        {/*                fileList={field.value}*/}
+                        {/*                accept=".jpg, .png"*/}
+                        {/*                showUploadList={false} beforeUpload={(file) => {*/}
+                        {/*            dispatch(setSelectedPhoto(file))*/}
+                        {/*        }}*/}
+                        {/*        >*/}
+                        {/*            <Button className="upload-photo"*/}
+                        {/*                    icon={<UploadOutlined/>}>Загрузи фото</Button>*/}
+                        {/*        </Upload>*/}
+                        {/*    )}*/}
+                        {/*/>*/}
                         {errors.file && <p className="error-message">{errors.file.message}</p>}
                     </div>
                     <div className="form-check">

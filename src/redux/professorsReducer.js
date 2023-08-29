@@ -2,7 +2,9 @@ import {professorsApi} from "../Api/professors-api";
 import {meetingsApi} from "../Api/meetings-api";
 import moment from "moment/moment";
 
+
 const SET_PROFESSORS = "SET_PROFESSORS"
+const SET_DEFINE_PROFESSOR = "SET_DEFINE_PROFESSORS"
 const TOGGLE__FETCH__PROFFESSOR_PAGE = 'TOGGLE__FETCH__PROFFESSOR_PAGE'
 const SET_LANGUAGE_PROFFESSOR_FILTER = 'SET_LANGUAGE_PROFFESSOR_FILTER'
 const SET_FILTER_PROFFESSORS = 'SET_FILTER_PROFFESSORS'
@@ -21,6 +23,7 @@ const SET_IF_FETCHING_TEACHER_TIMETABLE = "SET_IF_FETCHING_TEACHER_TIMETABLE"
 
 let initialState = {
     professors: [],
+    defineProfessor: {},
     languageFilter: [],
     subjectFilter: ["Русский язык", "Английский язык", "Физика", "История",  "Математика"],
     classFilter: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
@@ -47,6 +50,11 @@ const ProfessorsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 professors: action.professors
+            }
+        case SET_DEFINE_PROFESSOR:
+            return {
+                ...state,
+                defineProfessor: action.defineProfessor
             }
         case TOGGLE__FETCH__PROFFESSOR_PAGE: {
             return {
@@ -188,6 +196,7 @@ const ProfessorsReducer = (state = initialState, action) => {
     }
 }
 export const setProfessors = (professors) => ({type: SET_PROFESSORS, professors})
+export const setDefineProfessor = (defineProfessor) => ({type: SET_DEFINE_PROFESSOR, defineProfessor})
 export const toggleProfessorFetchAC = (toggle) => ({type: TOGGLE__FETCH__PROFFESSOR_PAGE, toggle})
 export const setFilteredProfessorsByLanguageAC = (filtered) => ({type: SET_LANGUAGE_PROFFESSOR_FILTER, filtered})
 
@@ -230,6 +239,18 @@ export const getProfessors = ({token}) => {
             console.log(error);
         } finally {
             dispatch(toggleProfessorFetchAC(false))
+        }
+    }
+}
+
+export const getDefineProfessor = (id, token) => {
+    return async (dispatch) => {
+        try {
+            const response = await professorsApi.getDefineProfessor(id, token)
+            dispatch(setDefineProfessor(response.data))
+        } catch (error) {
+            console.log(error)
+        } finally {
         }
     }
 }

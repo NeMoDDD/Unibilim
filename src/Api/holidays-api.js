@@ -4,8 +4,12 @@ export const holidaysApi = {
     // Все GET запросы
 
     // Получаем все выходные
-    getHolidays() {
-        return instance.get(`holidays/`)
+    getHolidays(token) {
+        return instance.get(`holidays/`, {
+            headers: {
+                'Authorization': `Token ${token}`
+            }
+        })
     },
     // Получаем определенный выходной
     getDefineHoliday(holidayId) {

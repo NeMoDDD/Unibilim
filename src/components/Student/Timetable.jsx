@@ -28,6 +28,7 @@ const Timetable = React.memo((props) => {
 
     useEffect(() => {
         dispatch(getTimetable(token))
+        console.log(props.timetable.alldate)
     }, [dispatch])
 
     return (

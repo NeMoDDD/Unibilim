@@ -9,6 +9,15 @@ export const meetingsApi = {
             }
         });
     },
+    getProfessorMeetingsByStudent(professor_id, token) {
+        // Получаем встречи профессора будучи студентом для бронирования
+        return instance.get(`meetings/?professor_id=${professor_id}`, {
+            headers: {
+                'Authorization': `Token ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+    },
     getDefineMeeting(meetingId) {
         //Получаем определенную Встречу
         return instance.get(`meetings/${meetingId}/`)
