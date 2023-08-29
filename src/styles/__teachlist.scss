@@ -20,7 +20,6 @@
   align-items: center;
 }
 .drop {
-  // width: 30%;
   width: 20%;
   height: 35px;
   background-color: #ffffff;
@@ -73,21 +72,18 @@
   position: absolute;
   margin-top: 130px;
   width: 145px;
-  font-weight: 100;
   font-size: 10px;
-  line-height: 14px;
   text-align: center;
   color: #ffffff;
 }
 .teach_subj {
   position: absolute;
-  margin-top: 190px;
-  width: 100px;
-  height: 30px;
+  margin-top: 180px;
+  max-width: 150px;
   border-radius: 30px;
   font-size: 16px;
   color: white;
-  padding: 2px 2px;
+  padding: 8px;
 }
 .teach_btn {
   width: 142px;
@@ -115,8 +111,8 @@
 .teach_txt {
   font-weight: 600;
   font-size: 26px;
-  line-height: 31px;
   color: #93979b;
+  margin-left: 0.5em;
 }
 
 @media (min-width: 310px) and (max-width: 480px) {

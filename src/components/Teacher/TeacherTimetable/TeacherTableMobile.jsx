@@ -3,7 +3,6 @@ import moment from "moment/moment";
 
 const TeacherTableMobile = React.memo(({subj, student, time, backgroundColor, btn, alldate}) => {
     const dateObject = moment(alldate)
-    å
     return (
         <>
             <div className="cards">
