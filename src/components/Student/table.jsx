@@ -6,7 +6,9 @@ import {Spin} from "antd";
 
 const CalendarTable = () => {
     const [selectedSlots, setSelectedSlots] = useState([]);
-    const [reservationLessons, setReservationLessons] = useState(1);
+    const [currentWeekStart, setCurrentWeekStart] = useState(new Date());
+    const [weeksForward, setWeeksForward] = useState(0)
+
     const dispatch = useDispatch();
     const {
         reservationLessonsCount,
@@ -31,11 +33,35 @@ const CalendarTable = () => {
 
     const today = new Date();
     const daysOfWeek = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
+
+    const goToNextWeek = () => {
+        const nextWeekStart = new Date(currentWeekStart);
+        nextWeekStart.setDate(currentWeekStart.getDate() + 7);
+        setCurrentWeekStart(nextWeekStart);
+    };
+    const goToPreviousWeek = () => {
+        const previousWeekStart = new Date(currentWeekStart);
+        const lastMonday = new Date();
+        lastMonday.setDate(currentWeekStart.getDate() - (currentWeekStart.getDay() + 6) % 7);
+
+        if (previousWeekStart > lastMonday) {
+            previousWeekStart.setDate(currentWeekStart.getDate() - 7);
+            setCurrentWeekStart(previousWeekStart);
+        }
+    };
+
+    const getStartOfWeek = (date) => {
+        const day = date.getDay();
+        const diff = date.getDate() - day + (day === 0 ? -6 : 1);
+        return new Date(date.getFullYear(), date.getMonth(), diff);
+    };
+
     const dates = Array.from({length: 7}, (_, index) => {
-        const date = new Date(today);
-        date.setDate(today.getDate() + index);
+        const date = new Date(currentWeekStart);
+        date.setDate(getStartOfWeek(currentWeekStart).getDate() + index);
         return date;
     });
+
 
     const timeSlots = Array.from({length: 10}, (_, index) => {
         const hour = 12 + index;
@@ -67,12 +93,13 @@ const CalendarTable = () => {
                                 const isHoliday = holidays.some(item => item.date === dateString);
                                 const isAlreadyBooked = timetableProfessor.some(lesson => lesson.datetime === `${dateString}T${timeSlot}:00Z`);
                                 const isReserved = isAlreadyBooked || isHoliday;
+                                const isFutureDate = date > today
 
                                 return (
                                     <td
                                         key={dateIndex}
-                                        onClick={() => !isReserved && toggleSlot(dateString, timeSlot)}
-                                        className={`reserv_day ${isSelected ? 'selected' : ''} ${isReserved ? 'reserved' : ''} ${isReserved ? 'disabled' : ''}`}
+                                        onClick={() => !isReserved && isFutureDate && toggleSlot(dateString, timeSlot)}
+                                        className={`reserv_day ${isSelected ? 'selected' : ''} ${isReserved || !isFutureDate ? 'reserved' : ''} ${isReserved || !isFutureDate ? 'disabled' : ''}`}
                                     >
                                         {isSelected ? 'Выбрано' : ''}
                                     </td>
@@ -86,6 +113,8 @@ const CalendarTable = () => {
             <button className="show-button" onClick={() => console.log(selectedSlots)}>
                 Показать выбранные даты
             </button>
+            <button onClick={goToPreviousWeek}>Prev</button>
+            <button onClick={goToNextWeek}>Next</button>
         </div>
     );
 };
