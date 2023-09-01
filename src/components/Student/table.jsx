@@ -17,7 +17,17 @@ const CalendarTable = () => {
         reservationTableIsFetching
     } = useSelector(state => state.reservationReducer);
 
+    const setStartOfWeek = (date, weeks) => {
+        const day = date.getDay();
+        const diff = date.getDate() - day + 1 + (weeks * 7);
+        const startOfWeek = new Date(date.getFullYear(), date.getMonth(), diff);
+        return startOfWeek;
+    };
+
+
     useEffect(() => {
+        setCurrentWeekStart(setStartOfWeek(today, weeksForward));
+
         dispatch(setReservationLessonsCount(selectedSlots.length));
         dispatch(setReservationLessonsData(selectedSlots));
     }, [selectedSlots]);
@@ -41,12 +51,15 @@ const CalendarTable = () => {
     };
     const goToPreviousWeek = () => {
         const previousWeekStart = new Date(currentWeekStart);
-        const lastMonday = new Date();
-        lastMonday.setDate(currentWeekStart.getDate() - (currentWeekStart.getDay() + 6) % 7);
+        previousWeekStart.setDate(currentWeekStart.getDate() - 7);
 
-        if (previousWeekStart > lastMonday) {
-            previousWeekStart.setDate(currentWeekStart.getDate() - 7);
+        const lastMonday = new Date();
+        lastMonday.setDate(lastMonday.getDate() - (lastMonday.getDay() + 6) % 7);
+
+        if (previousWeekStart >= lastMonday) {
             setCurrentWeekStart(previousWeekStart);
+        } else {
+            setCurrentWeekStart(lastMonday);
         }
     };
 
