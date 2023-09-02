@@ -11,7 +11,6 @@ import {Spin} from "antd";
 import {
     getReservationTable,
     initPayment,
-    setReservationLessonsCount, setReservationLessonsData,
     setWeekForward
 } from "../../redux/reservation-reducer";
 import {format} from 'date-fns';
@@ -23,7 +22,7 @@ import previous from "../../assets/img/Group 214.svg"
 import next from "../../assets/img/Group 213.svg"
 
 const Reservation = () => {
-    const name = "< 23 янв - 30 янв >";
+    const [currentWeekStart, setCurrentWeekStart] = useState(new Date());
     const {userRole, token} = useSelector(state => state.loginReducer)
     const {defineProfessor} = useSelector(state => state.professorsReducer)
     const {
@@ -46,14 +45,6 @@ const Reservation = () => {
     const plusWeekForwardHandler = () => {
         dispatch(setWeekForward(weekForward + 1))
     }
-
-    const [currentWeekStart, setCurrentWeekStart] = useState(new Date());
-
-    const {
-        holidays,
-        timetableProfessor,
-        reservationTableIsFetching
-    } = useSelector(state => state.reservationReducer);
 
     const goToNextWeek = () => {
         const nextWeekStart = new Date(currentWeekStart);
@@ -149,6 +140,90 @@ const Reservation = () => {
                                     </div>
                                     <Table dates={dates} setCurrentWeekStart={setCurrentWeekStart}/>
                                 </div>
+                            </div>
+                            <div className="pay_block">
+                                <p className="totalCost_txt" style={{marginLeft: "0px"}}>
+                                    Итоговый расчет
+                                </p>
+                                <div className="pay_subj">
+                                    <p className="costet">{reservationLessonsCount} days</p>
+                                </div>
+                                <div className="pay_subj" style={{marginTop: "15px"}}>
+                                    <p className="costet" style={{fontSize: "16px"}}>На сколько недель?</p>
+                                    <div className="week_forward_block">
+                                        <button className="minus_btn" onClick={minusWeekForwardHandler}><img
+                                            src={minus} alt="minus"/></button>
+                                        <p className="week_forward">{weekForward}</p>
+                                        <button className="plus_btn" onClick={plusWeekForwardHandler}><img
+                                            src={plus} alt="plus"/></button>
+                                    </div>
+                                </div>
+                                <div className="for_pay">
+                                    <div className="cost_block">
+                                        <p className="subj_costet" style={{color: "white", marginBottom: "0"}}>
+                                            Стоимость занятий
+                                        </p>
+                                        <p className="costet" style={{color: "white", textAlign: "center"}}>
+                                            {oneLessonCost * reservationLessonsCount} сом
+                                        </p>
+                                    </div>
+                                    <button className="pay_btn"
+                                            onClick={() => dispatch(initPayment(defineProfessor.id, reservationLessonsData, 150, "Физика", token))}>Перейти
+                                        к оплате
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div className="reser_block_mobile">
+                            <div className="head_block">
+                                <div className="backToTeacher_block">
+                                    <img src={backToTeacher} alt="backToTeacher"/>
+                                    <NavLink to="/teachlist" className="back_btn">К выбору учителя</NavLink>
+                                </div>
+                            </div>
+                            <div className="reser_table_block">
+                                <div className="reser_table">
+                                    <div>
+                                        <p className="reser_teach">{defineProfessor.firstName} {defineProfessor.surname}</p>
+                                    </div>
+                                    <div className="choose_days">
+                                        <div>
+                                            <p className="subj_costet"
+                                               style={{fontWeight: "600", marginBottom: "0.3em"}}>Рабочие дни</p>
+                                            <p className="txt_schedule">
+                                                Понедельник, среда, пятница, суббота, воскресенье
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p className="subj_costet"
+                                               style={{fontWeight: "600", marginBottom: "0.3em"}}>Время
+                                                занятий</p>
+                                            <p className="txt_schedule">
+                                                Пн,ср,пт - с 14:00 до 18:00 Сб,вс - с 12:00 до 21:00
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p className="subj_costet" style={{marginBottom: "0"}}>Цена занятия: {oneLessonCost} сом </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="week_forward_block">
+                                <button className="previous_btn" onClick={goToPreviousWeek}><img
+                                    src={previous} alt="minus"/></button>
+                                <p className="reser_date">
+                                    {format(dates[0], 'd MMM', {locale: ru}).replace(/\.$/, '')}
+                                    &nbsp;
+                                    -
+                                    &nbsp;
+                                    {format(dates[dates.length - 1], 'd MMM', {locale: ru}).replace(/\.$/, '')}
+                                </p>
+                                <button className="next_btn" onClick={goToNextWeek}><img
+                                    src={next} alt="plus"/></button>
+                            </div>
+                            <div>
                                 <div className="reser_card">
                                     <div className="reser_date">
                                         <p className="reser_week">Понедельник,</p>{" "}
@@ -184,47 +259,8 @@ const Reservation = () => {
                                         <button className="reser_times">16:00-17:00</button>
                                     </div>
                                 </div>
-                                <div className="pay_block">
-                                    <p className="totalCost_txt" style={{marginLeft: "0px"}}>
-                                        Итоговый расчет
-                                    </p>
-                                    <div className="pay_subj">
-                                        <p className="costet">{reservationLessonsCount} days</p>
-                                    </div>
-                                    <div className="pay_subj" style={{marginTop: "15px"}}>
-                                        <p className="costet" style={{fontSize: "16px"}}>На сколько недель?</p>
-                                        <div className="week_forward_block">
-                                            <button className="minus_btn" onClick={minusWeekForwardHandler}><img
-                                                src={minus} alt="minus"/></button>
-                                            <p className="week_forward">{weekForward}</p>
-                                            <button className="plus_btn" onClick={plusWeekForwardHandler}><img
-                                                src={plus} alt="plus"/></button>
-                                        </div>
-                                    </div>
-                                    <div className="for_pay">
-                                        <div className="cost_block">
-                                            <p className="subj_costet" style={{color: "white", marginBottom: "0"}}>
-                                                Стоимость занятий
-                                            </p>
-                                            <p className="costet" style={{color: "white", textAlign: "center"}}>
-                                                {oneLessonCost * reservationLessonsCount} сом
-                                            </p>
-                                        </div>
-                                        <button className="pay_btn"
-                                                onClick={() => dispatch(initPayment(defineProfessor.id, reservationLessonsData, 150, "Физика", token))}>Перейти
-                                            к оплате
-                                        </button>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                        {/*<div className="pay_block2">*/}
-                        {/*    <div className="prices">*/}
-                        {/*        <p className="f_pr">Итоговая стоимость</p>*/}
-                        {/*        <p className="s_pr">450 сом</p>*/}
-                        {/*    </div>*/}
-                        {/*    <button className="pay_btn2">Перейти к оплате</button>*/}
-                        {/*</div>*/}
                     </Spin>
                 </motion.div>
                 : userRole === "professor" ? <Navigate to="/teachlk"/> : <Navigate to="/login"/>}

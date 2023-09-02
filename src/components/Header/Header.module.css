@@ -90,7 +90,7 @@
 .menu__header__link__active {
     color: #FFBF13;;
 }
-@media (min-width: 310px) and (max-width: 1024px) {
+@media (min-width: 310px) and (max-width: 1280px) {
     .studheader{
         display: block;
     }
