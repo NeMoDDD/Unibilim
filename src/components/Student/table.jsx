@@ -4,14 +4,14 @@ import {setReservationLessonsCount, setReservationLessonsData} from '../../redux
 import './__table.scss';
 import {Spin} from "antd";
 
-const CalendarTable = () => {
+const CalendarTable = ({dates, setCurrentWeekStart}) => {
     const [selectedSlots, setSelectedSlots] = useState([]);
-    const [currentWeekStart, setCurrentWeekStart] = useState(new Date());
+    // const [currentWeekStart, setCurrentWeekStart] = useState(new Date());
     const [weeksForward, setWeeksForward] = useState(0)
-
+    //
     const dispatch = useDispatch();
     const {
-        reservationLessonsCount,
+        // reservationLessonsCount,
         holidays,
         timetableProfessor,
         reservationTableIsFetching
@@ -31,7 +31,7 @@ const CalendarTable = () => {
         dispatch(setReservationLessonsCount(selectedSlots.length));
         dispatch(setReservationLessonsData(selectedSlots));
     }, [selectedSlots]);
-
+    //
     const toggleSlot = (date, time) => {
         const slotKey = `${date}T${time}:00`;
         if (selectedSlots.includes(slotKey)) {
@@ -40,42 +40,42 @@ const CalendarTable = () => {
             setSelectedSlots([...selectedSlots, slotKey]);
         }
     };
-
+    //
     const today = new Date();
     const daysOfWeek = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
-
-    const goToNextWeek = () => {
-        const nextWeekStart = new Date(currentWeekStart);
-        nextWeekStart.setDate(currentWeekStart.getDate() + 7);
-        setCurrentWeekStart(nextWeekStart);
-    };
-    const goToPreviousWeek = () => {
-        const previousWeekStart = new Date(currentWeekStart);
-        previousWeekStart.setDate(currentWeekStart.getDate() - 7);
-
-        const lastMonday = new Date();
-        lastMonday.setDate(lastMonday.getDate() - (lastMonday.getDay() + 6) % 7);
-
-        if (previousWeekStart >= lastMonday) {
-            setCurrentWeekStart(previousWeekStart);
-        } else {
-            setCurrentWeekStart(lastMonday);
-        }
-    };
-
-    const getStartOfWeek = (date) => {
-        const day = date.getDay();
-        const diff = date.getDate() - day + (day === 0 ? -6 : 1);
-        return new Date(date.getFullYear(), date.getMonth(), diff);
-    };
-
-    const dates = Array.from({length: 7}, (_, index) => {
-        const date = new Date(currentWeekStart);
-        date.setDate(getStartOfWeek(currentWeekStart).getDate() + index);
-        return date;
-    });
-
-
+    //
+    // const goToNextWeek = () => {
+    //     const nextWeekStart = new Date(currentWeekStart);
+    //     nextWeekStart.setDate(currentWeekStart.getDate() + 7);
+    //     setCurrentWeekStart(nextWeekStart);
+    // };
+    // const goToPreviousWeek = () => {
+    //     const previousWeekStart = new Date(currentWeekStart);
+    //     previousWeekStart.setDate(currentWeekStart.getDate() - 7);
+    //
+    //     const lastMonday = new Date();
+    //     lastMonday.setDate(lastMonday.getDate() - (lastMonday.getDay() + 6) % 7);
+    //
+    //     if (previousWeekStart >= lastMonday) {
+    //         setCurrentWeekStart(previousWeekStart);
+    //     } else {
+    //         setCurrentWeekStart(lastMonday);
+    //     }
+    // };
+    //
+    // const getStartOfWeek = (date) => {
+    //     const day = date.getDay();
+    //     const diff = date.getDate() - day + (day === 0 ? -6 : 1);
+    //     return new Date(date.getFullYear(), date.getMonth(), diff);
+    // };
+    //
+    // const dates = Array.from({length: 7}, (_, index) => {
+    //     const date = new Date(currentWeekStart);
+    //     date.setDate(getStartOfWeek(currentWeekStart).getDate() + index);
+    //     return date;
+    // });
+    //
+    //
     const timeSlots = Array.from({length: 10}, (_, index) => {
         const hour = 12 + index;
         return `${hour}:00`;
@@ -114,7 +114,6 @@ const CalendarTable = () => {
                                         onClick={() => !isReserved && isFutureDate && toggleSlot(dateString, timeSlot)}
                                         className={`reserv_day ${isSelected ? 'selected' : ''} ${isReserved || !isFutureDate ? 'reserved' : ''} ${isReserved || !isFutureDate ? 'disabled' : ''}`}
                                     >
-                                        {isSelected ? 'Выбрано' : ''}
                                     </td>
                                 );
                             })}
@@ -126,8 +125,8 @@ const CalendarTable = () => {
             <button className="show-button" onClick={() => console.log(selectedSlots)}>
                 Показать выбранные даты
             </button>
-            <button onClick={goToPreviousWeek}>Prev</button>
-            <button onClick={goToNextWeek}>Next</button>
+            {/*<button onClick={goToPreviousWeek}>Prev</button>*/}
+            {/*<button onClick={goToNextWeek}>Next</button>*/}
         </div>
     );
 };

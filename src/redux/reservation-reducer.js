@@ -11,10 +11,13 @@ const INIT_PAYMENT = "INIT_PAYMENT"
 const SET_HOLIDAYS = "SET_HOLIDAYS"
 const SET_TIMETABLE_PROFESSOR = "SET_TIMETABLE_PROFESSOR"
 const SET_RESERVATION_TABLE_IS_FETCHING = "SET_RESERVATION_TABLE_IS_FETCHING"
+const SET_WEEK_FORWARD = "SET_WEEK_FORWARD"
+
 
 let initialState = {
     oneLessonCost: 150,
-    totalConst: 0,
+    totalCost: 0,
+    weekForward: 1,
     reservationLessonsCount: null,
     reservationLessonsData: [],
     holidays: [],
@@ -51,6 +54,11 @@ const ReservationReducer = (state = initialState, action) => {
                 ...state,
                 reservationTableIsFetching: action.reservationTableIsFetching
             }
+        case SET_WEEK_FORWARD:
+            return {
+                ...state,
+                weekForward: action.weekForward
+            }
         default: {
             return {...state}
         }
@@ -62,6 +70,7 @@ export const setReservationLessonsData = (reservationLessonsData) => ({type: SET
 export const setHolidays = (holidays) => ({type: SET_HOLIDAYS, holidays})
 export const setTimetableProfessor = (timetableProfessor) => ({type: SET_TIMETABLE_PROFESSOR, timetableProfessor})
 export const setReservationTableIsFetching = (reservationTableIsFetching) => ({type: SET_RESERVATION_TABLE_IS_FETCHING, reservationTableIsFetching})
+export const setWeekForward = (weekForward) => ({type: SET_WEEK_FORWARD, weekForward})
 
 export const getReservationTable = (professor_id, token) => {
     return async (dispatch) => {

@@ -10,8 +10,9 @@ $mobile-breakpoint: 481px;
 $tablet-breakpoint: 821px;
 $desktop-breakpoint: 1024px;
 
+
 .reserve_block_main {
-  width: 70%;
+  width: 75%;
   float: left;
   background-color: $main-color;
 
@@ -36,12 +37,13 @@ $desktop-breakpoint: 1024px;
 }
 
 .back_btn {
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 14px;
   text-align: center;
-  color: $link-color;
+  color: #93979B;
   text-decoration: none;
+}
+.back_btn:hover {
+  color: #93979B;
 }
 
 .reser_table {
@@ -60,12 +62,24 @@ $desktop-breakpoint: 1024px;
     margin-bottom: 6em;
   }
 }
+.totalCost_txt {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  color: #8C8C8C;
 
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+}
 .txt {
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
   color: $text-color;
+
 
   @media screen and (max-width: $mobile-breakpoint) {
     font-size: 16px;
@@ -75,42 +89,38 @@ $desktop-breakpoint: 1024px;
 
 .txt_schedule {
   font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 17px;
-  color: $text-color;
+  font-weight: 300;
+  font-size: 14px;
+  color: #6C7074;
 }
 .pay_block {
   width: 25%;
   float: right;
   margin-left: 25px;
   margin-right: 1em;
+  margin-bottom: 0;
   border-radius: 25px;
   padding: 15px;
   background-color: $main-color;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  align-items: center;
 }
 
-.pay_subj {
-  width: 100%;
-  background-color: $secondary-color;
-  border-radius: 25px;
+.backToTeacher_block {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin: 0;
-  padding: 0.6em 0;
+  flex-direction: row;
 }
-
+.backToTeacher_block img {
+  margin-right: 0.4em;
+}
 .subj_costet {
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   color: #2d2d2d;
-  margin: 0;
+
 }
 
 .cost_block {
@@ -122,14 +132,42 @@ $desktop-breakpoint: 1024px;
   padding: 5px;
   font-weight: 600;
   font-size: 20px;
-  text-align: center;
-  color: #000000;
+  color: #393939;
+}
+.week_forward_block {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  margin-top: 0.5em;
+}
+.week_forward_block button {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.minus_btn {
+  margin-right: 1em;
+}
+
+.plus_btn {
+   margin-left: 1em;
+ }
+.week_forward {
+  font-size: 24px;
+  color: #6C7074;
+}
+
+.previous_btn {
+  margin-right: 0.5em;
+}
+.next_btn {
+  margin-left: 0.5em;
 }
 
 .for_pay {
   width: 100%;
   height: auto;
-  background: $highlight-color;
+  background: #FFA624;
   border-radius: 25px;
   margin-top: 15px;
   display: flex;
@@ -150,7 +188,17 @@ $desktop-breakpoint: 1024px;
   color: $button-text-color;
   border: none;
 }
-
+.choose_study_days_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.choose_study_days_txt {
+  font-size: 20px;
+  font-weight: 600;
+  color: #6C7074;
+}
 .reser_card {
   width: 100%;
   height: 160px;
@@ -179,9 +227,8 @@ $desktop-breakpoint: 1024px;
 }
 
 .reser_date {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
+  font-size: 20px;
+  color: #93979B;
 }
 
 .reser_times_block {
@@ -202,6 +249,13 @@ $desktop-breakpoint: 1024px;
   color: $text-color;
   margin-left: 13px;
   margin-top: 5px;
+}
+
+.reser_teach {
+  font-weight: 600;
+  font-size: 26px;
+
+  color: #535353;
 }
 
 .no_subj {
@@ -254,6 +308,19 @@ $desktop-breakpoint: 1024px;
   color: $button-text-color;
   border: none;
 }
+
+.choose_days {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.choose_days div {
+  //display: flex;
+  //flex-direction: column;
+  //align-items: center;
+  width: 33%;
+}
+
 
 @media screen and (max-width: $mobile-breakpoint) {
   .cost_block {
