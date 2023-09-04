@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import s from "./PATeach.module.css"
+import s from "./PATeach.module.scss"
 import SideBarTeach from "../../SideBar/SideBarTeach";
 import userava from "../../../assets/img/user (2) 2.png";
 import edit from "../../../assets/img/edit1.png";

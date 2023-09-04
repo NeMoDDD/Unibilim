@@ -8,7 +8,7 @@ import {getDefineProfessor, getProfessors} from "../../redux/professorsReducer";
 import {Navigate, NavLink} from "react-router-dom";
 import {Spin} from "antd";
 import {motion} from "framer-motion";
-import s from "../Teacher/StudList/StudList.module.css";
+import s from "../Teacher/StudList/StudList.module.scss";
 import {useNavigate} from 'react-router-dom';
 
 

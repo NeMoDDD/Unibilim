@@ -1,3 +1,7 @@
+$mobile-breakpoint: 460px;
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
 .timetable_block {
   margin-top: 25px;
   width: 70%;
@@ -344,7 +348,7 @@ table th {
   cursor: pointer;
 }
 
-@media screen and (max-width: 525px) {
+@media screen and (max-width: $tablet-breakpoint) {
   .timetable_block {
     width: 100%;
     display: contents;
@@ -383,7 +387,7 @@ table th {
   }
 }
 
-@media (min-width: 525px) and (max-width: 1024px) {
+@media (min-width: $tablet-breakpoint) and (max-width: $desktop-breakpoint) {
   .timetable_block {
     width: 100%;
     display: flex;

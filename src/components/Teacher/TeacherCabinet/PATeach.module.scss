@@ -1,3 +1,7 @@
+$mobile-breakpoint: 460px;
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
 .radblock {
     border-radius: 25px;
     background-color: #fbfcfe;
@@ -47,7 +51,9 @@
 .customSpinContainer {
     display: flex;
 }
-
+.spin_teacher_cabinet {
+    width: 100%;
+}
 .avaname {
     display: flex;
     padding: 15px;
@@ -386,22 +392,8 @@
     }
 }
 
-@media (min-width: 1025px) and (max-width: 1200px) {
+@media (min-width: $tablet-breakpoint) and (max-width: $desktop-breakpoint) {
     .first_block {
-        flex-direction: column;
-    }
-
-    .inner_block {
-        width: 100%;
-    }
-
-    .address {
-        margin-top: 0.7em;
-        width: 100%;
-        margin-left: 15px;
-    }
-
-    .reg_npt {
-        width: 90%;
+        margin: 2em auto 0;
     }
 }

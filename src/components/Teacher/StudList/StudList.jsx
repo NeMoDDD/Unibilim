@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import s from "./StudList.module.css"
+import s from "./StudList.module.scss"
 import stud1 from "../../../assets/img/stud1.png";
 import stud2 from "../../../assets/img/stud2.png";
 import stud3 from "../../../assets/img/stud3.png";
@@ -15,16 +15,6 @@ import ava from '../../../assets/img/student-without-photo.svg'
 import {motion} from "framer-motion";
 
 const StudList = () => {
-    // const students = [
-    //     {id: 1, name: "Ирина", firstname: "Бойка", img: stud1},
-    //     {id: 2, name: "Николай", firstname: "Коготько", img: stud2},
-    //     {id: 3, name: "Дмитрий", firstname: "Примудрый", img: stud3},
-    //     {id: 4, name: "Вася", firstname: "Глупый", img: stud4},
-    //     {id: 5, name: "Геральт", firstname: "Изривии", img: stud5},
-    //     {id: 3, name: "Дмитрий", firstname: "Примудрый", img: stud3},
-    //     {id: 2, name: "Николай", firstname: "Коготько", img: stud2},
-    //     {id: 4, name: "Вася", firstname: "Глупый", img: stud4},
-    // ];
     const {userRole,token} = useSelector(state => state.loginReducer)
     const {myStudents,isFetching} = useSelector(state => state.myStudents)   
     

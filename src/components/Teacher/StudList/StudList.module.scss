@@ -1,3 +1,7 @@
+$mobile-breakpoint: 460px;
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
 .stud_head {
     width: 60%;
     background-color: #ffff;
@@ -37,7 +41,8 @@
     padding-bottom: 20px;
 }
 .stud_card {
-    width: 18%;
+    width: 31%;
+    padding: 10px;
     background-color: #fcfcfc;
     border-radius: 25px;
     margin-left: 14px;
@@ -188,7 +193,7 @@
         flex-wrap: wrap;
     }
 }
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: $mobile-breakpoint) and (max-width: $tablet-breakpoint) {
     .stud_head {
         width: 100%;
     }
@@ -196,7 +201,7 @@
         width: 30%;
     }
     .stud_drop {
-        width: 35%;
+        width: 31%;
         margin-top: 15px;
     }
     .radios {
@@ -205,18 +210,10 @@
         flex-wrap: wrap;
     }
 }
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+@media screen and (min-width: $tablet-breakpoint) and (max-width: $desktop-breakpoint) {
     .stud_head {
         width: 100%;
-    }
-    .stud_card {
-        width: 23%;
-    }
-}
-
-@media screen and (min-width: 1025px) and (max-width: 1250px) {
-    .stud_head {
-        width: 70%;
     }
     .stud_card {
         width: 31%;

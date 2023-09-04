@@ -1,3 +1,7 @@
+$mobile-breakpoint: 460px;
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
 .timetable_block {
   margin-top: 25px;
   width: 70%;
@@ -173,7 +177,7 @@ table th {
   font-weight: 600;
   font-size: 20px;
 }
-@media screen and (max-width: 524px) {
+@media screen and (max-width: $tablet-breakpoint) {
   .subjtable {
     display: none;
   }
@@ -221,7 +225,7 @@ table th {
   }
 }
 
-@media (min-width: 525px) and (max-width: 1024px) {
+@media (min-width: $tablet-breakpoint) and (max-width: $desktop-breakpoint) {
   .subjtable {
     display: none;
   }

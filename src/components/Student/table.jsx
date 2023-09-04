@@ -144,8 +144,7 @@ const CalendarTable = ({dates, setCurrentWeekStart}) => {
                 </div>
             </div>
         )
-            ;
     }
-;
+
 
 export default CalendarTable;
