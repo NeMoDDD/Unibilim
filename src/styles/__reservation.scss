@@ -192,6 +192,9 @@ $desktop-breakpoint: 1280px;
   color: $button-text-color;
   border: none;
 }
+.payment_loading {
+
+}
 .choose_study_days_block {
   display: flex;
   flex-direction: row;
@@ -205,7 +208,6 @@ $desktop-breakpoint: 1280px;
 }
 .reser_card {
   width: 100%;
-  height: 160px;
   background-color: #dff4ff;
   border-radius: 15px;
   padding: 10px;
@@ -213,11 +215,9 @@ $desktop-breakpoint: 1280px;
 }
 
 .reser_week {
-  font-style: normal;
   font-weight: 600;
   font-size: 19px;
-  line-height: 19.2px;
-  color: #6c7074;
+  color: $text-color;
 }
 
 
@@ -246,10 +246,8 @@ $desktop-breakpoint: 1280px;
   background: $button-bg-color;
   border: 1px solid #e4e9ee;
   border-radius: 17.5px;
-  font-style: normal;
   font-weight: 600;
-  line-height: 14px;
-  color: $text-color;
+  color: #2D2D2D;
   margin-left: 13px;
   margin-top: 5px;
 }
@@ -375,13 +373,15 @@ $desktop-breakpoint: 1280px;
   .for_pay {
     position: fixed;
     bottom: 0;
+    left: 0;
     border-radius: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    background-color: #FFBF14;
   }
   .pay_btn {
-    width: auto;
+    width: 50%;
     height: auto;
     padding: 15px 20px;
   }
@@ -398,10 +398,11 @@ $desktop-breakpoint: 1280px;
   .reser_times_block {
     width: 100%;
     margin-left: 0;
+    justify-content: space-between;
   }
   .reser_times {
-    width: 31%;
-    margin-left: 5px;
+    width: 100%;
+    margin-left: 0;
   }
   .choose_days {
     display: flex;
@@ -421,6 +422,9 @@ $desktop-breakpoint: 1280px;
   }
   .week_forward_block {
     margin: 0 auto;
+  }
+  .week_forward {
+    color: #FFFFFF;
   }
 }
 

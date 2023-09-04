@@ -12,7 +12,7 @@ const SET_HOLIDAYS = "SET_HOLIDAYS"
 const SET_TIMETABLE_PROFESSOR = "SET_TIMETABLE_PROFESSOR"
 const SET_RESERVATION_TABLE_IS_FETCHING = "SET_RESERVATION_TABLE_IS_FETCHING"
 const SET_WEEK_FORWARD = "SET_WEEK_FORWARD"
-
+const SET_PAYMENT_IS_FETCHING = "SET_PAYMENT_IS_FETCHING"
 
 let initialState = {
     oneLessonCost: 150,
@@ -23,6 +23,7 @@ let initialState = {
     holidays: [],
     timetableProfessor: [],
     reservationTableIsFetching: false,
+    paymentIsFetching: false,
 }
 
 
@@ -59,6 +60,11 @@ const ReservationReducer = (state = initialState, action) => {
                 ...state,
                 weekForward: action.weekForward
             }
+        case SET_PAYMENT_IS_FETCHING:
+            return {
+                ...state,
+                paymentIsFetching: action.paymentIsFetching
+            }
         default: {
             return {...state}
         }
@@ -71,6 +77,7 @@ export const setHolidays = (holidays) => ({type: SET_HOLIDAYS, holidays})
 export const setTimetableProfessor = (timetableProfessor) => ({type: SET_TIMETABLE_PROFESSOR, timetableProfessor})
 export const setReservationTableIsFetching = (reservationTableIsFetching) => ({type: SET_RESERVATION_TABLE_IS_FETCHING, reservationTableIsFetching})
 export const setWeekForward = (weekForward) => ({type: SET_WEEK_FORWARD, weekForward})
+export const setPaymentIsFetching = (paymentIsFetching) => ({type: SET_PAYMENT_IS_FETCHING, paymentIsFetching})
 
 export const getReservationTable = (professor_id, token) => {
     return async (dispatch) => {
@@ -90,8 +97,15 @@ export const getReservationTable = (professor_id, token) => {
 }
 export const initPayment = (professor_id, time_slots, amount, service, token) => {
     return async (dispatch) => {
-        let data = await reservationApi.initPayment(professor_id, time_slots, amount, service, token)
-        console.log(data)
+        try {
+            dispatch(setPaymentIsFetching(true))
+            let data = await reservationApi.initPayment(professor_id, time_slots, amount, service, token)
+            console.log(data)
+        } catch (error) {
+
+        } finally {
+            dispatch(setPaymentIsFetching(false))
+        }
     }
 }
 

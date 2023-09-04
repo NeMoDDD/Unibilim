@@ -1,7 +1,6 @@
 
 .calendar-container {
   max-width: 800px;
-  margin: 0 auto;
 }
 
 .calendar {
@@ -71,4 +70,25 @@ td button {
   background-image: url("../../assets/img/Subtract.png");
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+.calendar-container-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .calendar-container {
+    display: none;
+  }
+  .calendar-container-mobile {
+    display: block;
+    margin-bottom: 8em;
+  }
+  .selected {
+    border: #FFBF13 1px solid;
+    background-image: none;
+  }
+  .reserved {
+    color: #E4E9EE;
+  }
 }
