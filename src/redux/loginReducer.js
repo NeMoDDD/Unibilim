@@ -128,6 +128,7 @@ export const login = (username, password) => {
 
             if (data.data.role === 'professor') {
                 let profData = await professorsApi.getProfessorsCabinet(data.data.token);
+                console.log(profData)
                 dispatch(setUserData(profData));
             }
         } catch (error) {

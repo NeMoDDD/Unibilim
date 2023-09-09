@@ -1,7 +1,7 @@
 import React from "react" 
 import s from './Modal.module.css'  
 import { Modal } from "antd"
-import userAva from "../../../assets/img/user (2) 2.png"
+import userAva from "../../../assets/img/user (2) 2.svg"
 import moment from "moment";
 const ModalTeacherWindow = React.memo(({teach,time, subj, setModalOpen, modalOpen, alldate, info})=>{
     const dateObject = moment(alldate)

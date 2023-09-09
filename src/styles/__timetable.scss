@@ -12,7 +12,7 @@ $desktop-breakpoint: 1280px;
 .timetable__time {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   background-color: white;
   padding: 15px;
   border-radius: 25px 25px 0px 0
@@ -356,11 +356,7 @@ table th {
   .timetable {
     display: none;
   }
-  .timetable__time {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
+
   .time {
     justify-content: space-between;
   }
@@ -400,11 +396,6 @@ table th {
   }
   .timetable {
     display: none;
-  }
-  .timetable__time {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
   }
   .teach_txt {
     font-weight: 600;

@@ -30,7 +30,7 @@ table tr {
 
 .time {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   background-color: white;
   padding: 15px;
@@ -258,7 +258,7 @@ table th {
     line-height: 22px;
   }
   .time {
-    justify-content: space-around;
+
   }
   .card_stud {
     font-size: 18px;

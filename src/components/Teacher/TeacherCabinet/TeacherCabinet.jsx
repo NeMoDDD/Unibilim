@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 import s from "./PATeach.module.scss"
 import SideBarTeach from "../../SideBar/SideBarTeach";
-import userava from "../../../assets/img/user (2) 2.png";
+import userava from "../../../assets/img/user (2) 2.svg";
 import edit from "../../../assets/img/edit1.png";
 import {Controller, useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
@@ -48,14 +48,14 @@ const TeacherCabinet = (props) => {
                                         <img src={userava} alt=""/>}
                                     <div className={s.name}>
                                         <p className={s.name_block}>{`${firstName} ${surname}`}</p>
-                                        <a
-                                            className={s.edit_block}
-                                            onClick={() => setInputDisabled(false)}
-                                        >
-                                            {" "}
-                                            <img src={edit}/>
-                                            Изменить данные
-                                        </a>
+                                        {/*<a*/}
+                                        {/*    className={s.edit_block}*/}
+                                        {/*    onClick={() => setInputDisabled(false)}*/}
+                                        {/*>*/}
+                                        {/*    {" "}*/}
+                                        {/*    <img src={edit}/>*/}
+                                        {/*    Изменить данные*/}
+                                        {/*</a>*/}
                                     </div>
                                 </div>
                                 <div className={`${s.persdata} ${s.radblock} ${s.second_inner_block}`}>
@@ -103,38 +103,47 @@ const TeacherCabinet = (props) => {
                                     {errors.patronym && <div className={s.npt_txt_span}>{errors.patronym.message}</div>}
 
                                     <p className={s.nm_txt2}>Описание</p>
-                                    <textarea {...register("info", {
+                                    <input {...register("info", {
                                         required: "Это поле обязательное!"
                                     })} className={errors.info ? `${s.npt_txt} ${s.npt_txt_errors}` : s.npt_txt}
                                         // onChange={(e) => props.setSurname(e.currentTarget.value)}
-                                              value={info}
-                                              disabled={isInputDisabled}/>
+                                           value={info}
+                                           disabled={isInputDisabled}/>
                                     {errors.info && <div className={s.npt_txt_span}>{errors.info.message}</div>}
 
                                     <p className={s.nm_txt2}>День рождения</p>
-                                    <Space direction="vertical">
-                                        <ConfigProvider locale={ruRU}>
-                                            <Controller
-                                                name="dateOfBirth"
-                                                control={control}
-                                                rules={{
-                                                    required: 'Это поле обязательное!',
+                                    {/*<Space direction="vertical">*/}
+                                    {/*    <ConfigProvider locale={ruRU}>*/}
+                                    {/*        <Controller*/}
+                                    {/*            name="dateOfBirth"*/}
+                                    {/*            control={control}*/}
+                                    {/*            rules={{*/}
+                                    {/*                required: 'Это поле обязательное!',*/}
 
-                                                }}
-                                                render={({field}) => (
-                                                    <DatePicker showToday={false}
-                                                                value={props.dayOfBirthday}
-                                                                disabled={isInputDisabled}
-                                                                format="DD-MM-YYYY"
-                                                                onChange={(e) => props.setBirthday(e.currentTarget.value.format("DD-MM-YYYY"))}
-                                                                className={errors.dateOfBirth ? `${s.data_picker} ${s.data_picker_error}` : s.data_picker}
-                                                    />
-                                                )}
-                                            />
-                                            {errors.dateOfBirth &&
-                                                <p className={s.npt_txt_span}>{errors.dateOfBirth.message}</p>}
-                                        </ConfigProvider>
-                                    </Space>
+                                    {/*            }}*/}
+                                    {/*            render={({field}) => (*/}
+                                    {/*                <DatePicker showToday={false}*/}
+                                    {/*                            value={props.dayOfBirthday}*/}
+                                    {/*                            disabled={isInputDisabled}*/}
+                                    {/*                            format="DD-MM-YYYY"*/}
+                                    {/*                            onChange={(e) => props.setBirthday(e.currentTarget.value.format("DD-MM-YYYY"))}*/}
+                                    {/*                            className={errors.dateOfBirth ? `${s.data_picker} ${s.data_picker_error}` : s.data_picker}*/}
+                                    {/*                />*/}
+                                    {/*            )}*/}
+                                    {/*        />*/}
+                                    {/*        {errors.dateOfBirth &&*/}
+                                    {/*            <p className={s.npt_txt_span}>{errors.dateOfBirth.message}</p>}*/}
+                                    {/*    </ConfigProvider>*/}
+                                    {/*</Space>*/}
+
+                                    <input {...register("dateOfBirth", {
+                                        required: "Это поле обязательное!"
+                                    })} className={errors.dayOfBirthday ? `${s.npt_txt} ${s.npt_txt_errors}` : s.npt_txt}
+                                           value={props.dayOfBirthday}
+                                           disabled={isInputDisabled}/>
+                                    {errors.dateOfBirth &&
+                                        <div className={s.npt_txt_span}>{errors.dateOfBirth.message}</div>}
+
                                 </div>
                                 <div className={`${s.secondata} ${s.radblock}`}>
                                     <p className={s.nm_txt2}>Телеграм</p>
@@ -148,25 +157,33 @@ const TeacherCabinet = (props) => {
                                         <div className={s.npt_txt_span}>{errors.tgName.message}</div>}
 
                                     <p className={s.nm_txt2}>Телефон</p>
-                                    <Controller
-                                        name="phone"
-                                        control={control}
-                                        rules={{
-                                            required: "Это поле обязательное!",
-                                            onChange: (e) => dispatch(setPhone(e.target.value))
-                                        }}
-                                        render={({field}) => <PhoneInput  {...field}
-                                                                          country={'kg'}
-                                                                          placeholder="+996"
-                                                                          value={phone}
-                                                                          preferredCountries={['kg', 'ru', 'kz']}
-                                                                          onChange={(e) => props.setPhone(e.currentTarget.value)}
-                                                                          disabled={isInputDisabled}
-                                                                          inputClass={errors.phone ? `${s.npt_txt} ${s.npt_txt_errors}` : s.npt_txt}
-                                                                          buttonClass={s.btn_phone}
-                                        ></PhoneInput>}
-                                    />
-                                    {errors.phone && <p className={s.npt_txt_span}>{errors.phone.message}</p>}
+                                    {/*<Controller*/}
+                                    {/*    name="phone"*/}
+                                    {/*    control={control}*/}
+                                    {/*    rules={{*/}
+                                    {/*        required: "Это поле обязательное!",*/}
+                                    {/*        onChange: (e) => dispatch(setPhone(e.target.value))*/}
+                                    {/*    }}*/}
+                                    {/*    render={({field}) => <PhoneInput  {...field}*/}
+                                    {/*                                      country={'kg'}*/}
+                                    {/*                                      placeholder="+996"*/}
+                                    {/*                                      value={phone}*/}
+                                    {/*                                      preferredCountries={['kg', 'ru', 'kz']}*/}
+                                    {/*                                      onChange={(e) => props.setPhone(e.currentTarget.value)}*/}
+                                    {/*                                      disabled={isInputDisabled}*/}
+                                    {/*                                      inputClass={errors.phone ? `${s.npt_txt} ${s.npt_txt_errors}` : s.npt_txt}*/}
+                                    {/*                                      buttonClass={s.btn_phone}*/}
+                                    {/*    ></PhoneInput>}*/}
+                                    {/*/>*/}
+                                    {/*{errors.phone && <p className={s.npt_txt_span}>{errors.phone.message}</p>}*/}
+
+                                    <input {...register("phone", {
+                                        required: "Это поле обязательное!"
+                                    })} className={errors.phone ? `${s.npt_txt} ${s.npt_txt_errors}` : s.npt_txt}
+                                           value={phone}
+                                           disabled={isInputDisabled}/>
+                                    {errors.phone &&
+                                        <div className={s.npt_txt_span}>{errors.phone.message}</div>}
 
                                     <p className={s.nm_txt2}>Опыт работы</p>
                                     <input {...register("experience", {required: "Это поле обязательное!"})}

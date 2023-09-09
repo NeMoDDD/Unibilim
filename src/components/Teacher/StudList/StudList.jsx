@@ -38,23 +38,23 @@ const StudList = () => {
                         <Spin spinning={isFetching}> 
                         <div className={s.radios}>
                             <p className={s.studs}>Ученики</p>
-                            <div className={s.student__type__block}>
-                                <div className={s.student__type}>
-                                    <input type="radio" id="exclusive" name="forwho" value="excluse"/>
-                                    <label className={s.radio_txt} htmlFor="exclusive">
-                                        Индивидуальные
-                                    </label>
-                                </div>
-                                <div className={s.student__type}>
-                                    <input
-                                        type="radio"
-                                        id="groups"
-                                        name="forwho"
-                                        value="group"
-                                    />
-                                    <label className={s.radio_txt} htmlFor="groups">Групповые </label>
-                                </div>
-                            </div>
+                            {/*<div className={s.student__type__block}>*/}
+                            {/*    <div className={s.student__type}>*/}
+                            {/*        <input type="radio" id="exclusive" name="forwho" value="excluse"/>*/}
+                            {/*        <label className={s.radio_txt} htmlFor="exclusive">*/}
+                            {/*            Индивидуальные*/}
+                            {/*        </label>*/}
+                            {/*    </div>*/}
+                            {/*    <div className={s.student__type}>*/}
+                            {/*        <input*/}
+                            {/*            type="radio"*/}
+                            {/*            id="groups"*/}
+                            {/*            name="forwho"*/}
+                            {/*            value="group"*/}
+                            {/*        />*/}
+                            {/*        <label className={s.radio_txt} htmlFor="groups">Групповые </label>*/}
+                            {/*    </div>*/}
+                            {/*</div>*/}
                             <Select
                                 defaultValue="surname_filter"
                                 className={s.stud_drop}
