@@ -48,6 +48,9 @@ $desktop-breakpoint: 1280px;
     width: 97%;
 }
 
+.ant-spin-container {
+    flex-direction: column;
+}
 .customSpinContainer {
     display: flex;
 }
@@ -363,7 +366,7 @@ $desktop-breakpoint: 1280px;
     border-radius: 25px;
 }
 
-@media (min-width: 310px) and (max-width: 1024px) {
+@media (max-width: $tablet-breakpoint) {
     .first_block {
         width: 100%;
         display: flex;
@@ -390,10 +393,29 @@ $desktop-breakpoint: 1280px;
     .inaddress {
         width: 98%;
     }
+    .customSpinContainer {
+        flex-direction: column;
+    }
 }
 
 @media (min-width: $tablet-breakpoint) and (max-width: $desktop-breakpoint) {
     .first_block {
         margin: 2em auto 0;
+        width: 90%;
+    }
+    .customSpinContainer {
+        flex-direction: column;
+    }
+
+    .inner_block {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .address {
+        width: 100%;
+        padding-left: 15px;
+        margin-top: 0.7em;
+        padding-bottom: 25px;
     }
 }

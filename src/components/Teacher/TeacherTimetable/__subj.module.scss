@@ -92,10 +92,12 @@ table th {
 }
 
 .cards_block {
+  min-height: 90dvh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: baseline;
   background-color: white;
 }
 

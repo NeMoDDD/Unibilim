@@ -13,6 +13,7 @@ const SET_SUNDAY = "SET_SUNDAY"
 const SET_ALL_DATE = "SET_ALL_DATE"
 const SET_DAY_OF_WEEK = "SET_DAY_OF_WEEK"
 const SET_IF_FETCHING = "SET_IF_FETCHING"
+const SET_ALL_TIMETABLE = "SET_ALL_TIMETABLE"
 
 let initialState = {
     timetable: {
@@ -134,6 +135,11 @@ export const timetableReducer = (state = initialState, action) => {
                     alldate: action.data
                 }
             }
+        case SET_ALL_TIMETABLE:
+            return {
+                ...state,
+                allTimetable: action.allTimetable
+            }
         case SET_DAY_OF_WEEK:
             return {
                 ...state,
@@ -163,13 +169,16 @@ export const setFriday = (data) => ({type: SET_FRIDAY, data})
 const setSaturday = (data) => ({type: SET_SATURDAY, data})
 const setSunday = (data) => ({type: SET_SUNDAY, data})
 export const setAllDate = (data) => ({type: SET_ALL_DATE, data})
+export const setAllTimetable = (allTimetable) => ({type: SET_ALL_TIMETABLE, allTimetable})
 export const setDayOfWeek = (data) => ({type: SET_DAY_OF_WEEK, data})
 export const setIsFetching = (isFetching) => ({type: SET_IF_FETCHING, isFetching})
 
 export const getTimetable = (token) => {
     return async (dispatch) => {
-        const data = await meetingsApi.getAllMeetings(token)
         dispatch(setIsFetching(true))
+
+        const data = await meetingsApi.getAllMeetings(token)
+        dispatch(setAllTimetable(data.data))
         console.log(data)
 
         data.data.map((m) => {

@@ -164,6 +164,9 @@ $desktop-breakpoint: 1280px;
 .previous_btn {
   margin-right: 0.5em;
 }
+.previous_btn_rotate {
+  transform: rotate(-0.5turn);
+}
 .next_btn {
   margin-left: 0.5em;
 }
@@ -178,6 +181,7 @@ $desktop-breakpoint: 1280px;
   flex-direction: column;
   align-items: center;
   padding: 15px 0;
+  z-index: 9999;
 }
 
 .pay_btn {
@@ -315,10 +319,7 @@ $desktop-breakpoint: 1280px;
   flex-direction: row;
   justify-content: space-around;
 }
-.choose_days div {
-  //display: flex;
-  //flex-direction: column;
-  //align-items: center;
+.choose_days_block {
   width: 33%;
 }
 

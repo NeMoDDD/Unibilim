@@ -127,14 +127,14 @@
 .verification__support_again {
     color: #05B;
     text-align: center;
-    font-family: 'Fira Sans', sans-serif;
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
     background: none;
     text-decoration: underline;
     border: none;
+}
+.verification__support_again_disabled {
+    color: #6C7074;
 }
 .verification__pin{ 
     margin-top: 25%;

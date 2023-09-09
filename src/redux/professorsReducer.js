@@ -258,8 +258,8 @@ export const getDefineProfessor = (id, token) => {
 export const getProfessorTimetable = (token) => {
     return async (dispatch) => {
         const data = await meetingsApi.getAllMeetings(token)
-        dispatch(setIsFetchingTeacher(true))
         console.log(data)
+        dispatch(setIsFetchingTeacher(true))
 
         data.data.map((m) => {
             if (m.day_of_week === "Monday") {

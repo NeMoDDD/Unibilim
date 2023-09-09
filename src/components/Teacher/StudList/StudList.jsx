@@ -56,15 +56,14 @@ const StudList = () => {
                             {/*    </div>*/}
                             {/*</div>*/}
                             <Select
-                                defaultValue="surname_filter"
+                                defaultValue="all"
                                 className={s.stud_drop}
                                 popupClassName={s.stud_drop_popup}
                                 bordered={false}
                                 size={"small"}
                                 options={[
+                                    {value: "all", label: "Все"},
                                     {value: 'surname_filter', label: 'По фамилии'},
-                                    {value: 'age_filter', label: 'По возрасту'},
-                                    {value: 'location_filter', label: 'По городу'},
                                 ]}
                             />
                         </div>

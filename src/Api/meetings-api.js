@@ -18,9 +18,13 @@ export const meetingsApi = {
             }
         })
     },
-    getDefineMeeting(meetingId) {
-        //Получаем определенную Встречу
-        return instance.get(`meetings/${meetingId}/`)
+    getDefineStudentMeetings(token, student_id) {
+        //Получаем встречи определенного студента
+        return instance.get(`meetings/?student_id=${student_id}`, {
+            headers: {
+                'Authorization': `Token ${token}`
+            }
+        });
     },
 
     createMeeting() {

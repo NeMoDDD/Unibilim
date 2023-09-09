@@ -26,6 +26,8 @@ import next from "../../assets/img/Group 213.svg"
 
 const Reservation = () => {
     const [currentWeekStart, setCurrentWeekStart] = useState(new Date());
+    const [isPrevWeek, setPrevWeek] = useState(false);
+
     const {userRole, token} = useSelector(state => state.loginReducer)
     const {defineProfessor} = useSelector(state => state.professorsReducer)
     const {
@@ -54,6 +56,8 @@ const Reservation = () => {
         const nextWeekStart = new Date(currentWeekStart);
         nextWeekStart.setDate(currentWeekStart.getDate() + 7);
         setCurrentWeekStart(nextWeekStart);
+        setPrevWeek(true)
+
     };
     const goToPreviousWeek = () => {
         const previousWeekStart = new Date(currentWeekStart);
@@ -64,6 +68,7 @@ const Reservation = () => {
         if (previousWeekStart >= lastMonday) {
             setCurrentWeekStart(previousWeekStart);
         } else {
+            setPrevWeek(false)
             setCurrentWeekStart(lastMonday);
         }
     };
@@ -105,14 +110,14 @@ const Reservation = () => {
                                         <p className="reser_teach">{defineProfessor.firstName} {defineProfessor.surname}</p>
                                     </div>
                                     <div className="choose_days">
-                                        <div>
+                                        <div className="choose_days_block">
                                             <p className="subj_costet"
                                                style={{fontWeight: "600", marginBottom: "0.3em"}}>Рабочие дни</p>
                                             <p className="txt_schedule">
                                                 Понедельник, среда, пятница, суббота, воскресенье
                                             </p>
                                         </div>
-                                        <div>
+                                        <div className="choose_days_block">
                                             <p className="subj_costet"
                                                style={{fontWeight: "600", marginBottom: "0.3em"}}>Время
                                                 занятий</p>
@@ -129,8 +134,8 @@ const Reservation = () => {
                                     <div className="choose_study_days_block">
                                         <p className="choose_study_days_txt">Выберите дни обучения</p>
                                         <div className="week_forward_block">
-                                            <button className="previous_btn" onClick={goToPreviousWeek}><img
-                                                src={previous} alt="minus"/></button>
+                                            <button className={!isPrevWeek ? "previous_btn" : "previous_btn previous_btn_rotate"} onClick={goToPreviousWeek}><img
+                                                src={!isPrevWeek ? previous : next} alt="minus"/></button>
                                             <p className="reser_date">
                                                 {format(dates[0], 'd MMM', {locale: ru}).replace(/\.$/, '')}
                                                 &nbsp;
@@ -150,7 +155,7 @@ const Reservation = () => {
                                     Итоговый расчет
                                 </p>
                                 <div className="pay_subj">
-                                    <p className="costet">{reservationLessonsCount} days</p>
+                                    <p className="costet">{reservationLessonsCount} дн.</p>
                                 </div>
                                 <div className="pay_subj" style={{marginTop: "15px"}}>
                                     <p className="costet" style={{fontSize: "16px"}}>На сколько недель?</p>

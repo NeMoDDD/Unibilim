@@ -15,7 +15,7 @@ const Timetable = React.memo((props) => {
     const firstDate = props.timetable?.alldate?.[0];
     const lastDate = props.timetable?.alldate[props.timetable.alldate.length - 1];
     const {token, userRole} = useSelector(state => state.loginReducer)
-    const {isFetching} = useSelector(state => state.timetableReducer)
+    const {isFetching, allTimetable} = useSelector(state => state.timetableReducer)
 
     const dispatch = useDispatch()
     const getNextWeekHandler = () => {
@@ -210,6 +210,7 @@ const Timetable = React.memo((props) => {
                     </table>
 
                     <div className="cards_block">
+
                         {props.timetable.monday
                             .sort((a, b) => a.time.localeCompare(b.time))
                             .map((item, index) => {

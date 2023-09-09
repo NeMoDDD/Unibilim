@@ -28,6 +28,7 @@ import {getCities, getDistricts, getRegion} from "../../redux/location-reducer";
 import {Navigate, NavLink, useLocation} from "react-router-dom";
 import s from "../LoginPage/LoginPage.module.css";
 import {motion} from "framer-motion";
+import moment from "moment";
 
 const Registration = () => {
     const {control, handleSubmit, setError, clearErrors, formState: {errors}, reset} = useForm({
@@ -267,6 +268,11 @@ const Registration = () => {
                                         <DatePicker showToday={false}
                                                     onChange={(e) => dispatch(setBirthday(e.format("DD-MM-YYYY")))}
                                                     format="DD-MM-YYYY"
+                                                    disabledDate={(current) => {
+                                                        const today = moment();
+
+                                                        return current && current > today.startOf('day');
+                                                    }}
                                                     className={errors.dateOfBirth ? "data-picker data-picker-error" : "data-picker"}/>
                                     )}
                                 />
@@ -323,8 +329,8 @@ const Registration = () => {
                             />}/>
                         {errors.city && <p className="error-message">{errors.city.message}</p>}
                     </div>
-                    <div className="input-form-block">
-                        <p className="nm-txt2">Выберите ваше фото</p>
+                    {/*<div className="input-form-block">*/}
+                        {/*<p className="nm-txt2">Выберите ваше фото</p>*/}
                         {/*<Controller*/}
                         {/*    name="file"*/}
                         {/*    control={control}*/}
@@ -351,7 +357,7 @@ const Registration = () => {
                         {/*    )}*/}
                         {/*/>*/}
                         {errors.file && <p className="error-message">{errors.file.message}</p>}
-                    </div>
+                    {/*</div>*/}
                     <div className="form-check">
                         <input
                             className="form-check-input"

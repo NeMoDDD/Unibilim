@@ -111,7 +111,7 @@ const TeacherCabinet = (props) => {
                                            disabled={isInputDisabled}/>
                                     {errors.info && <div className={s.npt_txt_span}>{errors.info.message}</div>}
 
-                                    <p className={s.nm_txt2}>День рождения</p>
+                                    {/*<p className={s.nm_txt2}>День рождения</p>*/}
                                     {/*<Space direction="vertical">*/}
                                     {/*    <ConfigProvider locale={ruRU}>*/}
                                     {/*        <Controller*/}
@@ -136,13 +136,13 @@ const TeacherCabinet = (props) => {
                                     {/*    </ConfigProvider>*/}
                                     {/*</Space>*/}
 
-                                    <input {...register("dateOfBirth", {
-                                        required: "Это поле обязательное!"
-                                    })} className={errors.dayOfBirthday ? `${s.npt_txt} ${s.npt_txt_errors}` : s.npt_txt}
-                                           value={props.dayOfBirthday}
-                                           disabled={isInputDisabled}/>
-                                    {errors.dateOfBirth &&
-                                        <div className={s.npt_txt_span}>{errors.dateOfBirth.message}</div>}
+                                    {/*<input {...register("dateOfBirth", {*/}
+                                    {/*    required: "Это поле обязательное!"*/}
+                                    {/*})} className={errors.dayOfBirthday ? `${s.npt_txt} ${s.npt_txt_errors}` : s.npt_txt}*/}
+                                    {/*       value={props.dayOfBirthday}*/}
+                                    {/*       disabled={isInputDisabled}/>*/}
+                                    {/*{errors.dateOfBirth &&*/}
+                                    {/*    <div className={s.npt_txt_span}>{errors.dateOfBirth.message}</div>}*/}
 
                                 </div>
                                 <div className={`${s.secondata} ${s.radblock}`}>
