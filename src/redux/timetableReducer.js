@@ -173,11 +173,11 @@ export const setAllTimetable = (allTimetable) => ({type: SET_ALL_TIMETABLE, allT
 export const setDayOfWeek = (data) => ({type: SET_DAY_OF_WEEK, data})
 export const setIsFetching = (isFetching) => ({type: SET_IF_FETCHING, isFetching})
 
-export const getTimetable = (token) => {
+export const getTimetable = (token, userId) => {
     return async (dispatch) => {
         dispatch(setIsFetching(true))
 
-        const data = await meetingsApi.getAllMeetings(token)
+        const data = await meetingsApi.getDefineStudentMeetings(token, userId)
         dispatch(setAllTimetable(data.data))
         console.log(data)
 

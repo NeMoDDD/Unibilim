@@ -8,10 +8,12 @@ const SET_PASSWORD = "SET_PASSWORD"
 const SET_USER_DATA = "SET_USER_DATA"
 const LOGOUT = "LOGOUT"
 const SET_IS_FETCHING = "SET_IS_FETCHING"
+const SET_USER_ID = "SET_USER_ID"
 
 let initialState = {
     userRole: null,
     token: null,
+    userId: null,
     id: null,
     userName: null,
     password: null,
@@ -97,6 +99,11 @@ const LoginReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.isFetching
             }
+        case SET_USER_ID:
+            return {
+                ...state,
+                userId: action.userId
+            }
         default: {
             return {...state}
         }
@@ -106,15 +113,18 @@ export const setUserRole = (userRole) => ({type: SET_ROLE, userRole})
 export const setUserToken = (token) => ({type: SET_TOKEN, token})
 export const setUserName = (userName) => ({type: SET_USERNAME, userName})
 export const setUserPassword = (password) => ({type: SET_PASSWORD, password})
+
 export const setUserData = (data) => ({type: SET_USER_DATA, ...data});
 export const logoutAC = () => ({type: LOGOUT});
 export const setFetching = (isFetching) => ({type: SET_IS_FETCHING, isFetching});
+export const setStudentId = (userId) => ({type: SET_USER_ID, userId})
 
 export const login = (username, password) => {
     return async (dispatch) => {
         try {
             dispatch(setFetching(true));
             let data = await loginApi.login(username, password);
+            dispatch(setStudentId(data.data.id))
             console.log(data);
 
             if (data.status === 200) {

@@ -18,9 +18,9 @@ export const meetingsApi = {
             }
         })
     },
-    getDefineStudentMeetings(token, student_id) {
+    getDefineStudentMeetings(token, userId) {
         //Получаем встречи определенного студента
-        return instance.get(`meetings/?student_id=${student_id}`, {
+        return instance.get(`meetings/?student_id=${userId}`, {
             headers: {
                 'Authorization': `Token ${token}`
             }

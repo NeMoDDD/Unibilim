@@ -14,7 +14,7 @@ import {motion} from "framer-motion";
 const Timetable = React.memo((props) => {
     const firstDate = props.timetable?.alldate?.[0];
     const lastDate = props.timetable?.alldate[props.timetable.alldate.length - 1];
-    const {token, userRole} = useSelector(state => state.loginReducer)
+    const {token, userRole, userId} = useSelector(state => state.loginReducer)
     const {isFetching, allTimetable} = useSelector(state => state.timetableReducer)
 
     const dispatch = useDispatch()
@@ -27,8 +27,7 @@ const Timetable = React.memo((props) => {
 
 
     useEffect(() => {
-        dispatch(getTimetable(token))
-        console.log(props.timetable.alldate)
+        dispatch(getTimetable(token, userId))
     }, [dispatch])
 
     return (
