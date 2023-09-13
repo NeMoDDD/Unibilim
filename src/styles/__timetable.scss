@@ -225,6 +225,7 @@ table th {
 .cards {
   display: none;
   width: 100%;
+  height: auto;
   border: 1px solid #93979b;
   border-radius: 15px;
   margin-top: 15px;
@@ -308,7 +309,9 @@ table th {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: white;
+  align-content: baseline;
+  background-color: #FFFFFF;
+  height: 90dvh;
 }
 
 .card_stud {
@@ -392,7 +395,6 @@ table th {
   .cards {
     display: block;
     width: 45%;
-    height: 100%;
     margin-left: 15px;
   }
   .timetable {

@@ -1,10 +1,5 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import s from "./StudList.module.scss"
-import stud1 from "../../../assets/img/stud1.png";
-import stud2 from "../../../assets/img/stud2.png";
-import stud3 from "../../../assets/img/stud3.png";
-import stud4 from "../../../assets/img/stud4.png";
-import stud5 from "../../../assets/img/stud5.png";
 import SideBarTeach from "../../SideBar/SideBarTeach";
 import HeaderT from "../../Header/HeaderT";
 import {Select,Spin} from "antd";
@@ -18,11 +13,28 @@ const StudList = () => {
     const {userRole,token} = useSelector(state => state.loginReducer)
     const {myStudents,isFetching} = useSelector(state => state.myStudents)   
     
-    const dispatch = useDispatch() 
+    const dispatch = useDispatch()
+
+    const [filter, setFilter] = useState("all");
+    const [filteredStudents, setFilteredStudents] = useState([]);
     useEffect(() =>{ 
         dispatch(getDefineProffeserossStudents({token}))
-    },[dispatch,token]) 
-    console.log(myStudents);
+    },[dispatch,token])
+
+    useEffect(() => {
+        const filterStudentsBySurname = () => {
+            if (filter === "all") {
+                setFilteredStudents(myStudents)
+            } else if (filter === "surname_filter") {
+                const sortedStudents = [...myStudents].sort((a, b) =>
+                    a.surname.localeCompare(b.surname, "ru", { sensitivity: "base" })
+                );
+                setFilteredStudents(sortedStudents);
+            }
+        };
+        filterStudentsBySurname();
+    }, [filter, myStudents]);
+
     return (
         <>
             <HeaderT/>
@@ -65,10 +77,11 @@ const StudList = () => {
                                     {value: "all", label: "Все"},
                                     {value: 'surname_filter', label: 'По фамилии'},
                                 ]}
+                                onChange={(value) => setFilter(value)}
                             />
                         </div>
                         <div className={s.stud_list}>
-                            {myStudents?.map((item, index) => (
+                            {filteredStudents?.map((item, index) => (
                                 <div className={s.stud_card} key={index}>
                                     <img src={item?.photo ? item.photo : ava } alt=""/>
                                     <p key={item.id} className={s.stud_txt}>
