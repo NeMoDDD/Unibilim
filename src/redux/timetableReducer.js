@@ -55,6 +55,7 @@ export const timetableReducer = (state = initialState, action) => {
             } else {
                 return state;
             }
+
         case SET_TUESDAY:
             if (!state.timetable.tuesday.some(item => item.datetime === action.data.datetime)) {
                 return {
@@ -179,7 +180,6 @@ export const getTimetable = (token, userId) => {
 
         const data = await meetingsApi.getDefineStudentMeetings(token, userId)
         dispatch(setAllTimetable(data.data))
-        console.log(data)
 
         data.data.map((m) => {
             if (m.day_of_week === "Monday") {
@@ -216,7 +216,6 @@ export const getTimetable = (token, userId) => {
 
             daysOfWeek.push(daysInWeek[date.day()]);
         }
-        console.log(allDates)
         dispatch(setAllDate(allDates));
         dispatch(setDayOfWeek(daysOfWeek))
 

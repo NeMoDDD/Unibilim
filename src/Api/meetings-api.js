@@ -2,7 +2,7 @@ import {instance} from "./api";
 
 export const meetingsApi = {
     getAllMeetings(token) {
-        //Получаем все Встречи
+        //Получаем встречи всех профессоров
         return instance.get(`meetings/`, {
             headers: {
                 'Authorization': `Token ${token}`
@@ -10,7 +10,7 @@ export const meetingsApi = {
         });
     },
     getProfessorMeetingsByStudent(professor_id, token) {
-        // Получаем встречи профессора будучи студентом для бронирования
+        // Получаем встречи профессора
         return instance.get(`meetings/?professor_id=${professor_id}`, {
             headers: {
                 'Authorization': `Token ${token}`,

@@ -93,7 +93,7 @@ table th {
 
 .cards_block {
   min-height: 90dvh;
-  display: flex;
+  display: none;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
@@ -191,6 +191,7 @@ table th {
     display: block;
   }
   .cards_block {
+    display: flex;
     flex-direction: column;
     padding: 0 15px 0 15px
   }
@@ -235,6 +236,9 @@ table th {
     width: 100%;
     display: flex;
     flex-direction: column;
+  }
+  .cards_block {
+    display: flex;
   }
   .cards {
     display: block;

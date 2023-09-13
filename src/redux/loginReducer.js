@@ -125,7 +125,6 @@ export const login = (username, password) => {
             dispatch(setFetching(true));
             let data = await loginApi.login(username, password);
             dispatch(setStudentId(data.data.id))
-            console.log(data);
 
             if (data.status === 200) {
                 dispatch(setUserRole(data.data.role));
@@ -138,7 +137,6 @@ export const login = (username, password) => {
 
             if (data.data.role === 'professor') {
                 let profData = await professorsApi.getProfessorsCabinet(data.data.token);
-                console.log(profData)
                 dispatch(setUserData(profData));
             }
         } catch (error) {

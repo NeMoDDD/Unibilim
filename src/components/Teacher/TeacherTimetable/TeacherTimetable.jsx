@@ -14,16 +14,17 @@ import {Spin} from "antd";
 
 const TeacherTimetable = () => {
     const {timetable, isFetchingTeacherTimetable} = useSelector(state => state.professorsReducer)
+    const {token, userRole, id} = useSelector(state => state.loginReducer)
 
-    useEffect(() => {
-        dispatch(getProfessorTimetable(token))
-    }, []);
+    const dispatch = useDispatch()
 
     const firstDate = timetable.allDate?.[0];
     const lastDate = timetable.allDate[timetable.allDate.length - 1];
-    const {token, userRole} = useSelector(state => state.loginReducer)
 
-    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getProfessorTimetable(id, token))
+    }, [dispatch]);
+
     const getNextWeekHandler = () => {
         dispatch(getNextTimetable(timetable.allDate[6]))
     }
@@ -54,7 +55,7 @@ const TeacherTimetable = () => {
                         <table className={s.subjtable}>
                             <tbody>
                             <tr>
-                                {timetable.allDate.map((date, index) => (
+                                {timetable?.allDate.map((date, index) => (
                                     <td key={index}>
                                         <div>
                                             {date}, <br/> {timetable.dayOfWeek[index]}
@@ -65,7 +66,7 @@ const TeacherTimetable = () => {
                             <tr style={{borderTop: "1px solid"}}>
                                 <td>
                                     <div className={s.stud_block}>
-                                        {timetable.monday
+                                        {timetable?.monday
                                             .sort((a, b) => a.time.localeCompare(b.time))
                                             .map((item, key) => {
                                                 const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
@@ -85,7 +86,7 @@ const TeacherTimetable = () => {
                                 </td>
                                 <td>
                                     <div className={s.stud_block}>
-                                        {timetable.tuesday
+                                        {timetable?.tuesday
                                             .sort((a, b) => a.time.localeCompare(b.time))
                                             .map((item, key) => {
                                                 const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
@@ -105,7 +106,7 @@ const TeacherTimetable = () => {
                                 </td>
                                 <td>
                                     <div className={s.stud_block}>
-                                        {timetable.wednesday
+                                        {timetable?.wednesday
                                             .sort((a, b) => a.time.localeCompare(b.time))
                                             .map((item, key) => {
                                                 const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
@@ -125,7 +126,7 @@ const TeacherTimetable = () => {
                                 </td>
                                 <td>
                                     <div className={s.stud_block}>
-                                        {timetable.thursday
+                                        {timetable?.thursday
                                             .sort((a, b) => a.time.localeCompare(b.time))
                                             .map((item, key) => {
                                                 const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
@@ -145,7 +146,7 @@ const TeacherTimetable = () => {
                                 </td>
                                 <td>
                                     <div className={s.stud_block}>
-                                        {timetable.friday
+                                        {timetable?.friday
                                             .sort((a, b) => a.time.localeCompare(b.time))
                                             .map((item, key) => {
                                                 const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
@@ -165,7 +166,7 @@ const TeacherTimetable = () => {
                                 </td>
                                 <td>
                                     <div className={s.stud_block}>
-                                        {timetable.saturday
+                                        {timetable?.saturday
                                             .sort((a, b) => a.time.localeCompare(b.time))
                                             .map((item, key) => {
                                                 const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)

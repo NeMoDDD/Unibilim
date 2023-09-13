@@ -115,7 +115,7 @@ const ProfessorsReducer = (state = initialState, action) => {
                     ...state,
                     timetable: {
                         ...state.timetable,
-                        wednesday: [...state.timetable.wednesday, action.data]
+                        wednesday: [action.data]
                     }
                 }
             } else {
@@ -169,6 +169,7 @@ const ProfessorsReducer = (state = initialState, action) => {
             } else {
                 return state
             }
+
         case SET_ALL_DATE:
             return {
                 ...state,
@@ -177,6 +178,7 @@ const ProfessorsReducer = (state = initialState, action) => {
                     allDate: action.data
                 }
             }
+
         case SET_DAY_OF_WEEK:
             return {
                 ...state,
@@ -255,11 +257,12 @@ export const getDefineProfessor = (id, token) => {
     }
 }
 
-export const getProfessorTimetable = (token) => {
+export const getProfessorTimetable = (professor_id, token) => {
     return async (dispatch) => {
-        const data = await meetingsApi.getAllMeetings(token)
-        console.log(data)
         dispatch(setIsFetchingTeacher(true))
+
+        const data = await meetingsApi.getProfessorMeetingsByStudent(professor_id, token)
+        console.log(data)
 
         data.data.map((m) => {
             if (m.day_of_week === "Monday") {
@@ -296,7 +299,6 @@ export const getProfessorTimetable = (token) => {
 
             daysOfWeek.push(daysInWeek[date.day()]);
         }
-        console.log(allDates)
         dispatch(setAllDateTeacher(allDates));
         dispatch(setDayOfWeekTeacher(daysOfWeek))
 
