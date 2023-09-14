@@ -25,6 +25,8 @@ import {addWeeks, format} from 'date-fns';
 import {ru} from 'date-fns/locale';
 
 const Reservation = () => {
+    const moment = require('moment-timezone');
+
     const [currentWeekStart, setCurrentWeekStart] = useState(new Date());
     const [isPrevWeek, setPrevWeek] = useState(false);
 
@@ -35,7 +37,8 @@ const Reservation = () => {
         oneLessonCost,
         reservationLessonsData,
         weekForward,
-        paymentIsFetching
+        paymentIsFetching,
+        timetableProfessor
     } = useSelector(state => state.reservationReducer)
     const dispatch = useDispatch()
 
@@ -87,15 +90,31 @@ const Reservation = () => {
 
     const addWeeksToDate = (date, numberOfWeeks) => {
         const result = [];
+        const professorDates = timetableProfessor.map(lesson => lesson.datetime);
+
+        let hasError = false;
 
         for (const dateStr of date) {
-            let currentDate = new Date(dateStr);
+            const kyrgyzstanTime = moment(dateStr).tz('Asia/Bishkek');
+
             for (let i = 0; i < numberOfWeeks; i++) {
-                currentDate.setDate(currentDate.getDate() + 7);
-                result.push(currentDate.toISOString());
+                kyrgyzstanTime.add(1, 'weeks');
+                const formattedDate = kyrgyzstanTime.format('YYYY-MM-DDTHH:mm:ss[Z]');
+                console.log(formattedDate);
+
+                if (!result.includes(formattedDate) && !date.includes(formattedDate) && !professorDates.includes(formattedDate)) {
+                    result.push(formattedDate);
+                } else {
+                    console.error('Дублирующаяся дата найдена:', formattedDate);
+                    hasError = true
+                }
             }
         }
-        dispatch(initPayment(defineProfessor.id, result, 150, "Физика", token))
+
+        if (!hasError) {
+            // Выполняем диспетчер только если нет ошибок
+            dispatch(initPayment(defineProfessor.id, result, 150, "Физика", token))
+        }
     }
 
     return (
