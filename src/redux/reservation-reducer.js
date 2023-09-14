@@ -98,6 +98,7 @@ export const getReservationTable = (professor_id, token) => {
 export const initPayment = (professor_id, time_slots, amount, service, token) => {
     return async (dispatch) => {
         try {
+            console.log(time_slots)
             dispatch(setPaymentIsFetching(true))
             let data = await reservationApi.initPayment(professor_id, time_slots, amount, service, token)
             console.log(data)

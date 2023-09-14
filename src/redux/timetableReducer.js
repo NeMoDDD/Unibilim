@@ -74,7 +74,7 @@ export const timetableReducer = (state = initialState, action) => {
                     ...state,
                     timetable: {
                         ...state.timetable,
-                        wednesday: [...state.timetable.wednesday, action.data]
+                        wednesday: [action.data]
                     }
                 }
             } else {

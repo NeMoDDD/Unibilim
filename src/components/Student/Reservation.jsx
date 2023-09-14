@@ -1,3 +1,11 @@
+import minus from "../../assets/img/Group 212D.svg"
+import minusMobile from "../../assets/img/Group 212.svg"
+import plus from "../../assets/img/Group 211D.svg"
+import plusMobile from "../../assets/img/Group 211.svg"
+import backToTeacher from "../../assets/img/Vector 44 (1).svg"
+import previous from "../../assets/img/Group 214.svg"
+import next from "../../assets/img/Group 213.svg"
+
 import React, {useEffect, useState} from "react";
 import SideBar from "../SideBar/SideBar";
 import "../../styles/__reservation.scss";
@@ -13,16 +21,8 @@ import {
     initPayment,
     setWeekForward
 } from "../../redux/reservation-reducer";
-import {format} from 'date-fns';
+import {addWeeks, format} from 'date-fns';
 import {ru} from 'date-fns/locale';
-import minus from "../../assets/img/Group 212D.svg"
-import minusMobile from "../../assets/img/Group 212.svg"
-import plus from "../../assets/img/Group 211D.svg"
-import plusMobile from "../../assets/img/Group 211.svg"
-
-import backToTeacher from "../../assets/img/Vector 44 (1).svg"
-import previous from "../../assets/img/Group 214.svg"
-import next from "../../assets/img/Group 213.svg"
 
 const Reservation = () => {
     const [currentWeekStart, setCurrentWeekStart] = useState(new Date());
@@ -85,6 +85,19 @@ const Reservation = () => {
         return date;
     });
 
+    const addWeeksToDate = (date, numberOfWeeks) => {
+        const result = [];
+
+        for (const dateStr of date) {
+            let currentDate = new Date(dateStr);
+            for (let i = 0; i < numberOfWeeks; i++) {
+                currentDate.setDate(currentDate.getDate() + 7);
+                result.push(currentDate.toISOString());
+            }
+        }
+        dispatch(initPayment(defineProfessor.id, result, 150, "Физика", token))
+    }
+
     return (
         <>
             <Header/>
@@ -99,10 +112,10 @@ const Reservation = () => {
                     <Spin spinning={false}>
                         <div className="reser_block">
                             <div className="head_block">
-                                <div className="backToTeacher_block">
+                                <NavLink to="/teachlist" className="backToTeacher_block back_btn">
                                     <img src={backToTeacher} alt="backToTeacher"/>
-                                    <NavLink to="/teachlist" className="back_btn">К выбору учителя</NavLink>
-                                </div>
+                                    К выбору учителя
+                                </NavLink>
                             </div>
                             <div className="reser_table_block">
                                 <div className="reser_table">
@@ -134,7 +147,9 @@ const Reservation = () => {
                                     <div className="choose_study_days_block">
                                         <p className="choose_study_days_txt">Выберите дни обучения</p>
                                         <div className="week_forward_block">
-                                            <button className={!isPrevWeek ? "previous_btn" : "previous_btn previous_btn_rotate"} onClick={goToPreviousWeek}><img
+                                            <button
+                                                className={!isPrevWeek ? "previous_btn" : "previous_btn previous_btn_rotate"}
+                                                onClick={goToPreviousWeek}><img
                                                 src={!isPrevWeek ? previous : next} alt="minus"/></button>
                                             <p className="reser_date">
                                                 {format(dates[0], 'd MMM', {locale: ru}).replace(/\.$/, '')}
@@ -178,7 +193,7 @@ const Reservation = () => {
                                     </div>
                                     <button
                                         className={`pay_btn ${paymentIsFetching ? 'payment_loading' : ''}`}
-                                        onClick={() => dispatch(initPayment(defineProfessor.id, reservationLessonsData, 150, "Физика", token))}
+                                        onClick={() => addWeeksToDate(reservationLessonsData, weekForward)}
                                     >
                                         {paymentIsFetching ? (
                                             <Spin size="small"/>
@@ -254,7 +269,7 @@ const Reservation = () => {
                                 </div>
                                 <button
                                     className={`pay_btn ${paymentIsFetching ? 'payment_loading' : ''}`}
-                                    onClick={() => dispatch(initPayment(defineProfessor.id, reservationLessonsData, 150, "Физика", token))}
+                                    onClick={() => addWeeksToDate(reservationLessonsData, weekForward)}
                                 >
                                     {paymentIsFetching ? (
                                         <Spin size="small"/>
