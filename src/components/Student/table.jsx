@@ -4,7 +4,7 @@ import {setReservationLessonsCount, setReservationLessonsData} from '../../redux
 import './__table.scss';
 import {Spin} from "antd";
 
-const CalendarTable = ({dates, setCurrentWeekStart}) => {
+const CalendarTable = ({dates, setCurrentWeekStart, today}) => {
     const [selectedSlots, setSelectedSlots] = useState([]);
     const [weeksForward, setWeeksForward] = useState(0)
     //
@@ -18,8 +18,6 @@ const CalendarTable = ({dates, setCurrentWeekStart}) => {
     const {format} = require('date-fns');
     const {ru} = require('date-fns/locale');
 
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
     const daysOfWeek = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
 
     const setStartOfWeek = (date, weeks) => {
@@ -56,7 +54,17 @@ const CalendarTable = ({dates, setCurrentWeekStart}) => {
         return {start: `${startHour}:00`, end: `${endHour}:00`};
     });
 
+    // Функция для проверки, является ли день в прошлом или сегодняшним днем
+    const isPastOrToday = (dateToCheck, today) => {
+        const dateToCheckWithoutTime = new Date(dateToCheck);
+        dateToCheckWithoutTime.setHours(0, 0, 0, 0);
 
+        const todayWithoutTime = new Date(today);
+        todayWithoutTime.setHours(0, 0, 0, 0);
+
+        // Сравниваем даты без времени
+        return dateToCheckWithoutTime >= todayWithoutTime;
+    };
     return (
         <div>
             <div className="calendar-container">
@@ -83,7 +91,7 @@ const CalendarTable = ({dates, setCurrentWeekStart}) => {
                                     const isHoliday = holidays.some(item => item.date === dateString);
                                     const isAlreadyBooked = timetableProfessor.some(lesson => lesson.datetime === `${dateString}T${timeSlot}:00Z`);
                                     const isReserved = isAlreadyBooked || isHoliday;
-                                    const isFutureDate = date > today
+                                    const isFutureDate = isPastOrToday(dateString, today)
 
                                     return (
                                         <td

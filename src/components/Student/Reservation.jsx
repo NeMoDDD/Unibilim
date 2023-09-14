@@ -15,7 +15,7 @@ import Header from "../Header/HeaderS";
 import {useDispatch, useSelector} from "react-redux";
 import {Navigate, NavLink} from "react-router-dom";
 import {motion} from "framer-motion";
-import {Spin} from "antd";
+import {message, Spin} from "antd";
 import {
     getReservationTable,
     initPayment,
@@ -32,6 +32,8 @@ const Reservation = () => {
 
     const {userRole, token} = useSelector(state => state.loginReducer)
     const {defineProfessor} = useSelector(state => state.professorsReducer)
+
+    const [messageApi, contextHolder] = message.useMessage();
     const {
         reservationLessonsCount,
         oneLessonCost,
@@ -82,12 +84,20 @@ const Reservation = () => {
         return new Date(date.getFullYear(), date.getMonth(), diff);
     };
 
+    const today = new Date();
+
     const dates = Array.from({length: 7}, (_, index) => {
         const date = new Date(currentWeekStart);
         date.setDate(getStartOfWeek(currentWeekStart).getDate() + index);
         return date;
     });
 
+    const reserveError = (formattedDate) => {
+        messageApi.open({
+            type: 'error',
+            content: `${formattedDate} уже забронировано, выберите другую дату!`,
+        });
+    };
     const addWeeksToDate = (date, numberOfWeeks) => {
         const result = [];
         const professorDates = timetableProfessor.map(lesson => lesson.datetime);
@@ -100,12 +110,12 @@ const Reservation = () => {
             for (let i = 0; i < numberOfWeeks; i++) {
                 kyrgyzstanTime.add(1, 'weeks');
                 const formattedDate = kyrgyzstanTime.format('YYYY-MM-DDTHH:mm:ss[Z]');
-                console.log(formattedDate);
 
                 if (!result.includes(formattedDate) && !date.includes(formattedDate) && !professorDates.includes(formattedDate)) {
                     result.push(formattedDate);
                 } else {
-                    console.error('Дублирующаяся дата найдена:', formattedDate);
+                    console.error();
+                    reserveError(formattedDate)
                     hasError = true
                 }
             }
@@ -119,6 +129,7 @@ const Reservation = () => {
 
     return (
         <>
+            {contextHolder}
             <Header/>
             <SideBar/>
             {userRole === "student" ?
@@ -181,7 +192,7 @@ const Reservation = () => {
                                                 src={next} alt="plus"/></button>
                                         </div>
                                     </div>
-                                    <Table dates={dates} setCurrentWeekStart={setCurrentWeekStart}/>
+                                    <Table dates={dates} setCurrentWeekStart={setCurrentWeekStart} today={today}/>
                                 </div>
                             </div>
                             <div className="pay_block">
@@ -273,7 +284,7 @@ const Reservation = () => {
                                 <button className="next_btn" onClick={goToNextWeek}><img
                                     src={next} alt="plus"/></button>
                             </div>
-                            <Table dates={dates} setCurrentWeekStart={setCurrentWeekStart}/>
+                            <Table dates={dates} setCurrentWeekStart={setCurrentWeekStart} today={today}/>
                             <div className="for_pay">
                                 <div className="pay_subj">
                                     <div className="week_forward_block">
