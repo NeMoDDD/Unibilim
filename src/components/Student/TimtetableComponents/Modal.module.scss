@@ -1,3 +1,7 @@
+$mobile-breakpoint: 460px;
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
 body .modal {
     height: 40%;
     width: 55% !important;
@@ -127,10 +131,8 @@ body .modal {
     justify-content: space-between;
 }
 
-.btn_wrapper_another,
-.btn_wrapper_cancel,
 .btn_wrapper_write {
-    width: 31%;
+    width: 100%;
     height: 100%;
 }
 
@@ -383,7 +385,6 @@ body .modal {
     }
 
     .btn__write_mobile {
-        width: 100%;
         display: block;
         width: 85%;
     }
@@ -411,6 +412,9 @@ body .modal {
         display: none;
     }
 
+    .inner__buttons {
+        display: none;
+    }
 
 }
 
@@ -428,7 +432,7 @@ body .modal {
     body .modal {
         width: 64% !important;
     }
-    
+
     .modal__about {
         height: 37%;
         row-gap: 5%;
@@ -466,7 +470,7 @@ body .modal {
     .info__title {
         font-size: 14px;
         line-height: 21px;
-    } 
+    }
     .inner__buttons,
     .btn_wrapper_accept {
         height: 32%;
@@ -477,36 +481,34 @@ body .modal {
     .btn_wrapper_cancel button,
     .btn_wrapper_write button {
         font-size: 14px;
-        line-height: 19px;
     }
-} 
+}
 @media screen and (max-width:574px) {
     body .modal {
-        width: 88% !important; 
+        width: 88% !important;
         height: 82%;
-    } 
+    }
     .btn_wrapper_accept button,
     .btn_wrapper_another button,
     .btn_wrapper_cancel button,
-    .btn_wrapper_write button , 
+    .btn_wrapper_write button ,
     .btn__write_mobile button {
         font-size: 13px;
-        line-height: 19px;
-    } 
-    .transition__title{ 
+    }
+    .transition__title{
         font-size: 11px;
     }
-} 
+}
 @media screen and (max-height:651px) {
     body .modal {
-        width: 90% !important; 
+        width: 90% !important;
         height: 88%;
-    } 
-    .info__buttons{  
+    }
+    .info__buttons{
         height: 99%;
         justify-content: flex-end;
-    } 
-}  
+    }
+}
 @media screen and (min-height:1151px) {
 
     .about__photo img {
@@ -548,7 +550,6 @@ body .modal {
     .btn_wrapper_cancel button,
     .btn__write_mobile button {
         font-size: 19px;
-        line-height: 24px;
     }
 
-} 
+}
