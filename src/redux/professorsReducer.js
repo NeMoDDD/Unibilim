@@ -115,7 +115,7 @@ const ProfessorsReducer = (state = initialState, action) => {
                     ...state,
                     timetable: {
                         ...state.timetable,
-                        wednesday: [action.data]
+                        wednesday: [...state.timetable.wednesday, action.data]
                     }
                 }
             } else {
@@ -192,6 +192,7 @@ const ProfessorsReducer = (state = initialState, action) => {
                 ...state,
                 isFetchingTeacherTimetable: action.isFetchingTeacherTimetable
             }
+
         default: {
             return {...state}
         }

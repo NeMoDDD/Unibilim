@@ -1,5 +1,6 @@
 import {loginApi} from "../Api/login-api";
 import {professorsApi} from "../Api/professors-api";
+import {deleteTimetable} from "./timetableReducer";
 
 const SET_ROLE = "SET_ROLE"
 const SET_TOKEN = "SET_TOKEN"
@@ -150,6 +151,7 @@ export const login = (username, password) => {
 export const logout = () => {
     return async (dispatch) => {
         localStorage.removeItem('user_unibilim');
+        dispatch(deleteTimetable())
         dispatch(logoutAC())
     }
 }

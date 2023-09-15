@@ -14,6 +14,8 @@ const SET_ALL_DATE = "SET_ALL_DATE"
 const SET_DAY_OF_WEEK = "SET_DAY_OF_WEEK"
 const SET_IF_FETCHING = "SET_IF_FETCHING"
 const SET_ALL_TIMETABLE = "SET_ALL_TIMETABLE"
+const DELETE_TIMETABLE = "DELETE_TIMETABLE"
+
 
 let initialState = {
     timetable: {
@@ -55,7 +57,6 @@ export const timetableReducer = (state = initialState, action) => {
             } else {
                 return state;
             }
-
         case SET_TUESDAY:
             if (!state.timetable.tuesday.some(item => item.datetime === action.data.datetime)) {
                 return {
@@ -69,12 +70,12 @@ export const timetableReducer = (state = initialState, action) => {
                 return state
             }
         case SET_WEDNESDAY:
-            if (!state.timetable.monday.some(item => item.datetime === action.data.datetime)) {
+            if (!state.timetable.wednesday.some(item => item.datetime === action.data.datetime)) {
                 return {
                     ...state,
                     timetable: {
                         ...state.timetable,
-                        wednesday: [action.data]
+                        wednesday: [...state.timetable.wednesday, action.data]
                     }
                 }
             } else {
@@ -154,6 +155,20 @@ export const timetableReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.isFetching
             }
+        case DELETE_TIMETABLE:
+            return {
+                ...state,
+                timetable: {
+                    ...state.timetable,
+                    monday: [],
+                    tuesday: [],
+                    wednesday: [],
+                    thursday: [],
+                    friday: [],
+                    sunday: [],
+                    saturday: []
+                }
+            }
         default:
             return {
                 ...state
@@ -173,6 +188,8 @@ export const setAllDate = (data) => ({type: SET_ALL_DATE, data})
 export const setAllTimetable = (allTimetable) => ({type: SET_ALL_TIMETABLE, allTimetable})
 export const setDayOfWeek = (data) => ({type: SET_DAY_OF_WEEK, data})
 export const setIsFetching = (isFetching) => ({type: SET_IF_FETCHING, isFetching})
+export const deleteTimetable = () => ({type: DELETE_TIMETABLE})
+
 
 export const getTimetable = (token, userId) => {
     return async (dispatch) => {
@@ -180,7 +197,7 @@ export const getTimetable = (token, userId) => {
 
         const data = await meetingsApi.getDefineStudentMeetings(token, userId)
         dispatch(setAllTimetable(data.data))
-
+        console.log(data.data)
         data.data.map((m) => {
             if (m.day_of_week === "Monday") {
                 dispatch(setMonday(m))

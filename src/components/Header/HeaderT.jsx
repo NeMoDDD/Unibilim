@@ -8,6 +8,7 @@ import {Sling as Hamburger} from 'hamburger-react'
 import {NavLink} from "react-router-dom";
 import {logout} from "../../redux/loginReducer";
 import {useDispatch, useSelector} from "react-redux";
+import {motion} from "framer-motion";
 
 function HeaderT() {
     const [isOpen, setOpen] = useState(false)
@@ -39,7 +40,12 @@ function HeaderT() {
                 </div>
             </Navbar>
             {isOpen && (
-                <div className={s.menu__header}>
+                <motion.div
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    transition={{duration: 0.25}}
+                    className={s.menu__header}
+                >
                     <div className={s.menu__header_block}>
                         <NavLink to="/teachlk"
                                  className={navData => navData.isActive ? `${s.menu__header__link__active} ${s.menu__header__link}` : s.menu__header__link}>
@@ -63,7 +69,7 @@ function HeaderT() {
                             <button className={s.logout_btn} onClick={() => dispatch(logout())}>Выйти</button>
                         </div>
                         : null}
-                </div>
+                </motion.div>
             )}
         </div>
     );
