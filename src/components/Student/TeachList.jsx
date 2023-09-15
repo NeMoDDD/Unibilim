@@ -121,15 +121,15 @@ const TeachList = () => {
                                     <div className="teach_list" key={index}>
                                         <div className="teach_card">
                                             <img src={el?.photo ? el?.photo : teach1} className="teach_img" alt=""/>
-                                            <p className="teach_name">{el.firstName} {el.surname}</p>
-                                            <p className="teach_about">{el.info}</p>
-                                            <p className="teach_subj" id="phyz" style={{backgroundColor: '#F731A8'}}>
+                                            <p className="teach_subj" id="phyz">
                                                 {el.subject[0]}
                                             </p>
+                                            <p className="teach_name">{el.firstName} {el.surname}</p>
+                                            <p className="teach_about">{el.info}</p>
                                             <a className="teach_btn"
                                                onClick={() => handleTeachBtnClick(el.id)}
                                             >
-                                                Подробнее
+                                                Записаться
                                             </a>
                                         </div>
                                     </div>

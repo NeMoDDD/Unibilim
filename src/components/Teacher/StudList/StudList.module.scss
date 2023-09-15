@@ -41,8 +41,7 @@ $desktop-breakpoint: 1280px;
     padding-bottom: 20px;
 }
 .stud_card {
-    width: 31%;
-    padding: 10px;
+    padding: 10px 25px;
     background-color: #fcfcfc;
     border-radius: 25px;
     margin-left: 14px;
@@ -185,12 +184,14 @@ $desktop-breakpoint: 1280px;
         margin-top: 15px;
     }
     .stud_card {
-        width: 45%;
     }
     .radios {
         flex-direction: column;
         justify-content: space-around;
         flex-wrap: wrap;
+    }
+    .stud_list {
+        justify-content: center;
     }
 }
 @media screen and (min-width: $mobile-breakpoint) and (max-width: $tablet-breakpoint) {
@@ -198,7 +199,7 @@ $desktop-breakpoint: 1280px;
         width: 100%;
     }
     .stud_card {
-        width: 30%;
+
     }
     .stud_drop {
         width: 31%;
@@ -216,6 +217,5 @@ $desktop-breakpoint: 1280px;
         width: 100%;
     }
     .stud_card {
-        width: 31%;
     }
 }

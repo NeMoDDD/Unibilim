@@ -6,7 +6,7 @@ import {Select,Spin} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
 import { getDefineProffeserossStudents } from "../../../redux/myStudents-reducer";
-import ava from '../../../assets/img/student-without-photo.svg'
+import ava from '../../../assets/img/Group 135.svg'
 import {motion} from "framer-motion";
 
 const StudList = () => {
@@ -90,9 +90,9 @@ const StudList = () => {
                                         <br/>
                                         {item?.surname}
                                     </p>
-                                    <button className={s.stud_btn}>
-                                        <p className={s.stud_btn_txt}>Подробнее</p>
-                                    </button>
+                                    {/*<button className={s.stud_btn}>*/}
+                                    {/*    <p className={s.stud_btn_txt}>Подробнее</p>*/}
+                                    {/*</button>*/}
                                 </div>
                             ))}
                         </div>
