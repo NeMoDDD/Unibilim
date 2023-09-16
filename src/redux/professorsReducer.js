@@ -110,7 +110,7 @@ const ProfessorsReducer = (state = initialState, action) => {
                 return state
             }
         case SET_WEDNESDAY:
-            if (!state.timetable.monday.some(item => item.datetime === action.data.datetime)) {
+            if (!state.timetable.wednesday.some(item => item.datetime === action.data.datetime)) {
                 return {
                     ...state,
                     timetable: {

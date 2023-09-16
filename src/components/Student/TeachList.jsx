@@ -6,10 +6,11 @@ import Header from "../Header/HeaderS";
 import {useDispatch, useSelector} from "react-redux";
 import {getDefineProfessor, getProfessors} from "../../redux/professorsReducer";
 import {Navigate, NavLink} from "react-router-dom";
-import {Spin} from "antd";
+import {Empty, Spin} from "antd";
 import {motion} from "framer-motion";
 import s from "../Teacher/StudList/StudList.module.scss";
 import {useNavigate} from 'react-router-dom';
+import emptyImg from "../../assets/img/folder.png"
 
 
 const TeachList = () => {
@@ -27,7 +28,6 @@ const TeachList = () => {
         isFetching,
         classFilter,
         subjectFilter,
-        defineProfessor
     } = useSelector(state => state.professorsReducer)
     useEffect(() => {
         dispatch(getProfessors({token}))
@@ -117,23 +117,28 @@ const TeachList = () => {
                                 </select>
                             </div>
                             <div className="list_block">
-                                {professorList?.map((el, index) => (
-                                    <div className="teach_list" key={index}>
-                                        <div className="teach_card">
-                                            <img src={el?.photo ? el?.photo : teach1} className="teach_img" alt=""/>
-                                            <p className="teach_subj" id="phyz">
-                                                {el.subject[0]}
-                                            </p>
-                                            <p className="teach_name">{el.firstName} {el.surname}</p>
-                                            <p className="teach_about">{el.info}</p>
-                                            <a className="teach_btn"
-                                               onClick={() => handleTeachBtnClick(el.id)}
-                                            >
-                                                Записаться
-                                            </a>
+                                {professorList.length === 0 ? ( // Проверяем, пуст ли массив professorList
+                                    <Empty className="empty_block" description={"Пусто"} />
+                                ) : (
+                                    // Если professorList не пустой, отображаем репетиторов
+                                    professorList.map((el, index) => (
+                                        <div className="teach_list" key={index}>
+                                            <div className="teach_card">
+                                                <img src={el?.photo ? el?.photo : teach1} className="teach_img" alt=""/>
+                                                <p className="teach_subj" id="phyz">
+                                                    {el.subject[0].toUpperCase()}, {el.price} с/урок
+                                                </p>
+                                                <p className="teach_name">{el.firstName} {el.surname}</p>
+                                                <p className="teach_about">{el.info}</p>
+                                                <a className="teach_btn"
+                                                   onClick={() => handleTeachBtnClick(el.id)}
+                                                >
+                                                    Записаться
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))
+                                )}
                             </div>
                         </Spin>
                     </div>

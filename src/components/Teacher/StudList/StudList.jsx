@@ -2,12 +2,13 @@ import React, {useEffect, useState} from "react";
 import s from "./StudList.module.scss"
 import SideBarTeach from "../../SideBar/SideBarTeach";
 import HeaderT from "../../Header/HeaderT";
-import {Select,Spin} from "antd";
+import {Empty, Select, Spin} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
 import { getDefineProffeserossStudents } from "../../../redux/myStudents-reducer";
 import ava from '../../../assets/img/Group 135.svg'
 import {motion} from "framer-motion";
+import teach1 from "../../../assets/img/teach1.png";
 
 const StudList = () => {
     const {userRole,token} = useSelector(state => state.loginReducer)
@@ -81,7 +82,10 @@ const StudList = () => {
                             />
                         </div>
                         <div className={s.stud_list}>
-                            {filteredStudents?.map((item, index) => (
+                            {filteredStudents.length === 0 ? (
+                                <Empty className={s.empty_block} description={"Пусто"} />
+                            ) : (
+                            filteredStudents?.map((item, index) => (
                                 <div className={s.stud_card} key={index}>
                                     <img src={item?.photo ? item.photo : ava } alt=""/>
                                     <p key={item.id} className={s.stud_txt}>
@@ -94,7 +98,8 @@ const StudList = () => {
                                     {/*    <p className={s.stud_btn_txt}>Подробнее</p>*/}
                                     {/*</button>*/}
                                 </div>
-                            ))}
+                            ))
+                            )}
                         </div>
                 </Spin>
                     </div>

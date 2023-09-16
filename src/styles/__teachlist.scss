@@ -31,7 +31,6 @@ $desktop-breakpoint: 1280px;
   border-radius: 17.5px;
   font-weight: 400;
   font-size: 13px;
-  line-height: 21px;
   padding-left: 12px;
   border: none;
 }
@@ -40,6 +39,7 @@ $desktop-breakpoint: 1280px;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  //height: 72dvh;
   background-color: #f6fafc;
   border-radius: 25px;
   padding: 25px;
@@ -55,6 +55,12 @@ $desktop-breakpoint: 1280px;
 }
 .teach_img {
   border-radius: 20px;
+}
+.empty_block {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  flex-direction: column;
 }
 .teach_card {
   display: flex;

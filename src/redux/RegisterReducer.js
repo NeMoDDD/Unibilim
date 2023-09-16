@@ -148,7 +148,7 @@ export const registerNewStudent = (nick, name, surname, patronym, password, pass
         dispatch(setFetching(true))
         let data = await registerApi.regNewStudent(nick, name, surname, patronym, password, password2, `+${phone_numbers}`, telegram_username, date_of_birth, region, district_city, city, photo)
         console.log(data)
-        if (data.status === 201) {
+        if (data.status === 200) {
             dispatch(setToVerification(true))
             dispatch(setOtpTokenNikita(data.data.token))
         }

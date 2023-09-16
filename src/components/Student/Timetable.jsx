@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import SideBar from "../SideBar/SideBar";
 import "../../styles/__timetable.scss";
 import Header from "../Header/HeaderS";
@@ -16,6 +16,8 @@ const Timetable = React.memo((props) => {
     const lastDate = props.timetable?.alldate[props.timetable.alldate.length - 1];
     const {token, userRole, userId} = useSelector(state => state.loginReducer)
     const {isFetching, allTimetable} = useSelector(state => state.timetableReducer)
+
+    const [hasData, setHasData] = useState(false);
 
     const dispatch = useDispatch()
     const getNextWeekHandler = () => {
@@ -222,34 +224,40 @@ const Timetable = React.memo((props) => {
                             </tbody>
                         </table>
 
+                        {/* МОБИЛКИ */}
                         <div className="cards_block">
-
-                            {props.timetable.monday
-                                .sort((a, b) => a.time.localeCompare(b.time))
-                                .map((item, index) => {
-                                    const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                    if (props.timetable?.alldate[0] === formattedDate) {
-                                        return (
-                                            <TableMobile alldate={item.datetime} key={index}
-                                                         subj={item.subject}
-                                                         teach={item.professor_firstname + " " + item.professor_lastname}
-                                                         time={item.time.slice(0, -3)} backgroundColor={"#FFF1A1"}
-                                                         btn={"#FFEC7E"} info={item.professor_info}/>)
-                                    }
-                                })}
-                            {props.timetable.tuesday
-                                .sort((a, b) => a.time.localeCompare(b.time))
-                                .map((item, index) => {
-                                    const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                    if (props.timetable?.alldate[1] === formattedDate) {
-                                        return (
-                                            <TableMobile alldate={item.datetime} key={index}
-                                                         subj={item.subject}
-                                                         teach={item.professor_firstname + " " + item.professor_lastname}
-                                                         time={item.time.slice(0, -3)} backgroundColor={"#FFF1A1"}
-                                                         btn={"#FFEC7E"} info={item.professor_info}/>)
-                                    }
-                                })}
+                            {
+                                props.timetable.monday
+                                    .sort((a, b) => a.time.localeCompare(b.time))
+                                    .map((item, index) => {
+                                        const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
+                                        if (props.timetable?.alldate[0] === formattedDate) {
+                                            return (
+                                                <TableMobile alldate={item.datetime} key={index}
+                                                             subj={item.subject}
+                                                             teach={item.professor_firstname + " " + item.professor_lastname}
+                                                             time={item.time.slice(0, -3)}
+                                                             backgroundColor={"#FFF1A1"}
+                                                             btn={"#FFEC7E"} info={item.professor_info}/>)
+                                        }
+                                    })
+                            }
+                            {
+                                props.timetable.tuesday
+                                    .sort((a, b) => a.time.localeCompare(b.time))
+                                    .map((item, index) => {
+                                        const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
+                                        if (props.timetable?.alldate[1] === formattedDate) {
+                                            return (
+                                                <TableMobile alldate={item.datetime} key={index}
+                                                             subj={item.subject}
+                                                             teach={item.professor_firstname + " " + item.professor_lastname}
+                                                             time={item.time.slice(0, -3)}
+                                                             backgroundColor={"#FFF1A1"}
+                                                             btn={"#FFEC7E"} info={item.professor_info}/>)
+                                        }
+                                    })
+                            }
                             {props.timetable.wednesday
                                 .sort((a, b) => a.time.localeCompare(b.time))
                                 .map((item, index) => {

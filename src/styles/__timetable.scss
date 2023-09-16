@@ -305,7 +305,7 @@ table th {
 }
 
 .cards_block {
-  display: flex;
+  display: none;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
@@ -381,6 +381,7 @@ table th {
   }
 
   .cards_block {
+    display: flex;
     justify-content: flex-start;
     flex-direction: column;
     padding: 0 15px 0 15px
@@ -397,6 +398,9 @@ table th {
     display: block;
     width: 45%;
     margin-left: 15px;
+  }
+  .cards_block {
+    display: flex;
   }
   .timetable {
     display: none;

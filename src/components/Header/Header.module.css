@@ -62,6 +62,9 @@
     display: none;
     margin-right: 1em;
 }
+.studheader_none {
+    display: none !important;
+}
 .teachheader{
     display: none;
     margin-right: 1em;

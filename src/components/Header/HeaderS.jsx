@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import logo from '../../assets/img/unibilim-logo-web.svg'
 import logoMobile from "../../assets/img/logo mobile.svg"
 import {Sling as Hamburger} from 'hamburger-react'
-import {NavLink} from "react-router-dom";
+import {NavLink, useLocation} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../../redux/loginReducer";
 import {motion} from "framer-motion";
@@ -14,6 +14,9 @@ function HeaderFS() {
     const [isOpen, setOpen] = useState(false)
     const dispatch = useDispatch()
     const {token} = useSelector(state => state.loginReducer)
+
+    const location = useLocation();
+    const isReservationActive = location.pathname === "/reservation";
 
     return (
         <div>
@@ -30,7 +33,7 @@ function HeaderFS() {
                             <button onClick={() => dispatch(logout())}>Выйти</button>
                         </div>
                         : null}
-                    <div className={s.studheader}>
+                    <div className={token === null ? `${s.studheader} ${s.studheader_none}` : s.studheader}>
                         <Hamburger toggled={isOpen} toggle={setOpen} rounded onToggle={toggled => {
                             if (toggled) {
                             } else {
@@ -60,16 +63,16 @@ function HeaderFS() {
                         </div>
                         <div className={s.menu__header_block}>
                             <NavLink to="/teachlist"
-                                     className={navData => navData.isActive ? `${s.menu__header__link__active} ${s.menu__header__link}` : s.menu__header__link}>
+                                     className={navData => navData.isActive || isReservationActive ? `${s.menu__header__link__active} ${s.menu__header__link}` : s.menu__header__link}>
                                 Консультанты
                             </NavLink>
                         </div>
-                        <div className={s.menu__header_block}>
-                            <NavLink to="/reservation"
-                                     className={navData => navData.isActive ? `${s.menu__header__link__active} ${s.menu__header__link}` : s.menu__header__link}>
-                                Бронирование
-                            </NavLink>
-                        </div>
+                        {/*<div className={s.menu__header_block}>*/}
+                        {/*    <NavLink to="/reservation"*/}
+                        {/*             className={navData => navData.isActive ? `${s.menu__header__link__active} ${s.menu__header__link}` : s.menu__header__link}>*/}
+                        {/*        Бронирование*/}
+                        {/*    </NavLink>*/}
+                        {/*</div>*/}
                         {token !== null ?
                             <div className={s.menu__header_block}>
                                 <button className={s.logout_btn} onClick={() => dispatch(logout())}>Выйти</button>

@@ -10,6 +10,7 @@ const SET_USER_DATA = "SET_USER_DATA"
 const LOGOUT = "LOGOUT"
 const SET_IS_FETCHING = "SET_IS_FETCHING"
 const SET_USER_ID = "SET_USER_ID"
+const SET_LOGIN_ERROR = "SET_LOGIN_ERROR"
 
 let initialState = {
     userRole: null,
@@ -31,7 +32,8 @@ let initialState = {
     language: null,
     experience: null,
     classes: [],
-    isFetching: false
+    isFetching: false,
+    loginError: false
 }
 
 const LoginReducer = (state = initialState, action) => {
@@ -105,6 +107,11 @@ const LoginReducer = (state = initialState, action) => {
                 ...state,
                 userId: action.userId
             }
+        case SET_LOGIN_ERROR:
+            return {
+                ...state,
+                loginError: action.loginError
+            }
         default: {
             return {...state}
         }
@@ -119,6 +126,7 @@ export const setUserData = (data) => ({type: SET_USER_DATA, ...data});
 export const logoutAC = () => ({type: LOGOUT});
 export const setFetching = (isFetching) => ({type: SET_IS_FETCHING, isFetching});
 export const setStudentId = (userId) => ({type: SET_USER_ID, userId})
+export const setLoginError = (loginError) => ({type: SET_LOGIN_ERROR, loginError})
 
 export const login = (username, password) => {
     return async (dispatch) => {
@@ -138,10 +146,13 @@ export const login = (username, password) => {
 
             if (data.data.role === 'professor') {
                 let profData = await professorsApi.getProfessorsCabinet(data.data.token);
+                console.log(profData)
+
                 dispatch(setUserData(profData));
             }
         } catch (error) {
-            console.error('An error occurred:', error);
+            dispatch(setFetching(false));
+
         } finally {
             dispatch(setFetching(false));
         }

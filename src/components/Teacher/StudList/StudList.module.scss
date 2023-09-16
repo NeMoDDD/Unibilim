@@ -169,6 +169,12 @@ $desktop-breakpoint: 1280px;
 .student__type {
     margin-right: 1em;
 }
+.empty_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+}
 @media screen and (max-width: 346px){
     .student__type__block {
         flex-direction: column;

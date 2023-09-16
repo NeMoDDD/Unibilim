@@ -42,6 +42,7 @@ const Reservation = () => {
         paymentIsFetching,
         timetableProfessor
     } = useSelector(state => state.reservationReducer)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -123,7 +124,9 @@ const Reservation = () => {
 
         if (!hasError) {
             // Выполняем диспетчер только если нет ошибок
-            dispatch(initPayment(defineProfessor.id, result, 150, "Физика", token))
+
+            // Тут стоит заглушка предметов препода, так как там массив
+            dispatch(initPayment(defineProfessor.id, result, Number(defineProfessor.price), defineProfessor.subject[0], token))
         }
     }
 
@@ -171,7 +174,7 @@ const Reservation = () => {
                                         <div>
                                             <p className="subj_costet">Цена занятия</p>
                                             <p className="txt_schedule"
-                                               style={{fontSize: "24px"}}> {oneLessonCost} сом </p>
+                                               style={{fontSize: "24px"}}> {defineProfessor.price} сом </p>
                                         </div>
                                     </div>
                                     <div className="choose_study_days_block">
@@ -218,7 +221,7 @@ const Reservation = () => {
                                             Стоимость занятий
                                         </p>
                                         <p className="costet" style={{color: "white", textAlign: "center"}}>
-                                            {oneLessonCost * reservationLessonsCount} сом
+                                            {defineProfessor.price * reservationLessonsCount} сом
                                         </p>
                                     </div>
                                     <button
@@ -266,14 +269,16 @@ const Reservation = () => {
                                         </div>
                                         <div>
                                             <p className="subj_costet" style={{marginBottom: "0"}}>Цена
-                                                занятия: {oneLessonCost} сом </p>
+                                                занятия: {defineProfessor.price} сом </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="week_forward_block">
-                                <button className="previous_btn" onClick={goToPreviousWeek}><img
-                                    src={previous} alt="minus"/></button>
+                                <button
+                                    className={!isPrevWeek ? "previous_btn" : "previous_btn previous_btn_rotate"}
+                                    onClick={goToPreviousWeek}><img
+                                    src={!isPrevWeek ? previous : next} alt="minus"/></button>
                                 <p className="reser_date">
                                     {format(dates[0], 'd MMM', {locale: ru}).replace(/\.$/, '')}
                                     &nbsp;
@@ -304,7 +309,7 @@ const Reservation = () => {
                                     {paymentIsFetching ? (
                                         <Spin size="small"/>
                                     ) : (
-                                        `Оплатить ${oneLessonCost * reservationLessonsCount} сом`
+                                        `Оплатить ${defineProfessor.price * reservationLessonsCount} сом`
                                     )}
                                 </button>
                             </div>
