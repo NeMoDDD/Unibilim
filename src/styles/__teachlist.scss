@@ -51,6 +51,7 @@ $desktop-breakpoint: 1280px;
   padding: 10px;
   display: flex;
   flex-direction: column;
+  margin-right: 2em;
   //width: 25%;
 }
 .teach_img {
@@ -157,7 +158,6 @@ $desktop-breakpoint: 1280px;
     display: flex;
     width: 100%;
     flex-direction: row;
-    justify-content: space-between;
   }
   .teach_list{
   }

@@ -25,7 +25,7 @@ let initialState = {
     professors: [],
     defineProfessor: {},
     languageFilter: [],
-    subjectFilter: ["Русский язык", "Английский язык", "Физика", "История",  "Математика"],
+    subjectFilter: ["Русский язык", "Английский язык", "Физика", "История",  "Математика", "География"],
     classFilter: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
     isFetching: false,
 

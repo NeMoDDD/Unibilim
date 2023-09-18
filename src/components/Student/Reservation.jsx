@@ -40,7 +40,8 @@ const Reservation = () => {
         reservationLessonsData,
         weekForward,
         paymentIsFetching,
-        timetableProfessor
+        timetableProfessor,
+        reservationTableIsFetching
     } = useSelector(state => state.reservationReducer)
 
     const dispatch = useDispatch()
@@ -93,10 +94,10 @@ const Reservation = () => {
         return date;
     });
 
-    const reserveError = (formattedDate) => {
+    const reserveError = (message) => {
         messageApi.open({
             type: 'error',
-            content: `${formattedDate} уже забронировано, выберите другую дату!`,
+            content: message,
         });
     };
     const addWeeksToDate = (date, numberOfWeeks) => {
@@ -116,7 +117,7 @@ const Reservation = () => {
                     result.push(formattedDate);
                 } else {
                     console.error();
-                    reserveError(formattedDate)
+                    reserveError(`${formattedDate} уже забронировано, выберите другую дату!`)
                     hasError = true
                 }
             }
@@ -127,6 +128,14 @@ const Reservation = () => {
 
             // Тут стоит заглушка предметов препода, так как там массив
             dispatch(initPayment(defineProfessor.id, result, Number(defineProfessor.price), defineProfessor.subject[0], token))
+        }
+    }
+
+    const payOnSubmit = (message) => {
+        if (reservationLessonsCount !== 0) {
+            addWeeksToDate(reservationLessonsData, weekForward)
+        } else {
+            reserveError(message)
         }
     }
 
@@ -226,9 +235,9 @@ const Reservation = () => {
                                     </div>
                                     <button
                                         className={`pay_btn ${paymentIsFetching ? 'payment_loading' : ''}`}
-                                        onClick={() => addWeeksToDate(reservationLessonsData, weekForward)}
+                                        onClick={() => payOnSubmit("Выберите день для бронирования!")}
                                     >
-                                        {paymentIsFetching ? (
+                                        {paymentIsFetching || reservationTableIsFetching ? (
                                             <Spin size="small"/>
                                         ) : (
                                             "Перейти к оплате"
@@ -304,9 +313,9 @@ const Reservation = () => {
                                 </div>
                                 <button
                                     className={`pay_btn ${paymentIsFetching ? 'payment_loading' : ''}`}
-                                    onClick={() => addWeeksToDate(reservationLessonsData, weekForward)}
+                                    onClick={() => payOnSubmit("Выберите день для бронирования!")}
                                 >
-                                    {paymentIsFetching ? (
+                                    {paymentIsFetching || reservationTableIsFetching ? (
                                         <Spin size="small"/>
                                     ) : (
                                         `Оплатить ${defineProfessor.price * reservationLessonsCount} сом`
