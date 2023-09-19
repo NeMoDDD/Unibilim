@@ -275,17 +275,22 @@ const Registration = () => {
                                         name="dateOfBirth"
                                         control={control}
                                         rules={{
-                                            // required: 'Это поле обязательное!',
+                                            required: 'Это поле обязательное!',
                                         }}
                                         render={({field}) => (
                                             <DatePicker showToday={false}
-                                                        onChange={(e) => dispatch(setBirthday(e.format("DD-MM-YYYY")))}
+                                                        onChange={(e) => {
+                                                            dispatch(setBirthday(e.format("DD-MM-YYYY")));
+                                                            console.log(e.format("DD-MM-YYYY"))
+                                                            field.onChange(e);
+                                                        }}
                                                         format="DD-MM-YYYY"
                                                         disabledDate={(current) => {
                                                             const today = moment();
 
                                                             return current && current > today.startOf('day');
                                                         }}
+                                                        required
                                                         className={errors.dateOfBirth ? "data-picker data-picker-error" : "data-picker"}/>
                                         )}
                                     />

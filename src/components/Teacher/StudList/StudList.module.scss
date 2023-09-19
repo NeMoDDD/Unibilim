@@ -225,3 +225,9 @@ $desktop-breakpoint: 1280px;
     .stud_card {
     }
 }
+
+@media screen and (min-width: 480px) and (max-width: 574px) {
+    .stud_list {
+        justify-content: space-evenly;
+    }
+}

@@ -10,9 +10,11 @@ $desktop-breakpoint: 1280px;
   margin-top: 25px;
   width: 70%;
 }
+
 .teach_list_block p {
   margin-bottom: 15px;
 }
+
 .drop_block {
   width: 100%;
   background-color: #f6fafc;
@@ -23,6 +25,7 @@ $desktop-breakpoint: 1280px;
   justify-content: flex-start;
   align-items: center;
 }
+
 .drop {
   width: 15%;
   margin-right: 1em;
@@ -34,6 +37,7 @@ $desktop-breakpoint: 1280px;
   padding-left: 12px;
   border: none;
 }
+
 .list_block {
   display: flex;
   flex-direction: row;
@@ -45,6 +49,7 @@ $desktop-breakpoint: 1280px;
   padding: 25px;
   margin-top: 25px;
 }
+
 .teach_list {
   background-color: #ffffff;
   border-radius: 25px;
@@ -54,15 +59,18 @@ $desktop-breakpoint: 1280px;
   margin-right: 2em;
   //width: 25%;
 }
+
 .teach_img {
   border-radius: 20px;
 }
+
 .empty_block {
   display: flex;
   justify-content: center;
   margin: 0 auto;
   flex-direction: column;
 }
+
 .teach_card {
   display: flex;
   flex-direction: column;
@@ -70,6 +78,7 @@ $desktop-breakpoint: 1280px;
   justify-content: space-between;
   align-items: center;
 }
+
 .teach_name {
   font-weight: 500;
   font-size: 16px;
@@ -77,12 +86,14 @@ $desktop-breakpoint: 1280px;
   color: #2B2B2B;
   margin-bottom: 0 !important;
 }
+
 .teach_about {
   margin-bottom: 0 !important;
   font-size: 10px;
   text-align: center;
   color: #2B2B2B;
 }
+
 .teach_subj {
   font-weight: 300;
   font-size: 12px;
@@ -90,6 +101,7 @@ $desktop-breakpoint: 1280px;
   margin-top: 0.3em;
   margin-bottom: 0;
 }
+
 .teach_btn {
   padding: 10px 53px 10px 53px;
   margin-top: 10px;
@@ -106,9 +118,10 @@ $desktop-breakpoint: 1280px;
   text-decoration: none;
 }
 
-.teach_btn:hover{
+.teach_btn:hover {
   color: white;
 }
+
 .teach_txt {
   font-weight: 600;
   font-size: 26px;
@@ -139,27 +152,27 @@ $desktop-breakpoint: 1280px;
   .teach_list {
     margin-top: 25px;
   }
-  .teach_card{
+  .teach_card {
     justify-content: center;
   }
-  .teach_btn{
+  .teach_btn {
     width: 65%;
   }
-  .pad{
+  .pad {
     padding: 15px;
   }
 }
 
 @media screen and (min-width: $tablet-breakpoint) and (max-width: $desktop-breakpoint) {
-  .teach_list_block{
+  .teach_list_block {
     width: 100%;
   }
-  .list_block{
+  .list_block {
     display: flex;
     width: 100%;
     flex-direction: row;
   }
-  .teach_list{
+  .teach_list {
   }
 }
 
@@ -187,5 +200,20 @@ $desktop-breakpoint: 1280px;
   }
   .teach_subj {
     top: 75%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .list_block {
+    justify-content: space-evenly;
+  }
+  .teach_list {
+    margin-right: 0;
+  }
+
+}
+@media screen and (min-width: 480px) and (max-width: 700px) {
+  .drop {
+    width: 33%;
   }
 }
