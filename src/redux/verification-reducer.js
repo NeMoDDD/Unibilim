@@ -1,4 +1,5 @@
 import {verificationApi} from "../Api/verification-api";
+import {setToVerification} from "./RegisterReducer";
 
 const SET_IS_AUTH = "SET_IS_AUTH"
 
@@ -28,6 +29,7 @@ export const userVerification = (token, code) => {
         console.log(data)
         if (data.status === 200) {
             dispatch(setIsAuth(true))
+            dispatch(setToVerification(false))
         }
     }
 }

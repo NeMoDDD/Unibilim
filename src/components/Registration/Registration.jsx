@@ -281,13 +281,11 @@ const Registration = () => {
                                             <DatePicker showToday={false}
                                                         onChange={(e) => {
                                                             dispatch(setBirthday(e.format("DD-MM-YYYY")));
-                                                            console.log(e.format("DD-MM-YYYY"))
                                                             field.onChange(e);
                                                         }}
                                                         format="DD-MM-YYYY"
                                                         disabledDate={(current) => {
                                                             const today = moment();
-
                                                             return current && current > today.startOf('day');
                                                         }}
                                                         required
@@ -398,7 +396,10 @@ const Registration = () => {
                         </button>
                     </div>
                 </motion.form>
-                : <Navigate to="/verification"/>}
+                :
+                <Navigate to="/verification"/>
+                // <Navigate to="/login"/>
+            }
         </>
     )
 };
