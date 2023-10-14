@@ -176,6 +176,7 @@ $desktop-breakpoint: 1280px;
   }
   .teach_list {
   }
+
 }
 
 @media screen and (max-width: $tablet-breakpoint) {
@@ -203,11 +204,12 @@ $desktop-breakpoint: 1280px;
   .teach_subj {
     top: 75%;
   }
+
 }
 
 @media screen and (max-width: 600px) {
   .list_block {
-    justify-content: space-evenly;
+    //justify-content: space-evenly;
   }
   .teach_list {
     margin-right: 0;
