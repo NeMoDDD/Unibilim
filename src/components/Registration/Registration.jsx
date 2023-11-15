@@ -25,7 +25,7 @@ import {useDispatch, useSelector} from "react-redux";
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css';
 import {getCities, getDistricts, getRegion} from "../../redux/location-reducer";
-import {Navigate, NavLink, useLocation} from "react-router-dom";
+import {Link, Navigate, NavLink, useLocation} from "react-router-dom";
 import s from "../LoginPage/LoginPage.module.css";
 import {motion} from "framer-motion";
 import moment from "moment";
@@ -61,7 +61,7 @@ const Registration = () => {
                     city,
                     null
                 )
-            );
+            ); 
         } catch (error) {
             // Обработка ошибок, если что-то пошло не так
             dispatch(setFetching(false))
@@ -134,8 +134,8 @@ const Registration = () => {
                         <div className="reg-text-block">
                             <p className="reg-text">Регистрация</p>
                         </div>
-                        <div className="input-form-block">
-                            <p className="nm-txt">Ник</p>
+                        {/* <div className="input-form-block">
+                            <p className="nm-txt">Ник<span className="required__field">*</span></p>
                             <Controller
                                 name="nick"
                                 control={control}
@@ -150,9 +150,9 @@ const Registration = () => {
                                                             className={errors.nick ? "npt-txt npt-txt-errors" : 'npt-txt'}
                                 />}/>
                             {errors.nick && <p className="error-message">{errors.nick.message || errors.nickname.message}</p>}
-                        </div>
+                        </div> */}
                         <div className="input-form-block">
-                            <p className="nm-txt">Имя</p>
+                            <p className="nm-txt">Имя<span className="required__field">*</span></p>
                             <Controller
                                 name="name"
                                 control={control}
@@ -166,7 +166,7 @@ const Registration = () => {
                             {errors.name && <p className="error-message">{errors.name.message}</p>}
                         </div>
                         <div className="input-form-block">
-                            <p className="nm-txt">Фамилие</p>
+                            <p className="nm-txt">Фамилие<span className="required__field">*</span></p>
                             <Controller
                                 name="surname"
                                 control={control}
@@ -179,7 +179,7 @@ const Registration = () => {
                                 />}/>
                             {errors.surname && <p className="error-message">{errors.surname.message}</p>}
                         </div>
-                        <div className="input-form-block">
+                        {/* <div className="input-form-block">
                             <p className="nm-txt">Отчество</p>
                             <Controller
                                 name="patronym"
@@ -192,9 +192,9 @@ const Registration = () => {
                                                             className={errors.patronym ? "npt-txt npt-txt-errors" : 'npt-txt'}
                                 />}/>
                             {errors.patronym && <p className="error-message">{errors.patronym.message}</p>}
-                        </div>
+                        </div> */}
                         <div className="input-form-block">
-                            <p className="nm-txt2">Пароль</p>
+                            <p className="nm-txt2">Пароль<span className="required__field">*</span></p>
                             <Controller
                                 name="password"
                                 control={control}
@@ -215,7 +215,7 @@ const Registration = () => {
                                     className="error-message">{errors.password.message || "Это поле обязательное!"}</p>}
                         </div>
                         <div className="input-form-block">
-                            <p className="nm-txt2">Повторите пароль</p>
+                            <p className="nm-txt2">Повторите пароль<span className="required__field">*</span></p>
                             <Controller
                                 name="checkPassword"
                                 control={control}
@@ -235,7 +235,7 @@ const Registration = () => {
                                     className="error-message">{errors.checkPassword.message || "Это поле обязательное!"}</p>}
                         </div>
                         <div className="input-form-block">
-                            <p className="nm-txt2">Телефон</p>
+                            <p className="nm-txt2">Телефон<span className="required__field">*</span></p>
                             <Controller
                                 name="phone"
                                 control={control}
@@ -253,7 +253,7 @@ const Registration = () => {
                             {errors.phone && <p className="error-message">{errors.phone.message}</p>}
                         </div>
                         <div className="input-form-block">
-                            <p className="nm-txt2">Ник в телеграмме</p>
+                            <p className="nm-txt2">Ник в телеграмме<span className="required__field">*</span></p>
                             <Controller
                                 name="tg_name"
                                 control={control}
@@ -274,9 +274,9 @@ const Registration = () => {
                                     <Controller
                                         name="dateOfBirth"
                                         control={control}
-                                        rules={{
-                                            required: 'Это поле обязательное!',
-                                        }}
+                                        // rules={{
+                                        //     required: 'Это поле обязательное!',
+                                        // }}
                                         render={({field}) => (
                                             <DatePicker showToday={false}
                                                         onChange={(e) => {
@@ -303,7 +303,7 @@ const Registration = () => {
                                 name="region"
                                 control={control}
                                 rules={{
-                                    required: "Это поле обязательное!",
+                                    // required: "Это поле обязательное!",
                                     onChange: (e) => onChangeRegion(e)
 
                                 }}
@@ -322,7 +322,7 @@ const Registration = () => {
                                 name="districtCity"
                                 control={control}
                                 rules={{
-                                    required: "Это поле обязательное!",
+                                    // required: "Это поле обязательное!",
                                     onChange: (e) => dispatch(setDistrictCity(e.target.value))
                                 }}
                                 render={({field}) => <Select {...field}
@@ -337,7 +337,7 @@ const Registration = () => {
                                 name="city"
                                 control={control}
                                 rules={{
-                                    required: "Это поле обязательное!",
+                                    // required: "Это поле обязательное!",
                                     onChange: (e) => dispatch(setCity(e.target.value))
                                 }}
                                 render={({field}) => <Select {...field}
@@ -384,8 +384,8 @@ const Registration = () => {
                                 required
                             />
                             <label className="form-check-label" htmlFor="flexCheckDefault">
-                                Я прочитал (а) <a href="#">правила и условия</a> платформы и соглашаюсь на
-                                обработку персональных данных и <a href="#"> Политику конфиденциальности</a>
+                                Я прочитал (а) <Link to={''}>правила и условия</Link> платформы и соглашаюсь на
+                                обработку персональных данных и <Link to={''}> Политику конфиденциальности</Link>
                             </label>
                         </div>
                         <div className="already_account_block">

@@ -6,6 +6,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+} 
+.required__field{ 
+  color: red;
 }
 .up_block{
   display: flex;
@@ -87,7 +90,7 @@
   line-height: 15.8px;
   color: #cccccc;
 }
-.nm-txt2 {
+.nm-txt2 { 
   font-weight: 400;
   font-size: 13px;
   line-height: 15.8px;

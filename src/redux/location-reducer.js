@@ -41,7 +41,8 @@ export const setCities = (cities) => ({type: SET_CITIES, cities})
 
 export const getRegion = () => {
     return async (dispatch) => {
-        let data = await locationApi.getRegion()
+        let data = await locationApi.getRegion() 
+        console.log(data);
         dispatch(setRegions(data.data))
     }
 }

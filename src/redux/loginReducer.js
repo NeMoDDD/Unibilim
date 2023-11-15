@@ -132,7 +132,8 @@ export const login = (username, password) => {
     return async (dispatch) => {
         try {
             dispatch(setFetching(true));
-            let data = await loginApi.login(username, password);
+            let data = await loginApi.login(username, password) 
+            console.log(data);
             dispatch(setStudentId(data.data.id))
 
             if (data.status === 200) {
@@ -150,7 +151,8 @@ export const login = (username, password) => {
 
                 dispatch(setUserData(profData));
             }
-        } catch (error) {
+        } catch (error) { 
+            console.log(error);
             dispatch(setFetching(false));
 
         } finally {
