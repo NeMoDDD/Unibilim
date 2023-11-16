@@ -5,7 +5,7 @@ import SideBar from "../SideBar/SideBar";
 import Header from "../Header/HeaderS";
 import {useDispatch, useSelector} from "react-redux";
 import {getDefineProfessor, getProfessors} from "../../redux/professorsReducer";
-import {Navigate, NavLink} from "react-router-dom";
+import {Link, Navigate, NavLink} from "react-router-dom";
 import {Empty, Spin} from "antd";
 import {motion} from "framer-motion";
 import s from "../Teacher/StudList/StudList.module.scss";
@@ -120,25 +120,46 @@ const TeachList = () => {
                                 {professorList.length === 0 ? ( // Проверяем, пуст ли массив professorList
                                     <Empty className="empty_block" description={"Пусто"} />
                                 ) : (
-                                    // Если professorList не пустой, отображаем репетиторов
+                                    // Если professorList не пустой, отображаем репетиторов  
+                                    
                                     professorList.map((el, index) => (
                                         <div className="teach_list" key={index}>
-                                            <div className="teach_card">
+                                            <div className="teach_card"> 
+                                            <div className="teach__card__image">
                                                 <img src={el?.photo ? el?.photo : teach1} className="teach_img" alt=""/>
+                                            </div>
+                                                <p className="teach_subj" id="phyz">
+                                                    {el.subject[0].toUpperCase()}, {el.price} с/урок
+                                                </p>
+                                                <div className="teach_name">{el.firstName} {el.surname}</div>
+                                                <p className="teach_about">{el.info}</p>
+                                                <Link className="teach_btn"
+                                                   onClick={() => handleTeachBtnClick(el.id)}
+                                                >
+                                                    Записаться
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    ))
+                                )} 
+                                {professorList.map((el, index) => (
+                                        <div className="teach_list" key={index}>
+                                            <div className="teach_card"> 
+                                            <div className="teach__card__image">
+                                                <img src={el?.photo ? el?.photo : teach1} className="teach_img" alt=""/>
+                                            </div>
                                                 <p className="teach_subj" id="phyz">
                                                     {el.subject[0].toUpperCase()}, {el.price} с/урок
                                                 </p>
                                                 <p className="teach_name">{el.firstName} {el.surname}</p>
                                                 <p className="teach_about">{el.info}</p>
-                                                <a className="teach_btn"
+                                                <Link className="teach_btn"
                                                    onClick={() => handleTeachBtnClick(el.id)}
                                                 >
                                                     Записаться
-                                                </a>
+                                                </Link>
                                             </div>
-                                        </div>
-                                    ))
-                                )}
+                                        </div>))}
                             </div>
                         </Spin>
                     </div>

@@ -1,5 +1,5 @@
 $mobile-breakpoint: 460px;
-$tablet-breakpoint: 768px;
+$tablet-breakpoint: 878px;
 $desktop-breakpoint: 1280px;
 
 .teach_list_block {
@@ -39,10 +39,13 @@ $desktop-breakpoint: 1280px;
 }
 
 .list_block {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: wrap;
+  // display: flex;
+  // justify-content: space-between;
+  // flex-direction: row;
+  // flex-wrap: wrap; 
+  display: grid; 
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 14px;
   width: 100%;
   //height: 72dvh;
   background-color: #f6fafc;
@@ -57,14 +60,20 @@ $desktop-breakpoint: 1280px;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  margin-right: 2em;
-  //width: 25%;
+  // margin-right: 2em;
+  // width: 25%;
 }
-
+.teach__card__image{ 
+  width: 100%;
+}
 .teach_img {
   border-radius: 20px;
-  width: 150px;
-  height: 200px;
+  // width: 150px;
+  height: 200px;  
+  width: 100%; 
+  // height: 100%;
+  object-position: center; 
+  object-fit: contain;
 }
 
 .empty_block {
@@ -132,68 +141,21 @@ $desktop-breakpoint: 1280px;
   margin-left: 0.5em;
 }
 
-@media (min-width: 310px) and (max-width: 480px) {
-  .teach_img {
-    width: 250px;
-    height: 303px;
-  }
-  .teach_list_block {
-    width: 100%;
-  }
-  .drop_block {
-    width: 100%;
-    flex-direction: column;
-  }
-  .drop {
-    width: 100%;
-    height: 50px;
-    margin-top: 10px;
-  }
-  .list_block {
-    flex-direction: column;
-  }
-  .teach_list {
-    margin-top: 25px;
-  }
-  .teach_card {
-    justify-content: center;
-  }
-  .teach_btn {
-    width: 65%;
-  }
-  .pad {
-    padding: 15px;
-  }
-}
 
 @media screen and (min-width: $tablet-breakpoint) and (max-width: $desktop-breakpoint) {
   .teach_list_block {
     width: 100%;
   }
   .list_block {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
+    // display: flex;
+    // width: 100%;
+    // flex-direction: row; 
   }
   .teach_list {
   }
-
+  
 }
 
-@media screen and (max-width: $tablet-breakpoint) {
-  .teach_list_block {
-    width: 100%;
-  }
-  .teach_name {
-    top: 73%;
-  }
-  .teach_about {
-    top: 76%;
-  }
-  .teach_subj {
-    top: 84%;
-  }
-}
 
 @media screen and (min-width: 481px) and (max-width: $tablet-breakpoint) {
   .teach_name {
@@ -205,20 +167,91 @@ $desktop-breakpoint: 1280px;
   .teach_subj {
     top: 75%;
   }
-
+  
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width:1550px) {
+  .list_block {
+    grid-template-columns: repeat(4, 1fr); 
+  }
+}
+@media screen and (max-width: 878px) {
+  .teach_list_block {
+    width: 100%;
+  }
+  .teach_name {
+    top: 73%;
+  }
+  .teach_about {
+    top: 76%;
+  }
+  .teach_subj {
+    top: 84%;
+  } 
+  .list_block {
+    grid-template-columns: repeat(3, 1fr); 
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 700px) {
+  .drop {
+    width: 33%;
+  } 
+} 
+
+@media screen and (max-width: 680px) {
   .list_block {
     //justify-content: space-evenly;
   }
   .teach_list {
     margin-right: 0;
+  } 
+  .list_block {
+    grid-template-columns: repeat(2, 1fr); 
   }
-
+  .teach__name{ 
+    font-size: 14px; 
+    overflow: auto;
+  } 
 }
-@media screen and (min-width: 480px) and (max-width: 700px) {
-  .drop {
-    width: 33%;
-  }
-}
+  @media (min-width: 310px) and (max-width: 480px) {
+    .teach_img {
+      // width: 250px;
+      height: 130px;
+      height: 303px;
+    }
+    .teach_list_block {
+      width: 100%;
+    }
+    .drop_block {
+      width: 100%;
+      flex-direction: column;
+    }
+    .drop {
+      width: 100%;
+      height: 50px;
+      margin-top: 10px;
+    }
+    .list_block { 
+      padding: 15px;
+      flex-direction: column;
+    }
+    .teach_list {
+      margin-top: 25px;
+    }
+    .teach_card {
+      justify-content: center;
+    }
+    // .teach_btn {
+    //   width: 65%;
+    // }
+    .pad {
+      padding: 15px;
+    }
+    .teach_name{   
+      white-space: wrap;
+      font-size: 14px;
+    }   .list_block {
+      grid-template-columns: repeat(1, 70%);  
+      justify-content: center;
+    }
+  } 

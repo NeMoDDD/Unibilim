@@ -3,21 +3,22 @@ import Header from '../Header/HeaderS'
 import React from "react";
 import s from './LoginPage.module.css'
 import {useDispatch, useSelector} from "react-redux";
-import {Input} from "antd";
+import {Input, message} from "antd";
 import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
-import {login, setFetching, setUserName, setUserPassword} from "../../redux/loginReducer";
+import {login, setFetching, setLoginError, setUserName, setUserPassword} from "../../redux/loginReducer";
 import {Navigate, NavLink} from "react-router-dom";
 import {motion} from "framer-motion";
 
 const LoginPage = React.memo((props) => {
     const {control, handleSubmit, setError, clearErrors, formState: {errors}} = useForm({
         mode: "onBlur",
-    })
+    }) 
+    const [messageApi, contextHolder] = message.useMessage()
     const dispatch = useDispatch()
     const {userName, password, token, userRole, isFetching, loginError} = useSelector(state => state.loginReducer)
-    const onSubmit = () => {
+    const onSubmit =() => {
         try {
-            dispatch(login(userName, password))
+            dispatch(login(userName, password))  
         } catch (error) {
             dispatch(setFetching(false))
             setError("login", {
@@ -26,9 +27,18 @@ const LoginPage = React.memo((props) => {
             })
             console.log(errors.login.message)
         }
-    };
+    };  
+    if(loginError){ 
+        messageApi.open({
+            type: 'error',
+            content: 'Неверный логин или пароль',
+            duration: 6
+        }); 
+        dispatch(setLoginError(false))
+    }
     return (
-        <>
+        <> 
+        {contextHolder}
             <Header/>
             {userRole === null ?
                 <motion.div

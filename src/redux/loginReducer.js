@@ -11,7 +11,6 @@ const LOGOUT = "LOGOUT"
 const SET_IS_FETCHING = "SET_IS_FETCHING"
 const SET_USER_ID = "SET_USER_ID"
 const SET_LOGIN_ERROR = "SET_LOGIN_ERROR"
-
 let initialState = {
     userRole: null,
     token: null,
@@ -33,7 +32,8 @@ let initialState = {
     experience: null,
     classes: [],
     isFetching: false,
-    loginError: false
+    loginError: false,
+    isError: false
 }
 
 const LoginReducer = (state = initialState, action) => {
@@ -132,7 +132,7 @@ export const login = (username, password) => {
     return async (dispatch) => {
         try {
             dispatch(setFetching(true));
-            let data = await loginApi.login(username, password) 
+            let data = await loginApi.login(username, password)  
             console.log(data);
             dispatch(setStudentId(data.data.id))
 
@@ -151,8 +151,8 @@ export const login = (username, password) => {
 
                 dispatch(setUserData(profData));
             }
-        } catch (error) { 
-            console.log(error);
+        } catch (error) {  
+            dispatch(setLoginError(true))
             dispatch(setFetching(false));
 
         } finally {
