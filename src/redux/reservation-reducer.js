@@ -85,7 +85,9 @@ export const getReservationTable = (professor_id, token) => {
             dispatch(setReservationTableIsFetching(true))
             let dataHolidays = await holidaysApi.getHolidays(token)
             let dataTimetableProfessor = await meetingsApi.getProfessorMeetingsByStudent(professor_id, token)
-            console.log(dataTimetableProfessor.data)
+
+            console.log("Holidays",dataHolidays);
+            console.log("prof",dataTimetableProfessor);
             dispatch(setHolidays(dataHolidays.data))
             dispatch(setTimetableProfessor(dataTimetableProfessor.data))
         } catch (error) {

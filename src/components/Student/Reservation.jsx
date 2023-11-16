@@ -138,7 +138,7 @@ const Reservation = () => {
             reserveError(message)
         }
     }
-
+    console.log(weekForward);
     return (
         <>
             {contextHolder}
@@ -230,7 +230,7 @@ const Reservation = () => {
                                             Стоимость занятий
                                         </p>
                                         <p className="costet" style={{color: "white", textAlign: "center"}}>
-                                            {defineProfessor.price * reservationLessonsCount} сом
+                                            {(defineProfessor.price * reservationLessonsCount) * weekForward} сом
                                         </p>
                                     </div>
                                     <button
