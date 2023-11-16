@@ -128,8 +128,9 @@ const TeachList = () => {
                                             <div className="teach__card__image">
                                                 <img src={el?.photo ? el?.photo : teach1} className="teach_img" alt=""/>
                                             </div>
-                                                <p className="teach_subj" id="phyz">
-                                                    {el.subject[0].toUpperCase()}, {el.price} с/урок
+                                                <p className="teach_subj" id="phyz"> 
+                                                    {el.subject.map((item,index) => <>{item.toUpperCase()},</>)}
+                                                    {el.price} с/урок
                                                 </p>
                                                 <div className="teach_name">{el.firstName} {el.surname}</div>
                                                 <p className="teach_about">{el.info}</p>
