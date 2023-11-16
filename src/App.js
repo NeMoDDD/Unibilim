@@ -13,12 +13,14 @@ import TimeTableContainer from "./components/Student/TimeTableContainer";
 import Verification from "./components/LoginPage/Verification";
 import {useEffect} from "react";
 import {login} from "./redux/loginReducer";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import { Spin } from "antd";
+import Preloader from "./components/common/Preloader";
 
 
 function App() {
   const dispatch = useDispatch()
-
+  const {isFetching} = useSelector((state) => state.loginReducer)
   useEffect(() => {
     // Проверка наличия данных пользователя в localStorage
     const user = localStorage.getItem('user_unibilim');
@@ -27,7 +29,9 @@ function App() {
       dispatch(login(userData.username, userData.password))
     }
   }, []);
-
+  if(isFetching){ 
+    return <Preloader/>
+  }
   return (
     <div className="first_body">
       <Routes>

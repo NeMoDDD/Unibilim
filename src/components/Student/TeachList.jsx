@@ -142,24 +142,6 @@ const TeachList = () => {
                                         </div>
                                     ))
                                 )} 
-                                {professorList.map((el, index) => (
-                                        <div className="teach_list" key={index}>
-                                            <div className="teach_card"> 
-                                            <div className="teach__card__image">
-                                                <img src={el?.photo ? el?.photo : teach1} className="teach_img" alt=""/>
-                                            </div>
-                                                <p className="teach_subj" id="phyz">
-                                                    {el.subject[0].toUpperCase()}, {el.price} с/урок
-                                                </p>
-                                                <p className="teach_name">{el.firstName} {el.surname}</p>
-                                                <p className="teach_about">{el.info}</p>
-                                                <Link className="teach_btn"
-                                                   onClick={() => handleTeachBtnClick(el.id)}
-                                                >
-                                                    Записаться
-                                                </Link>
-                                            </div>
-                                        </div>))}
                             </div>
                         </Spin>
                     </div>

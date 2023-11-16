@@ -31,7 +31,7 @@ const Timetable = React.memo((props) => {
     useEffect(() => {
         dispatch(getTimetable(token, userId))
     }, [dispatch])
-
+    console.log(props.timetable);
     return (
         <>
             <Header/>
@@ -225,7 +225,7 @@ const Timetable = React.memo((props) => {
                         </table>
 
                         {/* МОБИЛКИ */}
-                        <div className="cards_block">
+                        <div className="cards_block"> 
                             {
                                 props.timetable.monday
                                     .sort((a, b) => a.time.localeCompare(b.time))
