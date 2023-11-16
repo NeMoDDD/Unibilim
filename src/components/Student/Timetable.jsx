@@ -8,7 +8,7 @@ import {getNextTimetable, getPrevTimetable, getTimetable} from "../../redux/time
 import {useDispatch, useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
 import moment from "moment";
-import {Spin} from "antd";
+import {Empty, Spin} from "antd";
 import {motion} from "framer-motion";
 
 const Timetable = React.memo((props) => {
@@ -225,7 +225,8 @@ const Timetable = React.memo((props) => {
                         </table>
 
                         {/* МОБИЛКИ */}
-                        <div className="cards_block"> 
+                        <div className="cards_block">  
+                        {allTimetable.length === 0 && <div className="timetable__empty__feedback"><Empty className="timetable__empty__feedback_inner" description={"У вас пока нет уроков"} /></div>}
                             {
                                 props.timetable.monday
                                     .sort((a, b) => a.time.localeCompare(b.time))

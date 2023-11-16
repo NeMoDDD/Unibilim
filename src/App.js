@@ -14,7 +14,6 @@ import Verification from "./components/LoginPage/Verification";
 import {useEffect} from "react";
 import {login} from "./redux/loginReducer";
 import {useDispatch, useSelector} from "react-redux";
-import { Spin } from "antd";
 import Preloader from "./components/common/Preloader";
 
 

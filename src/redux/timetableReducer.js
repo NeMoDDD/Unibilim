@@ -31,7 +31,8 @@ let initialState = {
     },
     currentTeacher: [],
     allTimetable: {},
-    isFetching: true
+    isFetching: true, 
+    timetableLength: 0
 }
 
 export const timetableReducer = (state = initialState, action) => {
@@ -197,7 +198,6 @@ export const getTimetable = (token, userId) => {
 
         const data = await meetingsApi.getDefineStudentMeetings(token, userId)
         dispatch(setAllTimetable(data.data))
-        console.log(data.data)
         data.data.map((m) => {
             if (m.day_of_week === "Monday") {
                 dispatch(setMonday(m))

@@ -379,12 +379,13 @@ $desktop-breakpoint: 1280px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: #FFBF14;
+    background-color: #FFBF14; 
+    padding: 10px 0;
   }
   .pay_btn {
     width: 50%;
     height: auto;
-    padding: 15px 20px;
+    padding: 13px 17px;
   }
   .subj_costet {
     font-weight: 500;
@@ -421,11 +422,22 @@ $desktop-breakpoint: 1280px;
     color: #93979B;
     font-size: 20px;
   }
-  .week_forward_block {
-    margin: 0 auto;
+  .week_forward_block { 
+    align-items: center;
+    margin: 0 auto; 
+    margin-bottom: 0.5rem;
   }
-  .week_forward {
+  .week_forward { 
+    margin: 0; 
+    font-size: 22px;
     color: #FFFFFF;
+  } 
+  .minus_btn img, .plus_btn img{ 
+    width: 36px; 
+    height: 36px;
+  } 
+  .costet{ 
+    padding: 3px;
   }
 }
 
@@ -453,7 +465,7 @@ $desktop-breakpoint: 1280px;
     margin-top: 10px;
     color: $text-color;
   }
-  .costet {
+  .costet { 
     margin-bottom: 0.7em;
   }
   .pay_block2 {

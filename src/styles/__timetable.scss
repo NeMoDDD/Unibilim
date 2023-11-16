@@ -1,7 +1,12 @@
 $mobile-breakpoint: 460px;
 $tablet-breakpoint: 768px;
 $desktop-breakpoint: 1280px;
-
+.timetable__empty__feedback{ 
+  display: flex; 
+  justify-content: center;  
+  width: 100%; 
+  margin-top: 2rem;
+}
 .timetable_block {
   margin-top: 25px;
   width: 70%;
