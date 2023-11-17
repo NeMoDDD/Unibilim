@@ -13,7 +13,7 @@ const SET_TIMETABLE_PROFESSOR = "SET_TIMETABLE_PROFESSOR"
 const SET_RESERVATION_TABLE_IS_FETCHING = "SET_RESERVATION_TABLE_IS_FETCHING"
 const SET_WEEK_FORWARD = "SET_WEEK_FORWARD"
 const SET_PAYMENT_IS_FETCHING = "SET_PAYMENT_IS_FETCHING"
-
+const SET_RESERVATIONS_CLOSED_TIMETABLE_PROFESSOR = 'SET_RESERVATIONS_CLOSED_TIMETABLE_PROFESSOR'
 let initialState = {
     oneLessonCost: 150,
     totalCost: 0,
@@ -23,7 +23,8 @@ let initialState = {
     holidays: [],
     timetableProfessor: [],
     reservationTableIsFetching: false,
-    paymentIsFetching: false,
+    paymentIsFetching: false, 
+    closedTimetableProfessor:{}
 }
 
 
@@ -64,7 +65,12 @@ const ReservationReducer = (state = initialState, action) => {
             return {
                 ...state,
                 paymentIsFetching: action.paymentIsFetching
-            }
+            } 
+        case SET_RESERVATIONS_CLOSED_TIMETABLE_PROFESSOR: 
+        return{ 
+            ...state, 
+            closedTimetableProfessor: action.timetable
+        }
         default: {
             return {...state}
         }
@@ -78,6 +84,7 @@ export const setTimetableProfessor = (timetableProfessor) => ({type: SET_TIMETAB
 export const setReservationTableIsFetching = (reservationTableIsFetching) => ({type: SET_RESERVATION_TABLE_IS_FETCHING, reservationTableIsFetching})
 export const setWeekForward = (weekForward) => ({type: SET_WEEK_FORWARD, weekForward})
 export const setPaymentIsFetching = (paymentIsFetching) => ({type: SET_PAYMENT_IS_FETCHING, paymentIsFetching})
+export const setClosedTImetable = (timetable) => ({type: SET_RESERVATIONS_CLOSED_TIMETABLE_PROFESSOR, timetable})
 
 export const getReservationTable = (professor_id, token) => {
     return async (dispatch) => {
@@ -85,11 +92,12 @@ export const getReservationTable = (professor_id, token) => {
             dispatch(setReservationTableIsFetching(true))
             let dataHolidays = await holidaysApi.getHolidays(token)
             let dataTimetableProfessor = await meetingsApi.getProfessorMeetingsByStudent(professor_id, token)
-
-            console.log("Holidays",dataHolidays);
-            console.log("prof",dataTimetableProfessor);
+            let professorTimetable = await professorsApi.getDefineTimetableProfessor(professor_id,token) 
+            console.log('data',professorTimetable) 
+            dispatch(setClosedTImetable(professorTimetable.data[0]))
             dispatch(setHolidays(dataHolidays.data))
             dispatch(setTimetableProfessor(dataTimetableProfessor.data))
+            console.log(professorTimetable.data[0]);
         } catch (error) {
 
         } finally {

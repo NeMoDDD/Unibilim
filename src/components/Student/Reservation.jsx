@@ -43,7 +43,7 @@ const Reservation = () => {
         timetableProfessor,
         reservationTableIsFetching
     } = useSelector(state => state.reservationReducer)
-
+    console.log(timetableProfessor);
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -212,7 +212,7 @@ const Reservation = () => {
                                     Итоговый расчет
                                 </p>
                                 <div className="pay_subj">
-                                    <p className="costet">{reservationLessonsCount} дн.</p>
+                                    <p className="costet">{reservationLessonsCount * weekForward} дн.</p>
                                 </div>
                                 <div className="pay_subj" style={{marginTop: "15px"}}>
                                     <p className="costet" style={{fontSize: "16px"}}>На сколько недель?</p>
