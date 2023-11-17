@@ -95,7 +95,7 @@ const CalendarTable = ({dates, setCurrentWeekStart, today}) => {
                                     const isAlreadyBooked = timetableProfessor.some(lesson => lesson.datetime === `${dateString}T${timeSlot}:00Z`);
                                     const isReserved = isAlreadyBooked || isHoliday; 
                                     const isWorks = findMatchingSlot(closedTimetableProfessor,currentData,timeSlot) 
-                                    const isFutureDate = isPastOrToday(dateString, today)
+                                    const isFutureDate = isPastOrToday(dateString, today) 
                                     return (
                                         <td
                                             key={dateIndex}
@@ -134,13 +134,16 @@ const CalendarTable = ({dates, setCurrentWeekStart, today}) => {
                                         const isSelected = selectedSlots.some(slot => slot === `${dateString}T${timeSlot.start}:00`);
                                         const isHoliday = holidays.some(item => item.date === dateString);
                                         const isAlreadyBooked = timetableProfessor.some(lesson => lesson.datetime === `${dateString}T${timeSlot}:00Z`);
-                                        const isReserved = isAlreadyBooked || isHoliday;
-                                        const isFutureDate = date > today
+                                        const isReserved = isAlreadyBooked || isHoliday;  
+                                        const currentData = getMonth(dateString) 
+                                        const isWorks =  findMatchingSlot(closedTimetableProfessor,currentData,timeSlot.start) 
+                                        const isFutureDate = date > today  
+                        
                                         return (
                                             <div key={timeIndex} style={{width: "33%"}}>
                                                 <button
                                                     onClick={() => !isReserved && isFutureDate && toggleSlot(dateString, timeSlot.start)}
-                                                    className={`reser_times ${isSelected ? 'selected' : ''} ${isReserved || !isFutureDate ? 'reserved' : ''} ${isReserved || !isFutureDate ? 'disabled' : ''}`}>
+                                                    className={`reser_times ${isSelected ? 'selected' : ''} ${isReserved || !isFutureDate || !isWorks ? 'reserved' : ''} ${isReserved || !isFutureDate ? 'disabled' : ''}`}>
                                                     {`${timeSlot.start} - ${timeSlot.end}`
                                                     }</button>
                                             </div>

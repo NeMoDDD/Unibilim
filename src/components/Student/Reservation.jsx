@@ -343,7 +343,7 @@ const Reservation = () => {
                         Рабочие дни
                       </p>
                       <p className="txt_schedule">
-                        Понедельник, среда, пятница, суббота, воскресенье
+                      {formatDay(closedTimetableProfessor)}.
                       </p>
                     </div>
                     <div>
@@ -354,7 +354,7 @@ const Reservation = () => {
                         Время занятий
                       </p>
                       <p className="txt_schedule">
-                        Пн,ср,пт - с 14:00 до 18:00 Сб,вс - с 12:00 до 21:00
+                      {convertDaysToString(closedTimetableProfessor)}
                       </p>
                     </div>
                     <div>
