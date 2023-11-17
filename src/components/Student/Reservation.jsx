@@ -145,9 +145,10 @@ const Reservation = () => {
     }
   };
 
+  
   const payOnSubmit = (message) => {
     if (reservationLessonsCount !== 0) {
-      addWeeksToDate(reservationLessonsData, weekForward);
+      addWeeksToDate(reservationLessonsData, weekForward); 
     } else {
       reserveError(message);
     }
