@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {setReservationLessonsCount, setReservationLessonsData} from '../../redux/reservation-reducer';
 import './__table.scss';
 import {Spin} from "antd";
-import { findMatchingSlot, formatScheduleText, getMonth } from '../common/customFunctions';
+import { findMatchingSlot, getMonth } from '../common/customFunctions';
 
 const CalendarTable = ({dates, setCurrentWeekStart, today}) => {
     const [selectedSlots, setSelectedSlots] = useState([]);
@@ -16,8 +16,7 @@ const CalendarTable = ({dates, setCurrentWeekStart, today}) => {
         reservationTableIsFetching,
         closedTimetableProfessor
     } = useSelector(state => state.reservationReducer);
-    const text = formatScheduleText(closedTimetableProfessor) 
-    console.log(text);
+
     const {format} = require('date-fns');
     const {ru} = require('date-fns/locale');
 
