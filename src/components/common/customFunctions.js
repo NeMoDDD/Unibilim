@@ -12,7 +12,7 @@ const dayName = daysOfWeek[dayOfWeek];
 return dayName
 } 
 export const findMatchingSlot = (data, day, time) => { 
-  if(typeof schedule === 'undefined'){ 
+  if(typeof data === 'undefined'){ 
     return false
   }
     const dayTranslation = {
