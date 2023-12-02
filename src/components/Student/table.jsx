@@ -143,7 +143,7 @@ const CalendarTable = ({dates, setCurrentWeekStart, today}) => {
                                             <div key={timeIndex} style={{width: "33%"}}>
                                                 <button
                                                     onClick={() => !isReserved && isFutureDate && toggleSlot(dateString, timeSlot.start)}
-                                                    className={`reser_times ${isSelected ? 'selected' : ''} ${isReserved || !isFutureDate || !isWorks ? 'reserved' : ''} ${isReserved || !isFutureDate ? 'disabled' : ''}`}>
+                                                    className={`reser_times ${isSelected ? 'selected' : ''} ${isReserved || !isFutureDate || !isWorks ? 'reserved' : ''} ${isReserved || !isFutureDate || isWorks ? 'disabled' : ''}`}>
                                                     {`${timeSlot.start} - ${timeSlot.end}`
                                                     }</button>
                                             </div>
