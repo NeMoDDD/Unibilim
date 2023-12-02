@@ -11,7 +11,10 @@ const daysOfWeek = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
 const dayName = daysOfWeek[dayOfWeek]; 
 return dayName
 } 
-export const findMatchingSlot = (data, day, time) => {
+export const findMatchingSlot = (data, day, time) => { 
+  if(typeof schedule === 'undefined'){ 
+    return false
+  }
     const dayTranslation = {
         'ПН': 'monday',
         'ВТ': 'tuesday',
@@ -40,7 +43,10 @@ export const findMatchingSlot = (data, day, time) => {
 
     return false;
 }; 
-export function formatDay(schedule) {
+export function formatDay(schedule) { 
+  if(typeof schedule === 'undefined'){ 
+    return 'Нету данных'
+  }
     const daysOfWeek = {
       monday: 'Понедельник',
       tuesday: 'Вторник',
@@ -65,6 +71,9 @@ export function formatDay(schedule) {
 
 
 export function convertDaysToString(schedule){
+  if(typeof schedule === 'undefined'){ 
+    return 'Нету данных'
+  }
     const daysOfWeeks = {
       monday: 'Пн',
       tuesday: 'Вт',
