@@ -107,12 +107,13 @@ export const getReservationTable = (professor_id, token) => {
 }
 export const initPayment = (professor_id, time_slots, amount, service, token) => {
     return async (dispatch) => {
-        try {
-            dispatch(setPaymentIsFetching(true))
+        try { 
+            dispatch(setPaymentIsFetching(true)) 
+            console.log(professor_id, time_slots,amount, service);
             let data = await reservationApi.initPayment(professor_id, time_slots, amount, service, token)
-            console.log(data)
+            window.location.href= data.data.payment_data
         } catch (error) {
-
+            console.log(error);
         } finally {
             dispatch(setPaymentIsFetching(false))
         }

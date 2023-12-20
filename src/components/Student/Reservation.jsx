@@ -45,7 +45,6 @@ const Reservation = () => {
     reservationTableIsFetching,
     closedTimetableProfessor,
   } = useSelector((state) => state.reservationReducer);
-  console.log(closedTimetableProfessor);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -153,7 +152,6 @@ const Reservation = () => {
       reserveError(message);
     }
   };
-  console.log(weekForward);
   return (
     <>
       {contextHolder}

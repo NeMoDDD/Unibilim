@@ -144,14 +144,18 @@ export const setFetching = (isFetching) => ({type: SET_IS_FETCHING, isFetching})
 
 
 export const registerNewStudent = (nick, name, surname, patronym, password, password2, phone_numbers, telegram_username, date_of_birth, region, district_city, city, photo) => {
-    return async (dispatch) => {
-        dispatch(setFetching(true))
-        let data = await registerApi.regNewStudent(telegram_username, name, surname, null, password, password2, `+${phone_numbers}`, telegram_username, date_of_birth, region, district_city, city, photo)
-        if (data.status === 201) {
-            dispatch(setToVerification(true))
-            dispatch(setOtpTokenNikita(data.data.token))
+    return async (dispatch) => { 
+        try {
+            dispatch(setFetching(true))
+            let data = await registerApi.regNewStudent(telegram_username, name, surname, null, password, password2, `+${phone_numbers}`, telegram_username, date_of_birth, region, district_city, city, photo)
+            if (data.status === 201) {
+                dispatch(setToVerification(true))
+                dispatch(setOtpTokenNikita(data.data.token))
+            }
+            dispatch(setFetching(false))
+        } catch (error) {
+            console.log(error);
         }
-        dispatch(setFetching(false))
 
     }
 }
