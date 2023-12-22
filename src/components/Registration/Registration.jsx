@@ -93,13 +93,17 @@ const Registration = () => {
 
     useEffect(() => {
         dispatch(getRegion())
-    }, [])
-    useEffect(() => {
-        dispatch(getDistricts(region))
-    }, [region])
-    useEffect(() => {
-        dispatch(getCities(districtCity))
-    }, [districtCity])
+    }, [dispatch])
+    useEffect(() => {  
+        if (region !== null) {
+            dispatch(getDistricts(region))
+        }
+    }, [region,dispatch])
+    useEffect(() => { 
+        if(districtCity !== null){ 
+            dispatch(getCities(districtCity))
+        }
+    }, [districtCity,dispatch])
 
     // Создаем массив options для Select, используя метод map для regions
     const regionOptions = regions.map((region) => ({
@@ -303,7 +307,7 @@ const Registration = () => {
                                 name="region"
                                 control={control}
                                 rules={{
-                                    // required: "Это поле обязательное!",
+                                    // required: "Это поле обязательное!", 
                                     onChange: (e) => onChangeRegion(e)
 
                                 }}
