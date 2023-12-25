@@ -8,7 +8,7 @@ import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
 import {login, setFetching, setLoginError, setUserName, setUserPassword} from "../../redux/loginReducer";
 import {Navigate, NavLink} from "react-router-dom";
 import {motion} from "framer-motion";
-
+import Footer from '../FooterLogin/FooterLogin'
 const LoginPage = React.memo((props) => {
     const {control, handleSubmit, setError, clearErrors, formState: {errors}} = useForm({
         mode: "onBlur",
@@ -97,7 +97,8 @@ const LoginPage = React.memo((props) => {
                         </form>
                     </div>
                 </motion.div>
-                : userRole === "student" ? <Navigate to="/timetable"/> : <Navigate to="/teachlk"/>}
+                : userRole === "student" ? <Navigate to="/timetable"/> : <Navigate to="/teachlk"/>} 
+                <Footer/>
         </>
     );
 });

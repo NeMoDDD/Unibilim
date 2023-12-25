@@ -29,6 +29,7 @@ import {Link, Navigate, NavLink, useLocation} from "react-router-dom";
 import s from "../LoginPage/LoginPage.module.css";
 import {motion} from "framer-motion";
 import moment from "moment";
+import FooterLogin from "../FooterLogin/FooterLogin";
 
 const Registration = () => {
     const {control, handleSubmit, setError, clearErrors, formState: {errors}, reset} = useForm({
@@ -403,7 +404,8 @@ const Registration = () => {
                 :
                 <Navigate to="/verification"/>
                 // <Navigate to="/login"/>
-            }
+            } 
+            <FooterLogin/>
         </>
     )
 };

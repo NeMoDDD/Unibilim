@@ -33,7 +33,6 @@ const Reservation = () => {
 
   const { userRole, token } = useSelector((state) => state.loginReducer);
   const { defineProfessor } = useSelector((state) => state.professorsReducer);
-
   const [messageApi, contextHolder] = message.useMessage();
   const {
     reservationLessonsCount,
@@ -45,6 +44,7 @@ const Reservation = () => {
     reservationTableIsFetching,
     closedTimetableProfessor,
   } = useSelector((state) => state.reservationReducer);
+  console.log(timetableProfessor);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -104,30 +104,27 @@ const Reservation = () => {
     const professorDates = timetableProfessor.map((lesson) => lesson.datetime);
 
     let hasError = false;
-
     for (const dateStr of date) {
       const kyrgyzstanTime = moment(dateStr).tz("Asia/Bishkek");
-
       for (let i = 0; i < numberOfWeeks; i++) {
-        kyrgyzstanTime.add(1, "weeks");
-        const formattedDate = kyrgyzstanTime.format("YYYY-MM-DDTHH:mm:ss[Z]");
-
+        kyrgyzstanTime.add(i === 0 ? 0 : 1, "weeks");
+        const formattedDate = kyrgyzstanTime.format("YYYY-MM-DDTHH:mm:ss[Z]"); 
         if (
           !result.includes(formattedDate) &&
-          !date.includes(formattedDate) &&
+          // !date.includes(formattedDate) &&
           !professorDates.includes(formattedDate)
         ) {
           result.push(formattedDate);
         } else {
-          console.error();
+          console.error("Error");
           reserveError(
-            `${formattedDate} уже забронировано, выберите другую дату!`
+            `${formattedDate.split('T').join(' ')} уже забронировано, выберите другую дату!`
           );
           hasError = true;
-        }
+        } 
       }
-    }
-
+    } 
+  
     if (!hasError) {
       // Выполняем диспетчер только если нет ошибок
 
@@ -425,7 +422,7 @@ const Reservation = () => {
                     <Spin size="small" />
                   ) : (
                     `Оплатить ${
-                      defineProfessor.price * reservationLessonsCount
+                      defineProfessor.price * reservationLessonsCount * weekForward
                     } сом`
                   )}
                 </button>

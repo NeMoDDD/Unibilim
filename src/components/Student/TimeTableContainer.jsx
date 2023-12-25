@@ -3,7 +3,7 @@ import Timetable from "./Timetable"
 import React from "react" 
 import { setNewTimetableAC,setCurrentTeacherTC } from "../../redux/timetableReducer"
 const TimeTableContainer = React.memo(({...props}) =>{ 
-    return( 
+    return(  
         <Timetable {...props}/>
     )
 })  

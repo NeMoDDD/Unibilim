@@ -120,3 +120,44 @@ export function convertDaysToString(schedule){
   
     return result;
   }
+
+
+
+export const getIsAlreadyBookedDays = (dateTime,dataString, timeSlot) =>{ 
+  if(dateTime.length === 0){ 
+    return false
+  }
+  let time = timeSlot.split(':')
+  const defineTime = `${dataString}T${time[0]}` 
+  let isBooked = false
+  let data = dateTime.map((item) => { 
+    let firstSplit = item.datetime.split(':')  
+    if(firstSplit[0] === defineTime){  
+      isBooked = true
+      return true
+    }else{ 
+      return false
+    } 
+  }) 
+  return isBooked
+}
+// export function getIsAlreadyBookedDays(dataArray, dynamicDay, dynamicTime) {
+//   if(dataArray.length === 0){ 
+//     return false
+//   }
+//   // Преобразование динамической строки дня и времени в объект Date
+//   const dynamicDatetime = new Date(`${dynamicDay}T${dynamicTime}Z`);
+
+//   // Проверка каждого элемента массива
+//   for (const item of dataArray) {
+//     const itemDatetime = new Date(item.datetime);
+
+//     // Сравнение дат и времени
+//     if (itemDatetime.getTime() === dynamicDatetime.getTime()) { 
+//       console.log(itemDatetime.getTime(),dynamicDatetime.getTime());
+//       return true; // Если совпадение найдено, возвращаем true
+//     }
+//   }
+
+//   return false; // Если совпадение не найдено, возвращаем false
+// }

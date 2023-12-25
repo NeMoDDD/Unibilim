@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import ModalTeacherWindow from "./ModalMenu";
 
-const Table = React.memo(({subj, teach, time, backgroundColor, btn, alldate, info}) => {
+const Table = React.memo(({subj, teach, time, backgroundColor, btn, alldate, info,videoLink}) => {
     const [modalOpen, setModalOpen] = useState(false);
 
     const handleTeacherClick = () => {
@@ -27,7 +27,7 @@ const Table = React.memo(({subj, teach, time, backgroundColor, btn, alldate, inf
                 </button>
 
             </div>
-            <ModalTeacherWindow teach={teach} modalOpen={modalOpen} time={time} setModalOpen={setModalOpen} subj={subj} alldate={alldate} info={info}/>
+            <ModalTeacherWindow videoLink={videoLink} teach={teach} modalOpen={modalOpen} time={time} setModalOpen={setModalOpen} subj={subj} alldate={alldate} info={info}/>
         </>
     )
 })

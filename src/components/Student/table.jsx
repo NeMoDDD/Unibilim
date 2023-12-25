@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {setReservationLessonsCount, setReservationLessonsData} from '../../redux/reservation-reducer';
 import './__table.scss';
 import {Spin} from "antd";
-import { findMatchingSlot, getMonth } from '../common/customFunctions';
+import { findMatchingSlot, getMonth,getIsAlreadyBookedDays } from '../common/customFunctions';
 
 const CalendarTable = ({dates, setCurrentWeekStart, today}) => {
     const [selectedSlots, setSelectedSlots] = useState([]);
@@ -91,16 +91,18 @@ const CalendarTable = ({dates, setCurrentWeekStart, today}) => {
                                     const dateString = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
                                     const isSelected = selectedSlots.some(slot => slot === `${dateString}T${timeSlot}:00`);
                                     const isHoliday = holidays.some(item => item.date === dateString); 
-                                    const currentData = getMonth(dateString) 
-                                    const isAlreadyBooked = timetableProfessor.some(lesson => lesson.datetime === `${dateString}T${timeSlot}:00Z`);
-                                    const isWorks = findMatchingSlot(closedTimetableProfessor,currentData,timeSlot) 
-                                    const isReserved = isAlreadyBooked || isHoliday || !isWorks; 
-                                    const isFutureDate = isPastOrToday(dateString, today) 
+                                    const currentData = getMonth(dateString)  
+                            
+                                    // const isAlreadyBooked = timetableProfessor.some(lesson => lesson.datetime === `${dateString}T${timeSlot}:00Z`);
+                                    const isWorks = findMatchingSlot(closedTimetableProfessor, currentData, timeSlot) 
+                                    const isBookedByAnotherPerson = getIsAlreadyBookedDays(timetableProfessor, dateString, timeSlot)    
+                                    const isReserved =  isHoliday || !isWorks  
+                                    const isFutureDate = isPastOrToday(dateString, today)    
                                     return (
                                         <td
                                             key={dateIndex}
                                             onClick={() => !isReserved && isFutureDate && toggleSlot(dateString, timeSlot)}
-                                            className={`reserv_day ${isSelected ? 'selected' : ''} ${isReserved || !isFutureDate ? 'reserved' : ''} ${isReserved || !isFutureDate || isWorks ? 'disabled' : ''}`}
+                                            className={`reserv_day ${isSelected ? 'selected' : ''} ${isReserved || !isFutureDate ||  isBookedByAnotherPerson ? 'reserved' : ''} ${isReserved || !isFutureDate ||  isBookedByAnotherPerson || isWorks  ? 'disabled' : ''}`}
                                         >
                                         </td>
                                     );
@@ -134,16 +136,17 @@ const CalendarTable = ({dates, setCurrentWeekStart, today}) => {
                                         const isSelected = selectedSlots.some(slot => slot === `${dateString}T${timeSlot.start}:00`);
                                         const isHoliday = holidays.some(item => item.date === dateString);
                                         const isAlreadyBooked = timetableProfessor.some(lesson => lesson.datetime === `${dateString}T${timeSlot}:00Z`);
+                                        const isBookedByAnotherPerson = getIsAlreadyBookedDays(timetableProfessor, dateString, timeSlot.start)  
                                         const isReserved = isAlreadyBooked || isHoliday;  
                                         const currentData = getMonth(dateString) 
-                                        const isWorks =  findMatchingSlot(closedTimetableProfessor,currentData,timeSlot.start) 
+                                        const isWorks =  findMatchingSlot(closedTimetableProfessor,currentData,timeSlot.start)  
                                         const isFutureDate = date > today  
                         
                                         return (
                                             <div key={timeIndex} style={{width: "33%"}}>
                                                 <button
                                                     onClick={() => !isReserved && isFutureDate && toggleSlot(dateString, timeSlot.start)}
-                                                    className={`reser_times ${isSelected ? 'selected' : ''} ${isReserved || !isFutureDate || !isWorks ? 'reserved' : ''} ${isReserved || !isFutureDate || isWorks ? 'disabled' : ''}`}>
+                                                    className={`reser_times ${isSelected && isBookedByAnotherPerson ?  'selected' : ''} ${isReserved || !isFutureDate || !isWorks || isBookedByAnotherPerson ? 'reserved' : ''} ${isReserved || !isFutureDate || isWorks || isBookedByAnotherPerson  ? 'disabled' : ''}`}>
                                                     {`${timeSlot.start} - ${timeSlot.end}`
                                                     }</button>
                                             </div>

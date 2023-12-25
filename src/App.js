@@ -15,6 +15,7 @@ import {useEffect} from "react";
 import {login} from "./redux/loginReducer";
 import {useDispatch, useSelector} from "react-redux";
 import Preloader from "./components/common/Preloader";
+import Footer from "./components/FooterLogin/FooterLogin";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
     return <Preloader/>
   }
   return (
+     <> 
     <div className="first_body">
       <Routes>
         <Route path="*" element={<LoginPage />} />
@@ -48,8 +50,9 @@ function App() {
         <Route path="/subjtable" element={<TeacherTimetable />} />
         <Route path="/popup" element={<PopUp />} /> 
         <Route path="/verification" element={<Verification/>}/>
-      </Routes>
+      </Routes> 
     </div>
+  </>
   );
 }
 

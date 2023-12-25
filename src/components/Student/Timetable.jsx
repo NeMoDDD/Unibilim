@@ -27,7 +27,6 @@ const Timetable = React.memo((props) => {
         dispatch(getPrevTimetable(props.timetable?.alldate[0]))
     }
 
-
     useEffect(() => {
         dispatch(getTimetable(token, userId))
     }, [dispatch])
@@ -81,7 +80,8 @@ const Timetable = React.memo((props) => {
                                                                backgroundColor={"#FFF1A1"}
                                                                btn={"#FFEC7E"}
                                                                alldate={item.datetime}
-                                                               info={item.professor_info}
+                                                               info={item.professor_info} 
+                                                               videoLink={item?.jitsiLink}
                                                         />
                                                     )
                                                 }
@@ -103,7 +103,8 @@ const Timetable = React.memo((props) => {
                                                                backgroundColor={"#FFF1A1"}
                                                                btn={"#FFEC7E"}
                                                                alldate={item.datetime}
-                                                               info={item.professor_info}
+                                                               info={item.professor_info} 
+                                                               videoLink={item?.jitsiLink}
                                                         />
                                                     )
                                                 }
@@ -125,7 +126,8 @@ const Timetable = React.memo((props) => {
                                                                backgroundColor={"#FFF1A1"}
                                                                btn={"#FFEC7E"}
                                                                alldate={item.datetime}
-                                                               info={item.professor_info}
+                                                               info={item.professor_info} 
+                                                               videoLink={item?.jitsiLink}
                                                         />
                                                     )
                                                 }
@@ -147,7 +149,8 @@ const Timetable = React.memo((props) => {
                                                                backgroundColor={"#C5FFCA"}
                                                                btn={"#AFFFB7"}
                                                                alldate={item.datetime}
-                                                               info={item.professor_info}
+                                                               info={item.professor_info} 
+                                                               videoLink={item?.jitsiLink}
                                                         />
                                                     )
                                                 }
@@ -170,6 +173,7 @@ const Timetable = React.memo((props) => {
                                                                btn={"#B0FFFF"}
                                                                alldate={item.datetime}
                                                                info={item.professor_info}
+                                                               videoLink={item?.jitsiLink}
                                                         />
                                                     )
                                                 }
@@ -191,7 +195,8 @@ const Timetable = React.memo((props) => {
                                                                backgroundColor={"#CCFFFF"}
                                                                btn={"#B0FFFF"}
                                                                alldate={item.datetime}
-                                                               info={item.professor_info}
+                                                               info={item.professor_info} 
+                                                               videoLink={item?.jitsiLink}
                                                         />
                                                     )
                                                 }
@@ -213,7 +218,8 @@ const Timetable = React.memo((props) => {
                                                                backgroundColor={"#CCFFFF"}
                                                                btn={"#B0FFFF"}
                                                                alldate={item.datetime}
-                                                               info={item.professor_info}
+                                                               info={item.professor_info} 
+                                                               videoLink={item?.jitsiLink}
                                                         />
                                                     )
                                                 }
@@ -238,7 +244,8 @@ const Timetable = React.memo((props) => {
                                                              subj={item.subject}
                                                              teach={item.professor_firstname + " " + item.professor_lastname}
                                                              time={item.time.slice(0, -3)}
-                                                             backgroundColor={"#FFF1A1"}
+                                                             backgroundColor={"#FFF1A1"} 
+                                                             videoLink={item?.jitsiLink}
                                                              btn={"#FFEC7E"} info={item.professor_info}/>)
                                         }
                                     })
@@ -253,7 +260,8 @@ const Timetable = React.memo((props) => {
                                                 <TableMobile alldate={item.datetime} key={index}
                                                              subj={item.subject}
                                                              teach={item.professor_firstname + " " + item.professor_lastname}
-                                                             time={item.time.slice(0, -3)}
+                                                             time={item.time.slice(0, -3)} 
+                                                             videoLink={item?.jitsiLink}
                                                              backgroundColor={"#FFF1A1"}
                                                              btn={"#FFEC7E"} info={item.professor_info}/>)
                                         }
@@ -267,7 +275,8 @@ const Timetable = React.memo((props) => {
                                         return (
                                             <TableMobile alldate={item.datetime} key={index} subj={item.subject}
                                                          teach={item.professor_firstname + " " + item.professor_lastname}
-                                                         time={item.time.slice(0, -3)} backgroundColor={"#FFF1A1"}
+                                                         time={item.time.slice(0, -3)} backgroundColor={"#FFF1A1"} 
+                                                         videoLink={item?.jitsiLink}
                                                          btn={"#FFEC7E"} info={item.professor_info}/>)
                                     }
                                 })}
@@ -280,7 +289,8 @@ const Timetable = React.memo((props) => {
                                             <TableMobile alldate={item.datetime} key={index}
                                                          subj={item.subject}
                                                          teach={item.professor_firstname + " " + item.professor_lastname}
-                                                         time={item.time.slice(0, -3)} backgroundColor={"#C5FFCA"}
+                                                         time={item.time.slice(0, -3)} backgroundColor={"#C5FFCA"} 
+                                                         videoLink={item?.jitsiLink}
                                                          btn={"#AFFFB7"} info={item.professor_info}/>)
                                     }
                                 })}
@@ -293,7 +303,8 @@ const Timetable = React.memo((props) => {
                                             <TableMobile alldate={item.datetime} key={index}
                                                          subj={item.subject}
                                                          teach={item.professor_firstname + " " + item.professor_lastname}
-                                                         time={item.time.slice(0, -3)} backgroundColor={"#CCFFFF"}
+                                                         time={item.time.slice(0, -3)} backgroundColor={"#CCFFFF"} 
+                                                         videoLink={item?.jitsiLink}
                                                          btn={"#B0FFFF"} info={item.professor_info}/>)
                                     }
                                 })}
@@ -306,7 +317,8 @@ const Timetable = React.memo((props) => {
                                             <TableMobile alldate={item.datetime} key={index}
                                                          subj={item.subject}
                                                          teach={item.professor_firstname + " " + item.professor_lastname}
-                                                         time={item.time.slice(0, -3)} backgroundColor={"#CCFFFF"}
+                                                         time={item.time.slice(0, -3)} backgroundColor={"#CCFFFF"} 
+                                                         videoLink={item?.jitsiLink}
                                                          btn={"#B0FFFF"} info={item.professor_info}/>)
                                     }
                                 })}
@@ -318,7 +330,8 @@ const Timetable = React.memo((props) => {
                                         return (
                                             <TableMobile alldate={item.datetime} key={index} btn={"#B0FFFF"}
                                                          subj={item.subject}
-                                                         teach={item.professor_firstname + " " + item.professor_lastname}
+                                                         teach={item.professor_firstname + " " + item.professor_lastname} 
+                                                         videoLink={item?.jitsiLink}
                                                          time={item.time.slice(0, -3)} backgroundColor={"#CCFFFF"}
                                                          info={item.professor_info}/>)
                                     }
@@ -326,7 +339,7 @@ const Timetable = React.memo((props) => {
                         </div>
                     </Spin>
                 </motion.div>
-                : userRole === "professor" ? <Navigate to="/teachlk"/> : <Navigate to="/login"/>}
+                : userRole === "professor" ? <Navigate to="/teachlk"/> : <Navigate to="/login"/>} 
         </>
     );
 });

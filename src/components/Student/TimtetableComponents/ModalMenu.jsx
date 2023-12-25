@@ -3,9 +3,12 @@ import s from './Modal.module.scss'
 import {Modal} from "antd"
 import userAva from "../../../assets/img/user (2) 2.svg"
 import moment from "moment";
+const ModalTeacherWindow = React.memo(({teach, time, subj, setModalOpen, modalOpen, alldate, info,videoLink}) => {
+    const dateObject = moment(alldate) 
 
-const ModalTeacherWindow = React.memo(({teach, time, subj, setModalOpen, modalOpen, alldate, info}) => {
-    const dateObject = moment(alldate)
+    const onHandleVideo = () =>{  
+        window.location.href = videoLink
+    }
     return (
         <Modal
             className={s.modal}
@@ -40,7 +43,7 @@ const ModalTeacherWindow = React.memo(({teach, time, subj, setModalOpen, modalOp
                         <div className={s.transition__title}>Чтобы перейти к уроку, нажмите на кнопку ниже</div>
                         <div className={s.info__buttons}>
                             <div className={s.btn_wrapper_accept}>
-                                <button>Присоединиться к комнате с видео созвоном</button>
+                                <button onClick={onHandleVideo}>Присоединиться к комнате с видео созвоном</button>
                             </div>
                             <div className={s.inner__buttons}>
                                 <div className={s.btn_wrapper_write}>

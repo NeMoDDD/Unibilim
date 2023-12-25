@@ -1,7 +1,7 @@
 import ModalTeacherWindow from './ModalMenu';
 import React,{useState} from 'react'
 import moment from "moment/moment";
-const TableMobile = React.memo(({subj, teach, time, backgroundColor, btn, alldate, info}) => {
+const TableMobile = React.memo(({subj, teach, time, backgroundColor, btn, alldate, info,videoLink}) => {
     const [modalOpen, setModalOpen] = useState(false);
     const dateObject = moment(alldate)
 
@@ -25,7 +25,7 @@ const TableMobile = React.memo(({subj, teach, time, backgroundColor, btn, alldat
             <button className="cards_btn" onClick={handleTeacherClick} style={{backgroundColor: btn}}>Подробнее</button>
           </div>
         </div> 
-        <ModalTeacherWindow teach={teach} modalOpen={modalOpen} time={time} setModalOpen={setModalOpen} subj={subj} alldate={alldate} info={info}/>
+        <ModalTeacherWindow videoLink={videoLink} teach={teach} modalOpen={modalOpen} time={time} setModalOpen={setModalOpen} subj={subj} alldate={alldate} info={info}/>
       </>
     )
   }) 
