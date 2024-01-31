@@ -143,10 +143,12 @@
 }
 .no_account_block {
   display: flex;
-  flex-direction: row;
+  flex-direction: column; 
+  align-items: center;
 }
 .no_account_block p {
-  margin-right: 0.5em;
+  margin: 0; 
+  text-align: center;
 }
 .already_account_block {
   display: flex;

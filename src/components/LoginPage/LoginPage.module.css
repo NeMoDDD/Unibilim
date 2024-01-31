@@ -1,8 +1,8 @@
 .login__page {
-    height: 95vh;
+    min-height: calc(100vh - 125px);
     width: 100%;
     display: flex;
-    margin-top: 2em;
+    padding-top: 2em;
 }
 
 .login{
@@ -68,7 +68,7 @@
 }
 
 .npt_txt {
-    width: 90%;
+    width: 100%; 
     border-top: 0;
     border-left: 0;
     border-right: 0;
@@ -78,7 +78,8 @@
     line-height: 24px;
     color: #595959;
     border-radius: 0;
-    background-color: white !important;
+    background-color: white !important; 
+    box-sizing: border-box;
 }
 .npt_txt:hover {
     border-color: #ffbf13 !important;
@@ -102,7 +103,7 @@
     height: 48px;
     margin-top: 1em;
     margin-bottom: 1em;
-    background-color: #ffbf13;
+    background: #FFA624;
     border-top: 0;
     border-left: 0;
     border-right: 0;
@@ -127,7 +128,17 @@
 .input_form_block {
     margin-bottom: 20px;
 }
-
+.form__feedback{ 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+} 
+.form__feedback_label{  
+    font-size: 14px;
+    display: flex; 
+    gap: 0 3px;
+    align-items: center; 
+} 
 @media screen and (max-width:1200px) {
     .login {
         width: 40%;
@@ -153,6 +164,8 @@
 @media screen and (max-width:447px) {
     .login {
         height: 50%;
-        width: 90%;
+        width: 93%;
+        padding: 10px;
+
     }
 }

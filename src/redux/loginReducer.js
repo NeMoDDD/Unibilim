@@ -128,7 +128,7 @@ export const setFetching = (isFetching) => ({type: SET_IS_FETCHING, isFetching})
 export const setStudentId = (userId) => ({type: SET_USER_ID, userId})
 export const setLoginError = (loginError) => ({type: SET_LOGIN_ERROR, loginError})
 
-export const login = (username, password) => {
+export const login = (username, password, remeberMe) => {
     return async (dispatch) => {
         try {
             dispatch(setFetching(true));
@@ -139,10 +139,11 @@ export const login = (username, password) => {
             if (data.status === 200) {
                 dispatch(setUserRole(data.data.role));
                 dispatch(setUserToken(data.data.token));
-
-                const userData = { username, password };
-                const userDataJSON = JSON.stringify(userData);
-                localStorage.setItem('user_unibilim', userDataJSON);
+                if(remeberMe){ 
+                    const userData = { username, password };
+                    const userDataJSON = JSON.stringify(userData);
+                    localStorage.setItem('user_unibilim', userDataJSON);
+                }
             }
 
             if (data.data.role === 'professor') {

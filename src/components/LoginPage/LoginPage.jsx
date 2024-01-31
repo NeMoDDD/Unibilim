@@ -10,15 +10,16 @@ import {Navigate, NavLink} from "react-router-dom";
 import {motion} from "framer-motion";
 import Footer from '../FooterLogin/FooterLogin'
 const LoginPage = React.memo((props) => {
-    const {control, handleSubmit, setError, clearErrors, formState: {errors}} = useForm({
+    const {control, handleSubmit, setError, clearErrors, formState: {errors},register} = useForm({
         mode: "onBlur",
     }) 
     const [messageApi, contextHolder] = message.useMessage()
     const dispatch = useDispatch()
     const {userName, password, token, userRole, isFetching, loginError} = useSelector(state => state.loginReducer)
-    const onSubmit =() => {
+    const onSubmit =(data) => {
+        console.log(data);
         try {
-            dispatch(login(userName, password))  
+            dispatch(login(userName, password,data.remeberMe))  
         } catch (error) {
             dispatch(setFetching(false))
             setError("login", {
@@ -88,12 +89,19 @@ const LoginPage = React.memo((props) => {
                                             className={s.error_message}>{errors.password.message || "Это поле обязательное!"}</p>}
                                     {errors.login && <p
                                         className={s.error_message}>{errors.login.message}</p>}
-                                </div>
-                                <div className="no_account_block">
-                                    <p>Нет аккаунта?</p><NavLink to="/reg">Зарегистрироваться</NavLink>
+                                </div> 
+                                <div className={s.form__feedback}>
+                                    <label  className={s.form__feedback_label}> 
+                                        <input  className={s.form__feedback_input} type="checkbox" {...register("rememberMe")}/> 
+                                        Запомнить меня
+                                    </label> 
+                                    <NavLink  className={s.form__feedback_link} to={'#'}>Забыли пароль?</NavLink>
                                 </div>
                             </div>
                             <button type='submit' className={s.form__submit} disabled={isFetching}>Продолжить</button>
+                                <div className="no_account_block">
+                                    <p>Еще не зарегистрированы на Unibilim?</p><NavLink to="/reg">Зарегистрироваться</NavLink>
+                                </div>
                         </form>
                     </div>
                 </motion.div>
