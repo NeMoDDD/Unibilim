@@ -153,8 +153,8 @@ export const login = (username, password, remeberMe) => {
                 dispatch(setUserData(profData));
             }
         } catch (error) {  
-            dispatch(setLoginError(true))
             dispatch(setFetching(false));
+            dispatch(setLoginError(true))
 
         } finally {
             dispatch(setFetching(false));
