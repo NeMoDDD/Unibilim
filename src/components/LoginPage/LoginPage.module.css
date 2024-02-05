@@ -1,5 +1,5 @@
 .login__page {
-    min-height: calc(100vh - 125px);
+    min-height: calc(100vh - 135px);
     width: 100%;
     display: flex;
     padding-top: 2em;
