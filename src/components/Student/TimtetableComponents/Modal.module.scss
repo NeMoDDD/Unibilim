@@ -71,14 +71,13 @@ body .modal {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 40%;
+
 }
 
 .info__transition {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 52%;
 }
 
 .about__title {
@@ -101,14 +100,14 @@ body .modal {
 
 .info__title {
     font-weight: 400;
-    font-size: 22px;
-    line-height: 27px;
+    font-size: 16px;
+    line-height: 23px;
 
     color: #2D2D2D;
 }
 
 .transition__title {
-
+    margin: .5rem 0;
     text-align: center;
     font-weight: 400;
     font-size: 18px;
@@ -118,7 +117,6 @@ body .modal {
 }
 
 .info__buttons {
-    height: 85%;
     display: flex;
     flex-direction: column;
 
@@ -126,52 +124,44 @@ body .modal {
 
 .inner__buttons {
     margin-top: 3%;
-    height: 43%;
     display: flex;
     justify-content: space-between;
 }
 
 .btn_wrapper_write {
     width: 100%;
-    height: 100%;
+    // height: 100%;
 }
 
 .btn_wrapper_accept {
-    height: 43%;
 }
 
 
 
 
-.btn_wrapper_accept button {
-    border: none;
-    font-weight: 500;
-    font-size: 19px;
-    line-height: 24px;
-    /* identical to box height */
-    color: #FFFFFF;
-    background: #69FFA5;
-    border-radius: 10px;
-
-    height: 100%;
-    width: 100%;
-}
 
 .btn_wrapper_write button,
-.btn__write_mobile button {
+.btn__write_mobile button,
+.btn_wrapper_accept button  { 
+    box-sizing: border-box;
+    
     border: none;
     color: white;
     font-weight: 500;
-    font-size: 19px;
+    font-size: 18px;
     line-height: 24px;
     background: #69A5FF;
     border-radius: 10px;
-
+    padding: 0.8rem 0;
     width: 100%;
-    height: 100%;
 }
 
-.btn_wrapper_another button {
+.btn_wrapper_accept button { 
+    background: #69FFA5;
+}
+.btn_wrapper_another button { 
+    box-sizing: border-box;
+
     /* padding: 8% 0; */
     border: none;
     color: white;
@@ -180,12 +170,12 @@ body .modal {
     line-height: 24px;
     background: #69A5FF;
     border-radius: 10px;
-
-    width: 100%;
-    height: 100%;
+    width: 100%
 }
 
-.btn_wrapper_cancel button {
+.btn_wrapper_cancel button { 
+    box-sizing: border-box;
+
     border: none;
     color: white;
     font-weight: 500;
@@ -232,10 +222,6 @@ body .modal {
     }
 
 
-    .inner__buttons,
-    .btn_wrapper_accept {
-        height: 37%;
-    }
 
     .btn_wrapper_accept button,
     .btn_wrapper_another button,
@@ -280,11 +266,6 @@ body .modal {
         font-size: 13px;
     }
 
-
-    .inner__buttons,
-    .btn_wrapper_accept {
-        height: 37%;
-    }
 
     .btn_wrapper_accept button,
     .btn_wrapper_another button,
@@ -471,10 +452,6 @@ body .modal {
         font-size: 14px;
         line-height: 21px;
     }
-    .inner__buttons,
-    .btn_wrapper_accept {
-        height: 32%;
-    }
 
     .btn_wrapper_accept button,
     .btn_wrapper_another button,
@@ -539,11 +516,6 @@ body .modal {
         font-size: 16px;
     }
 
-
-    .inner__buttons,
-    .btn_wrapper_accept {
-        height: 37%;
-    }
 
     .btn_wrapper_accept button,
     .btn_wrapper_another button,

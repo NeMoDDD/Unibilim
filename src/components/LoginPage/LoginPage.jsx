@@ -7,7 +7,6 @@ import { Input, message } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import {
   login,
-  setFetching,
   setLoginError,
   setUserName,
   setUserPassword,
@@ -19,8 +18,6 @@ const LoginPage = React.memo((props) => {
   const {
     control,
     handleSubmit,
-    setError,
-    clearErrors,
     formState: { errors },
     register,
   } = useForm({
@@ -28,10 +25,10 @@ const LoginPage = React.memo((props) => {
   });
   const [messageApi, contextHolder] = message.useMessage();
   const dispatch = useDispatch();
-  const { userName, password, token, userRole, isFetching, loginError } =
+  const { userName, password,  userRole, isFetching, loginError } =
     useSelector((state) => state.loginReducer);
   const onSubmit = (data) => {
-    dispatch(login(userName, password, data.remeberMe));
+    dispatch(login(userName, password, data.rememberMe));
   };
 
   useEffect(() => {

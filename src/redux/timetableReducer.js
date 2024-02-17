@@ -197,7 +197,8 @@ export const getTimetable = (token, userId) => {
         dispatch(setIsFetching(true))
 
         const data = await meetingsApi.getDefineStudentMeetings(token, userId)
-        dispatch(setAllTimetable(data.data))
+        dispatch(setAllTimetable(data.data)) 
+//Не приходит ТГ и ава        
         data.data.map((m) => {
             if (m.day_of_week === "Monday") {
                 dispatch(setMonday(m))

@@ -1,13 +1,21 @@
-import React from "react"
+import React, { useState } from "react"
 import s from './Modal.module.scss'
 import {Modal} from "antd"
 import userAva from "../../../assets/img/user (2) 2.svg"
 import moment from "moment";
+import { compareDateWithProps } from "../../../utils/customFunctions";
 const ModalTeacherWindow = React.memo(({teach, time, subj, setModalOpen, modalOpen, alldate, info,videoLink}) => {
-    const dateObject = moment(alldate) 
-
-    const onHandleVideo = () =>{  
-        window.location.href = videoLink
+    const dateObject = moment(alldate)   
+    const [isError, setError] = useState(false)
+    console.log(alldate);
+    const onHandleVideo = () =>{   
+        setError(false)
+        const isEnter = compareDateWithProps(alldate) 
+        if(isEnter){ 
+            window.location.href = videoLink
+        }else{  
+            setError(true)
+        }
     }
     return (
         <Modal
@@ -52,6 +60,7 @@ const ModalTeacherWindow = React.memo(({teach, time, subj, setModalOpen, modalOp
                             </div>
                         </div>
                     </div>
+                    {isError && <p style={{color:'red', textAlign:'center'}}>Ссылка будет доступна за 15 минут до начала урока</p>}
                 </div>
             </div>
         </Modal>

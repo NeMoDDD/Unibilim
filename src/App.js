@@ -15,7 +15,6 @@ import {useEffect} from "react";
 import {login} from "./redux/loginReducer";
 import {useDispatch, useSelector} from "react-redux";
 import Preloader from "./components/common/Preloader";
-import Footer from "./components/FooterLogin/FooterLogin";
 
 
 function App() {

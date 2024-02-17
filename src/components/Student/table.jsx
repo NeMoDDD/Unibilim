@@ -96,13 +96,13 @@ const CalendarTable = ({dates, setCurrentWeekStart, today}) => {
                                     // const isAlreadyBooked = timetableProfessor.some(lesson => lesson.datetime === `${dateString}T${timeSlot}:00Z`);
                                     const isWorks = findMatchingSlot(closedTimetableProfessor, currentData, timeSlot) 
                                     const isBookedByAnotherPerson = getIsAlreadyBookedDays(timetableProfessor, dateString, timeSlot)    
-                                    const isReserved =  isHoliday || !isWorks  
+                                    const isReserved =  isHoliday || !isWorks  || isBookedByAnotherPerson
                                     const isFutureDate = isPastOrToday(dateString, today)    
                                     return (
                                         <td
                                             key={dateIndex}
                                             onClick={() => !isReserved && isFutureDate && toggleSlot(dateString, timeSlot)}
-                                            className={`reserv_day ${isSelected ? 'selected' : ''} ${isReserved || !isFutureDate ||  isBookedByAnotherPerson ? 'reserved' : ''} ${isReserved || !isFutureDate ||  isBookedByAnotherPerson || isWorks  ? 'disabled' : ''}`}
+                                            className={`reserv_day ${isSelected ? 'selected' : ''} ${isReserved || !isFutureDate ? 'reserved' : ''} ${isReserved || !isFutureDate || isWorks  ? 'disabled' : ''}`}
                                         >
                                         </td>
                                     );

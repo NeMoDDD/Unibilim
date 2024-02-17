@@ -156,6 +156,21 @@ const Registration = () => {
                                 />}/>
                             {errors.nick && <p className="error-message">{errors.nick.message || errors.nickname.message}</p>}
                         </div> */}
+                                <div className="input-form-block">
+                                    <p className="nm-txt2">Ник в телеграмме<span className="required__field">*</span></p>
+                                    <Controller
+                                        name="tg_name"
+                                        control={control}
+                                        rules={{
+                                            required: "Это поле обязательное!",
+                                            onChange: (e) => dispatch(setTgName(e.target.value))
+                                        }}
+                                        render={({field}) => <Input {...field}
+                                                                    prefix="@"
+                                                                    className={errors.tg_name ? "npt-txt npt-txt-errors" : 'npt-txt'}
+                                        />}/>
+                                    {errors.tg_name && <p className="error-message">{errors.tg_name.message}</p>}
+                                </div>
                         <div className="input-form-block">
                             <p className="nm-txt">Имя<span className="required__field">*</span></p>
                             <Controller
@@ -256,21 +271,6 @@ const Registration = () => {
                                 ></PhoneInput>}
                             />
                             {errors.phone && <p className="error-message">{errors.phone.message}</p>}
-                        </div>
-                        <div className="input-form-block">
-                            <p className="nm-txt2">Ник в телеграмме<span className="required__field">*</span></p>
-                            <Controller
-                                name="tg_name"
-                                control={control}
-                                rules={{
-                                    required: "Это поле обязательное!",
-                                    onChange: (e) => dispatch(setTgName(e.target.value))
-                                }}
-                                render={({field}) => <Input {...field}
-                                                            prefix="@"
-                                                            className={errors.tg_name ? "npt-txt npt-txt-errors" : 'npt-txt'}
-                                />}/>
-                            {errors.tg_name && <p className="error-message">{errors.tg_name.message}</p>}
                         </div>
                         <div className="input-form-block">
                             <p className="nm-txt2">Дата рождения</p>

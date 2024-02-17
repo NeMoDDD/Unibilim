@@ -133,7 +133,7 @@ export const login = (username, password, remeberMe) => {
         try {
             dispatch(setFetching(true));
             let data = await loginApi.login(username, password)  
-            console.log(data);
+            console.log(remeberMe);
             dispatch(setStudentId(data.data.id))
 
             if (data.status === 200) {

@@ -316,7 +316,6 @@ table th {
   justify-content: center;
   align-content: baseline;
   background-color: #FFFFFF;
-  height: 90dvh;
 }
 
 .card_stud {
@@ -389,7 +388,7 @@ table th {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    padding: 0 15px 0 15px
+    padding: 0 15px 0 15px;
   }
 }
 
@@ -405,7 +404,8 @@ table th {
     margin-left: 15px;
   }
   .cards_block {
-    display: flex;
+    display: flex; 
+  
   }
   .timetable {
     display: none;

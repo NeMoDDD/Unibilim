@@ -16,9 +16,6 @@ const Timetable = React.memo((props) => {
     const lastDate = props.timetable?.alldate[props.timetable.alldate.length - 1];
     const {token, userRole, userId} = useSelector(state => state.loginReducer)
     const {isFetching, allTimetable} = useSelector(state => state.timetableReducer)
-
-    const [hasData, setHasData] = useState(false);
-
     const dispatch = useDispatch()
     const getNextWeekHandler = () => {
         dispatch(getNextTimetable(props.timetable?.alldate[6]))
@@ -29,7 +26,7 @@ const Timetable = React.memo((props) => {
 
     useEffect(() => {
         dispatch(getTimetable(token, userId))
-    }, [dispatch])
+    }, [dispatch,token,userId])
     console.log(props.timetable);
     return (
         <>
@@ -71,7 +68,7 @@ const Timetable = React.memo((props) => {
                                             .sort((a, b) => a.time.localeCompare(b.time))
                                             .map((item, key) => {
                                                 const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                                if (props.timetable?.alldate[0] === formattedDate) {
+                                                if (props.timetable?.alldate.some((item) =>item === formattedDate)) { 
                                                     return (
                                                         <Table key={key}
                                                                subj={item.subject}
@@ -94,7 +91,7 @@ const Timetable = React.memo((props) => {
                                             .sort((a, b) => a.time.localeCompare(b.time))
                                             .map((item, key) => {
                                                 const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                                if (props.timetable?.alldate[1] === formattedDate) {
+                                                if (props.timetable?.alldate.some((item) =>item === formattedDate)) { 
                                                     return (
                                                         <Table key={key}
                                                                subj={item.subject}
@@ -116,8 +113,8 @@ const Timetable = React.memo((props) => {
                                         {props.timetable?.wednesday
                                             .sort((a, b) => a.time.localeCompare(b.time))
                                             .map((item, key) => {
-                                                const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                                if (props.timetable?.alldate[2] === formattedDate) {
+                                                const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1) 
+                                                if (props.timetable?.alldate.some((item) =>item === formattedDate)) { 
                                                     return (
                                                         <Table key={key}
                                                                subj={item.subject}
@@ -140,7 +137,7 @@ const Timetable = React.memo((props) => {
                                             .sort((a, b) => a.time.localeCompare(b.time))
                                             .map((item, key) => {
                                                 const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                                if (props.timetable?.alldate[3] === formattedDate) {
+                                                if (props.timetable?.alldate.some((item) =>item === formattedDate)) { 
                                                     return (
                                                         <Table key={key}
                                                                subj={item.subject}
@@ -163,7 +160,7 @@ const Timetable = React.memo((props) => {
                                             .sort((a, b) => a.time.localeCompare(b.time))
                                             .map((item, key) => {
                                                 const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                                if (props.timetable?.alldate[4] === formattedDate) {
+                                                if (props.timetable?.alldate.some((item) =>item === formattedDate)) { 
                                                     return (
                                                         <Table key={key}
                                                                subj={item.subject}
@@ -184,9 +181,10 @@ const Timetable = React.memo((props) => {
                                     <div className='timetable__item'>
                                         {props.timetable?.saturday
                                             .sort((a, b) => a.time.localeCompare(b.time))
-                                            .map((item, key) => {
-                                                const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                                if (props.timetable?.alldate[5] === formattedDate) {
+                                            .map((item, key) => { 
+                                                const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1) 
+                                                if (props.timetable?.alldate.some((item) =>item === formattedDate)) {  
+                                                    // if (props.timetable?.alldate[5] === formattedDate) {
                                                     return (
                                                         <Table key={key}
                                                                subj={item.subject}
@@ -208,8 +206,9 @@ const Timetable = React.memo((props) => {
                                         {props.timetable?.sunday
                                             .sort((a, b) => a.time.localeCompare(b.time))
                                             .map((item, key) => {
-                                                const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                                if (props.timetable?.alldate[6] === formattedDate) {
+                                                const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1) 
+                                                // if (props.timetable?.alldate[6] === formattedDate) {
+                                                if (props.timetable?.alldate.some((item) =>item === formattedDate)) { 
                                                     return (
                                                         <Table key={key}
                                                                subj={item.subject}
@@ -238,7 +237,7 @@ const Timetable = React.memo((props) => {
                                     .sort((a, b) => a.time.localeCompare(b.time))
                                     .map((item, index) => {
                                         const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                        if (props.timetable?.alldate[0] === formattedDate) {
+                                        if (props.timetable?.alldate.some((item) =>item === formattedDate)) { 
                                             return (
                                                 <TableMobile alldate={item.datetime} key={index}
                                                              subj={item.subject}
@@ -255,7 +254,7 @@ const Timetable = React.memo((props) => {
                                     .sort((a, b) => a.time.localeCompare(b.time))
                                     .map((item, index) => {
                                         const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                        if (props.timetable?.alldate[1] === formattedDate) {
+                                        if (props.timetable?.alldate.some((item) =>item === formattedDate)) { 
                                             return (
                                                 <TableMobile alldate={item.datetime} key={index}
                                                              subj={item.subject}
@@ -271,7 +270,7 @@ const Timetable = React.memo((props) => {
                                 .sort((a, b) => a.time.localeCompare(b.time))
                                 .map((item, index) => {
                                     const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                    if (props.timetable?.alldate[2] === formattedDate) {
+                                    if (props.timetable?.alldate.some((item) =>item === formattedDate)) { 
                                         return (
                                             <TableMobile alldate={item.datetime} key={index} subj={item.subject}
                                                          teach={item.professor_firstname + " " + item.professor_lastname}
@@ -284,7 +283,7 @@ const Timetable = React.memo((props) => {
                                 .sort((a, b) => a.time.localeCompare(b.time))
                                 .map((item, index) => {
                                     const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                    if (props.timetable?.alldate[3] === formattedDate) {
+                                    if (props.timetable?.alldate.some((item) =>item === formattedDate)) { 
                                         return (
                                             <TableMobile alldate={item.datetime} key={index}
                                                          subj={item.subject}
@@ -298,7 +297,7 @@ const Timetable = React.memo((props) => {
                                 .sort((a, b) => a.time.localeCompare(b.time))
                                 .map((item, index) => {
                                     const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                    if (props.timetable?.alldate[4] === formattedDate) {
+                                    if (props.timetable?.alldate.some((item) =>item === formattedDate)) { 
                                         return (
                                             <TableMobile alldate={item.datetime} key={index}
                                                          subj={item.subject}
@@ -312,7 +311,7 @@ const Timetable = React.memo((props) => {
                                 .sort((a, b) => a.time.localeCompare(b.time))
                                 .map((item, index) => {
                                     const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                    if (props.timetable?.alldate[5] === formattedDate) {
+                                    if (props.timetable?.alldate.some((item) =>item === formattedDate)) { 
                                         return (
                                             <TableMobile alldate={item.datetime} key={index}
                                                          subj={item.subject}
@@ -326,7 +325,7 @@ const Timetable = React.memo((props) => {
                                 .sort((a, b) => a.time.localeCompare(b.time))
                                 .map((item, index) => {
                                     const formattedDate = moment(item.datetime).format("DD MMM").slice(0, -1)
-                                    if (props.timetable?.alldate[6] === formattedDate) {
+                                    if (props.timetable?.alldate.some((item) =>item === formattedDate)) { 
                                         return (
                                             <TableMobile alldate={item.datetime} key={index} btn={"#B0FFFF"}
                                                          subj={item.subject}
