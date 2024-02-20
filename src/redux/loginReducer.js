@@ -139,11 +139,11 @@ export const login = (username, password, remeberMe) => {
             if (data.status === 200) {
                 dispatch(setUserRole(data.data.role));
                 dispatch(setUserToken(data.data.token));
-                if(remeberMe){ 
+                
                     const userData = { username, password };
                     const userDataJSON = JSON.stringify(userData);
                     localStorage.setItem('user_unibilim', userDataJSON);
-                }
+                
             }
 
             if (data.data.role === 'professor') {
