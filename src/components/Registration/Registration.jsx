@@ -25,8 +25,7 @@ import {useDispatch, useSelector} from "react-redux";
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css';
 import {getCities, getDistricts, getRegion} from "../../redux/location-reducer";
-import {Link, Navigate, NavLink, useLocation} from "react-router-dom";
-import s from "../LoginPage/LoginPage.module.css";
+import {Navigate, NavLink, useLocation} from "react-router-dom";
 import {motion} from "framer-motion";
 import moment from "moment";
 import FooterLogin from "../FooterLogin/FooterLogin";
@@ -389,8 +388,8 @@ const Registration = () => {
                                 required
                             />
                             <label className="form-check-label" htmlFor="flexCheckDefault">
-                                Я прочитал (а) <Link to={''}>правила и условия</Link> платформы и соглашаюсь на
-                                обработку персональных данных и <Link to={''}> Политику конфиденциальности</Link>
+                                Я прочитал (а) <a target="_blank" rel="noreferrer" href={'https://unibilim.kg/agree/'}>правила и условия</a> платформы и соглашаюсь на
+                                обработку персональных данных и <a target="_blank" rel="noreferrer" href={'https://unibilim.kg/privacy-policy/'}> Политику конфиденциальности</a>
                             </label>
                         </div>
                         <div className="already_account_block">

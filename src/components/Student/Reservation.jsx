@@ -250,11 +250,11 @@ const Reservation = () => {
               </div>
               <div className="pay_block">
                 <p className="totalCost_txt" style={{ marginLeft: "0px" }}>
-                  Итоговый расчет
+                  Количество уроков:
                 </p>
                 <div className="pay_subj">
                   <p className="costet">
-                    {reservationLessonsCount * weekForward} дн.
+                    {reservationLessonsCount * weekForward} уроков
                   </p>
                 </div>
                 <div className="pay_subj" style={{ marginTop: "15px" }}>

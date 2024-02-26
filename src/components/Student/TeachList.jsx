@@ -130,7 +130,7 @@ const TeachList = () => {
                                             </div>
                                                 <p className="teach_subj" id="phyz"> 
                                                     {el.subject.map((item,index) => <>{item.toUpperCase()},</>)}
-                                                    {el.price} с/урок
+                                                    {el.price} сом за урок
                                                 </p>
                                                 <div className="teach_name">{el.firstName} {el.surname}</div>
                                                 <p className="teach_about">{el.info}</p>
