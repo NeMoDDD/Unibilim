@@ -1,3 +1,30 @@
+# Unibilim
+
+Unibilim is a frontend web application for online education.  
+The platform allows users to enroll in courses, choose study days, manage their personal account, and view information about instructors.
+
+## Live Demo
+- https://unibilim.vercel.app
+
+## Features
+- Course enrollment
+- Schedule and day selection
+- Personal user account
+- Instructor profiles and course details
+- Responsive and modern UI
+
+## Tech Stack
+- React 18
+- JavaScript (ES6+)
+- Redux & Redux Thunk
+- React Router
+- Chakra UI / Ant Design / Bootstrap
+- SCSS / SASS
+- Axios
+- React Hook Form & Yup
+- Framer Motion
+
+
 # Unibilim Student LK
 
 
